@@ -1,3 +1,4 @@
+import 'package:aid_ready/features/auth/presentation/screen/auth_screen.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/register_tab_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,8 +22,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        body: RegisterTabView(),
+      home: const Scaffold(
+        body: AuthScreen(),
       ),
     );
   }

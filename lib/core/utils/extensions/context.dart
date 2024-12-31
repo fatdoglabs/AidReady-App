@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../theme/color.dart';
 
@@ -32,7 +33,7 @@ extension ContextX on BuildContext {
   //   }
   // }
 
-  //AppLocalizations get l10n => AppLocalizations.of(this)!;
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
 
   AppBar curvedAppBar({Widget? child, List<Widget> actions = const []}) {
     return AppBar(

@@ -62,6 +62,17 @@ class ActionButton extends StatelessWidget {
         height = 44.0,
         width = 44;
 
+  const ActionButton.icon({
+    super.key,
+    required this.child,
+    this.onPressed,
+    this.color = primaryGreen,
+  })  : border = null,
+        borderRadius = 24.0,
+        borderColor = null,
+        height = 48.0,
+        width = 48.0;
+
   final Widget child;
   final VoidCallback? onPressed;
   final BoxBorder? border;

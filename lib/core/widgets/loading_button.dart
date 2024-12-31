@@ -33,6 +33,13 @@ class LoadingButton extends StatelessWidget {
         borderColor = null,
         height = 44;
 
+  const LoadingButton.icon({
+    super.key,
+    this.color,
+  })  : border = null,
+        borderColor = null,
+        height = 48.0;
+
   final Color? color;
   final BoxBorder? border;
   final Color? borderColor;
@@ -48,15 +55,16 @@ class LoadingButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         border: border,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(24.0),
       ),
       height: context.h(height ?? 44.0),
+      width: context.w(height ?? 44.0),
       child: const Center(
         child: SizedBox.square(
           dimension: 20.0,
           child: CircularProgressIndicator.adaptive(
             strokeWidth: 2.0,
-            backgroundColor: primaryGreen,
+            backgroundColor: white,
           ),
         ),
       ),

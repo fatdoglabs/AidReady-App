@@ -1,4 +1,3 @@
-import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
@@ -6,8 +5,10 @@ import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/auth_tab.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/login_tab_view.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/register_tab_view.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 

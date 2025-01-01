@@ -1,9 +1,11 @@
-import 'package:aid_ready/features/auth/presentation/screen/auth_screen.dart';
-import 'package:aid_ready/features/auth/presentation/widgets/register_tab_view.dart';
+import 'package:aid_ready/core/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
+import 'core/services/injector.dart';
+
+void main() async {
+  await injectDependencies();
   runApp(const MyApp());
 }
 
@@ -13,7 +15,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final router = getIt<AidRouter>();
+    return MaterialApp.router(
       title: 'Flutter Demo',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -22,9 +25,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Scaffold(
-        body: AuthScreen(),
-      ),
+      routerDelegate: router.delegate(),
+      routeInformationParser: router.defaultRouteParser(),
+      routeInformationProvider: router.routeInfoProvider(),
     );
   }
 }

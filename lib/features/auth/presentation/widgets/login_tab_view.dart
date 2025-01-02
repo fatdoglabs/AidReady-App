@@ -6,6 +6,7 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
+import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/core/widgets/task_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
@@ -62,10 +63,10 @@ class _LoginTabViewState extends State<LoginTabView> {
           color: dividerColor,
           endIndent: 16,
         ),
-        TaskButton(
+        ActionButton(
           color: black,
           onPressed: () {
-            context.router.push(const DashboardRoute());
+            context.router.push(const LoginRoute());
           },
           child: Row(
             mainAxisSize: MainAxisSize.min,

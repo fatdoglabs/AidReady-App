@@ -9,8 +9,13 @@ class AidRouter extends $AidRouter {
           page: DashboardRoute.page,
         ),
         AutoRoute(
+          page: LoginRoute.page,
+        ),
+        AutoRoute(
+          page: RegisterRoute.page,
+        ),
+        AutoRoute(
           page: AuthRoute.page,
-          keepHistory: false,
           initial: true,
         ),
       ];

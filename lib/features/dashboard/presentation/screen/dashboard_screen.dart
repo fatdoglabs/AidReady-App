@@ -2,6 +2,7 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
+import 'package:aid_ready/features/dashboard/presentation/screen/blood_donation_screen.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget build(BuildContext context) {
     final tabs = [
       context.l10n.bloodDonation,
-      'Nearest Hospitals',
+      context.l10n.nearestHospitals,
     ];
     return DefaultTabController(
       length: 2,
@@ -57,6 +58,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
             ),
           ),
         ),
+        body: Builder(builder: (context) {
+          return TabBarView(
+            controller: DefaultTabController.of(context),
+            children: [
+              BloodDonationScreen(),
+              Text('data'),
+            ],
+          );
+        }),
       ),
     );
   }

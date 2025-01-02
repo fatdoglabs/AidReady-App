@@ -1,0 +1,9 @@
+const String nointernet = 'nointernet';
+const int no_internet_code = -1;
+const int unknownerr_code = 500;
+const int cancel_code = 700;
+const int form_invalid_code = 800;
+const int success_code = 200;
+const String unknownerr = 'unknownerr';
+const String usererr = 'usererr';
+const String deverr = 'deverr';

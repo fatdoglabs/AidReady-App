@@ -68,10 +68,10 @@ class ActionButton extends StatelessWidget {
     this.onPressed,
     this.color = primaryGreen,
   })  : border = null,
-        borderRadius = 24.0,
+        borderRadius = 12.0,
         borderColor = null,
-        height = 48.0,
-        width = 48.0;
+        height = 24.0,
+        width = 24.0;
 
   final Widget child;
   final VoidCallback? onPressed;

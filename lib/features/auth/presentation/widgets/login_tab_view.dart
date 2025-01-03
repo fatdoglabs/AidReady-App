@@ -38,21 +38,39 @@ class _LoginTabViewState extends State<LoginTabView> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TaskButton.icon(
-              color: facebookBgColor,
-              child: SvgPicture.asset(facebookIcon),
+            Container(
+              decoration: BoxDecoration(
+                color: facebookBgColor,
+                borderRadius: BorderRadius.circular(24),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: TaskButton.icon(
+                child: SvgPicture.asset(
+                  facebookIcon,
+                ),
+              ),
             ),
             24.horizontalSpace,
-            TaskButton.icon(
-              color: white,
-              onPressed: () {},
-              child: Center(child: SvgPicture.asset(googleIcon)),
+            Container(
+              decoration: BoxDecoration(
+                color: white,
+                borderRadius: BorderRadius.circular(24),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: TaskButton.icon(
+                onPressed: () {},
+                child: SvgPicture.asset(googleIcon),
+              ),
             ),
             Platform.isIOS
                 ? Container(
                     margin: const EdgeInsets.only(left: 24.0),
-                    child: TaskButton.icon(
+                    decoration: BoxDecoration(
                       color: white,
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: TaskButton.icon(
                       child: SvgPicture.asset(appleIcon),
                     ),
                   )

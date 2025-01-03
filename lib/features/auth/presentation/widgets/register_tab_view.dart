@@ -43,14 +43,14 @@ class _RegisterTabViewState extends State<RegisterTabView> {
             24.horizontalSpace,
             TaskButton.icon(
               color: white,
-              child: SvgPicture.asset(googleIcon),
+              child: Center(child: SvgPicture.asset(googleIcon)),
             ),
             Platform.isIOS
                 ? Container(
                     margin: const EdgeInsets.only(left: 24.0),
                     child: TaskButton.icon(
                       color: white,
-                      child: SvgPicture.asset(appleIcon),
+                      child: Center(child: SvgPicture.asset(appleIcon)),
                     ),
                   )
                 : const SizedBox.shrink()
@@ -63,22 +63,24 @@ class _RegisterTabViewState extends State<RegisterTabView> {
           color: dividerColor,
           endIndent: 16,
         ),
-        ActionButton(
+        ActionButton.primary(
           color: black,
           onPressed: () {
             context.router.push(const RegisterRoute());
           },
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset(emailIcon, width: context.w(20)),
-              12.horizontalSpace,
-              Text(
-                context.l10n
-                    .authButtonText(context.l10n.signUp, context.l10n.email),
-                style: text14PxMedium.rubik.white.lineHeight(16.59),
-              )
-            ],
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(emailIcon, width: context.w(20)),
+                12.horizontalSpace,
+                Text(
+                  context.l10n
+                      .authButtonText(context.l10n.signUp, context.l10n.email),
+                  style: text14PxMedium.rubik.white.lineHeight(16.59),
+                )
+              ],
+            ),
           ),
         ).px(16),
         24.verticalSpace,

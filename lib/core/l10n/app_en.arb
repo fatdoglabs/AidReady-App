@@ -284,6 +284,7 @@
   "error": "Error",
   "tryAgain": "Try again",
   "goHome": "Go home",
+  "genericerr": "Something went wrong. Please try again later.",
   "somethingWentWrong": "Something went wrong...",
   "errorMessage": "Try reloading the page again or checking\nyour internet connection.",
   "deleteRecord": "Delete Record",

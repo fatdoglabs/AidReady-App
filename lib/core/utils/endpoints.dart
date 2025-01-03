@@ -1,4 +1,4 @@
-const eBaseUrl = "http://10.0.2.2:3000";
+const eBaseUrl = "https://phpstack-1147612-5149213.cloudwaysapps.com/api/v1";
 const eBaseUrlv1 = "https://hayat.ourdemo.online/api/v1";
 
 const String eRefresh = "/refresh";

@@ -206,6 +206,7 @@
   "bloodType": "Blood Type",
   "register": "Register",
   "error": "Error",
+  "genericerr": "Something went wrong. Please try again later.",
   "chanageBoosterDate": "Change Booster Date",
   "scheduledBooster": "Scheduled Booster",
   "reminder": "Reminder",

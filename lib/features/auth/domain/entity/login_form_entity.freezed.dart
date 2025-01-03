@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LoginFormEntity {
-  ValidatorField<int> get userId => throw _privateConstructorUsedError;
+  ValidatorField<String> get email => throw _privateConstructorUsedError;
   ValidatorField<String> get password => throw _privateConstructorUsedError;
   String? get fcmToken => throw _privateConstructorUsedError;
 
@@ -32,11 +32,11 @@ abstract class $LoginFormEntityCopyWith<$Res> {
       _$LoginFormEntityCopyWithImpl<$Res, LoginFormEntity>;
   @useResult
   $Res call(
-      {ValidatorField<int> userId,
+      {ValidatorField<String> email,
       ValidatorField<String> password,
       String? fcmToken});
 
-  $ValidatorFieldCopyWith<int, $Res> get userId;
+  $ValidatorFieldCopyWith<String, $Res> get email;
   $ValidatorFieldCopyWith<String, $Res> get password;
 }
 
@@ -53,15 +53,15 @@ class _$LoginFormEntityCopyWithImpl<$Res, $Val extends LoginFormEntity>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? email = null,
     Object? password = null,
     Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as ValidatorField<int>,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as ValidatorField<String>,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -75,9 +75,9 @@ class _$LoginFormEntityCopyWithImpl<$Res, $Val extends LoginFormEntity>
 
   @override
   @pragma('vm:prefer-inline')
-  $ValidatorFieldCopyWith<int, $Res> get userId {
-    return $ValidatorFieldCopyWith<int, $Res>(_value.userId, (value) {
-      return _then(_value.copyWith(userId: value) as $Val);
+  $ValidatorFieldCopyWith<String, $Res> get email {
+    return $ValidatorFieldCopyWith<String, $Res>(_value.email, (value) {
+      return _then(_value.copyWith(email: value) as $Val);
     });
   }
 
@@ -99,12 +99,12 @@ abstract class _$$LoginFormEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {ValidatorField<int> userId,
+      {ValidatorField<String> email,
       ValidatorField<String> password,
       String? fcmToken});
 
   @override
-  $ValidatorFieldCopyWith<int, $Res> get userId;
+  $ValidatorFieldCopyWith<String, $Res> get email;
   @override
   $ValidatorFieldCopyWith<String, $Res> get password;
 }
@@ -120,15 +120,15 @@ class __$$LoginFormEntityImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? email = null,
     Object? password = null,
     Object? fcmToken = freezed,
   }) {
     return _then(_$LoginFormEntityImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as ValidatorField<int>,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as ValidatorField<String>,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -145,11 +145,11 @@ class __$$LoginFormEntityImplCopyWithImpl<$Res>
 
 class _$LoginFormEntityImpl extends _LoginFormEntity {
   const _$LoginFormEntityImpl(
-      {required this.userId, required this.password, this.fcmToken})
+      {required this.email, required this.password, this.fcmToken})
       : super._();
 
   @override
-  final ValidatorField<int> userId;
+  final ValidatorField<String> email;
   @override
   final ValidatorField<String> password;
   @override
@@ -157,7 +157,7 @@ class _$LoginFormEntityImpl extends _LoginFormEntity {
 
   @override
   String toString() {
-    return 'LoginFormEntity(userId: $userId, password: $password, fcmToken: $fcmToken)';
+    return 'LoginFormEntity(email: $email, password: $password, fcmToken: $fcmToken)';
   }
 
   @override
@@ -165,7 +165,7 @@ class _$LoginFormEntityImpl extends _LoginFormEntity {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginFormEntityImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.fcmToken, fcmToken) ||
@@ -173,7 +173,7 @@ class _$LoginFormEntityImpl extends _LoginFormEntity {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId, password, fcmToken);
+  int get hashCode => Object.hash(runtimeType, email, password, fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -185,13 +185,13 @@ class _$LoginFormEntityImpl extends _LoginFormEntity {
 
 abstract class _LoginFormEntity extends LoginFormEntity {
   const factory _LoginFormEntity(
-      {required final ValidatorField<int> userId,
+      {required final ValidatorField<String> email,
       required final ValidatorField<String> password,
       final String? fcmToken}) = _$LoginFormEntityImpl;
   const _LoginFormEntity._() : super._();
 
   @override
-  ValidatorField<int> get userId;
+  ValidatorField<String> get email;
   @override
   ValidatorField<String> get password;
   @override

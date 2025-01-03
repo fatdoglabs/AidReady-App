@@ -43,7 +43,8 @@ class _LoginTabViewState extends State<LoginTabView> {
             24.horizontalSpace,
             TaskButton.icon(
               color: white,
-              child: SvgPicture.asset(googleIcon),
+              onPressed: () {},
+              child: Center(child: SvgPicture.asset(googleIcon)),
             ),
             Platform.isIOS
                 ? Container(
@@ -63,22 +64,24 @@ class _LoginTabViewState extends State<LoginTabView> {
           color: dividerColor,
           endIndent: 16,
         ),
-        ActionButton(
+        ActionButton.primary(
           color: black,
           onPressed: () {
             context.router.push(const LoginRoute());
           },
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SvgPicture.asset(emailIcon, width: context.w(20)),
-              12.horizontalSpace,
-              Text(
-                context.l10n
-                    .authButtonText(context.l10n.login, context.l10n.email),
-                style: text14PxMedium.rubik.white.lineHeight(16.59),
-              )
-            ],
+          child: Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(emailIcon, width: context.w(20)),
+                12.horizontalSpace,
+                Text(
+                  context.l10n
+                      .authButtonText(context.l10n.login, context.l10n.email),
+                  style: text14PxMedium.rubik.white.lineHeight(16.59),
+                )
+              ],
+            ),
           ),
         ).px(16),
         24.verticalSpace,

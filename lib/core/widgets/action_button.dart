@@ -94,7 +94,7 @@ class ActionButton extends StatelessWidget {
       height: context.h(height ?? 44.0),
       child: InkWell(
         onTap: onPressed,
-        child: Center(child: child),
+        child: child,
       ),
     );
   }

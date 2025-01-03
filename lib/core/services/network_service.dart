@@ -67,7 +67,7 @@ class DioNetworkService extends NetworkService with ExceptionHandlerMixin {
         headers: headers,
       );
   @override
-  String get baseUrl => eBaseUrlv1;
+  String get baseUrl => eBaseUrl;
 
   @override
   Map<String, Object> get headers => {

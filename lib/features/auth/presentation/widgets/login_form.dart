@@ -3,6 +3,8 @@ import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/input_field.dart';
+import 'package:aid_ready/features/auth/presentation/providers/login_form_provider.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/login_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +14,7 @@ class LoginForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //final form = ref.watch(loginFormNotifierProvider);
+    final form = ref.watch(loginFormNotifierProvider);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -25,7 +27,7 @@ class LoginForm extends ConsumerWidget {
           //         : context.l10n.enrollmentidinvalid
           //     : null,
           onChanged: (value) {
-            //ref.read(loginFormNotifierProvider.notifier).setId(value);
+            ref.read(loginFormNotifierProvider.notifier).setEmail(value);
           },
         ).px(16.0),
         20.verticalSpace,
@@ -41,9 +43,11 @@ class LoginForm extends ConsumerWidget {
           //         : context.l10n.passwordinvalid
           //     : null,
           onChanged: (value) {
-            //ref.read(loginFormNotifierProvider.notifier).setPassword(value);
+            ref.read(loginFormNotifierProvider.notifier).setPassword(value);
           },
         ).px(16.0),
+        20.verticalSpace,
+        const LoginButton(),
       ],
     );
   }

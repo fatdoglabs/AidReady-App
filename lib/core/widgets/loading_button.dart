@@ -1,4 +1,5 @@
 import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/color.dart';
@@ -10,11 +11,13 @@ class LoadingButton extends StatelessWidget {
     this.border,
     this.borderColor,
     this.height,
+    this.label = const SizedBox.shrink(),
   });
 
   const LoadingButton.primary({
     super.key,
     this.color = black50,
+    required this.label,
   })  : border = null,
         borderColor = null,
         height = 44;
@@ -22,6 +25,7 @@ class LoadingButton extends StatelessWidget {
   LoadingButton.secondary({
     super.key,
     this.borderColor,
+    required this.label,
   })  : color = null,
         border = Border.all(color: borderColor ?? black80),
         height = 44;
@@ -31,19 +35,22 @@ class LoadingButton extends StatelessWidget {
     this.color = black50,
   })  : border = null,
         borderColor = null,
-        height = 44;
+        height = 44,
+        label = const SizedBox.shrink();
 
   const LoadingButton.icon({
     super.key,
     this.color,
   })  : border = null,
         borderColor = null,
-        height = 48.0;
+        height = 48.0,
+        label = const SizedBox.shrink();
 
   final Color? color;
   final BoxBorder? border;
   final Color? borderColor;
   final double? height;
+  final Widget label;
 
   @override
   Widget build(BuildContext context) {
@@ -55,18 +62,25 @@ class LoadingButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         border: border,
-        borderRadius: BorderRadius.circular(24.0),
+        borderRadius: BorderRadius.circular(12.0),
       ),
       height: context.h(height ?? 44.0),
-      width: context.w(height ?? 44.0),
-      child: const Center(
-        child: SizedBox.square(
-          dimension: 20.0,
-          child: CircularProgressIndicator.adaptive(
-            strokeWidth: 2.0,
-            backgroundColor: white,
+      //width: context.w(height ?? 44.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox.square(
+            dimension: 20.0,
+            child: CircularProgressIndicator.adaptive(
+              strokeWidth: 2.0,
+              backgroundColor: white,
+            ),
           ),
-        ),
+          12.horizontalSpace,
+          label
+        ],
       ),
     );
   }

@@ -44,7 +44,9 @@ class _TaskButtonState extends State<TaskButton> {
     } else {
       if (widget.color != null) {
         if (loading) {
-          return const LoadingButton.primary();
+          return const LoadingButton.primary(
+            label: SizedBox.shrink(),
+          );
         }
 
         return ActionButton.primary(
@@ -59,7 +61,7 @@ class _TaskButtonState extends State<TaskButton> {
         );
       } else {
         if (loading) {
-          return LoadingButton.secondary();
+          return LoadingButton.secondary(label: const SizedBox.shrink());
         }
 
         return ActionButton.secondary(

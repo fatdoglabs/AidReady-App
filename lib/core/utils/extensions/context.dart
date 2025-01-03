@@ -60,17 +60,17 @@ extension ContextX on BuildContext {
     );
   }
 
-  // void snack(String? message,
-  //     {Duration duration = const Duration(seconds: 1)}) {
-  //   ScaffoldMessenger.of(this)
-  //     ..hideCurrentSnackBar()
-  //     ..showSnackBar(
-  //       SnackBar(
-  //         duration: duration,
-  //         content: Text(message ?? this.l10n.genericerr),
-  //       ),
-  //     );
-  // }
+  void snack(String? message,
+      {Duration duration = const Duration(seconds: 1)}) {
+    ScaffoldMessenger.of(this)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          duration: duration,
+          content: Text(message ?? this.l10n.genericerr),
+        ),
+      );
+  }
 
   Future<DateTime?> showDatePickerOverLay(
       {DateTime? initialDateTime, bool isIOS = false}) async {

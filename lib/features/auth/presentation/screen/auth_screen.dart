@@ -67,18 +67,22 @@ class _AuthScreenState extends State<AuthScreen> {
           index: currentIndex,
           children: [
             RegisterTabView(
-                // onPop: (value) {
-                //   currentIndex = value;
-                // },
-                // email: email,
-                // invitedGuardianInfoData: invitedGuardianInfoData,
-                ),
+              gotoLogin: () {
+                setState(() {
+                  currentIndex = 1;
+                });
+              },
+              // email: email,
+              // invitedGuardianInfoData: invitedGuardianInfoData,
+            ),
             LoginTabView(
-                // invitedGuardianInfoData: invitedGuardianInfoData,
-                // onPop: (value) {
-                //   currentIndex = value;
-                // },
-                ),
+              gotoRegister: () {
+                setState(() {
+                  currentIndex = 0;
+                });
+              },
+              // invitedGuardianInfoData: invitedGuardianInfoData,
+            ),
           ],
         ).sliver()
       ],

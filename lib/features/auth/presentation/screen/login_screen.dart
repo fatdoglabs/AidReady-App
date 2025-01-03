@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  context.router.pop(0);
+                  context.router.maybePop(0);
                 },
                 child: Text(
                   context.l10n.signUp,

@@ -42,15 +42,15 @@ class RegisterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                context.l10n.notHaveAccount,
+                context.l10n.alreadyHaveAnAccount,
                 style: text14PxRegular.rubik.darkGrey.lineHeight(21),
               ),
               InkWell(
                 onTap: () {
-                  context.router.pop(0);
+                  context.router.maybePop(1);
                 },
                 child: Text(
-                  context.l10n.signUp,
+                  context.l10n.login,
                   style: text14PxMedium.rubik.iconOrange.lineHeight(21),
                 ).px(10),
               ),

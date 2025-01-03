@@ -16,7 +16,9 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/theme/styles.dart';
 
 class RegisterTabView extends StatefulWidget {
-  const RegisterTabView({super.key});
+  const RegisterTabView({super.key, this.gotoLogin});
+
+  final VoidCallback? gotoLogin;
 
   @override
   State<RegisterTabView> createState() => _RegisterTabViewState();
@@ -65,8 +67,12 @@ class _RegisterTabViewState extends State<RegisterTabView> {
         ),
         ActionButton.primary(
           color: black,
-          onPressed: () {
-            context.router.push(const RegisterRoute());
+          onPressed: () async {
+            final shouldGotoLogin =
+                await context.router.push(const RegisterRoute());
+            if (shouldGotoLogin != null) {
+              widget.gotoLogin?.call();
+            }
           },
           child: Center(
             child: Row(

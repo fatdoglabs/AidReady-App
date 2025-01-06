@@ -8,6 +8,8 @@ import '../entity/login_form_entity.dart';
 
 abstract class AuthRepository {
   Future<Either<AuthToken, AppException>> login(LoginFormEntity loginData);
+  Future<Either<AuthToken, AppException>> googleLogin();
+  Future<Either<AuthToken, AppException>> facebookLogin();
   Future<void> setLocale(LocaleOpts locale);
   Future<void> onboardingComplete();
   AuthToken isUserLoggedIn();

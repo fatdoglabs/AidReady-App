@@ -1,4 +1,6 @@
+import 'package:aid_ready/core/services/injector.dart';
 import 'package:aid_ready/features/auth/data/model/auth_token.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/data/providers/connectivity_status_notifier.dart';
@@ -30,6 +32,20 @@ class Auth extends _$Auth {
         .hasInternetAccess();
     final repository = ref.read(authRepositoryProvider(networkStatus));
     final result = await repository.login(loginData);
+    result.fold((l) {
+      state = AsyncData(l);
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
+  }
+
+  Future<void> googleLogin() async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(authRepositoryProvider(networkStatus));
+    final result = await repository.googleLogin();
     result.fold((l) {
       state = AsyncData(l);
     }, (r) {

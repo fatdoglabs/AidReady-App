@@ -1,8 +1,10 @@
 import 'package:aid_ready/core/data/datasources/local_source.dart';
 import 'package:aid_ready/core/domain/entity/locale_option.dart';
+import 'package:aid_ready/core/services/injector.dart';
 import 'package:aid_ready/features/auth/data/datasources/auth_remote_source.dart';
 import 'package:aid_ready/features/auth/domain/entity/login_form_entity.dart';
 import 'package:dio/dio.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../core/data/providers/connectivity_status_notifier.dart';
 import '../../../../core/exceptions/app_exception.dart';
@@ -91,5 +93,46 @@ class AuthRepositoryImpl extends AuthRepository {
     }, (err) {
       throw err;
     });
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> facebookLogin() async {
+    throw Error();
+    // if (status == NetworkStatus.isConnected) {
+    //   final token = await remoteDataSource.login();
+    //   return token.fold(
+    //     (l) {
+    //       localSource.setAccessToken(l.accessToken);
+    //       localSource.setRefreshToken(l.refreshToken);
+    //       localSource.setUserId(l.userId);
+    //       return Left(l);
+    //     },
+    //     (r) => Right(r),
+    //   );
+    // } else {
+    //   return Right(AppException.noInternet());
+    // }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> googleLogin() async {
+    if (status == NetworkStatus.isConnected) {
+      try {
+        final googleSignIn = getIt<GoogleSignIn>();
+        final token = await googleSignIn.signIn();
+        if (token != null) {
+          final auth = await token.authentication;
+          localSource.setAccessToken(auth.accessToken ?? "");
+
+          // localSource.setUserId(l.userId);
+          // return Left(l);
+        }
+      } catch (except) {
+        return Right(AppException.noInternet());
+      }
+      return Left(AuthToken.unauthenticated());
+    } else {
+      return Right(AppException.noInternet());
+    }
   }
 }

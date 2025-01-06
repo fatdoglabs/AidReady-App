@@ -8,9 +8,11 @@ import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/core/widgets/task_button.dart';
+import 'package:aid_ready/features/auth/presentation/providers/auth_provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/theme/styles.dart';
@@ -51,17 +53,21 @@ class _LoginTabViewState extends State<LoginTabView> {
               ),
             ),
             24.horizontalSpace,
-            Container(
-              decoration: BoxDecoration(
-                color: white,
-                borderRadius: BorderRadius.circular(24),
-              ),
-              padding: const EdgeInsets.all(8),
-              child: TaskButton.icon(
-                onPressed: () {},
-                child: SvgPicture.asset(googleIcon),
-              ),
-            ),
+            Consumer(builder: (context, ref, _) {
+              return Container(
+                decoration: BoxDecoration(
+                  color: white,
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                padding: const EdgeInsets.all(8),
+                child: TaskButton.icon(
+                  onPressed: () {
+                    ref.read(authProvider.notifier).googleLogin();
+                  },
+                  child: SvgPicture.asset(googleIcon),
+                ),
+              );
+            }),
             Platform.isIOS
                 ? Container(
                     margin: const EdgeInsets.only(left: 24.0),

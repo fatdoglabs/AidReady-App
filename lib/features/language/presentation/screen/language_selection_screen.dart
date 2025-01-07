@@ -1,5 +1,6 @@
 import 'package:aid_ready/core/domain/entity/locale_option.dart';
 import 'package:aid_ready/core/domain/providers/language_provider.dart';
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
@@ -36,7 +37,9 @@ class LanguageSelectionScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: ActionButton.primary(
                 height: context.h(48.0),
-                onPressed: () {},
+                onPressed: () {
+                  context.router.push(const OnboardingRoute());
+                },
                 child: Center(
                   child: Text(
                     'Next',

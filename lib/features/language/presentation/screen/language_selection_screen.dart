@@ -53,6 +53,7 @@ class LanguageSelectionScreen extends StatelessWidget {
         });
         return Stack(
           children: [
+          
             LanguageList(
               onEnglish: () {
                 ref
@@ -77,7 +78,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                   },
                   child: Center(
                     child: Text(
-                      'Next',
+                      context.l10n.next,
                       style: regular.copyWith(color: Colors.white),
                     ),
                   ),

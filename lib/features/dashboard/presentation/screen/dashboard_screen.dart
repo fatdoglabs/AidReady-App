@@ -14,10 +14,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
   int currentPage = 0;
   @override
   Widget build(BuildContext context) {
-    final tabs = [
-      context.l10n.bloodDonation,
-      context.l10n.nearestHospitals,
-    ];
     return Scaffold(body: Text('dashboard'));
   }
 }

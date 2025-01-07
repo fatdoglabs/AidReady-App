@@ -46,7 +46,7 @@ class LoginButton extends ConsumerWidget {
             SvgPicture.asset(emailIcon, width: context.w(20)),
             12.horizontalSpace,
             Text(
-              context.l10n.login,
+              "context.l10n.login",
               // style: text14PxMedium.rubik.white.lineHeight(16.59),
             )
           ],
@@ -56,7 +56,7 @@ class LoginButton extends ConsumerWidget {
       return ref.watch(authProvider).maybeWhen(loading: () {
         return LoadingButton.primary(
           label: Text(
-            context.l10n.login,
+            "context.l10n.login",
             // style: text14PxMedium.rubik.white.lineHeight(16.59),
           ),
         );
@@ -83,7 +83,7 @@ class LoginButton extends ConsumerWidget {
               SvgPicture.asset(emailIcon, width: context.w(20)),
               12.horizontalSpace,
               Text(
-                context.l10n.login,
+                "context.l10n.login",
                 //style: text14PxMedium.rubik.white.lineHeight(16.59),
               )
             ],

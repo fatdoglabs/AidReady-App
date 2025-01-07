@@ -1,4 +1,5 @@
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
@@ -32,13 +33,13 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             20.verticalSpace,
             Text(
-              'Welcome to AidReady!',
+              context.l10n.welcomeToAidReady,
               style: bold.copyWith(color: primaryDark950, fontSize: 30.0),
               textAlign: TextAlign.center,
             ),
             20.verticalSpace,
             Text(
-              'Thank you for your willingness to make a difference. Donating blood is a life-saving act, and together, we can help those in need. Let\'s get started and become a hero!',
+              context.l10n.authDescription,
               style: regular.copyWith(color: primaryDark950),
               textAlign: TextAlign.center,
             ),
@@ -53,14 +54,14 @@ class _AuthScreenState extends State<AuthScreen> {
               ActionButton.primary(
                   child: Center(
                       child: Text(
-                'Sign up',
+                context.l10n.signUp,
                 style: medium.copyWith(color: Colors.white),
               ))),
               20.verticalSpace,
               ActionButton.secondary(
                   child: Center(
                       child: Text(
-                'Sign in',
+                context.l10n.signIn,
                 style: medium.copyWith(color: primary500),
               )))
             ],

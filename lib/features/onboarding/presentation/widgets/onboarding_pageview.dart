@@ -1,5 +1,6 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/features/language/data/model/onboarding_item.dart';
@@ -72,7 +73,7 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 6.0, horizontal: 4.0),
                         child: Text(
-                          'Skip',
+                          context.l10n.skip,
                           style: semibold.copyWith(color: primaryDark950),
                         ),
                       ),

@@ -16,7 +16,7 @@ class RegisterScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          context.l10n.createAnAccount,
+          "context.l10n.createAnAccount",
           // style: text16PxMedium.rubik.button.lineHeight(24),
           textAlign: TextAlign.center,
         ),
@@ -25,13 +25,13 @@ class RegisterScreen extends StatelessWidget {
         children: [
           33.verticalSpace,
           Text(
-            context.l10n.whoThere,
+            "context.l10n.whoThere",
             //style: text24PxBold.rubik.button.lineHeight(36),
             textAlign: TextAlign.center,
           ),
           15.verticalSpace,
           Text(
-            context.l10n.loginHelpText,
+            "context.l10n.loginHelpText",
             //style: text14PxRegular.rubik.darkGrey.lineHeight(21),
             textAlign: TextAlign.center,
           ),
@@ -42,7 +42,7 @@ class RegisterScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                context.l10n.alreadyHaveAnAccount,
+                "context.l10n.alreadyHaveAnAccount",
                 //style: text14PxRegular.rubik.darkGrey.lineHeight(21),
               ),
               InkWell(
@@ -50,7 +50,7 @@ class RegisterScreen extends StatelessWidget {
                   context.router.maybePop(1);
                 },
                 child: Text(
-                  context.l10n.login,
+                  "ontext.l10n.login",
                   //style: text14PxMedium.rubik.iconOrange.lineHeight(21),
                 ).px(10),
               ),

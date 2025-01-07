@@ -19,7 +19,7 @@ class LoginForm extends ConsumerWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         InputField(
-          hint: context.l10n.emailHint,
+          hint: "context.l10n.emailHint",
           prefixIcon: SvgPicture.asset(emailRedIcon),
           // errMessage: form.enrollmentId.value.isNotEmpty
           //     ? form.enrollmentId.isValid
@@ -32,7 +32,7 @@ class LoginForm extends ConsumerWidget {
         ).px(16.0),
         20.verticalSpace,
         InputField.password(
-          hint: context.l10n.enterPassword,
+          hint: "context.l10n.enterPassword",
           prefixIcon: SvgPicture.asset(
             passwordIcon,
           ),

@@ -33,7 +33,7 @@ class _LoginTabViewState extends State<LoginTabView> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          context.l10n.authButtonText(context.l10n.login, ''),
+          "context.l10n.authButtonText(context.l10n.login, '')",
           //style: text14PxMedium.rubik.darkGrey.lineHeight(16.59),
         ),
         24.verticalSpace,
@@ -106,8 +106,7 @@ class _LoginTabViewState extends State<LoginTabView> {
                 SvgPicture.asset(emailIcon, width: context.w(20)),
                 12.horizontalSpace,
                 Text(
-                  context.l10n
-                      .authButtonText(context.l10n.login, context.l10n.email),
+                  "sdv",
                   // style: text14PxMedium.rubik.white.lineHeight(16.59),
                 )
               ],
@@ -117,19 +116,19 @@ class _LoginTabViewState extends State<LoginTabView> {
         24.verticalSpace,
         Text.rich(
           TextSpan(
-            text: context.l10n.termsText,
+            text: "context.l10n.termsText",
             children: [
               TextSpan(
-                text: context.l10n.termsConditions,
+                text: "context.l10n.termsConditions",
                 // style: text12PxMedium.iconOrange.lineHeight(14.22),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     //context.router.push(AboutRoute(index: 1));
                   },
               ),
-              TextSpan(text: ' ${context.l10n.and}\n'),
+              //TextSpan(text: ' ${context.l10n.and}\n'),
               TextSpan(
-                text: context.l10n.privacyPolicy,
+                text: "",
                 //style: text12PxMedium.iconOrange.lineHeight(14.22),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {

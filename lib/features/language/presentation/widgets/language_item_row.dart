@@ -34,7 +34,7 @@ class LanguageItemRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              locale.name,
+              locale.label,
               style: medium,
             ),
             SvgPicture.asset(locale.icon),

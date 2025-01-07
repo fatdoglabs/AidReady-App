@@ -16,7 +16,7 @@ class LoadingButton extends StatelessWidget {
 
   const LoadingButton.primary({
     super.key,
-    this.color = Colors.black,
+    this.color = primary500,
     required this.label,
   })  : border = null,
         borderColor = null,
@@ -27,12 +27,12 @@ class LoadingButton extends StatelessWidget {
     this.borderColor,
     required this.label,
   })  : color = null,
-        border = Border.all(color: borderColor ?? Colors.black),
+        border = Border.all(color: borderColor ?? primary500),
         height = 44;
 
   const LoadingButton.small({
     super.key,
-    this.color = Colors.black,
+    this.color = primary500,
   })  : border = null,
         borderColor = null,
         height = 44,
@@ -55,7 +55,7 @@ class LoadingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (height == null) {
-      return _LoadingIconOnly(color: color ?? Colors.black);
+      return _LoadingIconOnly(color: color ?? primary500);
     }
 
     return Container(
@@ -67,20 +67,12 @@ class LoadingButton extends StatelessWidget {
       height: context.h(height ?? 44.0),
       //width: context.w(height ?? 44.0),
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox.square(
-            dimension: 20.0,
-            child: CircularProgressIndicator.adaptive(
-              strokeWidth: 2.0,
-              backgroundColor: Colors.black,
-            ),
-          ),
-          12.horizontalSpace,
-          label
-        ],
+      child: const SizedBox.square(
+        dimension: 20.0,
+        child: CircularProgressIndicator.adaptive(
+          strokeWidth: 2.0,
+          backgroundColor: Colors.white,
+        ),
       ),
     );
   }

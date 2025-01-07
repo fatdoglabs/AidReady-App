@@ -37,13 +37,13 @@ class ActionButton extends StatelessWidget {
     this.borderColor,
     this.width,
     this.height,
-  })  : border = Border.all(color: borderColor ?? Colors.black),
+  })  : border = Border.all(color: borderColor ?? primary500),
         borderRadius = kButtonBorderRadius;
 
   const ActionButton.disabled({
     super.key,
     required this.child,
-    this.color = Colors.black,
+    this.color = primary500,
     this.width,
     this.height,
   })  : border = null,
@@ -55,7 +55,7 @@ class ActionButton extends StatelessWidget {
     super.key,
     required this.child,
     this.onPressed,
-    this.color = Colors.black,
+    this.color = primary500,
   })  : border = null,
         borderRadius = kButtonBorderRadius,
         borderColor = null,

@@ -6,22 +6,15 @@ import 'package:flutter/material.dart';
 
 @RoutePage()
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
+  const OnboardingScreen({super.key, required this.items});
+
+  final List<OnboardingItem> items;
 
   @override
   Widget build(BuildContext context) {
-    final data = [
-      const OnboardingItem(
-          title: "title",
-          description:
-              "description sdcvdsvf dsvcssdcsdcsdcds sdcsdcvsdc sdcvsdvsdvsdf sdcsdcvsdvsdfvds svcsdvfcdscsd sdcvsdvdfs s s s s s s s ss s s s s s s s s s s  sd d d d d d d d d d dd d  d d d d d d d"),
-      const OnboardingItem(title: "title", description: "description"),
-      const OnboardingItem(title: "title", description: "description"),
-      const OnboardingItem(title: "title", description: "description"),
-    ];
     return Scaffold(
       body: OnboardingPageView(
-        data: data,
+        data: items,
         gotoDashboard: () {
           context.router.push(const AuthRoute());
         },

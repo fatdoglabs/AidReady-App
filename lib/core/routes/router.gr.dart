@@ -16,11 +16,14 @@ import 'package:aid_ready/features/auth/presentation/screen/register_screen.dart
     as _i6;
 import 'package:aid_ready/features/dashboard/presentation/screen/dashboard_screen.dart'
     as _i2;
+import 'package:aid_ready/features/language/data/model/onboarding_item.dart'
+    as _i9;
 import 'package:aid_ready/features/language/presentation/screen/language_selection_screen.dart'
     as _i3;
 import 'package:aid_ready/features/onboarding/presentation/screen/onboarding_screen.dart'
     as _i5;
 import 'package:auto_route/auto_route.dart' as _i7;
+import 'package:flutter/material.dart' as _i8;
 
 abstract class $AidRouter extends _i7.RootStackRouter {
   $AidRouter({super.navigatorKey});
@@ -52,9 +55,13 @@ abstract class $AidRouter extends _i7.RootStackRouter {
       );
     },
     OnboardingRoute.name: (routeData) {
+      final args = routeData.argsAs<OnboardingRouteArgs>();
       return _i7.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.OnboardingScreen(),
+        child: _i5.OnboardingScreen(
+          key: args.key,
+          items: args.items,
+        ),
       );
     },
     RegisterRoute.name: (routeData) {
@@ -124,16 +131,40 @@ class LoginRoute extends _i7.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.OnboardingScreen]
-class OnboardingRoute extends _i7.PageRouteInfo<void> {
-  const OnboardingRoute({List<_i7.PageRouteInfo>? children})
-      : super(
+class OnboardingRoute extends _i7.PageRouteInfo<OnboardingRouteArgs> {
+  OnboardingRoute({
+    _i8.Key? key,
+    required List<_i9.OnboardingItem> items,
+    List<_i7.PageRouteInfo>? children,
+  }) : super(
           OnboardingRoute.name,
+          args: OnboardingRouteArgs(
+            key: key,
+            items: items,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'OnboardingRoute';
 
-  static const _i7.PageInfo<void> page = _i7.PageInfo<void>(name);
+  static const _i7.PageInfo<OnboardingRouteArgs> page =
+      _i7.PageInfo<OnboardingRouteArgs>(name);
+}
+
+class OnboardingRouteArgs {
+  const OnboardingRouteArgs({
+    this.key,
+    required this.items,
+  });
+
+  final _i8.Key? key;
+
+  final List<_i9.OnboardingItem> items;
+
+  @override
+  String toString() {
+    return 'OnboardingRouteArgs{key: $key, items: $items}';
+  }
 }
 
 /// generated route for

@@ -1,14 +1,17 @@
 import 'package:aid_ready/core/domain/entity/locale_option.dart';
 import 'package:aid_ready/core/domain/providers/language_provider.dart';
 import 'package:aid_ready/core/routes/router.gr.dart';
+import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
-import 'package:aid_ready/core/widgets/action_button.dart';
+import 'package:aid_ready/core/widgets/task_button.dart';
 import 'package:aid_ready/features/language/presentation/widgets/language_list.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../domain/providers/onboarding_provider.dart';
 
 @RoutePage()
 class LanguageSelectionScreen extends StatelessWidget {
@@ -18,6 +21,20 @@ class LanguageSelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Consumer(builder: (_, ref, __) {
+        ref.listen(onboardingProvider, (previous, next) {
+          next.whenOrNull(
+            data: (items) {
+              if (items.isEmpty) {
+                context.router.replace(const AuthRoute());
+              } else {
+                context.router.push(OnboardingRoute(items: items));
+              }
+            },
+            error: (_, __) {
+              context.router.replace(const LoginRoute());
+            },
+          );
+        });
         return Stack(
           children: [
             LanguageList(
@@ -35,15 +52,18 @@ class LanguageSelectionScreen extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(bottom: 64.0),
               alignment: Alignment.bottomCenter,
-              child: ActionButton.primary(
+              child: SizedBox(
                 height: context.h(48.0),
-                onPressed: () {
-                  context.router.push(const OnboardingRoute());
-                },
-                child: Center(
-                  child: Text(
-                    'Next',
-                    style: regular.copyWith(color: Colors.white),
+                child: TaskButton(
+                  color: primary500,
+                  onPressed: () {
+                    ref.read(onboardingProvider.notifier).getOnBoardingItems();
+                  },
+                  child: Center(
+                    child: Text(
+                      'Next',
+                      style: regular.copyWith(color: Colors.white),
+                    ),
                   ),
                 ),
               ),

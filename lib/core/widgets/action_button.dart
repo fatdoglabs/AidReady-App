@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/color.dart';
 
-const kButtonBorderRadius = 12.0;
+const kButtonBorderRadius = 8.0;
 
 class ActionButton extends StatelessWidget {
   const ActionButton({
@@ -33,12 +33,12 @@ class ActionButton extends StatelessWidget {
     super.key,
     required this.child,
     this.onPressed,
-    this.color = primary500,
     this.borderColor,
     this.width,
     this.height,
   })  : border = Border.all(color: borderColor ?? primary500),
-        borderRadius = kButtonBorderRadius;
+        borderRadius = kButtonBorderRadius,
+        color = null;
 
   const ActionButton.disabled({
     super.key,

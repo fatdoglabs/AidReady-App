@@ -17,3 +17,4 @@ const String onboarding2 = 'assets/images/page_2.png';
 const String onboarding3 = 'assets/images/page_3.png';
 const String onboarding4 = 'assets/images/page_4.png';
 const String onboarding5 = 'assets/images/page_5.png';
+const String authImage = 'assets/images/page_auth.png';

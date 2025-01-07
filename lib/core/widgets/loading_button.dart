@@ -67,6 +67,7 @@ class LoadingButton extends StatelessWidget {
       height: context.h(height ?? 44.0),
       //width: context.w(height ?? 44.0),
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      alignment: Alignment.center,
       child: const SizedBox.square(
         dimension: 20.0,
         child: CircularProgressIndicator.adaptive(

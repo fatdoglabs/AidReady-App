@@ -11,9 +11,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/providers/next_page_provider.dart';
 
 class OnboardingPageView extends StatefulWidget {
-  const OnboardingPageView({super.key, required this.data});
+  const OnboardingPageView({super.key, required this.data, this.gotoDashboard});
 
   final List<OnboardingItem> data;
+  final VoidCallback? gotoDashboard;
 
   @override
   State<OnboardingPageView> createState() => _OnboardingPageViewState();
@@ -63,15 +64,33 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      'Skip',
-                      style: semibold.copyWith(color: primaryDark950),
+                    GestureDetector(
+                      onTap: () {
+                        widget.gotoDashboard?.call();
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 6.0, horizontal: 4.0),
+                        child: Text(
+                          'Skip',
+                          style: semibold.copyWith(color: primaryDark950),
+                        ),
+                      ),
                     ),
                     FloatingActionButton(
                       backgroundColor: primary500,
                       shape: const CircleBorder(),
                       elevation: 0.0,
-                      onPressed: () {},
+                      onPressed: () {
+                        final current = ref.read(nextPageProvider);
+                        if (current < widget.data.length - 1) {
+                          ref
+                              .read(nextPageProvider.notifier)
+                              .update(current + 1);
+                        } else {
+                          widget.gotoDashboard?.call();
+                        }
+                      },
                       child: const Icon(
                         Icons.arrow_forward,
                         color: Colors.white,

@@ -1,12 +1,6 @@
-import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
-import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/utils/extensions/ui.dart';
-import 'package:aid_ready/features/dashboard/presentation/screen/blood_donation_screen.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/theme/styles.dart';
 
 @RoutePage()
 class DashboardScreen extends StatefulWidget {
@@ -24,50 +18,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
       context.l10n.bloodDonation,
       context.l10n.nearestHospitals,
     ];
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          bottom: TabBar(
-            tabAlignment: TabAlignment.start,
-            indicatorColor: Colors.black,
-            dividerColor: Colors.black,
-            splashFactory: NoSplash.splashFactory,
-            overlayColor: MaterialStateProperty.all<Color>(Colors.black),
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicator: BoxDecoration(
-              color: Colors.black,
-              borderRadius: 90.rounded,
-            ),
-            labelPadding:
-                EdgeInsets.symmetric(horizontal: context.w(20.0), vertical: 0),
-            unselectedLabelColor: Colors.black,
-            labelColor: Colors.black,
-            padding: EdgeInsets.symmetric(
-                vertical: context.w(10.0), horizontal: context.h(6.0)),
-            //controller: tabController,
-            onTap: null,
-            isScrollable: true,
-           // labelStyle: text14PxMedium.rubik.lineHeight(22).white,
-            tabs: List.generate(
-              tabs.length,
-              (index) => Tab(
-                height: context.h(40.0),
-                text: tabs[index],
-              ),
-            ),
-          ),
-        ),
-        body: Builder(builder: (context) {
-          return TabBarView(
-            controller: DefaultTabController.of(context),
-            children: [
-              BloodDonationScreen(),
-              Text('data'),
-            ],
-          );
-        }),
-      ),
-    );
+    return Scaffold(body: Text('dashboard'));
   }
 }

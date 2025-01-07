@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "692551643106",
+    "project_id": "aidready",
+    "storage_bucket": "aidready.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692551643106:android:3351dd2f1af84845cc93bb",
+        "android_client_info": {
+          "package_name": "com.fatdog.aidready"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDS9BIi0T45IXFVMYMd33SINHkVV2p7V5c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

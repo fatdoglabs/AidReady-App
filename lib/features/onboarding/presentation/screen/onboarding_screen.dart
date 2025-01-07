@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/features/language/data/model/onboarding_item.dart';
 import 'package:aid_ready/features/onboarding/presentation/widgets/onboarding_pageview.dart';
 import 'package:auto_route/auto_route.dart';
@@ -10,16 +11,21 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final data = [
-      OnboardingItem(
+      const OnboardingItem(
           title: "title",
           description:
               "description sdcvdsvf dsvcssdcsdcsdcds sdcsdcvsdc sdcvsdvsdvsdf sdcsdcvsdvsdfvds svcsdvfcdscsd sdcvsdvdfs s s s s s s s ss s s s s s s s s s s  sd d d d d d d d d d dd d  d d d d d d d"),
-      OnboardingItem(title: "title", description: "description"),
-      OnboardingItem(title: "title", description: "description"),
-      OnboardingItem(title: "title", description: "description"),
+      const OnboardingItem(title: "title", description: "description"),
+      const OnboardingItem(title: "title", description: "description"),
+      const OnboardingItem(title: "title", description: "description"),
     ];
     return Scaffold(
-      body: OnboardingPageView(data: data),
+      body: OnboardingPageView(
+        data: data,
+        gotoDashboard: () {
+          context.router.push(const AuthRoute());
+        },
+      ),
     );
   }
 }

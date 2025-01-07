@@ -8,7 +8,12 @@ import 'package:flutter/material.dart';
 class LanguageList extends StatefulWidget {
   const LanguageList({
     super.key,
+    this.onEnglish,
+    this.onNepali,
   });
+
+  final VoidCallback? onEnglish;
+  final VoidCallback? onNepali;
 
   @override
   State<LanguageList> createState() => _LanguageListState();
@@ -33,6 +38,7 @@ class _LanguageListState extends State<LanguageList> {
             setState(() {
               _selected = 0;
             });
+            widget.onEnglish?.call();
           },
         ),
         16.verticalSpace,
@@ -43,6 +49,7 @@ class _LanguageListState extends State<LanguageList> {
             setState(() {
               _selected = 1;
             });
+            widget.onNepali?.call();
           },
         ),
       ],

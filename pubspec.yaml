@@ -74,23 +74,21 @@ flutter:
     # Add assets from the images directory to the application.
     - assets/icons/
   fonts:
-    - family: Rubik
+    - family: RalewayBold
       fonts:
-        - asset: assets/fonts/Rubik-Regular.ttf
-        - asset: assets/fonts/Rubik-Italic.ttf
-          style: italic
-        - asset: assets/fonts/Rubik-Black.ttf
-          weight: 900
-        - asset: assets/fonts/Rubik-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Rubik-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Rubik-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Rubik-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Rubik-Light.ttf
-          weight: 300
-    - family: Eveleth
+        - asset: assets/fonts/Raleway-Bold.ttf
+    - family: RalewayLight
       fonts:
-        - asset: assets/fonts/Eveleth-Clean-Regular.otf
+        - asset: assets/fonts/Raleway-Light.ttf
+    - family: RalewayLightItalic
+      fonts:
+        - asset: assets/fonts/Raleway-LightItalic.ttf
+    - family: RalewayMedium
+      fonts:
+        - asset: assets/fonts/Raleway-Medium.ttf
+    - family: RalewayRegular
+      fonts:
+        - asset: assets/fonts/Raleway-Regular.ttf
+    - family: RalewaySemiBold
+      fonts:
+        - asset: assets/fonts/Raleway-SemiBold.ttf

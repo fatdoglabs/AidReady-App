@@ -6,6 +6,10 @@ class AidRouter extends $AidRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
+          page: LanguageSelectionRoute.page,
+          initial: true,
+        ),
+        AutoRoute(
           page: DashboardRoute.page,
         ),
         AutoRoute(
@@ -16,7 +20,6 @@ class AidRouter extends $AidRouter {
         ),
         AutoRoute(
           page: AuthRoute.page,
-          initial: true,
         ),
       ];
 }

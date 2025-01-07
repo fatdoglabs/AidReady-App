@@ -34,7 +34,7 @@ class _LoginTabViewState extends State<LoginTabView> {
       children: [
         Text(
           context.l10n.authButtonText(context.l10n.login, ''),
-          style: text14PxMedium.rubik.darkGrey.lineHeight(16.59),
+          //style: text14PxMedium.rubik.darkGrey.lineHeight(16.59),
         ),
         24.verticalSpace,
         Row(
@@ -42,7 +42,7 @@ class _LoginTabViewState extends State<LoginTabView> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: facebookBgColor,
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(24),
               ),
               padding: const EdgeInsets.all(8),
@@ -56,7 +56,7 @@ class _LoginTabViewState extends State<LoginTabView> {
             Consumer(builder: (context, ref, _) {
               return Container(
                 decoration: BoxDecoration(
-                  color: white,
+                  color: Colors.black,
                   borderRadius: BorderRadius.circular(24),
                 ),
                 padding: const EdgeInsets.all(8),
@@ -72,7 +72,7 @@ class _LoginTabViewState extends State<LoginTabView> {
                 ? Container(
                     margin: const EdgeInsets.only(left: 24.0),
                     decoration: BoxDecoration(
-                      color: white,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(24),
                     ),
                     padding: const EdgeInsets.all(8),
@@ -87,11 +87,11 @@ class _LoginTabViewState extends State<LoginTabView> {
           height: 64,
           thickness: 1,
           indent: 16,
-          color: dividerColor,
+          color: Colors.black,
           endIndent: 16,
         ),
         ActionButton.primary(
-          color: black,
+          color: Colors.black,
           onPressed: () async {
             final shouldGotoRegister =
                 await context.router.push(const LoginRoute());
@@ -108,7 +108,7 @@ class _LoginTabViewState extends State<LoginTabView> {
                 Text(
                   context.l10n
                       .authButtonText(context.l10n.login, context.l10n.email),
-                  style: text14PxMedium.rubik.white.lineHeight(16.59),
+                  // style: text14PxMedium.rubik.white.lineHeight(16.59),
                 )
               ],
             ),
@@ -121,7 +121,7 @@ class _LoginTabViewState extends State<LoginTabView> {
             children: [
               TextSpan(
                 text: context.l10n.termsConditions,
-                style: text12PxMedium.iconOrange.lineHeight(14.22),
+                // style: text12PxMedium.iconOrange.lineHeight(14.22),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     //context.router.push(AboutRoute(index: 1));
@@ -130,7 +130,7 @@ class _LoginTabViewState extends State<LoginTabView> {
               TextSpan(text: ' ${context.l10n.and}\n'),
               TextSpan(
                 text: context.l10n.privacyPolicy,
-                style: text12PxMedium.iconOrange.lineHeight(14.22),
+                //style: text12PxMedium.iconOrange.lineHeight(14.22),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     //context.router.push(AboutRoute(index: 2));
@@ -139,7 +139,7 @@ class _LoginTabViewState extends State<LoginTabView> {
             ],
           ),
           textAlign: TextAlign.center,
-          style: text12PxRegular.rubik.darkGrey.lineHeight(14.22),
+          //style: text12PxRegular.rubik.darkGrey.lineHeight(14.22),
         ).px(16),
       ],
     );

@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           context.l10n.login,
-          style: text16PxMedium.rubik.button.lineHeight(24),
+          //style: text16PxMedium.rubik.button.lineHeight(24),
           textAlign: TextAlign.center,
         ),
       ),
@@ -26,13 +26,13 @@ class LoginScreen extends StatelessWidget {
           33.verticalSpace,
           Text(
             context.l10n.whoThere,
-            style: text24PxBold.rubik.button.lineHeight(36),
+            //style: text24PxBold.rubik.button.lineHeight(36),
             textAlign: TextAlign.center,
           ),
           15.verticalSpace,
           Text(
             context.l10n.loginHelpText,
-            style: text14PxRegular.rubik.darkGrey.lineHeight(21),
+            //style: text14PxRegular.rubik.darkGrey.lineHeight(21),
             textAlign: TextAlign.center,
           ),
           50.verticalSpace,
@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               Text(
                 context.l10n.notHaveAccount,
-                style: text14PxRegular.rubik.darkGrey.lineHeight(21),
+                // style: text14PxRegular.rubik.darkGrey.lineHeight(21),
               ),
               InkWell(
                 onTap: () {
@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
                 },
                 child: Text(
                   context.l10n.signUp,
-                  style: text14PxMedium.rubik.iconOrange.lineHeight(21),
+                  //style: text14PxMedium.rubik.iconOrange.lineHeight(21),
                 ).px(10),
               ),
             ],

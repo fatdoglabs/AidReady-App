@@ -94,21 +94,24 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
         TextFormField(
           maxLines: widget.maxLines,
           readOnly: widget.readOnly ?? false,
-          cursorColor: primaryGreen,
+          //cursorColor: primaryGreen,
           controller: _inputController,
           obscureText: obscureText,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
-            fillColor: white,
+            // fillColor: white,
             filled: true,
             hintText: widget.hint,
-            hintStyle: text14PxRegular.rubik.grey,
+            //hintStyle: text14PxRegular.rubik.grey,
             contentPadding: const EdgeInsets.symmetric(vertical: 10),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16.0),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: primaryGreen, width: 2.0),
+              borderSide: const BorderSide(
+                //color: primaryGreen,
+                width: 2.0,
+              ),
               borderRadius: BorderRadius.circular(16.0),
             ),
             prefixIcon: widget.prefixIcon!.px(10.0),

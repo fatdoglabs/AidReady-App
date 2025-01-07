@@ -25,19 +25,19 @@ class AuthTab extends StatelessWidget {
         height: kToolbarHeight,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: white,
+          color: Colors.black,
           border: Border(
             bottom: BorderSide(
                 width: 2.0,
-                color: isActive ? iconOrangeColor : Colors.transparent),
+                color: isActive ? Colors.black : Colors.transparent),
           ),
         ),
         child: Text(
           title,
           textAlign: TextAlign.center,
-          style: isActive
-              ? text14PxSemiBold.rubik.black.lineHeight(19.6)
-              : text14PxSemiBold.rubik.midGrey.lineHeight(19.6),
+          // style: isActive
+          //     ? text14PxSemiBold.rubik.black.lineHeight(19.6)
+          //     : text14PxSemiBold.rubik.midGrey.lineHeight(19.6),
         ),
       ),
     );

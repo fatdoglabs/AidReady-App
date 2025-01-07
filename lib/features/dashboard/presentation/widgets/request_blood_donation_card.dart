@@ -21,12 +21,12 @@ class RequestBloodDonationCard extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            color: blackColor.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.05),
             blurRadius: 14,
           )
         ],
         borderRadius: BorderRadius.circular(10.0),
-        color: whiteColor,
+        color: Colors.black,
       ),
       child: Row(
         children: [
@@ -36,12 +36,12 @@ class RequestBloodDonationCard extends StatelessWidget {
             children: [
               Text(
                 'Request Blood Donation',
-                style: text14PxMedium.rubik.iconOrange,
+                //  style: text14PxMedium.rubik.iconOrange,
               ),
               SizedBox(height: context.h(7.0)),
               Text(
                 'Does your pet need blood?',
-                style: text12PxRegular.rubik.midGrey,
+                //  style: text12PxRegular.rubik.midGrey,
               ),
               SizedBox(height: context.h(14.0)),
               Builder(builder: (context) {
@@ -51,12 +51,15 @@ class RequestBloodDonationCard extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(context.w(15.0),
                         context.h(10.0), context.w(12.0), context.h(9.0)),
                     decoration: BoxDecoration(
-                      color: iconOrangeColor,
+                      color: Colors.black,
                       borderRadius: BorderRadius.circular(34.0),
                     ),
                     child: Row(
                       children: [
-                        Text('Request Now', style: text12PxMedium.rubik.white),
+                        Text(
+                          'Request Now',
+                          //style: text12PxMedium.rubik.white,
+                        ),
                         const SizedBox(width: 13),
                         SvgPicture.asset(
                           forwardIcon,

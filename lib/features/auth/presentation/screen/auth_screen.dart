@@ -28,7 +28,7 @@ class _AuthScreenState extends State<AuthScreen> {
             currentIndex == 0
                 ? context.l10n.createAnAccount
                 : context.l10n.login,
-            style: text16PxMedium.rubik.button.lineHeight(24),
+            //style: text16PxMedium.rubik.button.lineHeight(24),
           ),
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,

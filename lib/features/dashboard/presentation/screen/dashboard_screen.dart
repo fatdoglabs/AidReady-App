@@ -30,25 +30,25 @@ class _DashboardScreenState extends State<DashboardScreen> {
         appBar: AppBar(
           bottom: TabBar(
             tabAlignment: TabAlignment.start,
-            indicatorColor: buttonColor,
-            dividerColor: transparent,
+            indicatorColor: Colors.black,
+            dividerColor: Colors.black,
             splashFactory: NoSplash.splashFactory,
-            overlayColor: MaterialStateProperty.all<Color>(transparent),
+            overlayColor: MaterialStateProperty.all<Color>(Colors.black),
             indicatorSize: TabBarIndicatorSize.tab,
             indicator: BoxDecoration(
-              color: buttonColor,
+              color: Colors.black,
               borderRadius: 90.rounded,
             ),
             labelPadding:
                 EdgeInsets.symmetric(horizontal: context.w(20.0), vertical: 0),
-            unselectedLabelColor: midGreyColor,
-            labelColor: whiteColor,
+            unselectedLabelColor: Colors.black,
+            labelColor: Colors.black,
             padding: EdgeInsets.symmetric(
                 vertical: context.w(10.0), horizontal: context.h(6.0)),
             //controller: tabController,
             onTap: null,
             isScrollable: true,
-            labelStyle: text14PxMedium.rubik.lineHeight(22).white,
+           // labelStyle: text14PxMedium.rubik.lineHeight(22).white,
             tabs: List.generate(
               tabs.length,
               (index) => Tab(

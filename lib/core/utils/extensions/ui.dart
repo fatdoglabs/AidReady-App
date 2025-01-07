@@ -64,38 +64,38 @@ extension TextStyleX on TextStyle {
   TextStyle get rubik => copyWith(fontFamily: 'Rubik');
 
   //colors
-  TextStyle get primary => copyWith(color: primaryColor);
+  TextStyle get primary => copyWith(color: Colors.black);
 
-  TextStyle get red => copyWith(color: redColor);
+  TextStyle get red => copyWith(color: Colors.black);
 
-  TextStyle get blue => copyWith(color: blueColor);
+  TextStyle get blue => copyWith(color: Colors.black);
 
-  TextStyle get green => copyWith(color: greenColor);
+  TextStyle get green => copyWith(color: Colors.black);
 
-  TextStyle get iconOrange => copyWith(color: iconOrangeColor);
+  TextStyle get iconOrange => copyWith(color: Colors.black);
 
-  TextStyle get black => copyWith(color: blackColor);
+  TextStyle get black => copyWith(color: Colors.black);
 
-  TextStyle get facebookColor => copyWith(color: facebookBgColor);
+  TextStyle get facebookColor => copyWith(color: Colors.black);
 
-  TextStyle get button => copyWith(color: buttonColor);
+  TextStyle get button => copyWith(color: Colors.black);
 
-  TextStyle get white => copyWith(color: whiteColor);
+  TextStyle get white => copyWith(color: Colors.black);
 
-  TextStyle get midGrey => copyWith(color: midGreyColor);
+  TextStyle get midGrey => copyWith(color: Colors.black);
 
-  TextStyle get grey => copyWith(color: greyColor);
+  TextStyle get grey => copyWith(color: Colors.black);
 
   //TextStyle get grey400 => copyWith(color: grey400);
 
-  TextStyle get darkGrey => copyWith(color: darkGreyColor);
-  TextStyle get indigoColor => copyWith(color: indigo);
+  TextStyle get darkGrey => copyWith(color: Colors.black);
+  TextStyle get indigoColor => copyWith(color: Colors.black);
 
-  TextStyle get hintText => copyWith(color: hintTextColor);
+  TextStyle get hintText => copyWith(color: Colors.black);
 
-  TextStyle get yellow => copyWith(color: lightYellowColor);
-  TextStyle get sortMidGrayColor => copyWith(color: softMidGray);
-  TextStyle get softButtonBlackColor => copyWith(color: softButtonBlack);
+  TextStyle get yellow => copyWith(color: Colors.black);
+  TextStyle get sortMidGrayColor => copyWith(color: Colors.black);
+  TextStyle get softButtonBlackColor => copyWith(color: Colors.black);
 
   TextStyle lineHeight(double value) => copyWith(height: value / fontSize!);
 

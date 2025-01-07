@@ -37,7 +37,7 @@ extension ContextX on BuildContext {
 
   AppBar curvedAppBar({Widget? child, List<Widget> actions = const []}) {
     return AppBar(
-      backgroundColor: primaryBlue,
+      backgroundColor: Colors.black,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(12.0),
@@ -51,7 +51,7 @@ extension ContextX on BuildContext {
           },
           child: const Icon(
             Icons.arrow_back_ios,
-            color: white,
+            color: Colors.black,
           ),
         ),
       ),
@@ -85,7 +85,7 @@ extension ContextX on BuildContext {
             color: Colors.black,
             child: Container(
               height: 300 + kToolbarHeight,
-              color: black20,
+              color: Colors.black,
               child: StatefulBuilder(
                 builder: (context, setState) {
                   return Column(
@@ -93,7 +93,7 @@ extension ContextX on BuildContext {
                       SizedBox(
                         height: 300,
                         child: CupertinoDatePicker(
-                            backgroundColor: black20,
+                            backgroundColor: Colors.black,
                             initialDateTime: initialDate,
                             mode: CupertinoDatePickerMode.date,
                             dateOrder: DatePickerDateOrder.dmy,

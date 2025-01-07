@@ -7,7 +7,7 @@ import '../theme/color.dart';
 class LoadingButton extends StatelessWidget {
   const LoadingButton({
     super.key,
-    this.color = black50,
+    this.color = Colors.black,
     this.border,
     this.borderColor,
     this.height,
@@ -16,7 +16,7 @@ class LoadingButton extends StatelessWidget {
 
   const LoadingButton.primary({
     super.key,
-    this.color = black50,
+    this.color = Colors.black,
     required this.label,
   })  : border = null,
         borderColor = null,
@@ -27,12 +27,12 @@ class LoadingButton extends StatelessWidget {
     this.borderColor,
     required this.label,
   })  : color = null,
-        border = Border.all(color: borderColor ?? black80),
+        border = Border.all(color: borderColor ?? Colors.black),
         height = 44;
 
   const LoadingButton.small({
     super.key,
-    this.color = black50,
+    this.color = Colors.black,
   })  : border = null,
         borderColor = null,
         height = 44,
@@ -55,7 +55,7 @@ class LoadingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (height == null) {
-      return _LoadingIconOnly(color: color ?? primaryGreen);
+      return _LoadingIconOnly(color: color ?? Colors.black);
     }
 
     return Container(
@@ -75,7 +75,7 @@ class LoadingButton extends StatelessWidget {
             dimension: 20.0,
             child: CircularProgressIndicator.adaptive(
               strokeWidth: 2.0,
-              backgroundColor: white,
+              backgroundColor: Colors.black,
             ),
           ),
           12.horizontalSpace,

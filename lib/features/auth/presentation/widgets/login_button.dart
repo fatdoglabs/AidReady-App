@@ -2,7 +2,6 @@ import 'package:aid_ready/core/exceptions/app_exception.dart';
 import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
-import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
@@ -48,7 +47,7 @@ class LoginButton extends ConsumerWidget {
             12.horizontalSpace,
             Text(
               context.l10n.login,
-              style: text14PxMedium.rubik.white.lineHeight(16.59),
+              // style: text14PxMedium.rubik.white.lineHeight(16.59),
             )
           ],
         ).px(16.0),
@@ -58,12 +57,12 @@ class LoginButton extends ConsumerWidget {
         return LoadingButton.primary(
           label: Text(
             context.l10n.login,
-            style: text14PxMedium.rubik.white.lineHeight(16.59),
+            // style: text14PxMedium.rubik.white.lineHeight(16.59),
           ),
         );
       }, orElse: () {
         return ActionButton.primary(
-          color: black,
+          color: Colors.black,
           onPressed: () async {
             ref.read(authProvider.notifier).login(form);
             // final status = await context.requestNotification();
@@ -85,7 +84,7 @@ class LoginButton extends ConsumerWidget {
               12.horizontalSpace,
               Text(
                 context.l10n.login,
-                style: text14PxMedium.rubik.white.lineHeight(16.59),
+                //style: text14PxMedium.rubik.white.lineHeight(16.59),
               )
             ],
           ).px(16.0),

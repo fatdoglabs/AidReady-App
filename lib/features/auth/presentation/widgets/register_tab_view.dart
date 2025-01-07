@@ -32,7 +32,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
       children: [
         Text(
           context.l10n.authButtonText(context.l10n.signUp, ''),
-          style: text14PxMedium.rubik.darkGrey.lineHeight(16.59),
+         // style: text14PxMedium.rubik.darkGrey.lineHeight(16.59),
         ),
         24.verticalSpace,
         Row(
@@ -40,7 +40,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: facebookBgColor,
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(24),
               ),
               padding: const EdgeInsets.all(8),
@@ -53,7 +53,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
             24.horizontalSpace,
             Container(
               decoration: BoxDecoration(
-                color: white,
+                color: Colors.black,
                 borderRadius: BorderRadius.circular(24),
               ),
               padding: const EdgeInsets.all(8),
@@ -66,7 +66,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
                 ? Container(
                     margin: const EdgeInsets.only(left: 24.0),
                     child: TaskButton.icon(
-                      color: white,
+                      color: Colors.black,
                       child: SvgPicture.asset(appleIcon),
                     ),
                   )
@@ -77,11 +77,12 @@ class _RegisterTabViewState extends State<RegisterTabView> {
           height: 64,
           thickness: 1,
           indent: 16,
-          color: dividerColor,
+          color: Colors.black,
           endIndent: 16,
         ),
         ActionButton.primary(
-          color: black,
+          color: Colors.black
+          ,
           onPressed: () async {
             final shouldGotoLogin =
                 await context.router.push(const RegisterRoute());
@@ -98,7 +99,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
                 Text(
                   context.l10n
                       .authButtonText(context.l10n.signUp, context.l10n.email),
-                  style: text14PxMedium.rubik.white.lineHeight(16.59),
+                //  style: text14PxMedium.rubik.white.lineHeight(16.59),
                 )
               ],
             ),
@@ -111,7 +112,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
             children: [
               TextSpan(
                 text: context.l10n.termsConditions,
-                style: text12PxMedium.iconOrange.lineHeight(14.22),
+               // style: text12PxMedium.iconOrange.lineHeight(14.22),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     //context.router.push(AboutRoute(index: 1));
@@ -120,7 +121,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
               TextSpan(text: ' ${context.l10n.and}\n'),
               TextSpan(
                 text: context.l10n.privacyPolicy,
-                style: text12PxMedium.iconOrange.lineHeight(14.22),
+                //style: text12PxMedium.iconOrange.lineHeight(14.22),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     //context.router.push(AboutRoute(index: 2));
@@ -129,7 +130,7 @@ class _RegisterTabViewState extends State<RegisterTabView> {
             ],
           ),
           textAlign: TextAlign.center,
-          style: text12PxRegular.rubik.darkGrey.lineHeight(14.22),
+         // style: text12PxRegular.rubik.darkGrey.lineHeight(14.22),
         ).px(16),
       ],
     );

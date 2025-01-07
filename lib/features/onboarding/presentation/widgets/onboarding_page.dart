@@ -26,6 +26,7 @@ class OnboardingPage extends StatelessWidget {
         Text(
           title,
           style: bold.copyWith(color: primaryDark950, fontSize: 30.0),
+          textAlign: TextAlign.center,
         ),
         20.verticalSpace,
         Text(

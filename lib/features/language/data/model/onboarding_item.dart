@@ -7,6 +7,7 @@ part 'onboarding_item.g.dart';
 class OnboardingItem with _$OnboardingItem {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory OnboardingItem({
+    @Default(false) bool cached,
     String? image,
     required String title,
     required String description,

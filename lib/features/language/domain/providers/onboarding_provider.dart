@@ -27,4 +27,11 @@ class Onboarding extends _$Onboarding {
       state = AsyncError(r, StackTrace.current);
     });
   }
+
+  void onPreCachingComplete() {
+    final current = state.whenOrNull(data: (data) => data) ?? [];
+    state = AsyncData(current.map((item) {
+      return item.copyWith(cached: true);
+    }).toList());
+  }
 }

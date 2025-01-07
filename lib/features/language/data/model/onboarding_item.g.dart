@@ -8,6 +8,7 @@ part of 'onboarding_item.dart';
 
 _$OnboardingItemImpl _$$OnboardingItemImplFromJson(Map<String, dynamic> json) =>
     _$OnboardingItemImpl(
+      cached: json['cached'] as bool? ?? false,
       image: json['image'] as String?,
       title: json['title'] as String,
       description: json['description'] as String,
@@ -16,6 +17,7 @@ _$OnboardingItemImpl _$$OnboardingItemImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$OnboardingItemImplToJson(
         _$OnboardingItemImpl instance) =>
     <String, dynamic>{
+      'cached': instance.cached,
       'image': instance.image,
       'title': instance.title,
       'description': instance.description,

@@ -20,6 +20,7 @@ OnboardingItem _$OnboardingItemFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OnboardingItem {
+  bool get cached => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $OnboardingItemCopyWith<$Res> {
           OnboardingItem value, $Res Function(OnboardingItem) then) =
       _$OnboardingItemCopyWithImpl<$Res, OnboardingItem>;
   @useResult
-  $Res call({String? image, String title, String description});
+  $Res call({bool cached, String? image, String title, String description});
 }
 
 /// @nodoc
@@ -52,11 +53,16 @@ class _$OnboardingItemCopyWithImpl<$Res, $Val extends OnboardingItem>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? cached = null,
     Object? image = freezed,
     Object? title = null,
     Object? description = null,
   }) {
     return _then(_value.copyWith(
+      cached: null == cached
+          ? _value.cached
+          : cached // ignore: cast_nullable_to_non_nullable
+              as bool,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -81,7 +87,7 @@ abstract class _$$OnboardingItemImplCopyWith<$Res>
       __$$OnboardingItemImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? image, String title, String description});
+  $Res call({bool cached, String? image, String title, String description});
 }
 
 /// @nodoc
@@ -95,11 +101,16 @@ class __$$OnboardingItemImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? cached = null,
     Object? image = freezed,
     Object? title = null,
     Object? description = null,
   }) {
     return _then(_$OnboardingItemImpl(
+      cached: null == cached
+          ? _value.cached
+          : cached // ignore: cast_nullable_to_non_nullable
+              as bool,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -121,11 +132,17 @@ class __$$OnboardingItemImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _$OnboardingItemImpl implements _OnboardingItem {
   const _$OnboardingItemImpl(
-      {this.image, required this.title, required this.description});
+      {this.cached = false,
+      this.image,
+      required this.title,
+      required this.description});
 
   factory _$OnboardingItemImpl.fromJson(Map<String, dynamic> json) =>
       _$$OnboardingItemImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final bool cached;
   @override
   final String? image;
   @override
@@ -135,7 +152,7 @@ class _$OnboardingItemImpl implements _OnboardingItem {
 
   @override
   String toString() {
-    return 'OnboardingItem(image: $image, title: $title, description: $description)';
+    return 'OnboardingItem(cached: $cached, image: $image, title: $title, description: $description)';
   }
 
   @override
@@ -143,6 +160,7 @@ class _$OnboardingItemImpl implements _OnboardingItem {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnboardingItemImpl &&
+            (identical(other.cached, cached) || other.cached == cached) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -151,7 +169,8 @@ class _$OnboardingItemImpl implements _OnboardingItem {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, image, title, description);
+  int get hashCode =>
+      Object.hash(runtimeType, cached, image, title, description);
 
   @JsonKey(ignore: true)
   @override
@@ -170,13 +189,16 @@ class _$OnboardingItemImpl implements _OnboardingItem {
 
 abstract class _OnboardingItem implements OnboardingItem {
   const factory _OnboardingItem(
-      {final String? image,
+      {final bool cached,
+      final String? image,
       required final String title,
       required final String description}) = _$OnboardingItemImpl;
 
   factory _OnboardingItem.fromJson(Map<String, dynamic> json) =
       _$OnboardingItemImpl.fromJson;
 
+  @override
+  bool get cached;
   @override
   String? get image;
   @override

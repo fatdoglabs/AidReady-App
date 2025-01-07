@@ -6,9 +6,15 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/theme/styles.dart';
 
 class LanguageItemRow extends StatelessWidget {
-  const LanguageItemRow({super.key, required this.locale});
+  const LanguageItemRow(
+      {super.key,
+      required this.locale,
+      this.selected = false,
+      this.onSelected});
 
   final LocaleOpts locale;
+  final bool selected;
+  final VoidCallback? onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +25,21 @@ class LanguageItemRow extends StatelessWidget {
         border: Border.all(width: 2, color: primaryDark100),
         borderRadius: const BorderRadius.all(Radius.circular(17.0)));
 
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-      decoration: kActiveDecoration,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            locale.name,
-            style: medium,
-          ),
-          SvgPicture.asset(locale.icon),
-        ],
+    return GestureDetector(
+      onTap: onSelected,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+        decoration: selected ? kActiveDecoration : kInActiveDecoration,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              locale.name,
+              style: medium,
+            ),
+            SvgPicture.asset(locale.icon),
+          ],
+        ),
       ),
     );
   }

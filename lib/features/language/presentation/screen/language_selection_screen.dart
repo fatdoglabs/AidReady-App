@@ -15,32 +15,68 @@ class LanguageSelectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: Stack(
         children: [
-          Text(
-            'Select Language',
-            style: medium.copyWith(fontSize: 24.0, color: primaryDark950),
-          ),
-          24.verticalSpace,
-          const LanguageItemRow(
-            locale: LocaleOpts.english,
-          ),
-          16.verticalSpace,
-          const LanguageItemRow(
-            locale: LocaleOpts.nepali,
-          ),
-          24.verticalSpace,
-          ActionButton.primary(
-            child: Center(
-              child: Text(
-                'Next',
-                style: regular.copyWith(color: Colors.white),
+          LanguageList(),
+          Container(
+            margin: const EdgeInsets.only(bottom: 64.0),
+            alignment: Alignment.bottomCenter,
+            child: ActionButton.primary(
+              child: Center(
+                child: Text(
+                  'Next',
+                  style: regular.copyWith(color: Colors.white),
+                ),
               ),
             ),
           )
         ],
       ).px(16.0),
+    );
+  }
+}
+
+class LanguageList extends StatefulWidget {
+  const LanguageList({
+    super.key,
+  });
+
+  @override
+  State<LanguageList> createState() => _LanguageListState();
+}
+
+class _LanguageListState extends State<LanguageList> {
+  int _selected = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          'Select Language',
+          style: regular.copyWith(fontSize: 24.0, color: primaryDark950),
+        ),
+        24.verticalSpace,
+        LanguageItemRow(
+          locale: LocaleOpts.english,
+          selected: _selected == 0,
+          onSelected: () {
+            setState(() {
+              _selected = 0;
+            });
+          },
+        ),
+        16.verticalSpace,
+        LanguageItemRow(
+          locale: LocaleOpts.nepali,
+          selected: _selected == 1,
+          onSelected: () {
+            setState(() {
+              _selected = 1;
+            });
+          },
+        ),
+      ],
     );
   }
 }

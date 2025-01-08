@@ -1,4 +1,4 @@
-package com.fatdog.aidready.aid_ready
+package com.fatdog.aidready
 
 import io.flutter.embedding.android.FlutterActivity
 

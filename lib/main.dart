@@ -1,3 +1,5 @@
+import 'package:aid_ready/core/domain/entity/locale_option.dart';
+import 'package:aid_ready/core/domain/providers/language_provider.dart';
 import 'package:aid_ready/core/routes/router.dart';
 import 'package:aid_ready/core/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -8,20 +10,24 @@ import 'core/services/injector.dart';
 
 void main() async {
   await injectDependencies();
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(const ProviderScope(child: AidApp()));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AidApp extends ConsumerWidget {
+  const AidApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final router = getIt<AidRouter>();
+    final localOpts = ref.watch(languageProvider);
     return MaterialApp.router(
       title: kAppName,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: AppLocalizations.supportedLocales.first,
+      locale: AppLocalizations.supportedLocales.firstWhere((locale) {
+        String selected = localOpts.value;
+        return locale.languageCode == selected;
+      }, orElse: () => Locale(LocaleOpts.english.value)),
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

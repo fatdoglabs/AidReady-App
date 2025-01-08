@@ -43,7 +43,7 @@ class PictureView extends StatelessWidget {
             imageUrl: imageUri!,
             width: width,
             height: height,
-            errorWidget: (_, __, ___) => const _PlaceHolder(),
+            //errorWidget: (_, __, ___) => const _PlaceHolder(),
             placeholder: (context, url) => const _PlaceHolder(),
           );
         }

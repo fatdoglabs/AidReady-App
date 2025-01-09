@@ -7,12 +7,13 @@ import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../../../core/widgets/input_field.dart';
 
 @RoutePage()
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class VerifyOtpScreen extends StatelessWidget {
+  const VerifyOtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class ForgotPasswordScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          context.l10n.forgotPassword,
+          context.l10n.verification,
           style: semibold.copyWith(fontSize: 18.0),
           textAlign: TextAlign.center,
         ),
@@ -30,30 +31,54 @@ class ForgotPasswordScreen extends StatelessWidget {
         children: [
           33.verticalSpace,
           Text(
-            context.l10n.forgotYourPassword,
+            context.l10n.otpVerification,
             style: bold.copyWith(fontSize: 24.0, color: primaryDark950),
             textAlign: TextAlign.center,
           ),
           15.verticalSpace,
           Text(
-            context.l10n.resetMessage,
+            context.l10n.otpMessage,
             style: regular.copyWith(color: primaryDark400),
             textAlign: TextAlign.center,
           ),
           30.verticalSpace,
-          InputField(
-            label: context.l10n.email,
-            hint: context.l10n.enterEmail,
-            onChanged: (value) {},
+          PinCodeTextField(
+            scrollPadding: EdgeInsets.zero,
+            useHapticFeedback: true,
+            // errorTextMargin: EdgeInsets.zero,
+            appContext: context,
+            //textStyle: textSemiBold15.copyWith(color: black, fontSize: 32),
+
+            // pastedTextStyle:
+            //     textSemiBold15.copyWith(color: black, fontSize: 32),
+            length: 4,
+
+            obscuringCharacter: '*',
+            blinkWhenObscuring: true,
+            animationType: AnimationType.fade,
+            //pinTheme: pinTheme,
+
+            //cursorColor: greyG100,
+            animationDuration: const Duration(milliseconds: 300),
+            //errorAnimationController: errorController,
+            //controller: codeController,
+            keyboardType: TextInputType.number,
+            onCompleted: (v) async {},
+            // onChanged: (value) => ref
+            //     .read(verifyOTPFormNotifierProvider.notifier)
+            //     .setOTP(codeController.text),
+            beforeTextPaste: (text) {
+              return true;
+            },
           ),
           16.verticalSpace,
           ActionButton.primary(
             onPressed: () {
-              context.router.replace(const VerifyOtpRoute());
+              context.router.replace(const SetPasswordRoute());
             },
             child: Center(
               child: Text(
-                context.l10n.resetPassword,
+                context.l10n.verifyProceed,
                 style: medium.copyWith(color: Colors.white),
               ),
             ),
@@ -64,10 +89,10 @@ class ForgotPasswordScreen extends StatelessWidget {
             text: TextSpan(
               style: regular.copyWith(fontSize: 12.0, color: primaryDark810),
               children: [
-                TextSpan(text: context.l10n.rememberedPassword),
+                TextSpan(text: context.l10n.didntRecieveOtp),
                 TextSpan(
-                    text: context.l10n.loginNow,
-                    style: regular.copyWith(color: primary500),
+                    text: context.l10n.resendOtp,
+                    style: semibold.copyWith(color: primary500),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         context.router.maybePop();

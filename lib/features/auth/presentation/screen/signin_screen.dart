@@ -1,10 +1,13 @@
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/utils/extensions/ui.dart';
-import 'package:aid_ready/features/auth/presentation/widgets/login_form.dart';
+import 'package:aid_ready/core/widgets/input_field.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/social_login_options.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/theme/color.dart';
+import '../../../../core/widgets/action_button.dart';
 
 @RoutePage()
 class SignInScreen extends StatelessWidget {
@@ -16,45 +19,56 @@ class SignInScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          "context.l10n.login",
-          //style: text16PxMedium.rubik.button.lineHeight(24),
+          context.l10n.login,
+          style: semibold.copyWith(fontSize: 16.0),
           textAlign: TextAlign.center,
         ),
       ),
       body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         children: [
           33.verticalSpace,
           Text(
-            "context.l10n.whoThere",
-            //style: text24PxBold.rubik.button.lineHeight(36),
+            context.l10n.welcomeBack,
+            style: bold.copyWith(fontSize: 24.0, color: primaryDark950),
             textAlign: TextAlign.center,
           ),
           15.verticalSpace,
           Text(
-            "context.l10n.loginHelpText",
-            //style: text14PxRegular.rubik.darkGrey.lineHeight(21),
+            context.l10n.logInToAccount,
+            style: regular.copyWith(color: primaryDark400),
             textAlign: TextAlign.center,
           ),
           50.verticalSpace,
-          LoginForm(),
-          40.verticalSpace,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "context.l10n.notHaveAccount",
-                // style: text14PxRegular.rubik.darkGrey.lineHeight(21),
+          const SocalLoginOptions(),
+          InputField(
+            label: context.l10n.email,
+            hint: context.l10n.enterEmail,
+            onChanged: (value) {},
+          ),
+          16.verticalSpace,
+          InputField.password(
+            label: context.l10n.password,
+            hint: context.l10n.enterPassword,
+            onChanged: (value) {},
+          ),
+          4.verticalSpace,
+          Text(
+            context.l10n.forgotPassword,
+            style: semibold.copyWith(fontSize: 12.0, color: primary500),
+            textAlign: TextAlign.end,
+          ),
+          16.verticalSpace,
+          ActionButton.primary(
+            onPressed: () {
+              //context.router.push(const SignUpRoute());
+            },
+            child: Center(
+              child: Text(
+                context.l10n.login,
+                style: medium.copyWith(color: Colors.white),
               ),
-              InkWell(
-                onTap: () {
-                  context.router.maybePop(0);
-                },
-                child: Text(
-                  context.l10n.signUp,
-                  //style: text14PxMedium.rubik.iconOrange.lineHeight(21),
-                ).px(10),
-              ),
-            ],
+            ),
           ),
         ],
       ),

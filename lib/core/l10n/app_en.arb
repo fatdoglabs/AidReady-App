@@ -12,11 +12,15 @@
   "joinBloodDonationCommunity": "Join the Blood Donation Community",
   "signUpWith": "Or Sign up with",
   "email": "Email",
+  "password": "Password",
   "enterEmail": "Enter Email Address",
-  "enterEmail": "Enter Email Address",
+  "enterPassword": "Enter Password",
+  "forgotPassword": "Forgot Password ?",
   "iAgree": "By proceeding, I agree to the ",
   "tnc": "Terms & Conditions",
   "privacyPolicy": "Privacy Policy",
   "joinedBefore": "Joined us Before? ",
+  "welcomeBack": "Welcome Back!",
+  "logInToAccount": "Let’s continue saving lives together. Log in to your account.",
   "genericerr": "Something went wrong. Please try again later."
 }

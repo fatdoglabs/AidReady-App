@@ -127,29 +127,26 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
             ),
             prefixIconConstraints: BoxConstraints.tight(const Size(42.0, 42.0)),
             suffixIconConstraints: BoxConstraints.tight(const Size(32.0, 32.0)),
-            suffixIcon: suffixIcon != null
-                ? GestureDetector(
-                    onTap: () {
-                      if (obscureText) {
-                        if (_inputController!.text.isNotEmpty) {
-                          setState(() {
-                            suffixIcon = SvgPicture.asset(passwordToggleOnIcon);
-                            obscureText = false;
-                          });
-                        }
-                      } else {
-                        if (_inputController!.text.isNotEmpty) {
-                          setState(() {
-                            suffixIcon =
-                                SvgPicture.asset(passwordToggleOffIcon);
-                            obscureText = true;
-                          });
-                        }
-                      }
-                    },
-                    child: suffixIcon,
-                  ).pOnly(right: 10)
-                : const SizedBox.shrink(),
+            suffixIcon: GestureDetector(
+              onTap: () {
+                if (obscureText) {
+                  if (_inputController!.text.isNotEmpty) {
+                    setState(() {
+                      suffixIcon = SvgPicture.asset(passwordToggleOnIcon);
+                      obscureText = false;
+                    });
+                  }
+                } else {
+                  if (_inputController!.text.isNotEmpty) {
+                    setState(() {
+                      suffixIcon = SvgPicture.asset(passwordToggleOffIcon);
+                      obscureText = true;
+                    });
+                  }
+                }
+              },
+              child: suffixIcon,
+            ).pOnly(right: 10),
           ),
           inputFormatters: widget.formatters,
           onTap: widget.onTap,

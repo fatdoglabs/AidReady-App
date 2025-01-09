@@ -1,17 +1,11 @@
-import 'dart:io';
-
-import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
-import 'package:aid_ready/core/widgets/task_button.dart';
-import 'package:aid_ready/features/auth/presentation/providers/auth_provider.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/social_login_options.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/widgets/input_field.dart';
 
@@ -42,78 +36,17 @@ class SignUpScreen extends StatelessWidget {
           15.verticalSpace,
           Text(
             context.l10n.joinBloodDonationCommunity,
-            style: regular.copyWith(color: primaryDark800),
+            style: regular.copyWith(color: primaryDark400),
             textAlign: TextAlign.center,
           ),
           30.verticalSpace,
           Text(
             context.l10n.signUpWith,
-            style: medium.copyWith(color: primaryDark800),
+            style: medium.copyWith(color: primaryDark400),
             textAlign: TextAlign.center,
           ),
           15.verticalSpace,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: fbBackgroundColor,
-                  borderRadius: BorderRadius.circular(8.0),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: primaryDark50,
-                      blurRadius: 20.0,
-                      spreadRadius: 0.0,
-                      offset: Offset.zero,
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.all(8),
-                child: TaskButton.icon(
-                  child: SvgPicture.asset(
-                    facebookIcon,
-                  ),
-                ),
-              ),
-              64.horizontalSpace,
-              Consumer(builder: (context, ref, _) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(8.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: primaryDark50,
-                        blurRadius: 20.0,
-                        spreadRadius: 0.0,
-                        offset: Offset.zero,
-                      )
-                    ],
-                  ),
-                  padding: const EdgeInsets.all(8),
-                  child: TaskButton.icon(
-                    onPressed: () {
-                      ref.read(authProvider.notifier).googleLogin();
-                    },
-                    child: SvgPicture.asset(googleIcon),
-                  ),
-                );
-              }),
-              Platform.isIOS
-                  ? Container(
-                      margin: const EdgeInsets.only(left: 24.0),
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(24),
-                      ),
-                      padding: const EdgeInsets.all(8),
-                      child: TaskButton.icon(
-                        child: SvgPicture.asset(appleIcon),
-                      ),
-                    )
-                  : const SizedBox.shrink()
-            ],
-          ),
+          const SocalLoginOptions(),
           30.verticalSpace,
           InputField(
             label: context.l10n.email,

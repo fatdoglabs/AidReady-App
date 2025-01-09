@@ -25,9 +25,11 @@
   "passwordRequirement": "Must be 8-16 characters, include letters, numbers, and symbols.",
   "resetPassword": "Reset Password", 
   "setPassword": "Set Password",
+  "resetSuccessful": "Reset Successful",
   "reEnterPassword": "Re-Enter Password",
   "confirmPassword": "Confirm Password", 
   "verifyProceed": "Verify & Proceed",
+  "gotoLogin": "Go To Login",
   "verification": "Verification",
   "otpVerification": "OTP Verification",
   "rememberedPassword": "Remembered your password? ",  
@@ -44,6 +46,7 @@
   "resetMessage": "No worries, we’ve got you covered. Just enter your registered email to reset your password.",
   "otpMessage": "We’ve sent a one-time password (OTP) to your email. Please enter it below to continue.",
   "secureMessage": "Create a strong password to protect your account.",
+  "loginNowPossible": "You can now log in with your new password and continue your journey to saving lives.",
   "updatePasswordAnyTime": "You can update your password anytime in your account settings.",
   "genericerr": "केही गडबड भयो। कृपया पछि पुन: प्रयास गर्नुहोस्।"
 }

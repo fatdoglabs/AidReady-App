@@ -55,7 +55,7 @@ class SetPasswordScreen extends StatelessWidget {
           30.verticalSpace,
           ActionButton.primary(
             onPressed: () {
-              context.router.replace(const VerifyOtpRoute());
+              context.router.replace(const ResetSuccessRoute());
             },
             child: Center(
               child: Text(

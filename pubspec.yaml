@@ -75,7 +75,8 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/icons/
-    - assets/images/
+    - assets/images/page_reset.jpg
+    - assets/images/page_auth.png
   fonts:
     - family: RalewayBold
       fonts:

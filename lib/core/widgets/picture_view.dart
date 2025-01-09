@@ -39,13 +39,7 @@ class PictureView extends StatelessWidget {
             },
           );
         } else {
-          return CachedNetworkImage(
-            imageUrl: imageUri!,
-            width: width,
-            height: height,
-            errorWidget: (_, __, ___) => const _PlaceHolder(),
-            placeholder: (context, url) => const _PlaceHolder(),
-          );
+          return Image(image: AssetImage(imageUri!));
         }
       } else if (imageUri!.startsWith("http")) {
         if (imageUri!.endsWith("svg")) {

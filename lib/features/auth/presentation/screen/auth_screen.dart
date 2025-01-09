@@ -24,57 +24,60 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const PictureView(
-              imageUri: authImage,
-            ),
-            20.verticalSpace,
-            Text(
-              context.l10n.welcomeToAidReady,
-              style: bold.copyWith(color: primaryDark950, fontSize: 30.0),
-              textAlign: TextAlign.center,
-            ),
-            20.verticalSpace,
-            Text(
-              context.l10n.authDescription,
-              style: regular.copyWith(color: primaryDark950),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-        Container(
-          margin: const EdgeInsets.only(bottom: 32.0),
-          alignment: Alignment.bottomCenter,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
+        body: SafeArea(
+      child: Stack(
+        children: [
+          Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ActionButton.primary(
-                  onPressed: () {
-                    context.router.push(const SignUpRoute());
-                  },
-                  child: Center(
-                      child: Text(
-                    context.l10n.signUp,
-                    style: medium.copyWith(color: Colors.white),
-                  ))),
+              kToolbarHeight.verticalSpace,
+              const PictureView(
+                imageUri: authImage,
+              ),
               20.verticalSpace,
-              ActionButton.secondary(
-                  onPressed: () {
-                    context.router.push(const SignInRoute());
-                  },
-                  child: Center(
-                      child: Text(
-                    context.l10n.signIn,
-                    style: medium.copyWith(color: primary500),
-                  )))
+              Text(
+                context.l10n.welcomeToAidReady,
+                style: bold.copyWith(color: primaryDark950, fontSize: 30.0),
+                textAlign: TextAlign.center,
+              ),
+              20.verticalSpace,
+              Text(
+                context.l10n.authDescription,
+                style: regular.copyWith(color: primaryDark950),
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
-        )
-      ],
-    ).px(16.0));
+          Container(
+            margin: const EdgeInsets.only(bottom: 32.0),
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ActionButton.primary(
+                    onPressed: () {
+                      context.router.push(const SignUpRoute());
+                    },
+                    child: Center(
+                        child: Text(
+                      context.l10n.signUp,
+                      style: medium.copyWith(color: Colors.white),
+                    ))),
+                20.verticalSpace,
+                ActionButton.secondary(
+                    onPressed: () {
+                      context.router.push(const SignInRoute());
+                    },
+                    child: Center(
+                        child: Text(
+                      context.l10n.signIn,
+                      style: medium.copyWith(color: primary500),
+                    )))
+              ],
+            ),
+          )
+        ],
+      ).px(16.0),
+    ));
   }
 }

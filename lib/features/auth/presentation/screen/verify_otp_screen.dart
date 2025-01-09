@@ -47,16 +47,24 @@ class VerifyOtpScreen extends StatelessWidget {
             useHapticFeedback: true,
             // errorTextMargin: EdgeInsets.zero,
             appContext: context,
-            //textStyle: textSemiBold15.copyWith(color: black, fontSize: 32),
-
-            // pastedTextStyle:
-            //     textSemiBold15.copyWith(color: black, fontSize: 32),
+            textStyle: light.copyWith(color: primaryDark950, fontSize: 40.0),
+            pastedTextStyle:
+                light.copyWith(color: primaryDark950, fontSize: 40.0),
             length: 4,
-
             obscuringCharacter: '*',
             blinkWhenObscuring: true,
             animationType: AnimationType.fade,
-            //pinTheme: pinTheme,
+            pinTheme: PinTheme(
+              borderWidth: 2,
+              inactiveColor: primaryDark300,
+              selectedColor: primary500,
+              activeColor: primary500,
+              shape: PinCodeFieldShape.underline,
+              borderRadius: BorderRadius.circular(0),
+              fieldHeight: 60.0,
+              fieldWidth: 60.0,
+              fieldOuterPadding: EdgeInsets.zero,
+            ),
 
             //cursorColor: greyG100,
             animationDuration: const Duration(milliseconds: 300),

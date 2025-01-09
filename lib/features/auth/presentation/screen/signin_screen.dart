@@ -60,7 +60,7 @@ class SignInScreen extends StatelessWidget {
               context.router.push(const ForgotPasswordRoute());
             },
             child: Text(
-              context.l10n.forgotPassword,
+              "${context.l10n.forgotPassword} ?",
               style: semibold.copyWith(fontSize: 12.0, color: primary500),
               textAlign: TextAlign.end,
             ).pad(4.0),

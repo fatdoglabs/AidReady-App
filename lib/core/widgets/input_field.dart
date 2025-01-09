@@ -34,7 +34,6 @@ class InputField extends StatefulWidget {
     this.hint,
     this.initialValue,
     this.prefixIcon,
-    this.suffixIcon,
     this.errMessage,
     this.onChanged,
     this.onUserInputChanged,
@@ -45,6 +44,7 @@ class InputField extends StatefulWidget {
     this.formatters = const [],
   })  : obscureText = true,
         maxLines = 1,
+        suffixIcon = SvgPicture.asset(passwordToggleOffIcon),
         controller = null;
 
   final int? maxLines;

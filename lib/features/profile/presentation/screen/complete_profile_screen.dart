@@ -2,13 +2,11 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/features/profile/presentation/widgets/medical_info_view.dart';
-import 'package:aid_ready/features/profile/presentation/widgets/personal_info_view.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/profile_step_row.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/physical_info_view.dart';
+import '../widgets/profile_steps_pageview.dart';
 
 @RoutePage()
 class CompleteProfileScreen extends StatelessWidget {
@@ -32,17 +30,10 @@ class CompleteProfileScreen extends StatelessWidget {
             ),
             16.verticalSpace,
             const ProfileStepRow(),
-            Expanded(
+            const Expanded(
               child: DefaultTabController(
                 length: 3,
-                child: PageView.builder(
-                    itemCount: 3,
-                    itemBuilder: (_, index) {
-                      if (index == 0) return const PersonalInfoView();
-                      if (index == 1) return const PhysicalInfoView();
-                      if (index == 2) return const MedicalInfoView();
-                      return const SizedBox.shrink();
-                    }),
+                child: ProfileStepsPageView(),
               ),
             ),
           ],

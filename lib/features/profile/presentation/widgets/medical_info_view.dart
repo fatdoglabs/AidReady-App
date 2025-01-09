@@ -7,7 +7,9 @@ import 'package:aid_ready/features/profile/presentation/widgets/blood_group_sele
 import 'package:flutter/material.dart';
 
 class MedicalInfoView extends StatelessWidget {
-  const MedicalInfoView({super.key});
+  const MedicalInfoView({super.key, this.onNext});
+
+  final VoidCallback? onNext;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class MedicalInfoView extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: ActionButton.primary(
             onPressed: () {
-              //context.router.push(const SignUpRoute());
+              onNext?.call();
             },
             child: Center(
               child: Text(

@@ -11,7 +11,9 @@ import '../../../../core/widgets/action_button.dart';
 import '../../../../core/widgets/input_field.dart';
 
 class PersonalInfoView extends StatelessWidget {
-  const PersonalInfoView({super.key});
+  const PersonalInfoView({super.key, this.onNext});
+
+  final VoidCallback? onNext;
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +52,7 @@ class PersonalInfoView extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: ActionButton.primary(
             onPressed: () {
-              //context.router.push(const SignUpRoute());
+              onNext?.call();
             },
             child: Center(
               child: Text(

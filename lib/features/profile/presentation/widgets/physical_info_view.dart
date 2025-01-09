@@ -9,7 +9,9 @@ import 'package:aid_ready/features/profile/presentation/widgets/gender_group.dar
 import 'package:flutter/material.dart';
 
 class PhysicalInfoView extends StatelessWidget {
-  const PhysicalInfoView({super.key});
+  const PhysicalInfoView({super.key, this.onNext});
+
+  final VoidCallback? onNext;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +44,7 @@ class PhysicalInfoView extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: ActionButton.primary(
             onPressed: () {
-              //context.router.push(const SignUpRoute());
+              onNext?.call();
             },
             child: Center(
               child: Text(

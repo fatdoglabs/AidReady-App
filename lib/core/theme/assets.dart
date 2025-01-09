@@ -11,11 +11,6 @@ const String forwardIcon = 'assets/icons/forward.svg';
 const String bloodBag = 'assets/icons/blood_bag.svg';
 const String flagUsIcon = 'assets/icons/flag_us.svg';
 const String flagNpIcon = 'assets/icons/flag_np.svg';
-
-const String onboarding1 = 'assets/images/page_1.png';
-const String onboarding2 = 'assets/images/page_2.png';
-const String onboarding3 = 'assets/images/page_3.png';
-const String onboarding4 = 'assets/images/page_4.png';
-const String onboarding5 = 'assets/images/page_5.png';
+const String addPictureIcon = 'assets/icons/add_picture.svg';
 const String authImage = 'assets/images/page_auth.png';
 const String resetSuccessImage = 'assets/images/page_reset.jpg';

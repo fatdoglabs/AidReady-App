@@ -34,6 +34,9 @@ class AidRouter extends $AidRouter {
           page: OnboardingRoute.page,
         ),
         AutoRoute(
+          page: CompleteProfileRoute.page,
+        ),
+        AutoRoute(
           page: AuthRoute.page,
         ),
       ];

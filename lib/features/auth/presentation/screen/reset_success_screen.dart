@@ -42,6 +42,7 @@ class ResetSuccessScreen extends StatelessWidget {
             style: regular.copyWith(color: primaryDark400),
             textAlign: TextAlign.center,
           ),
+          15.verticalSpace,
           ActionButton.primary(
             onPressed: () {
               context.router.replace(const SignInRoute());

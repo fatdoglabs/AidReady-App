@@ -111,16 +111,16 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
             hintStyle: light.copyWith(color: primaryDark200),
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
-            border: OutlineInputBorder(
+            focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                color: primary100,
+                color: primary500,
                 width: 1.0,
               ),
               borderRadius: BorderRadius.circular(8.0),
             ),
-            focusedBorder: OutlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                color: primaryDark50,
+                color: primary100,
                 width: 1.0,
               ),
               borderRadius: BorderRadius.circular(8.0),

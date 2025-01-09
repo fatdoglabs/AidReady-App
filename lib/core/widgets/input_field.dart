@@ -91,6 +91,12 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        widget.label != null
+            ? Text(
+                widget.label!,
+                style: semibold.copyWith(fontSize: 12.0),
+              ).pOnly(bottom: 8.0)
+            : const SizedBox.shrink(),
         TextFormField(
           maxLines: widget.maxLines,
           readOnly: widget.readOnly ?? false,
@@ -99,22 +105,26 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
           obscureText: obscureText,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           decoration: InputDecoration(
-            // fillColor: white,
+            fillColor: primaryDark50,
             filled: true,
             hintText: widget.hint,
-            //hintStyle: text14PxRegular.rubik.grey,
-            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            hintStyle: light.copyWith(color: primaryDark200),
+            contentPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 20.0),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.0),
+              borderSide: const BorderSide(
+                color: primary100,
+                width: 1.0,
+              ),
+              borderRadius: BorderRadius.circular(8.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                //color: primaryGreen,
-                width: 2.0,
+                color: primaryDark50,
+                width: 1.0,
               ),
-              borderRadius: BorderRadius.circular(16.0),
+              borderRadius: BorderRadius.circular(8.0),
             ),
-            prefixIcon: widget.prefixIcon!.px(10.0),
             prefixIconConstraints: BoxConstraints.tight(const Size(42.0, 42.0)),
             suffixIconConstraints: BoxConstraints.tight(const Size(32.0, 32.0)),
             suffixIcon: suffixIcon != null

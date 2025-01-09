@@ -1,0 +1,93 @@
+name: aidready_release
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Setup Java to compile the Android project
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: 17.0
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          flutter-version: 3.22.3
+
+      - name: Install dependencies
+        run: flutter pub get
+
+    #   - name: Build app (prod flavor)
+    #     run: flutter build appbundle --flavor prod
+
+    #   - name: Sign aab
+    #     id: app_sign
+    #     uses: r0adkll/sign-android-release@v1
+    #     with:
+    #       releaseDirectory: build/app/outputs/bundle/prodRelease
+    #       signingKeyBase64: ${{ secrets.KEYSTORE }}
+    #       alias: ${{ secrets.ALIAS }}
+    #       keyStorePassword: ${{ secrets.STORE_PASS }}
+    #       keyPassword: ${{ secrets.KEY_PASS }}
+    #     env:
+    #       BUILD_TOOLS_VERSION: "34.0.0"
+
+    #   - name: Archive artifacts
+    #     uses: actions/upload-artifact@v2
+    #     with:
+    #       name: app-release
+    #       path: ${{steps.app_sign.outputs.signedReleaseFile}}
+
+    #   - name: Upload to Google Play Store Internal Testing
+    #     uses: r0adkll/upload-google-play@v1
+    #     with:
+    #       serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+    #       packageName: com.app.baseCoffee
+    #       track: internal
+    #       status: draft
+    #       releaseFiles: ${{ github.workspace }}/build/app/outputs/bundle/prodRelease/app-prod-release.aab
+
+      - name: Build apk (prod flavor)
+        run: flutter build apk --flavor prod
+
+      - name: Sign apk
+        id: apk_sign
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: build/app/outputs/flutter-apk
+          signingKeyBase64: ${{ secrets.KEYSTORE }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.STORE_PASS }}
+          keyPassword: ${{ secrets.KEY_PASS }}
+        env:
+          BUILD_TOOLS_VERSION: "34.0.0"
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v2
+        with:
+            name: app-release
+            path: ${{steps.apk_sign.outputs.signedReleaseFile}}
+
+      # - name: Upload to testflight for internal testing
+      #   uses: svenstaro/upload-app-store@v1
+      #   with:
+      #     app: ${{ github.workspace }}/build/app/outputs/bundle/prodRelease/app-prod-release.aab
+      #     type: ios
+      #     api_key: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+      #     issuer_id: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      #     key_id: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+      #     in_house: true
+      #     groups: ${{ secrets.APP_STORE_CONNECT_GROUPS }}
+      #     wait_processing: true

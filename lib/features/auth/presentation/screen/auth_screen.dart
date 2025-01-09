@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
@@ -52,18 +53,24 @@ class _AuthScreenState extends State<AuthScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ActionButton.primary(
+                  onPressed: () {
+                    context.router.push(const SignUpRoute());
+                  },
                   child: Center(
                       child: Text(
-                context.l10n.signUp,
-                style: medium.copyWith(color: Colors.white),
-              ))),
+                    context.l10n.signUp,
+                    style: medium.copyWith(color: Colors.white),
+                  ))),
               20.verticalSpace,
               ActionButton.secondary(
+                  onPressed: () {
+                    context.router.push(const SignInRoute());
+                  },
                   child: Center(
                       child: Text(
-                context.l10n.signIn,
-                style: medium.copyWith(color: primary500),
-              )))
+                    context.l10n.signIn,
+                    style: medium.copyWith(color: primary500),
+                  )))
             ],
           ),
         )

@@ -13,10 +13,10 @@ class AidRouter extends $AidRouter {
           page: DashboardRoute.page,
         ),
         AutoRoute(
-          page: LoginRoute.page,
+          page: SignInRoute.page,
         ),
         AutoRoute(
-          page: RegisterRoute.page,
+          page: SignUpRoute.page,
         ),
         AutoRoute(
           page: OnboardingRoute.page,

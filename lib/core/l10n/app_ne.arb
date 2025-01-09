@@ -4,7 +4,18 @@
   "signUp": "साइन अप",
   "signIn": "साइन इन",
   "skip": "छोड्नुहोस्",
+  "and": " and ",
   "selectLanguage": "भाषा चयन गर्नुहोस्",
   "next": "अर्को",
+  "createAccount": "Create an Account",
+  "joinBloodDonationCommunity": "Join the Blood Donation Community",
+  "signUpWith": "Or Sign up with",
+  "email": "Email",
+  "enterEmail": "Enter Email Address",
+  "enterEmail": "Enter Email Address",
+  "iAgree": "By proceeding, I agree to the ",
+  "tnc": "Terms & Conditions",
+  "privacyPolicy": "Privacy Policy",
+  "joinedBefore": "Joined us Before? ",
   "genericerr": "केही गडबड भयो। कृपया पछि पुन: प्रयास गर्नुहोस्।"
 }

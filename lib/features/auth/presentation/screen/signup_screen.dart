@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -5,6 +6,7 @@ import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/social_login_options.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/input_field.dart';
@@ -98,7 +100,11 @@ class SignUpScreen extends StatelessWidget {
                 TextSpan(text: context.l10n.joinedBefore),
                 TextSpan(
                     text: context.l10n.login,
-                    style: regular.copyWith(color: primary500)),
+                    style: regular.copyWith(color: primary500),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        context.router.replace(const SignInRoute());
+                      }),
               ],
             ),
           ),

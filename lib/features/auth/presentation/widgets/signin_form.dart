@@ -30,7 +30,7 @@ class _SignInFormState extends State<SignInForm> with ValidationMixin {
       mainAxisSize: MainAxisSize.min,
       children: [
         InputField(
-          label: context.l10n.email,
+          label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
             setState(() {
@@ -41,7 +41,7 @@ class _SignInFormState extends State<SignInForm> with ValidationMixin {
         ),
         16.verticalSpace,
         InputField.password(
-          label: context.l10n.password,
+          label: context.l10n.password.mandatory(),
           hint: context.l10n.enterPassword,
           onChanged: (value) {
             setState(() {

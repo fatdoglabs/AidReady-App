@@ -11,6 +11,7 @@ import '../theme/styles.dart';
 class InputField extends StatefulWidget {
   const InputField({
     super.key,
+    this.labelText,
     this.label,
     this.hint,
     this.maxLines,
@@ -30,6 +31,7 @@ class InputField extends StatefulWidget {
 
   InputField.password({
     super.key,
+    this.labelText,
     this.label,
     this.hint,
     this.initialValue,
@@ -48,10 +50,11 @@ class InputField extends StatefulWidget {
         controller = null;
 
   final int? maxLines;
-  final String? label;
+  final String? labelText;
   final String? initialValue;
   final String? hint;
   final String? errMessage;
+  final Widget? label;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
   final bool? obscureText;
@@ -92,11 +95,13 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         widget.label != null
-            ? Text(
-                widget.label!,
-                style: semibold.copyWith(fontSize: 12.0),
-              ).pOnly(bottom: 8.0)
-            : const SizedBox.shrink(),
+            ? widget.label!
+            : widget.labelText != null
+                ? Text(
+                    widget.labelText!,
+                    style: semibold.copyWith(fontSize: 12.0),
+                  ).pOnly(bottom: 8.0)
+                : const SizedBox.shrink(),
         TextFormField(
           maxLines: widget.maxLines,
           readOnly: widget.readOnly ?? false,

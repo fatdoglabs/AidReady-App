@@ -28,13 +28,13 @@ class PhysicalInfoView extends StatelessWidget {
             const GenderGroup(),
             30.verticalSpace,
             InputField(
-              label: context.l10n.dateOfBirth,
+              label: context.l10n.dateOfBirth.mandatory(),
               hint: context.l10n.enterEmail,
               onChanged: (value) {},
             ),
             30.verticalSpace,
             InputField(
-              label: context.l10n.weight,
+              labelText: context.l10n.weight,
               hint: context.l10n.enterEmail,
               onChanged: (value) {},
             ),

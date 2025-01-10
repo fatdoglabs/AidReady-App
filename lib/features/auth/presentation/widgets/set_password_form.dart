@@ -31,13 +31,13 @@ class _SetPasswordFormState extends State<SetPasswordForm>
       mainAxisSize: MainAxisSize.min,
       children: [
         InputField.password(
-          label: context.l10n.createPassword,
+          label: context.l10n.createPassword.mandatory(),
           hint: context.l10n.enterNewPassword,
           onChanged: (value) {},
         ),
         16.verticalSpace,
         InputField.password(
-          label: context.l10n.confirmPassword,
+          label: context.l10n.confirmPassword.mandatory(),
           hint: context.l10n.reEnterPassword,
           onChanged: (value) {},
         ),

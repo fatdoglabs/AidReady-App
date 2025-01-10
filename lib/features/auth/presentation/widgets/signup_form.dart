@@ -27,7 +27,7 @@ class _SignUpFormState extends State<SignUpForm> with ValidationMixin {
       mainAxisSize: MainAxisSize.min,
       children: [
         InputField(
-          label: context.l10n.email,
+          label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
             setState(() {

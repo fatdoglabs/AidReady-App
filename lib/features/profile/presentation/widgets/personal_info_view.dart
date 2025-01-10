@@ -41,7 +41,7 @@ class PersonalInfoView extends StatelessWidget {
             ),
             30.verticalSpace,
             InputField(
-              label: context.l10n.fullName,
+              label: context.l10n.fullName.mandatory(),
               hint: context.l10n.enterEmail,
               onChanged: (value) {},
             ),

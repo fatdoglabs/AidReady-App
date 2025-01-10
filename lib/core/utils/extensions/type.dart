@@ -2,6 +2,8 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:aid_ready/core/theme/color.dart';
+import 'package:aid_ready/core/theme/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -96,5 +98,19 @@ extension StringNullX on String? {
         targetWidth: width);
     ui.FrameInfo fi = await codec.getNextFrame();
     return fi.image;
+  }
+
+  RichText mandatory() {
+    return RichText(
+      text: TextSpan(
+        style: semibold.copyWith(color: primaryDark700, fontSize: 12.0),
+        children: [
+          TextSpan(text: this ?? ""),
+          TextSpan(
+              text: "*",
+              style: semibold.copyWith(fontSize: 20.0, color: danger500)),
+        ],
+      ),
+    );
   }
 }

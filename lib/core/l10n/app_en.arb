@@ -63,5 +63,6 @@
   "secureMessage": "Create a strong password to protect your account.",
   "loginNowPossible": "You can now log in with your new password and continue your journey to saving lives.",
   "updatePasswordAnyTime": "You can update your password anytime in your account settings.",
+  "signUpMotto": "Every donation counts. By signing up, you’re taking the first step toward saving lives!",
   "genericerr": "Something went wrong. Please try again later."
 }

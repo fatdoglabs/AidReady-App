@@ -86,7 +86,7 @@ class SignUpScreen extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(top: 30.0),
             child: Text(
-              "\“ Every donation counts. By signing up, you’re taking the first step toward saving lives! \“",
+              "\“ ${context.l10n.signUpMotto} \“",
               textAlign: TextAlign.center,
               style: regular.copyWith(fontStyle: FontStyle.italic),
             ),

@@ -11,6 +11,8 @@ class GenderGroup extends StatefulWidget {
 }
 
 class _GenderGroupState extends State<GenderGroup> {
+  int _selected = -1;
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,9 +23,15 @@ class _GenderGroupState extends State<GenderGroup> {
           child: Row(
             children: [
               Radio(
-                value: false,
-                onChanged: (_) {},
-                groupValue: false,
+                value: _selected == 0,
+                onChanged: (value) {
+                  if (value ?? false) {
+                    setState(() {
+                      _selected = 0;
+                    });
+                  }
+                },
+                groupValue: true,
               ),
               Text(
                 context.l10n.male,
@@ -37,9 +45,15 @@ class _GenderGroupState extends State<GenderGroup> {
           child: Row(
             children: [
               Radio(
-                value: false,
-                onChanged: (_) {},
-                groupValue: false,
+                value: _selected == 1,
+                onChanged: (value) {
+                  if (value ?? false) {
+                    setState(() {
+                      _selected = 1;
+                    });
+                  }
+                },
+                groupValue: true,
               ),
               Text(
                 context.l10n.female,
@@ -53,9 +67,15 @@ class _GenderGroupState extends State<GenderGroup> {
           child: Row(
             children: [
               Radio(
-                value: false,
-                onChanged: (_) {},
-                groupValue: false,
+                value: _selected == 2,
+                onChanged: (value) {
+                  if (value ?? false) {
+                    setState(() {
+                      _selected = 2;
+                    });
+                  }
+                },
+                groupValue: true,
               ),
               Text(
                 context.l10n.others,

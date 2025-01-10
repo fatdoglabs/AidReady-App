@@ -2,6 +2,7 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
+import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/profile_step_row.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class CompleteProfileScreen extends StatelessWidget {
             Text(
               context.l10n.tellAboutYourself,
               style: bold.copyWith(fontSize: 20.0, color: primaryDark950),
-            ),
+            ).px(16.0),
             16.verticalSpace,
             const ProfileStepRow(),
             const Expanded(

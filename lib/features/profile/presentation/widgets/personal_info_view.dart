@@ -56,7 +56,7 @@ class PersonalInfoView extends StatelessWidget {
             },
             child: Center(
               child: Text(
-                context.l10n.login,
+                context.l10n.next,
                 style: medium.copyWith(color: Colors.white),
               ),
             ),

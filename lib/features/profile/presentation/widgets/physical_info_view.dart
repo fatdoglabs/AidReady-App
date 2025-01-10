@@ -20,11 +20,12 @@ class PhysicalInfoView extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            16.verticalSpace,
             Text(
               context.l10n.gender,
               style: bold.copyWith(fontSize: 12.0, color: primaryDark700),
             ),
-            GenderGroup(),
+            const GenderGroup(),
             30.verticalSpace,
             InputField(
               label: context.l10n.dateOfBirth,
@@ -48,7 +49,7 @@ class PhysicalInfoView extends StatelessWidget {
             },
             child: Center(
               child: Text(
-                context.l10n.login,
+                context.l10n.next,
                 style: medium.copyWith(color: Colors.white),
               ),
             ),

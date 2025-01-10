@@ -52,6 +52,7 @@
   "secureAccount": "आफ्नो खाता सुरक्षित गर्नुहोस्",
   "didntRecieveOtp": "OTP प्राप्त भएन? ",
   "resendOtp": "OTP पुन: पठाउनुहोस्",
+  "wrongOtpTryAgain": "तपाईंले प्रविष्ट गर्नुभएको OTP गलत छ। कृपया पुन: प्रयास गर्नुहोस्।",
   "iAgree": "अगाडि बढ्दै, म सहमत छु ",
   "tnc": "Terms & Conditions",
   "privacyPolicy": "Privacy Policy",

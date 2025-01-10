@@ -52,6 +52,7 @@
   "secureAccount": "Secure Your Account",
   "didntRecieveOtp": "Didn’t receive OTP? ",
   "resendOtp": "Resend OTP",
+  "wrongOtpTryAgain": "Oops! The OTP you entered is incorrect. Please try again.",
   "iAgree": "By proceeding, I agree to the ",
   "tnc": "Terms & Conditions",
   "privacyPolicy": "Privacy Policy",

@@ -3,13 +3,11 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/widgets/action_button.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/signup_form.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/social_login_options.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/widgets/input_field.dart';
 
 @RoutePage()
 class SignUpScreen extends StatelessWidget {
@@ -50,39 +48,7 @@ class SignUpScreen extends StatelessWidget {
           15.verticalSpace,
           const SocalLoginOptions(),
           30.verticalSpace,
-          InputField(
-            label: context.l10n.email,
-            hint: context.l10n.enterEmail,
-            onChanged: (value) {},
-          ),
-          16.verticalSpace,
-          RichText(
-            text: TextSpan(
-              style: regular.copyWith(fontSize: 12.0, color: primaryDark810),
-              children: [
-                TextSpan(text: context.l10n.iAgree),
-                TextSpan(
-                    text: context.l10n.tnc,
-                    style: regular.copyWith(color: primary500)),
-                TextSpan(text: context.l10n.and),
-                TextSpan(
-                    text: context.l10n.privacyPolicy,
-                    style: regular.copyWith(color: primary500)),
-              ],
-            ),
-          ),
-          16.verticalSpace,
-          ActionButton.primary(
-            onPressed: () {
-              context.router.replace(const VerifyOtpRoute());
-            },
-            child: Center(
-              child: Text(
-                context.l10n.signUp,
-                style: medium.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
+          const SignUpForm(),
           Container(
             margin: const EdgeInsets.only(top: 30.0),
             child: Text(

@@ -1,6 +1,6 @@
 mixin ValidationMixin {
-  bool validateEnrollmentId(String id) {
-    if (id.toUpperCase().startsWith('HB')) {
+  bool validateEmail(String email) {
+    if (email.isNotEmpty) {
       return true;
     } else {
       return false;

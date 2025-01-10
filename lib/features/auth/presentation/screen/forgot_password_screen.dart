@@ -1,14 +1,11 @@
-import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/widgets/action_button.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/forget_form.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/widgets/input_field.dart';
 
 @RoutePage()
 class ForgotPasswordScreen extends StatelessWidget {
@@ -41,23 +38,7 @@ class ForgotPasswordScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           30.verticalSpace,
-          InputField(
-            label: context.l10n.email,
-            hint: context.l10n.enterEmail,
-            onChanged: (value) {},
-          ),
-          16.verticalSpace,
-          ActionButton.primary(
-            onPressed: () {
-              context.router.replace(const VerifyOtpRoute());
-            },
-            child: Center(
-              child: Text(
-                context.l10n.resetPassword,
-                style: medium.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
+          const ForgetForm(),
           16.verticalSpace,
           RichText(
             textAlign: TextAlign.center,

@@ -3,12 +3,13 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/widgets/action_button.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/set_password_form.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/input_field.dart';
+import '../../../../core/widgets/task_button.dart';
 
 @RoutePage()
 class SetPasswordScreen extends StatelessWidget {
@@ -41,30 +42,7 @@ class SetPasswordScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           30.verticalSpace,
-          InputField(
-            label: context.l10n.createPassword,
-            hint: context.l10n.enterNewPassword,
-            onChanged: (value) {},
-          ),
-          16.verticalSpace,
-          InputField(
-            label: context.l10n.confirmPassword,
-            hint: context.l10n.reEnterPassword,
-            onChanged: (value) {},
-          ),
-          30.verticalSpace,
-          ActionButton.primary(
-            onPressed: () {
-              context.router.replace(const CompleteProfileRoute());
-              // context.router.replace(const ResetSuccessRoute());
-            },
-            child: Center(
-              child: Text(
-                context.l10n.confirm,
-                style: medium.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
+          const SetPasswordForm(),
           8.verticalSpace,
           RichText(
             text: TextSpan(

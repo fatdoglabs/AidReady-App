@@ -1,15 +1,12 @@
-import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/utils/extensions/ui.dart';
-import 'package:aid_ready/core/widgets/input_field.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/signin_form.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/social_login_options.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/color.dart';
-import '../../../../core/widgets/action_button.dart';
 
 @RoutePage()
 class SignInScreen extends StatelessWidget {
@@ -43,40 +40,7 @@ class SignInScreen extends StatelessWidget {
           ),
           50.verticalSpace,
           const SocalLoginOptions(),
-          InputField(
-            label: context.l10n.email,
-            hint: context.l10n.enterEmail,
-            onChanged: (value) {},
-          ),
-          16.verticalSpace,
-          InputField.password(
-            label: context.l10n.password,
-            hint: context.l10n.enterPassword,
-            onChanged: (value) {},
-          ),
-          4.verticalSpace,
-          GestureDetector(
-            onTap: () {
-              context.router.push(const ForgotPasswordRoute());
-            },
-            child: Text(
-              "${context.l10n.forgotPassword} ?",
-              style: semibold.copyWith(fontSize: 12.0, color: primary500),
-              textAlign: TextAlign.end,
-            ).pad(4.0),
-          ),
-          16.verticalSpace,
-          ActionButton.primary(
-            onPressed: () {
-              //context.router.push(const SignUpRoute());
-            },
-            child: Center(
-              child: Text(
-                context.l10n.login,
-                style: medium.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
+          const SignInForm(),
         ],
       ),
     );

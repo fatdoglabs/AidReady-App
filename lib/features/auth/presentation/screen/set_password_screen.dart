@@ -1,4 +1,3 @@
-import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -7,9 +6,6 @@ import 'package:aid_ready/features/auth/presentation/widgets/set_password_form.d
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/widgets/input_field.dart';
-import '../../../../core/widgets/task_button.dart';
 
 @RoutePage()
 class SetPasswordScreen extends StatelessWidget {

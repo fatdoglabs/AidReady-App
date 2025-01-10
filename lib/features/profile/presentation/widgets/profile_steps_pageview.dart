@@ -1,18 +1,21 @@
+import 'package:aid_ready/features/onboarding/domain/providers/next_page_provider.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/medical_info_view.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/personal_info_view.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/physical_info_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProfileStepsPageView extends StatefulWidget {
+class ProfileStepsPageView extends ConsumerStatefulWidget {
   const ProfileStepsPageView({
     super.key,
   });
 
   @override
-  State<ProfileStepsPageView> createState() => _ProfileStepsPageViewState();
+  ConsumerState<ProfileStepsPageView> createState() =>
+      _ProfileStepsPageViewState();
 }
 
-class _ProfileStepsPageViewState extends State<ProfileStepsPageView> {
+class _ProfileStepsPageViewState extends ConsumerState<ProfileStepsPageView> {
   PageController? _controller;
 
   @override
@@ -23,6 +26,10 @@ class _ProfileStepsPageViewState extends State<ProfileStepsPageView> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen(nextPageProvider, (_, current) {
+      _controller?.animateToPage(current,
+          duration: const Duration(milliseconds: 200), curve: Curves.linear);
+    });
     return PageView.builder(
       controller: _controller,
       physics: const NeverScrollableScrollPhysics(),
@@ -31,18 +38,14 @@ class _ProfileStepsPageViewState extends State<ProfileStepsPageView> {
         if (index == 0) {
           return PersonalInfoView(
             onNext: () {
-              _controller?.animateToPage(1,
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.linear);
+              ref.read(nextPageProvider.notifier).update(1);
             },
           );
         }
         if (index == 1) {
           return PhysicalInfoView(
             onNext: () {
-              _controller?.animateToPage(2,
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.linear);
+              ref.read(nextPageProvider.notifier).update(2);
             },
           );
         }

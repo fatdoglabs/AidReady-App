@@ -22,6 +22,9 @@ class _SetPasswordFormState extends State<SetPasswordForm>
     with ValidationMixin {
   bool isValid = false;
 
+  String password = "";
+  String confimPassword = "";
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,7 +42,7 @@ class _SetPasswordFormState extends State<SetPasswordForm>
           onChanged: (value) {},
         ),
         30.verticalSpace,
-        isValid
+        true
             ? TaskButton(
                 color: primary500,
                 onPressed: () {

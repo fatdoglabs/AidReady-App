@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/blood_group_selector.dart';
@@ -18,14 +19,17 @@ class MedicalInfoView extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              context.l10n.bloodGroup,
-              style: bold.copyWith(fontSize: 12.0, color: primaryDark700),
-            ),
+            16.verticalSpace,
+            context.l10n.bloodGroup.mandatory(),
+            16.verticalSpace,
             const BloodGroupSelector(),
+            16.verticalSpace,
             Row(
               children: [
-                Checkbox(value: false, onChanged: (_) {}),
+                SizedBox.square(
+                    dimension: 24.0,
+                    child: Checkbox(value: false, onChanged: (_) {})),
+                10.horizontalSpace,
                 Text(
                   context.l10n.dontKnowBloodType,
                   style: regular.copyWith(color: secondary950),

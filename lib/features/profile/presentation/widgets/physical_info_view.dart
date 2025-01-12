@@ -25,6 +25,7 @@ class PhysicalInfoView extends StatelessWidget {
               context.l10n.gender,
               style: bold.copyWith(fontSize: 12.0, color: primaryDark700),
             ),
+            10.verticalSpace,
             const GenderGroup(),
             30.verticalSpace,
             InputField(

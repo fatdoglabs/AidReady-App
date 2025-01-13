@@ -7,6 +7,8 @@ import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/core/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/widgets/info_chip.dart';
+
 class NearbyRequestList extends StatelessWidget {
   const NearbyRequestList({super.key});
 
@@ -78,18 +80,13 @@ class NearbyRequestList extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 2.0, horizontal: 12.0),
-                        margin: const EdgeInsets.only(bottom: 10.0),
-                        decoration: BoxDecoration(
-                          color: danger100,
-                          borderRadius: BorderRadius.circular(16.0),
-                        ),
+                      InfoChip(
+                        color: danger100,
                         child: Text('O +',
                             style: bold.copyWith(
                                 color: danger600, fontSize: 12.0)),
                       ),
+                      10.verticalSpace,
                       Text(
                         '1.5 ${context.l10n.kmAway}',
                         style:

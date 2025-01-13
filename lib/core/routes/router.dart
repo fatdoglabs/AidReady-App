@@ -9,9 +9,25 @@ class AidRouter extends $AidRouter {
           page: LanguageSelectionRoute.page,
           initial: true,
         ),
-        AutoRoute(
-          page: DashboardRoute.page,
-        ),
+        AutoRoute(page: DashboardRoute.page, children: [
+          AutoRoute(
+            path: 'home',
+            page: HomeRoute.page,
+          ),
+          AutoRoute(
+            path: 'family',
+            page: FamilyRoute.page,
+            initial: true,
+          ),
+          AutoRoute(
+            path: 'family',
+            page: FamilyRoute.page,
+          ),
+          AutoRoute(
+            path: 'family',
+            page: FamilyRoute.page,
+          ),
+        ]),
         AutoRoute(
           page: SignInRoute.page,
         ),

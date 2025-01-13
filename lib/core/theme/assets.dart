@@ -17,6 +17,7 @@ const String authImage = 'assets/images/page_auth.png';
 const String resetSuccessImage = 'assets/images/page_reset.jpg';
 const String textLogoIcon = 'assets/icons/text_logo.svg';
 const String notificationIcon = 'assets/icons/notification.svg';
+const String attentionIcon = 'assets/icons/attention.svg';
 const String defaultAvatarIcon = 'assets/icons/default_avatar.svg';
 const String locationIcon = 'assets/icons/location.svg';
 const String activeHomeIcon = 'assets/icons/active_home.svg';

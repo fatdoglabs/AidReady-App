@@ -1,5 +1,6 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/features/dashboard/presentation/widgets/member.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +14,11 @@ class FamilyList extends StatelessWidget {
       children: [
         ListTile(
           title: Text(
-            'My Family',
+            context.l10n.myFamily,
             style: bold.copyWith(fontSize: 16.0, color: secondary950),
           ),
           trailing: Text(
-            'See All',
+            context.l10n.seeAll,
             style: regular.copyWith(fontSize: 12.0, color: primary600),
           ),
         ),

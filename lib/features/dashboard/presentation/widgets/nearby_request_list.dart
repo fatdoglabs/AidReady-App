@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/core/widgets/user_avatar.dart';
@@ -16,11 +17,11 @@ class NearbyRequestList extends StatelessWidget {
       children: [
         ListTile(
           title: Text(
-            'Nearby Request',
+            context.l10n.nearbyRequest,
             style: bold.copyWith(fontSize: 16.0, color: secondary950),
           ),
           trailing: Text(
-            'See All',
+            context.l10n.seeAll,
             style: regular.copyWith(fontSize: 12.0, color: primary600),
           ),
         ),
@@ -90,7 +91,7 @@ class NearbyRequestList extends StatelessWidget {
                                 color: danger600, fontSize: 12.0)),
                       ),
                       Text(
-                        '1.5 km Away',
+                        '1.5 ${context.l10n.kmAway}',
                         style:
                             regular.copyWith(fontSize: 12.0, color: primary600),
                       ),

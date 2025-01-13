@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:flutter/material.dart';
@@ -35,12 +36,12 @@ class RequestBloodDonationCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Request Blood Now',
+                  context.l10n.requestBloodNow,
                   style: bold.copyWith(fontSize: 16.0, color: secondary950),
                 ),
                 12.verticalSpace,
                 Text(
-                  '"Need blood urgently? Post a request and connect with donors nearby."',
+                  '"${context.l10n.postBloodRequestMessage}"',
                   maxLines: 2,
                   style:
                       regular.copyWith(color: primaryDark600, fontSize: 12.0),
@@ -57,7 +58,7 @@ class RequestBloodDonationCard extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Text(
                         textAlign: TextAlign.center,
-                        'Request Now',
+                        context.l10n.requestNow,
                         style: semibold.copyWith(
                             fontSize: 16.0, color: Colors.white),
                       ),

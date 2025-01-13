@@ -1,5 +1,4 @@
 import 'package:aid_ready/core/theme/assets.dart';
-import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
@@ -7,7 +6,6 @@ import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/core/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class DashboardAppbar extends StatelessWidget {
   const DashboardAppbar({super.key});
@@ -30,7 +28,7 @@ class DashboardAppbar extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.only(right: 20.0),
-                child: PictureView(
+                child: const PictureView(
                   imageUri: notificationIcon,
                 ),
               ),

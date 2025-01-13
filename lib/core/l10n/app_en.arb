@@ -68,5 +68,13 @@
   "signUpMotto": "Every donation counts. By signing up, you’re taking the first step toward saving lives!",
   "appTagLine": "Together, we save lives.",
   "addNew": "Add New",
+  "requestBloodNow": "Request Blood Now",
+  "requestNow": "Request Now",
+  "nearbyRequest": "Nearby Request",
+  "seeAll": "See All",
+  "kmAway": "km Away",
+  "myFamily": "My Family",
+  "newsUpdates":"News and Updates",
+  "postBloodRequestMessage": "Need blood urgently? Post a request and connect with donors nearby.",
   "genericerr": "Something went wrong. Please try again later."
 }

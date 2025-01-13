@@ -1,6 +1,5 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
-import 'package:aid_ready/features/dashboard/presentation/widgets/member.dart';
 import 'package:aid_ready/features/dashboard/presentation/widgets/news_item.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +24,7 @@ class NewsUpdatesList extends StatelessWidget {
         SizedBox(
           height: 200.0,
           child: ListView(
+            padding: const EdgeInsets.only(left: 16.0),
             scrollDirection: Axis.horizontal,
             children: [
               NewsItem(),

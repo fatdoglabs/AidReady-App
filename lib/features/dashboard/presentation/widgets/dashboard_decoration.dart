@@ -23,14 +23,22 @@ class _ContainerDecorationPainter extends BoxPainter {
     final effectiveHeight = height ?? (bounds.height / 4.0);
     Paint paint = Paint()
       ..color = primary500
-      ..style = PaintingStyle.fill
-      ..strokeWidth = 1.5;
-    //canvas.drawColor(black160, BlendMode.src);
+      ..style = PaintingStyle.fill;
+    Paint bubble1Paint = Paint()
+      ..color = secondary50
+      ..style = PaintingStyle.fill;
+    Paint bubble2Paint = Paint()
+      ..color = primary50
+      ..style = PaintingStyle.fill;
     canvas.drawRRect(
         RRect.fromLTRBAndCorners(0.0, 0.0, width, effectiveHeight,
             bottomLeft: const Radius.circular(30.0),
             bottomRight: const Radius.circular(30.0)),
         paint);
-    
+
+    canvas.drawCircle(
+        Offset(width * 1.1, bounds.height * 0.6), 140.0, bubble1Paint);
+
+    canvas.drawCircle(Offset(-50.0, bounds.height * 0.5), 135.0, bubble2Paint);
   }
 }

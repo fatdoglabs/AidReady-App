@@ -13,11 +13,11 @@ class AidRouter extends $AidRouter {
           AutoRoute(
             path: 'home',
             page: HomeRoute.page,
+            initial: true,
           ),
           AutoRoute(
             path: 'family',
             page: FamilyRoute.page,
-            initial: true,
           ),
           AutoRoute(
             path: 'family',

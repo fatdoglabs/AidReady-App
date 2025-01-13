@@ -1,8 +1,10 @@
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
+import 'package:aid_ready/features/dashboard/presentation/widgets/bottom_tab_icon.dart';
 import 'package:aid_ready/features/dashboard/presentation/widgets/dashboard_decoration.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../../core/routes/router.gr.dart';
 import '../../../../core/theme/color.dart';
@@ -22,6 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return AutoTabsRouter(
       routes: const [
         HomeRoute(),
+        FamilyRoute(),
         FamilyRoute(),
         FamilyRoute(),
         FamilyRoute(),
@@ -56,25 +59,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       )
                     ],
                   ),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      PictureView(
-                        imageUri: activeHomeIcon,
-                      ),
-                      PictureView(
-                        imageUri: inActiveFamilyIcon,
-                      ),
-                      PictureView(
-                        imageUri: inActiveProfileIcon,
-                      ),
-                      PictureView(
-                        imageUri: inActiveProfileIcon,
-                      ),
-                      PictureView(
-                        imageUri: inActiveProfileIcon,
-                      ),
-                    ],
+                  child: BottomTabBar(
+                    onTabClick: (index) {
+                      tabsRouter.setActiveIndex(index);
+                    },
                   ),
                 ),
               )

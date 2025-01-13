@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/domain/entity/locale_option.dart';
 import 'package:aid_ready/core/domain/providers/language_provider.dart';
 import 'package:aid_ready/core/routes/router.dart';
+import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -29,9 +30,9 @@ class AidApp extends ConsumerWidget {
         return locale.languageCode == selected;
       }, orElse: () => Locale(LocaleOpts.english.value)),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+          unselectedWidgetColor: primary500),
       routerDelegate: router.delegate(),
       routeInformationParser: router.defaultRouteParser(),
       routeInformationProvider: router.routeInfoProvider(),

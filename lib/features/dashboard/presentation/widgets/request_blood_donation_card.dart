@@ -1,78 +1,60 @@
 import 'package:aid_ready/core/theme/assets.dart';
+import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
-import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
+import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/theme/color.dart';
-
 class RequestBloodDonationCard extends StatelessWidget {
-  const RequestBloodDonationCard({Key? key, required this.onTap})
-      : super(key: key);
-  final Function onTap;
+  const RequestBloodDonationCard({super.key, this.onTap});
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(20),
-      padding: EdgeInsets.fromLTRB(
-          context.w(20), context.h(24.0), context.w(4.0), context.h(24.0)),
+      padding: const EdgeInsets.only(left: 20.0, top: 20.0),
       decoration: BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 14,
-          )
-        ],
-        borderRadius: BorderRadius.circular(10.0),
-        color: Colors.black,
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.white,
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'Request Blood Donation',
-                //  style: text14PxMedium.rubik.iconOrange,
-              ),
-              SizedBox(height: context.h(7.0)),
-              Text(
-                'Does your pet need blood?',
-                //  style: text12PxRegular.rubik.midGrey,
-              ),
-              SizedBox(height: context.h(14.0)),
-              Builder(builder: (context) {
-                return InkWell(
-                  onTap: () => onTap.call(),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(context.w(15.0),
-                        context.h(10.0), context.w(12.0), context.h(9.0)),
-                    decoration: BoxDecoration(
-                      color: Colors.black,
-                      borderRadius: BorderRadius.circular(34.0),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Request Now',
-                          //style: text12PxMedium.rubik.white,
-                        ),
-                        const SizedBox(width: 13),
-                        SvgPicture.asset(
-                          forwardIcon,
-                          height: context.h(12.0),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            ],
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Request Blood Now',
+                  style: bold.copyWith(fontSize: 16.0, color: secondary950),
+                ),
+                12.verticalSpace,
+                Text(
+                  '"Need blood urgently? Post a request and connect with donors nearby."',
+                  maxLines: 2,
+                  style:
+                      regular.copyWith(color: primaryDark600, fontSize: 12.0),
+                ),
+                12.verticalSpace,
+                ActionButton.primary(
+                  child: Text(
+                    textAlign: TextAlign.start,
+                    'Request Now',
+                    style:
+                        semibold.copyWith(fontSize: 16.0, color: Colors.white),
+                  ).px(25.0),
+                ).pOnly(bottom: 20.0),
+              ],
+            ),
           ),
-          Expanded(child: SvgPicture.asset(bloodBag)),
+          ClipRRect(
+            borderRadius:
+                const BorderRadius.only(bottomRight: Radius.circular(20.0)),
+            child: SvgPicture.asset(requestBloodBgIcon),
+          ),
         ],
       ),
     );

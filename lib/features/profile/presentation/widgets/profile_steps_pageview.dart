@@ -1,7 +1,9 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/features/onboarding/domain/providers/next_page_provider.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/medical_info_view.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/personal_info_view.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/physical_info_view.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -51,7 +53,9 @@ class _ProfileStepsPageViewState extends ConsumerState<ProfileStepsPageView> {
         }
         if (index == 2) {
           return MedicalInfoView(
-            onNext: () {},
+            onNext: () {
+              context.router.push(DashboardRoute());
+            },
           );
         }
         return const SizedBox.shrink();

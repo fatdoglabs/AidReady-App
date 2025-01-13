@@ -1,6 +1,7 @@
 {
   "welcomeToAidReady": "Welcome to AidReady!",
   "authDescription": "Thank you for your willingness to make a difference. Donating blood is a life-saving act, and together, we can help those in need. Lets get started and become a hero!",
+  "hello":"Hello",
   "signUp": "Sign up",
   "signIn": "Sign in",
   "login": "Login",
@@ -65,5 +66,7 @@
   "loginNowPossible": "You can now log in with your new password and continue your journey to saving lives.",
   "updatePasswordAnyTime": "You can update your password anytime in your account settings.",
   "signUpMotto": "Every donation counts. By signing up, you’re taking the first step toward saving lives!",
+  "appTagLine": "Together, we save lives.",
+  "addNew": "Add New",
   "genericerr": "Something went wrong. Please try again later."
 }

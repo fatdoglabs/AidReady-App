@@ -91,7 +91,7 @@ class ActionButton extends StatelessWidget {
         border: border,
         borderRadius: BorderRadius.circular(borderRadius ?? 12),
       ),
-      height: context.h(height ?? 44.0),
+      height: context.h(height ?? 48.0),
       child: InkWell(
         onTap: onPressed,
         child: child,

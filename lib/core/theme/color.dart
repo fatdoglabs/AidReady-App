@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color primary400 = Color(0xFF58D68D);
 const Color primary500 = Color(0xFF2CBB69);
+const Color primary600 = Color(0xFF1F9A53);
 const Color primary200 = Color(0xFFBFF3D4);
 const Color primary50 = Color(0xFFF1FCF5);
 const Color primary100 = Color(0xFFDEFAEA);
@@ -18,6 +19,7 @@ const Color primaryDark810 = Color(0xFF989898);
 const Color secondary950 = Color(0xFF102941);
 
 const Color warning300 = Color(0xFFDAC06A);
+const Color danger100 = Color(0xFFFEE2E4);
 const Color danger500 = Color(0xFFF1424E);
 const Color danger600 = Color(0xFFDF2935);
 

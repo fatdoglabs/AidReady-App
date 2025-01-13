@@ -51,15 +51,18 @@ class _SignInFormState extends State<SignInForm> with ValidationMixin {
           },
         ),
         4.verticalSpace,
-        GestureDetector(
-          onTap: () {
-            context.router.push(const ForgotPasswordRoute());
-          },
-          child: Text(
-            "${context.l10n.forgotPassword} ?",
-            style: semibold.copyWith(fontSize: 12.0, color: primary500),
-            textAlign: TextAlign.end,
-          ).pad(4.0),
+        Align(
+          alignment: Alignment.centerRight,
+          child: GestureDetector(
+            onTap: () {
+              context.router.push(const ForgotPasswordRoute());
+            },
+            child: Text(
+              "${context.l10n.forgotPassword} ?",
+              style: semibold.copyWith(fontSize: 12.0, color: primary500),
+              textAlign: TextAlign.end,
+            ).pad(4.0),
+          ),
         ),
         16.verticalSpace,
         isValid

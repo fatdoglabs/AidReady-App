@@ -24,7 +24,7 @@ class NewsUpdatesList extends StatelessWidget {
         ),
         Container(
           height: 180.0,
-          margin: const EdgeInsets.only(bottom: 12.0),
+          margin: const EdgeInsets.only(bottom: 75.0),
           child: ListView(
             padding: const EdgeInsets.only(left: 16.0),
             scrollDirection: Axis.horizontal,

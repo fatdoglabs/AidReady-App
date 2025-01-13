@@ -7,6 +7,7 @@ const Color primary600 = Color(0xFF1F9A53);
 const Color primary200 = Color(0xFFBFF3D4);
 const Color primary50 = Color(0xFFF1FCF5);
 const Color primary100 = Color(0xFFDEFAEA);
+const Color primaryDark40 = Color(0xFFFAFAFA);
 const Color primaryDark50 = Color(0xFFF6F6F6);
 const Color primaryDark10 = Color(0x25000000);
 const Color primaryDark100 = Color(0xFFE7E7E7);
@@ -20,6 +21,7 @@ const Color primaryDark810 = Color(0xFF989898);
 const Color secondary950 = Color(0xFF102941);
 const Color secondary50 = Color(0xFFF2F8FD);
 const Color containerShadow = Color(0x1C5EB0DE);
+const Color containerShadow2 = Color(0x2E5EB0DE);
 
 const Color warning300 = Color(0xFFDAC06A);
 const Color danger100 = Color(0xFFFEE2E4);

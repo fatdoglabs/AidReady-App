@@ -1,5 +1,7 @@
+import 'dart:ui' as ui;
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class DashboardDecoration extends Decoration {
   const DashboardDecoration({this.height});
@@ -21,9 +23,15 @@ class _ContainerDecorationPainter extends BoxPainter {
     final bounds = configuration.size;
     final width = bounds!.width;
     final effectiveHeight = height ?? (bounds.height / 4.0);
-    Paint paint = Paint()
-      ..color = primary500
-      ..style = PaintingStyle.fill;
+    final paint = Paint()
+      ..shader = ui.Gradient.linear(
+        const Offset(0, 0),
+        Offset(width, 0),
+        [
+          primary4001,
+          primary400,
+        ],
+      );
     Paint bubble1Paint = Paint()
       ..color = secondary50
       ..style = PaintingStyle.fill;

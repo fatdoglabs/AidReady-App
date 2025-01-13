@@ -1,10 +1,13 @@
 import 'package:aid_ready/core/theme/assets.dart';
+import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
+import 'package:aid_ready/core/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class DashboardAppbar extends StatelessWidget {
   const DashboardAppbar({super.key});
@@ -15,9 +18,9 @@ class DashboardAppbar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
-              Expanded(
+              const Expanded(
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: PictureView(
@@ -25,16 +28,18 @@ class DashboardAppbar extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
+              Container(
+                margin: const EdgeInsets.only(right: 20.0),
                 child: PictureView(
                   imageUri: notificationIcon,
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: PictureView(
-                  imageUri: defaultAvatarIcon,
+              Container(
+                decoration: const BoxDecoration(
+                    color: Colors.white, shape: BoxShape.circle),
+                padding: const EdgeInsets.all(1.0),
+                child: const UserAvatar(
+                  initials: "K",
                 ),
               ),
             ],

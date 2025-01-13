@@ -3,6 +3,7 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
+import 'package:aid_ready/core/widgets/user_avatar.dart';
 import 'package:flutter/material.dart';
 
 class NearbyRequestList extends StatelessWidget {
@@ -42,7 +43,11 @@ class NearbyRequestList extends StatelessWidget {
               child: Row(
                 children: [
                   const SizedBox.square(
-                      dimension: 40.0, child: Icon(Icons.person)),
+                      dimension: 40.0,
+                      child: UserAvatar(
+                        initials: "J",
+                      )),
+                  10.horizontalSpace,
                   Expanded(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,

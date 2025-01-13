@@ -18,6 +18,7 @@ const Color primaryDark400 = Color(0xFF888888);
 const Color primaryDark810 = Color(0xFF989898);
 const Color secondary950 = Color(0xFF102941);
 const Color secondary50 = Color(0xFFF2F8FD);
+const Color containerShadow = Color(0x1C5EB0DE);
 
 const Color warning300 = Color(0xFFDAC06A);
 const Color danger100 = Color(0xFFFEE2E4);

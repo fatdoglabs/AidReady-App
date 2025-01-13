@@ -21,8 +21,9 @@ class NewsUpdatesList extends StatelessWidget {
             style: regular.copyWith(fontSize: 12.0, color: primary600),
           ),
         ),
-        SizedBox(
-          height: 200.0,
+        Container(
+          height: 180.0,
+          margin: const EdgeInsets.only(bottom: 12.0),
           child: ListView(
             padding: const EdgeInsets.only(left: 16.0),
             scrollDirection: Axis.horizontal,

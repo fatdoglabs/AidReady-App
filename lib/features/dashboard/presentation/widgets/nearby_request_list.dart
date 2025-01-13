@@ -25,6 +25,20 @@ class NearbyRequestList extends StatelessWidget {
         ),
         ...[1, 2].map((_) => Container(
               padding: const EdgeInsets.all(8.0),
+              margin:
+                  const EdgeInsets.only(left: 20.0, right: 20.0, bottom: 12.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.0),
+                boxShadow: const [
+                  BoxShadow(
+                    offset: Offset(0, 4),
+                    blurRadius: 12.0,
+                    spreadRadius: 4.0,
+                    color: containerShadow,
+                  )
+                ],
+              ),
               child: Row(
                 children: [
                   const SizedBox.square(

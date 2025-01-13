@@ -10,6 +10,19 @@ class NewsItem extends StatelessWidget {
     return Container(
       width: 300.0,
       margin: const EdgeInsets.only(right: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 16.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8.0),
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(0, 4),
+            blurRadius: 12.0,
+            spreadRadius: 4.0,
+            color: containerShadow,
+          )
+        ],
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

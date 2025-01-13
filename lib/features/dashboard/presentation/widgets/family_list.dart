@@ -22,11 +22,22 @@ class FamilyList extends StatelessWidget {
           ),
         ),
         Container(
+          padding: const EdgeInsets.all(8.0),
+          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8.0),
+            boxShadow: const [
+              BoxShadow(
+                offset: Offset(0, 4),
+                blurRadius: 12.0,
+                spreadRadius: 4.0,
+                color: containerShadow,
+              )
+            ],
+          ),
           child: Row(
             children: [
-              Member.placeholder(),
-              Member.placeholder(),
-              Member.placeholder(),
               Member.placeholder(),
             ],
           ),

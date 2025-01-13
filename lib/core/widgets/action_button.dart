@@ -55,12 +55,12 @@ class ActionButton extends StatelessWidget {
     super.key,
     required this.child,
     this.onPressed,
+    this.width,
     this.color = primary500,
   })  : border = null,
         borderRadius = kButtonBorderRadius,
         borderColor = null,
-        height = 44.0,
-        width = 44;
+        height = 30.0;
 
   const ActionButton.icon({
     super.key,

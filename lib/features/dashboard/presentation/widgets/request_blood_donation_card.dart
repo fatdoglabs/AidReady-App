@@ -19,6 +19,14 @@ class RequestBloodDonationCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
         color: Colors.white,
+        boxShadow: const [
+          BoxShadow(
+            offset: Offset(0, 4),
+            blurRadius: 12.0,
+            spreadRadius: 4.0,
+            color: containerShadow,
+          )
+        ],
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
@@ -39,14 +47,24 @@ class RequestBloodDonationCard extends StatelessWidget {
                       regular.copyWith(color: primaryDark600, fontSize: 12.0),
                 ),
                 12.verticalSpace,
-                ActionButton.primary(
-                  child: Text(
-                    textAlign: TextAlign.start,
-                    'Request Now',
-                    style:
-                        semibold.copyWith(fontSize: 16.0, color: Colors.white),
-                  ).px(25.0),
-                ).pOnly(bottom: 20.0),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  margin: const EdgeInsets.only(bottom: 20.0),
+                  child: ActionButton.primary(
+                    width: 180.0,
+                    height: 30.0,
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        'Request Now',
+                        style: semibold.copyWith(
+                            fontSize: 16.0, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),

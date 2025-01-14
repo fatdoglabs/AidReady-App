@@ -1,3 +1,4 @@
+import 'package:aid_ready/features/auth/data/model/otp_token.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/domain/entity/locale_option.dart';
@@ -10,8 +11,8 @@ abstract class AuthRepository {
   Future<Either<AuthToken, AppException>> login(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> signUp(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData);
-  Future<Either<AuthToken, AppException>> verify(AuthFormEntity authData);
-  Future<Either<AuthToken, AppException>> resend(AuthFormEntity authData);
+  Future<Either<OtpToken, AppException>> verify(AuthFormEntity authData);
+  Future<Either<OtpToken, AppException>> resend(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> googleLogin();
   Future<Either<AuthToken, AppException>> facebookLogin();
   Future<void> setLocale(LocaleOpts locale);

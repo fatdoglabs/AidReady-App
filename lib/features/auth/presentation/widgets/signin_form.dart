@@ -13,7 +13,7 @@ import '../../../../core/widgets/input_field.dart';
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key, this.onLogin});
 
-  final VoidCallback? onLogin;
+  final Function(String, String)? onLogin;
 
   @override
   State<SignInForm> createState() => _SignInFormState();
@@ -64,7 +64,9 @@ class _SignInFormState extends State<SignInForm> {
         16.verticalSpace,
         LoginButton(
           isEnabled: password.isNotEmpty && email.isNotEmpty,
-          onPressed: widget.onLogin,
+          onPressed: () {
+            widget.onLogin?.call(email, password);
+          },
         ),
       ],
     );

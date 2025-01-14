@@ -65,33 +65,6 @@ class Auth extends _$Auth {
     });
   }
 
-  Future<void> verify(AuthFormEntity authData) async {
-    state = const AsyncLoading();
-    final networkStatus = await ref
-        .read(networkStatusNotifierProvider.notifier)
-        .hasInternetAccess();
-    final repository = ref.read(authRepositoryProvider(networkStatus));
-    final result = await repository.verify(authData);
-    result.fold((l) {
-      state = AsyncData(l);
-    }, (r) {
-      state = AsyncError(r, StackTrace.current);
-    });
-  }
-
-  Future<void> resend(AuthFormEntity authData) async {
-    final networkStatus = await ref
-        .read(networkStatusNotifierProvider.notifier)
-        .hasInternetAccess();
-    final repository = ref.read(authRepositoryProvider(networkStatus));
-    final result = await repository.resend(authData);
-    result.fold((l) {
-      //state = AsyncData(l);
-    }, (r) {
-      throw r;
-    });
-  }
-
   Future<void> googleLogin() async {
     state = const AsyncLoading();
     final networkStatus = await ref

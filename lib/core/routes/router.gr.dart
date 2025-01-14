@@ -121,9 +121,13 @@ abstract class $AidRouter extends _i14.RootStackRouter {
       );
     },
     VerifyOtpRoute.name: (routeData) {
+      final args = routeData.argsAs<VerifyOtpRouteArgs>();
       return _i14.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i13.VerifyOtpScreen(),
+        child: _i13.VerifyOtpScreen(
+          key: args.key,
+          email: args.email,
+        ),
       );
     },
   };
@@ -323,14 +327,38 @@ class SignUpRoute extends _i14.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i13.VerifyOtpScreen]
-class VerifyOtpRoute extends _i14.PageRouteInfo<void> {
-  const VerifyOtpRoute({List<_i14.PageRouteInfo>? children})
-      : super(
+class VerifyOtpRoute extends _i14.PageRouteInfo<VerifyOtpRouteArgs> {
+  VerifyOtpRoute({
+    _i15.Key? key,
+    required String email,
+    List<_i14.PageRouteInfo>? children,
+  }) : super(
           VerifyOtpRoute.name,
+          args: VerifyOtpRouteArgs(
+            key: key,
+            email: email,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'VerifyOtpRoute';
 
-  static const _i14.PageInfo<void> page = _i14.PageInfo<void>(name);
+  static const _i14.PageInfo<VerifyOtpRouteArgs> page =
+      _i14.PageInfo<VerifyOtpRouteArgs>(name);
+}
+
+class VerifyOtpRouteArgs {
+  const VerifyOtpRouteArgs({
+    this.key,
+    required this.email,
+  });
+
+  final _i15.Key? key;
+
+  final String email;
+
+  @override
+  String toString() {
+    return 'VerifyOtpRouteArgs{key: $key, email: $email}';
+  }
 }

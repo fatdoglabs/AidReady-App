@@ -1,26 +1,28 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
-import 'package:aid_ready/features/auth/presentation/providers/email_otp_provider.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/resend_timer.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/verify_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../../core/exceptions/app_exception.dart';
-import '../providers/auth_provider.dart';
-
-class RetryablePinField extends ConsumerStatefulWidget {
+class RetryablePinField extends StatefulWidget {
   const RetryablePinField({
     super.key,
+    this.onRetry,
+    this.onVerify,
   });
 
+  final VoidCallback? onRetry;
+  final Function(String)? onVerify;
+
   @override
-  ConsumerState<RetryablePinField> createState() => _RetryablePinFieldState();
+  State<RetryablePinField> createState() => _RetryablePinFieldState();
 }
 
-class _RetryablePinFieldState extends ConsumerState<RetryablePinField> {
+class _RetryablePinFieldState extends State<RetryablePinField> {
   TextEditingController? controller;
+  String pin = "";
 
   @override
   void initState() {
@@ -30,7 +32,6 @@ class _RetryablePinFieldState extends ConsumerState<RetryablePinField> {
 
   @override
   Widget build(BuildContext context) {
-    final form = ref.watch(emailOtpProvider);
     return Column(
       children: [
         PinCodeTextField(
@@ -61,14 +62,17 @@ class _RetryablePinFieldState extends ConsumerState<RetryablePinField> {
           beforeTextPaste: (text) {
             return true;
           },
-          onCompleted: (pin) {
-            ref.read(emailOtpProvider.notifier).setOtp(pin);
+          onCompleted: (value) {
+            setState(() {
+              pin = value;
+            });
           },
         ),
         Row(
           children: [
             Expanded(
               child: false
+                  // ignore: dead_code
                   ? Text(
                       context.l10n.wrongOtpTryAgain,
                       style: regular.copyWith(color: danger600, fontSize: 12.0),
@@ -77,24 +81,19 @@ class _RetryablePinFieldState extends ConsumerState<RetryablePinField> {
             ),
             ResendTimer(
               onRetry: () {
-                try {
-                  ref.read(authProvider.notifier).resend(form);
-                  controller?.text = "";
-                  context.snack('OTP sent successfully');
-                } on AppException catch (e) {
-                  context.snack(e.message);
-                }
+                controller?.clear();
+                widget.onRetry?.call();
               },
             ),
           ],
-        )
+        ),
+        VerifyButton(
+          isEnabled: pin.length == 4,
+          onPressed: () {
+            widget.onVerify?.call(pin);
+          },
+        ),
       ],
     );
-  }
-
-  @override
-  void dispose() {
-    controller?.dispose();
-    super.dispose();
   }
 }

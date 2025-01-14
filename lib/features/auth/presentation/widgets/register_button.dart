@@ -26,14 +26,14 @@ class RegisterButton extends ConsumerWidget {
         data: (data) {
           if (data.email.isNotEmpty) {
             context.snack('You have logged in successfully.');
-            context.router.push(const VerifyOtpRoute());
+            //context.router.push(const VerifyOtpRoute());
           }
         },
       );
     });
 
     final form = ref.watch(emailOtpProvider);
-    if (!form.isRegisterValid) {
+    if (false) {
       return ActionButton.disabled(
         child: Center(
           child: Text(
@@ -56,7 +56,7 @@ class RegisterButton extends ConsumerWidget {
         return ActionButton.primary(
           color: primary500,
           onPressed: () async {
-            ref.read(authProvider.notifier).signUp(form);
+            //ref.read(authProvider.notifier).signUp(form);
             // final status = await context.requestNotification();
             // if (status.authorizationStatus == AuthorizationStatus.authorized) {
             //   final token = await FirebaseMessaging.instance.getToken();

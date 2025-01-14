@@ -2,6 +2,7 @@ import 'package:aid_ready/core/data/datasources/local_source.dart';
 import 'package:aid_ready/core/domain/entity/locale_option.dart';
 import 'package:aid_ready/core/services/injector.dart';
 import 'package:aid_ready/features/auth/data/datasources/auth_remote_source.dart';
+import 'package:aid_ready/features/auth/data/model/otp_token.dart';
 import 'package:aid_ready/features/auth/domain/entity/auth_form_entity.dart';
 import 'package:dio/dio.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -79,14 +80,13 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> verify(
-      AuthFormEntity authData) async {
+  Future<Either<OtpToken, AppException>> verify(AuthFormEntity authData) async {
     if (status == NetworkStatus.isConnected) {
       final token = await remoteDataSource.verify(authData);
       return token.fold(
         (l) {
-          localSource.setAccessToken(l.accessToken);
-          localSource.setRefreshToken(l.refreshToken);
+          //localSource.setAccessToken(l.accessToken);
+          //localSource.setRefreshToken(l.refreshToken);
           //localSource.setUserId(l.userId);
           return Left(l);
         },
@@ -98,14 +98,13 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> resend(
-      AuthFormEntity authData) async {
+  Future<Either<OtpToken, AppException>> resend(AuthFormEntity authData) async {
     if (status == NetworkStatus.isConnected) {
       final token = await remoteDataSource.resend(authData);
       return token.fold(
         (l) {
-          localSource.setAccessToken(l.accessToken);
-          localSource.setRefreshToken(l.refreshToken);
+          //localSource.setAccessToken(l.accessToken);
+          //localSource.setRefreshToken(l.refreshToken);
           //localSource.setUserId(l.userId);
           return Left(l);
         },

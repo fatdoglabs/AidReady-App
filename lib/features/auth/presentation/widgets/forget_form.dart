@@ -4,17 +4,22 @@ import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/reset_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/widgets/input_field.dart';
-import '../providers/email_otp_provider.dart';
 
-class ForgetForm extends ConsumerWidget {
-  const ForgetForm({super.key});
+class ForgetForm extends StatefulWidget {
+  const ForgetForm({super.key, this.onReset});
+
+  final Function(String)? onReset;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(emailOtpProvider);
+  State<ForgetForm> createState() => _ForgetFormState();
+}
+
+class _ForgetFormState extends State<ForgetForm> {
+  String email = "";
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -22,7 +27,9 @@ class ForgetForm extends ConsumerWidget {
           label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
-            ref.read(emailOtpProvider.notifier).setEmail(value);
+            setState(() {
+              email = value;
+            });
           },
         ),
         16.verticalSpace,
@@ -42,7 +49,12 @@ class ForgetForm extends ConsumerWidget {
           ),
         ),
         16.verticalSpace,
-        const ResetButton(),
+        ResetButton(
+          isEnabled: email.isNotEmpty,
+          onPressed: () {
+            widget.onReset?.call(email);
+          },
+        ),
       ],
     );
   }

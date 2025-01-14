@@ -1,57 +1,43 @@
-import 'package:aid_ready/core/utils/extensions/type.dart';
+import 'package:aid_ready/features/auth/data/model/otp_token.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../../core/domain/entity/field.dart';
-import '../../../../core/mixins/validation_mixin.dart';
+import '../../../../core/data/providers/connectivity_status_notifier.dart';
 import '../../domain/entity/auth_form_entity.dart';
+import '../../domain/providers/auth_repository_provider.dart';
 
 part 'email_otp_provider.g.dart';
 
 @riverpod
-class EmailOtp extends _$EmailOtp with ValidationMixin {
+class EmailOtp extends _$EmailOtp {
   @override
-  AuthFormEntity build() => AuthFormEntity.empty();
-
-  void setEmail(String email) {
-    ValidatorField<String> idField;
-    if (email.trim().isNotNullNotEmpty) {
-      final form = state.copyWith(email: ValidatorField(value: email));
-      final bool isIdValid = validateNotEmpty(email);
-
-      if (isIdValid) {
-        idField = form.email.copyWith(value: email, isValid: true);
-      } else {
-        idField = form.email.copyWith(
-          value: email,
-          isValid: false,
-        );
-      }
-    } else {
-      idField =
-          state.email.copyWith(value: '', isValid: false, errorMessage: null);
-    }
-    state = state.copyWith(email: idField);
+  FutureOr<OtpToken> build() async {
+    return OtpToken.unauthenticated();
   }
 
-  void setOtp(String pin) {
-    ValidatorField<String> pinField;
-    if (pin.trim().isNotNullNotEmpty) {
-      final form = state.copyWith(pin: ValidatorField(value: pin));
-      final bool isPinValid = validatePin(pin);
-
-      if (isPinValid) {
-        pinField = form.pin.copyWith(value: pin, isValid: true);
-      } else {
-        pinField = form.pin.copyWith(
-          value: pin,
-          isValid: false,
-        );
-      }
-    } else {
-      pinField =
-          state.pin.copyWith(value: '', isValid: false, errorMessage: null);
-    }
-    state = state.copyWith(pin: pinField);
+  Future<void> verify(AuthFormEntity authData) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(authRepositoryProvider(networkStatus));
+    final result = await repository.verify(authData);
+    result.fold((l) {
+      state = AsyncData(l);
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
   }
-  
+
+  Future<void> resend(AuthFormEntity authData) async {
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(authRepositoryProvider(networkStatus));
+    final result = await repository.resend(authData);
+    result.fold((l) {
+      //state = AsyncData(l);
+    }, (r) {
+      throw r;
+    });
+  }
 }

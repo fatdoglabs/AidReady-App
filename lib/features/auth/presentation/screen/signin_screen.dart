@@ -64,11 +64,10 @@ class SignInScreen extends StatelessWidget {
               );
             });
             return SignInForm(
-              onLogin: () async {
+              onLogin: (email, password) async {
                 ref.read(authProvider.notifier).login(AuthFormEntity(
-                      email: const ValidatorField(value: "value"),
-                      password: const ValidatorField(value: "value"),
-                      pin: const ValidatorField(value: "value"),
+                      email: email,
+                      password: password,
                     ));
                 // final status = await context.requestNotification();
                 // if (status.authorizationStatus == AuthorizationStatus.authorized) {

@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -38,7 +39,11 @@ class ForgotPasswordScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           30.verticalSpace,
-          const ForgetForm(),
+          ForgetForm(
+            onReset: (email) {
+              context.router.push(VerifyOtpRoute(email: email));
+            },
+          ),
           16.verticalSpace,
           RichText(
             textAlign: TextAlign.center,

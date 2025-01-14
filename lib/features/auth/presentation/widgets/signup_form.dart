@@ -22,7 +22,7 @@ class SignUpForm extends ConsumerWidget {
           label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
-            ref.read(emailOtpProvider.notifier).setEmail(value);
+            //ref.read(emailOtpProvider.notifier).setEmail(value);
           },
         ),
         16.verticalSpace,

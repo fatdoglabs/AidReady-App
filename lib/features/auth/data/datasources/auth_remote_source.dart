@@ -3,6 +3,7 @@ import 'package:aid_ready/core/services/network_service.dart';
 import 'package:aid_ready/core/utils/either.dart';
 import 'package:aid_ready/core/utils/endpoints.dart';
 import 'package:aid_ready/features/auth/data/model/auth_token.dart';
+import 'package:aid_ready/features/auth/data/model/otp_token.dart';
 import 'package:aid_ready/features/auth/domain/entity/auth_form_entity.dart';
 import 'package:dio/dio.dart';
 
@@ -10,8 +11,8 @@ abstract class AuthRemoteSource {
   Future<Either<AuthToken, AppException>> login(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> register(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData);
-  Future<Either<AuthToken, AppException>> verify(AuthFormEntity authData);
-  Future<Either<AuthToken, AppException>> resend(AuthFormEntity authData);
+  Future<Either<OtpToken, AppException>> verify(AuthFormEntity authData);
+  Future<Either<OtpToken, AppException>> resend(AuthFormEntity authData);
   Future<Either<bool, AppException>> logout({CancelToken? token});
   Future<Either<bool, AppException>> deleteAccount({CancelToken? token});
 }
@@ -83,8 +84,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> verify(
-      AuthFormEntity authData) async {
+  Future<Either<OtpToken, AppException>> verify(AuthFormEntity authData) async {
     try {
       final response = await networkService.post(
         eVerify,
@@ -92,7 +92,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
       );
       return response.fold((l) {
         final userData = l.data['data'] as Map<String, dynamic>;
-        return Left(AuthToken.fromJson(userData));
+        return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
           return Right(AppException.wrongCreds());
@@ -105,8 +105,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> resend(
-      AuthFormEntity authData) async {
+  Future<Either<OtpToken, AppException>> resend(AuthFormEntity authData) async {
     try {
       final response = await networkService.post(
         eResend,
@@ -114,7 +113,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
       );
       return response.fold((l) {
         final userData = l.data['data'] as Map<String, dynamic>;
-        return Left(AuthToken.fromJson(userData));
+        return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
           return Right(AppException.wrongCreds());

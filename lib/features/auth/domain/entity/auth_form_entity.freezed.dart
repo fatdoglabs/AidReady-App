@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_form_entity.dart';
+part of 'auth_form_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,21 +15,21 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$LoginFormEntity {
+mixin _$AuthFormEntity {
   ValidatorField<String> get email => throw _privateConstructorUsedError;
   ValidatorField<String> get password => throw _privateConstructorUsedError;
   String? get fcmToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginFormEntityCopyWith<LoginFormEntity> get copyWith =>
+  $AuthFormEntityCopyWith<AuthFormEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginFormEntityCopyWith<$Res> {
-  factory $LoginFormEntityCopyWith(
-          LoginFormEntity value, $Res Function(LoginFormEntity) then) =
-      _$LoginFormEntityCopyWithImpl<$Res, LoginFormEntity>;
+abstract class $AuthFormEntityCopyWith<$Res> {
+  factory $AuthFormEntityCopyWith(
+          AuthFormEntity value, $Res Function(AuthFormEntity) then) =
+      _$AuthFormEntityCopyWithImpl<$Res, AuthFormEntity>;
   @useResult
   $Res call(
       {ValidatorField<String> email,
@@ -41,9 +41,9 @@ abstract class $LoginFormEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LoginFormEntityCopyWithImpl<$Res, $Val extends LoginFormEntity>
-    implements $LoginFormEntityCopyWith<$Res> {
-  _$LoginFormEntityCopyWithImpl(this._value, this._then);
+class _$AuthFormEntityCopyWithImpl<$Res, $Val extends AuthFormEntity>
+    implements $AuthFormEntityCopyWith<$Res> {
+  _$AuthFormEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,11 +91,11 @@ class _$LoginFormEntityCopyWithImpl<$Res, $Val extends LoginFormEntity>
 }
 
 /// @nodoc
-abstract class _$$LoginFormEntityImplCopyWith<$Res>
-    implements $LoginFormEntityCopyWith<$Res> {
-  factory _$$LoginFormEntityImplCopyWith(_$LoginFormEntityImpl value,
-          $Res Function(_$LoginFormEntityImpl) then) =
-      __$$LoginFormEntityImplCopyWithImpl<$Res>;
+abstract class _$$AuthFormEntityImplCopyWith<$Res>
+    implements $AuthFormEntityCopyWith<$Res> {
+  factory _$$AuthFormEntityImplCopyWith(_$AuthFormEntityImpl value,
+          $Res Function(_$AuthFormEntityImpl) then) =
+      __$$AuthFormEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -110,11 +110,11 @@ abstract class _$$LoginFormEntityImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$LoginFormEntityImplCopyWithImpl<$Res>
-    extends _$LoginFormEntityCopyWithImpl<$Res, _$LoginFormEntityImpl>
-    implements _$$LoginFormEntityImplCopyWith<$Res> {
-  __$$LoginFormEntityImplCopyWithImpl(
-      _$LoginFormEntityImpl _value, $Res Function(_$LoginFormEntityImpl) _then)
+class __$$AuthFormEntityImplCopyWithImpl<$Res>
+    extends _$AuthFormEntityCopyWithImpl<$Res, _$AuthFormEntityImpl>
+    implements _$$AuthFormEntityImplCopyWith<$Res> {
+  __$$AuthFormEntityImplCopyWithImpl(
+      _$AuthFormEntityImpl _value, $Res Function(_$AuthFormEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +124,7 @@ class __$$LoginFormEntityImplCopyWithImpl<$Res>
     Object? password = null,
     Object? fcmToken = freezed,
   }) {
-    return _then(_$LoginFormEntityImpl(
+    return _then(_$AuthFormEntityImpl(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -143,8 +143,8 @@ class __$$LoginFormEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoginFormEntityImpl extends _LoginFormEntity {
-  const _$LoginFormEntityImpl(
+class _$AuthFormEntityImpl extends _AuthFormEntity {
+  const _$AuthFormEntityImpl(
       {required this.email, required this.password, this.fcmToken})
       : super._();
 
@@ -157,14 +157,14 @@ class _$LoginFormEntityImpl extends _LoginFormEntity {
 
   @override
   String toString() {
-    return 'LoginFormEntity(email: $email, password: $password, fcmToken: $fcmToken)';
+    return 'AuthFormEntity(email: $email, password: $password, fcmToken: $fcmToken)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginFormEntityImpl &&
+            other is _$AuthFormEntityImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -178,17 +178,17 @@ class _$LoginFormEntityImpl extends _LoginFormEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginFormEntityImplCopyWith<_$LoginFormEntityImpl> get copyWith =>
-      __$$LoginFormEntityImplCopyWithImpl<_$LoginFormEntityImpl>(
+  _$$AuthFormEntityImplCopyWith<_$AuthFormEntityImpl> get copyWith =>
+      __$$AuthFormEntityImplCopyWithImpl<_$AuthFormEntityImpl>(
           this, _$identity);
 }
 
-abstract class _LoginFormEntity extends LoginFormEntity {
-  const factory _LoginFormEntity(
+abstract class _AuthFormEntity extends AuthFormEntity {
+  const factory _AuthFormEntity(
       {required final ValidatorField<String> email,
       required final ValidatorField<String> password,
-      final String? fcmToken}) = _$LoginFormEntityImpl;
-  const _LoginFormEntity._() : super._();
+      final String? fcmToken}) = _$AuthFormEntityImpl;
+  const _AuthFormEntity._() : super._();
 
   @override
   ValidatorField<String> get email;
@@ -198,6 +198,6 @@ abstract class _LoginFormEntity extends LoginFormEntity {
   String? get fcmToken;
   @override
   @JsonKey(ignore: true)
-  _$$LoginFormEntityImplCopyWith<_$LoginFormEntityImpl> get copyWith =>
+  _$$AuthFormEntityImplCopyWith<_$AuthFormEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_form_provider.dart';
+part of 'register_form_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$loginFormNotifierHash() => r'0fea146adf336cdd4b19ab047e392535de4ffd94';
+String _$registerFormNotifierHash() =>
+    r'2b519f17252e057ce62d97d4fe820a986b951048';
 
-/// See also [LoginFormNotifier].
-@ProviderFor(LoginFormNotifier)
-final loginFormNotifierProvider =
-    AutoDisposeNotifierProvider<LoginFormNotifier, AuthFormEntity>.internal(
-  LoginFormNotifier.new,
-  name: r'loginFormNotifierProvider',
+/// See also [RegisterFormNotifier].
+@ProviderFor(RegisterFormNotifier)
+final registerFormNotifierProvider =
+    AutoDisposeNotifierProvider<RegisterFormNotifier, AuthFormEntity>.internal(
+  RegisterFormNotifier.new,
+  name: r'registerFormNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$loginFormNotifierHash,
+      : _$registerFormNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$LoginFormNotifier = AutoDisposeNotifier<AuthFormEntity>;
+typedef _$RegisterFormNotifier = AutoDisposeNotifier<AuthFormEntity>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

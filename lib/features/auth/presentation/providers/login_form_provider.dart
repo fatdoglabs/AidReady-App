@@ -3,14 +3,14 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/domain/entity/field.dart';
 import '../../../../core/mixins/validation_mixin.dart';
-import '../../domain/entity/login_form_entity.dart';
+import '../../domain/entity/auth_form_entity.dart';
 
 part 'login_form_provider.g.dart';
 
 @riverpod
 class LoginFormNotifier extends _$LoginFormNotifier with ValidationMixin {
   @override
-  LoginFormEntity build() => LoginFormEntity.empty();
+  AuthFormEntity build() => AuthFormEntity.empty();
 
   void setEmail(String email) {
     ValidatorField<String> idField;

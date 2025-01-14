@@ -6,15 +6,15 @@ import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/core/widgets/loading_button.dart';
 import 'package:aid_ready/features/auth/presentation/providers/auth_provider.dart';
-import 'package:aid_ready/features/auth/presentation/providers/login_form_provider.dart';
+import 'package:aid_ready/features/auth/presentation/providers/register_form_provider.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/styles.dart';
 
-class LoginButton extends ConsumerWidget {
-  const LoginButton({super.key});
+class RegisterButton extends ConsumerWidget {
+  const RegisterButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -35,12 +35,12 @@ class LoginButton extends ConsumerWidget {
       );
     });
 
-    final form = ref.watch(loginFormNotifierProvider);
-    if (!form.isLoginValid) {
+    final form = ref.watch(registerFormNotifierProvider);
+    if (!form.isRegisterValid) {
       return ActionButton.disabled(
         child: Center(
           child: Text(
-            context.l10n.login,
+            context.l10n.signUp,
             style: medium.copyWith(color: Colors.white),
           ).px(16.0),
         ),
@@ -50,7 +50,7 @@ class LoginButton extends ConsumerWidget {
         return LoadingButton.primary(
           label: Center(
             child: Text(
-              context.l10n.login,
+              context.l10n.signUp,
               style: medium.copyWith(color: Colors.white),
             ),
           ),
@@ -59,7 +59,7 @@ class LoginButton extends ConsumerWidget {
         return ActionButton.primary(
           color: primary500,
           onPressed: () async {
-            ref.read(authProvider.notifier).login(form);
+            ref.read(authProvider.notifier).signUp(form);
             // final status = await context.requestNotification();
             // if (status.authorizationStatus == AuthorizationStatus.authorized) {
             //   final token = await FirebaseMessaging.instance.getToken();
@@ -73,7 +73,7 @@ class LoginButton extends ConsumerWidget {
           },
           child: Center(
             child: Text(
-              context.l10n.login,
+              context.l10n.signUp,
               style: medium.copyWith(color: Colors.white),
             ).px(16.0),
           ),

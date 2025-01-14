@@ -1,11 +1,9 @@
-import 'package:aid_ready/core/services/injector.dart';
 import 'package:aid_ready/features/auth/data/model/auth_token.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../core/data/providers/connectivity_status_notifier.dart';
 import '../../../../core/domain/entity/locale_option.dart';
-import '../../domain/entity/login_form_entity.dart';
+import '../../domain/entity/auth_form_entity.dart';
 import '../../domain/providers/auth_repository_provider.dart';
 
 part 'auth_provider.g.dart';
@@ -25,13 +23,27 @@ class Auth extends _$Auth {
     }
   }
 
-  Future<void> login(LoginFormEntity loginData) async {
+  Future<void> login(AuthFormEntity authData) async {
     state = const AsyncLoading();
     final networkStatus = await ref
         .read(networkStatusNotifierProvider.notifier)
         .hasInternetAccess();
     final repository = ref.read(authRepositoryProvider(networkStatus));
-    final result = await repository.login(loginData);
+    final result = await repository.login(authData);
+    result.fold((l) {
+      state = AsyncData(l);
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
+  }
+
+  Future<void> signUp(AuthFormEntity authData) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(authRepositoryProvider(networkStatus));
+    final result = await repository.signUp(authData);
     result.fold((l) {
       state = AsyncData(l);
     }, (r) {

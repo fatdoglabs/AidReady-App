@@ -8,6 +8,7 @@ const String eSummary = "/user";
 const String eNotifications = "/notification/list";
 const String eMarkAsRead = "/notification/mark-as-read";
 const String eLogin = "/auth/login";
+const String eRegister = "/auth/register";
 const String eLogout = "/auth/logout";
 const String eDeleteAccount = "/account/delete";
 

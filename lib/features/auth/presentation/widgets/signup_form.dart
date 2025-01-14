@@ -1,28 +1,20 @@
-import 'package:aid_ready/core/mixins/validation_mixin.dart';
-import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/widgets/action_button.dart';
-import 'package:aid_ready/core/widgets/task_button.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:aid_ready/features/auth/presentation/providers/register_form_provider.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/register_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/widgets/input_field.dart';
 
-class SignUpForm extends StatefulWidget {
+class SignUpForm extends ConsumerWidget {
   const SignUpForm({super.key});
 
   @override
-  State<SignUpForm> createState() => _SignUpFormState();
-}
-
-class _SignUpFormState extends State<SignUpForm> with ValidationMixin {
-  bool isValid = false;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(registerFormNotifierProvider);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -30,9 +22,7 @@ class _SignUpFormState extends State<SignUpForm> with ValidationMixin {
           label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
-            setState(() {
-              isValid = validateEmail(value);
-            });
+            ref.read(registerFormNotifierProvider.notifier).setEmail(value);
           },
         ),
         16.verticalSpace,
@@ -52,28 +42,7 @@ class _SignUpFormState extends State<SignUpForm> with ValidationMixin {
           ),
         ),
         16.verticalSpace,
-        isValid
-            ? TaskButton(
-                color: primary500,
-                onPressed: () {
-                  context.router.replace(const VerifyOtpRoute());
-                },
-                child: Center(
-                  child: Text(
-                    context.l10n.signUp,
-                    style: medium.copyWith(color: Colors.white),
-                  ),
-                ),
-              )
-            : ActionButton.disabled(
-                color: primary400,
-                child: Center(
-                  child: Text(
-                    context.l10n.signUp,
-                    style: medium.copyWith(color: Colors.white),
-                  ),
-                ),
-              ),
+        const RegisterButton(),
       ],
     );
   }

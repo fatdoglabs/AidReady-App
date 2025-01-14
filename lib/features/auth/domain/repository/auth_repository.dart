@@ -4,10 +4,11 @@ import '../../../../core/domain/entity/locale_option.dart';
 import '../../../../core/exceptions/app_exception.dart';
 import '../../../../core/utils/either.dart';
 import '../../data/model/auth_token.dart';
-import '../entity/login_form_entity.dart';
+import '../entity/auth_form_entity.dart';
 
 abstract class AuthRepository {
-  Future<Either<AuthToken, AppException>> login(LoginFormEntity loginData);
+  Future<Either<AuthToken, AppException>> login(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> signUp(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> googleLogin();
   Future<Either<AuthToken, AppException>> facebookLogin();
   Future<void> setLocale(LocaleOpts locale);

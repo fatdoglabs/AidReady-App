@@ -20,7 +20,7 @@ class LoadingButton extends StatelessWidget {
     required this.label,
   })  : border = null,
         borderColor = null,
-        height = 44;
+        height = 48;
 
   LoadingButton.secondary({
     super.key,
@@ -28,14 +28,14 @@ class LoadingButton extends StatelessWidget {
     required this.label,
   })  : color = null,
         border = Border.all(color: borderColor ?? primary500),
-        height = 44;
+        height = 48;
 
   const LoadingButton.small({
     super.key,
     this.color = primary500,
   })  : border = null,
         borderColor = null,
-        height = 44,
+        height = 48,
         label = const SizedBox.shrink();
 
   const LoadingButton.icon({
@@ -62,9 +62,9 @@ class LoadingButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         border: border,
-        borderRadius: BorderRadius.circular(12.0),
+        borderRadius: BorderRadius.circular(8.0),
       ),
-      height: context.h(height ?? 44.0),
+      height: context.h(height ?? 48.0),
       //width: context.w(height ?? 44.0),
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       alignment: Alignment.center,

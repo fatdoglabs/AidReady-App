@@ -1,31 +1,23 @@
-import 'package:aid_ready/core/mixins/validation_mixin.dart';
 import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
-import 'package:aid_ready/core/widgets/task_button.dart';
+import 'package:aid_ready/features/auth/presentation/providers/login_form_provider.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/login_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/widgets/action_button.dart';
 import '../../../../core/widgets/input_field.dart';
 
-class SignInForm extends StatefulWidget {
+class SignInForm extends ConsumerWidget {
   const SignInForm({super.key});
 
   @override
-  State<SignInForm> createState() => _SignInFormState();
-}
-
-class _SignInFormState extends State<SignInForm> with ValidationMixin {
-  bool isValid = false;
-  String email = "";
-  String password = "";
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final form = ref.watch(loginFormNotifierProvider);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -33,10 +25,7 @@ class _SignInFormState extends State<SignInForm> with ValidationMixin {
           label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
-            setState(() {
-              email = value;
-              isValid = validateEmail(email) && validatePassword(password);
-            });
+            ref.read(loginFormNotifierProvider.notifier).setEmail(value);
           },
         ),
         16.verticalSpace,
@@ -44,10 +33,7 @@ class _SignInFormState extends State<SignInForm> with ValidationMixin {
           label: context.l10n.password.mandatory(),
           hint: context.l10n.enterPassword,
           onChanged: (value) {
-            setState(() {
-              password = value;
-              isValid = validateEmail(email) && validatePassword(password);
-            });
+            ref.read(loginFormNotifierProvider.notifier).setPassword(value);
           },
         ),
         4.verticalSpace,
@@ -65,28 +51,7 @@ class _SignInFormState extends State<SignInForm> with ValidationMixin {
           ),
         ),
         16.verticalSpace,
-        isValid
-            ? TaskButton(
-                color: primary500,
-                onPressed: () {
-                  //context.router.push(const SignUpRoute());
-                },
-                child: Center(
-                  child: Text(
-                    context.l10n.login,
-                    style: medium.copyWith(color: Colors.white),
-                  ),
-                ),
-              )
-            : ActionButton.disabled(
-                color: primary400,
-                child: Center(
-                  child: Text(
-                    context.l10n.signIn,
-                    style: medium.copyWith(color: Colors.white),
-                  ),
-                ),
-              ),
+        const LoginButton(),
       ],
     );
   }

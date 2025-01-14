@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/theme/styles.dart';
+
 class LoginButton extends ConsumerWidget {
   const LoginButton({super.key});
 
@@ -39,30 +41,26 @@ class LoginButton extends ConsumerWidget {
     final form = ref.watch(loginFormNotifierProvider);
     if (!form.isValid) {
       return ActionButton.disabled(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(emailIcon, width: context.w(20)),
-            12.horizontalSpace,
-            Text(
-              "context.l10n.login",
-              // style: text14PxMedium.rubik.white.lineHeight(16.59),
-            )
-          ],
-        ).px(16.0),
+        child: Center(
+          child: Text(
+            context.l10n.login,
+            style: medium.copyWith(color: Colors.white),
+          ).px(16.0),
+        ),
       );
     } else {
       return ref.watch(authProvider).maybeWhen(loading: () {
         return LoadingButton.primary(
-          label: Text(
-            "context.l10n.login",
-            // style: text14PxMedium.rubik.white.lineHeight(16.59),
+          label: Center(
+            child: Text(
+              context.l10n.login,
+              style: medium.copyWith(color: Colors.white),
+            ),
           ),
         );
       }, orElse: () {
         return ActionButton.primary(
-          color: Colors.black,
+          color: primary500,
           onPressed: () async {
             ref.read(authProvider.notifier).login(form);
             // final status = await context.requestNotification();
@@ -76,18 +74,12 @@ class LoginButton extends ConsumerWidget {
             //   ref.read(authProvider.notifier).login(form);
             // }
           },
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(emailIcon, width: context.w(20)),
-              12.horizontalSpace,
-              Text(
-                "context.l10n.login",
-                //style: text14PxMedium.rubik.white.lineHeight(16.59),
-              )
-            ],
-          ).px(16.0),
+          child: Center(
+            child: Text(
+              context.l10n.login,
+              style: medium.copyWith(color: Colors.white),
+            ).px(16.0),
+          ),
         );
       });
     }

@@ -31,7 +31,7 @@ class AuthRepositoryImpl extends AuthRepository {
         (l) {
           localSource.setAccessToken(l.accessToken);
           localSource.setRefreshToken(l.refreshToken);
-          localSource.setUserId(l.userId);
+          //localSource.setUserId(l.userId);
           return Left(l);
         },
         (r) => Right(r),
@@ -50,7 +50,63 @@ class AuthRepositoryImpl extends AuthRepository {
         (l) {
           localSource.setAccessToken(l.accessToken);
           localSource.setRefreshToken(l.refreshToken);
-          localSource.setUserId(l.userId);
+          //localSource.setUserId(l.userId);
+          return Left(l);
+        },
+        (r) => Right(r),
+      );
+    } else {
+      return Right(AppException.noInternet());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData) async {
+    if (status == NetworkStatus.isConnected) {
+      final token = await remoteDataSource.reset(authData);
+      return token.fold(
+        (l) {
+          localSource.setAccessToken(l.accessToken);
+          localSource.setRefreshToken(l.refreshToken);
+          //localSource.setUserId(l.userId);
+          return Left(l);
+        },
+        (r) => Right(r),
+      );
+    } else {
+      return Right(AppException.noInternet());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> verify(
+      AuthFormEntity authData) async {
+    if (status == NetworkStatus.isConnected) {
+      final token = await remoteDataSource.verify(authData);
+      return token.fold(
+        (l) {
+          localSource.setAccessToken(l.accessToken);
+          localSource.setRefreshToken(l.refreshToken);
+          //localSource.setUserId(l.userId);
+          return Left(l);
+        },
+        (r) => Right(r),
+      );
+    } else {
+      return Right(AppException.noInternet());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> resend(
+      AuthFormEntity authData) async {
+    if (status == NetworkStatus.isConnected) {
+      final token = await remoteDataSource.resend(authData);
+      return token.fold(
+        (l) {
+          localSource.setAccessToken(l.accessToken);
+          localSource.setRefreshToken(l.refreshToken);
+          //localSource.setUserId(l.userId);
           return Left(l);
         },
         (r) => Right(r),
@@ -83,7 +139,7 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   AuthToken isUserLoggedIn() {
     return AuthToken(
-        userId: localSource.getUserId() ?? -1,
+        email: "",
         accessToken: localSource.getAccessToken() ?? "",
         refreshToken: localSource.getRefreshToken() ?? "");
   }

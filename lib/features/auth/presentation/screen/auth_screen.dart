@@ -12,15 +12,9 @@ import '../../../../core/theme/color.dart';
 import '../../../../core/widgets/picture_view.dart';
 
 @RoutePage()
-class AuthScreen extends StatefulWidget {
+class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 
-  @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

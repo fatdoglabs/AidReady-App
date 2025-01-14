@@ -2,7 +2,7 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/features/auth/presentation/providers/register_form_provider.dart';
+import 'package:aid_ready/features/auth/presentation/providers/email_otp_provider.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/register_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +14,7 @@ class SignUpForm extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(registerFormNotifierProvider);
+    ref.watch(emailOtpProvider);
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -22,7 +22,7 @@ class SignUpForm extends ConsumerWidget {
           label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
-            ref.read(registerFormNotifierProvider.notifier).setEmail(value);
+            ref.read(emailOtpProvider.notifier).setEmail(value);
           },
         ),
         16.verticalSpace,

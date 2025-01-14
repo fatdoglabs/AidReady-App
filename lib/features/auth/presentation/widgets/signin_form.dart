@@ -4,20 +4,27 @@ import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
-import 'package:aid_ready/features/auth/presentation/providers/login_form_provider.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/login_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/widgets/input_field.dart';
 
-class SignInForm extends ConsumerWidget {
-  const SignInForm({super.key});
+class SignInForm extends StatefulWidget {
+  const SignInForm({super.key, this.onLogin});
+
+  final VoidCallback? onLogin;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final form = ref.watch(loginFormNotifierProvider);
+  State<SignInForm> createState() => _SignInFormState();
+}
+
+class _SignInFormState extends State<SignInForm> {
+  String email = "";
+  String password = "";
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -25,7 +32,9 @@ class SignInForm extends ConsumerWidget {
           label: context.l10n.email.mandatory(),
           hint: context.l10n.enterEmail,
           onChanged: (value) {
-            ref.read(loginFormNotifierProvider.notifier).setEmail(value);
+            setState(() {
+              email = value;
+            });
           },
         ),
         16.verticalSpace,
@@ -33,7 +42,9 @@ class SignInForm extends ConsumerWidget {
           label: context.l10n.password.mandatory(),
           hint: context.l10n.enterPassword,
           onChanged: (value) {
-            ref.read(loginFormNotifierProvider.notifier).setPassword(value);
+            setState(() {
+              password = value;
+            });
           },
         ),
         4.verticalSpace,
@@ -51,7 +62,10 @@ class SignInForm extends ConsumerWidget {
           ),
         ),
         16.verticalSpace,
-        const LoginButton(),
+        LoginButton(
+          isEnabled: password.isNotEmpty && email.isNotEmpty,
+          onPressed: widget.onLogin,
+        ),
       ],
     );
   }

@@ -9,6 +9,9 @@ import 'package:dio/dio.dart';
 abstract class AuthRemoteSource {
   Future<Either<AuthToken, AppException>> login(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> register(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> verify(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> resend(AuthFormEntity authData);
   Future<Either<bool, AppException>> logout({CancelToken? token});
   Future<Either<bool, AppException>> deleteAccount({CancelToken? token});
 }
@@ -42,6 +45,71 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
     try {
       final response = await networkService.post(
         eRegister,
+        data: authData.toRegisterJson(),
+      );
+      return response.fold((l) {
+        final userData = l.data['data'] as Map<String, dynamic>;
+        return Left(AuthToken.fromJson(userData));
+      }, (r) {
+        if (r.statusCode == 422) {
+          return Right(AppException.wrongCreds());
+        }
+        return Right(r);
+      });
+    } on Error catch (_) {
+      return Right(AppException.badResponse());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData) async {
+    try {
+      final response = await networkService.post(
+        eForget,
+        data: authData.toRegisterJson(),
+      );
+      return response.fold((l) {
+        final userData = l.data['data'] as Map<String, dynamic>;
+        return Left(AuthToken.fromJson(userData));
+      }, (r) {
+        if (r.statusCode == 422) {
+          return Right(AppException.wrongCreds());
+        }
+        return Right(r);
+      });
+    } on Error catch (_) {
+      return Right(AppException.badResponse());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> verify(
+      AuthFormEntity authData) async {
+    try {
+      final response = await networkService.post(
+        eVerify,
+        data: authData.toVerifyJson(),
+      );
+      return response.fold((l) {
+        final userData = l.data['data'] as Map<String, dynamic>;
+        return Left(AuthToken.fromJson(userData));
+      }, (r) {
+        if (r.statusCode == 422) {
+          return Right(AppException.wrongCreds());
+        }
+        return Right(r);
+      });
+    } on Error catch (_) {
+      return Right(AppException.badResponse());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> resend(
+      AuthFormEntity authData) async {
+    try {
+      final response = await networkService.post(
+        eResend,
         data: authData.toRegisterJson(),
       );
       return response.fold((l) {

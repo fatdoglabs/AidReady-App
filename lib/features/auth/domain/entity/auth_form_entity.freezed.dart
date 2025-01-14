@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthFormEntity {
   ValidatorField<String> get email => throw _privateConstructorUsedError;
   ValidatorField<String> get password => throw _privateConstructorUsedError;
+  ValidatorField<String> get pin => throw _privateConstructorUsedError;
   String? get fcmToken => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -34,10 +35,12 @@ abstract class $AuthFormEntityCopyWith<$Res> {
   $Res call(
       {ValidatorField<String> email,
       ValidatorField<String> password,
+      ValidatorField<String> pin,
       String? fcmToken});
 
   $ValidatorFieldCopyWith<String, $Res> get email;
   $ValidatorFieldCopyWith<String, $Res> get password;
+  $ValidatorFieldCopyWith<String, $Res> get pin;
 }
 
 /// @nodoc
@@ -55,6 +58,7 @@ class _$AuthFormEntityCopyWithImpl<$Res, $Val extends AuthFormEntity>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? pin = null,
     Object? fcmToken = freezed,
   }) {
     return _then(_value.copyWith(
@@ -65,6 +69,10 @@ class _$AuthFormEntityCopyWithImpl<$Res, $Val extends AuthFormEntity>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as ValidatorField<String>,
+      pin: null == pin
+          ? _value.pin
+          : pin // ignore: cast_nullable_to_non_nullable
               as ValidatorField<String>,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
@@ -88,6 +96,14 @@ class _$AuthFormEntityCopyWithImpl<$Res, $Val extends AuthFormEntity>
       return _then(_value.copyWith(password: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ValidatorFieldCopyWith<String, $Res> get pin {
+    return $ValidatorFieldCopyWith<String, $Res>(_value.pin, (value) {
+      return _then(_value.copyWith(pin: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -101,12 +117,15 @@ abstract class _$$AuthFormEntityImplCopyWith<$Res>
   $Res call(
       {ValidatorField<String> email,
       ValidatorField<String> password,
+      ValidatorField<String> pin,
       String? fcmToken});
 
   @override
   $ValidatorFieldCopyWith<String, $Res> get email;
   @override
   $ValidatorFieldCopyWith<String, $Res> get password;
+  @override
+  $ValidatorFieldCopyWith<String, $Res> get pin;
 }
 
 /// @nodoc
@@ -122,6 +141,7 @@ class __$$AuthFormEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? pin = null,
     Object? fcmToken = freezed,
   }) {
     return _then(_$AuthFormEntityImpl(
@@ -132,6 +152,10 @@ class __$$AuthFormEntityImplCopyWithImpl<$Res>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
+              as ValidatorField<String>,
+      pin: null == pin
+          ? _value.pin
+          : pin // ignore: cast_nullable_to_non_nullable
               as ValidatorField<String>,
       fcmToken: freezed == fcmToken
           ? _value.fcmToken
@@ -145,7 +169,10 @@ class __$$AuthFormEntityImplCopyWithImpl<$Res>
 
 class _$AuthFormEntityImpl extends _AuthFormEntity {
   const _$AuthFormEntityImpl(
-      {required this.email, required this.password, this.fcmToken})
+      {required this.email,
+      required this.password,
+      required this.pin,
+      this.fcmToken})
       : super._();
 
   @override
@@ -153,11 +180,13 @@ class _$AuthFormEntityImpl extends _AuthFormEntity {
   @override
   final ValidatorField<String> password;
   @override
+  final ValidatorField<String> pin;
+  @override
   final String? fcmToken;
 
   @override
   String toString() {
-    return 'AuthFormEntity(email: $email, password: $password, fcmToken: $fcmToken)';
+    return 'AuthFormEntity(email: $email, password: $password, pin: $pin, fcmToken: $fcmToken)';
   }
 
   @override
@@ -168,12 +197,13 @@ class _$AuthFormEntityImpl extends _AuthFormEntity {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
+            (identical(other.pin, pin) || other.pin == pin) &&
             (identical(other.fcmToken, fcmToken) ||
                 other.fcmToken == fcmToken));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, fcmToken);
+  int get hashCode => Object.hash(runtimeType, email, password, pin, fcmToken);
 
   @JsonKey(ignore: true)
   @override
@@ -187,6 +217,7 @@ abstract class _AuthFormEntity extends AuthFormEntity {
   const factory _AuthFormEntity(
       {required final ValidatorField<String> email,
       required final ValidatorField<String> password,
+      required final ValidatorField<String> pin,
       final String? fcmToken}) = _$AuthFormEntityImpl;
   const _AuthFormEntity._() : super._();
 
@@ -194,6 +225,8 @@ abstract class _AuthFormEntity extends AuthFormEntity {
   ValidatorField<String> get email;
   @override
   ValidatorField<String> get password;
+  @override
+  ValidatorField<String> get pin;
   @override
   String? get fcmToken;
   @override

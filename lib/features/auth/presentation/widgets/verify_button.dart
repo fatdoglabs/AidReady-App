@@ -13,8 +13,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/theme/styles.dart';
 
-class RegisterButton extends ConsumerWidget {
-  const RegisterButton({super.key});
+class VerifyButton extends ConsumerWidget {
+  const VerifyButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,20 +24,18 @@ class RegisterButton extends ConsumerWidget {
           context.snack((err as AppException).message);
         },
         data: (data) {
-          if (data.email.isNotEmpty) {
-            context.snack('You have logged in successfully.');
-            context.router.push(const VerifyOtpRoute());
-          }
+          context.snack('You have logged in successfully.');
+          context.router.push(const VerifyOtpRoute());
         },
       );
     });
 
     final form = ref.watch(emailOtpProvider);
-    if (!form.isRegisterValid) {
+    if (!form.isPinValid) {
       return ActionButton.disabled(
         child: Center(
           child: Text(
-            context.l10n.signUp,
+            context.l10n.verifyProceed,
             style: medium.copyWith(color: Colors.white),
           ).px(16.0),
         ),
@@ -47,7 +45,7 @@ class RegisterButton extends ConsumerWidget {
         return LoadingButton.primary(
           label: Center(
             child: Text(
-              context.l10n.signUp,
+              context.l10n.verifyProceed,
               style: medium.copyWith(color: Colors.white),
             ),
           ),
@@ -56,7 +54,7 @@ class RegisterButton extends ConsumerWidget {
         return ActionButton.primary(
           color: primary500,
           onPressed: () async {
-            ref.read(authProvider.notifier).signUp(form);
+            ref.read(authProvider.notifier).verify(form);
             // final status = await context.requestNotification();
             // if (status.authorizationStatus == AuthorizationStatus.authorized) {
             //   final token = await FirebaseMessaging.instance.getToken();
@@ -70,7 +68,7 @@ class RegisterButton extends ConsumerWidget {
           },
           child: Center(
             child: Text(
-              context.l10n.signUp,
+              context.l10n.verifyProceed,
               style: medium.copyWith(color: Colors.white),
             ).px(16.0),
           ),

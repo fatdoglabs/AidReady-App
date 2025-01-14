@@ -19,7 +19,7 @@ class ResendTimer extends StatefulWidget {
 
 class _ResendTimerState extends State<ResendTimer> {
   Timer? _timer;
-  int _start = 60;
+  int _start = 5;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _ResendTimerState extends State<ResendTimer> {
       onTap: _start == 0
           ? () {
               widget.onRetry?.call();
-              _start = 60;
+              _start = 5;
               startTimer();
             }
           : null,

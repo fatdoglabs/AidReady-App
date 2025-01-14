@@ -7,9 +7,9 @@ part 'auth_token.g.dart';
 class AuthToken with _$AuthToken {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory AuthToken({
-    required String accessToken,
-    required String refreshToken,
-    required int userId,
+    @Default("") String accessToken,
+    @Default("") String refreshToken,
+    required String email,
     @Default(false) bool isOnboardingComplete,
     @Default(false) bool isLocaleSet,
   }) = _AuthToken;
@@ -20,7 +20,7 @@ class AuthToken with _$AuthToken {
   factory AuthToken.unauthenticated(
           {bool isOnboardingComplete = false, bool isLocaleSet = false}) =>
       AuthToken(
-          userId: -1,
+          email: "",
           accessToken: "",
           refreshToken: "",
           isLocaleSet: isLocaleSet,

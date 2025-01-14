@@ -9,6 +9,9 @@ import '../entity/auth_form_entity.dart';
 abstract class AuthRepository {
   Future<Either<AuthToken, AppException>> login(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> signUp(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> verify(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> resend(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> googleLogin();
   Future<Either<AuthToken, AppException>> facebookLogin();
   Future<void> setLocale(LocaleOpts locale);

@@ -9,6 +9,9 @@ const String eNotifications = "/notification/list";
 const String eMarkAsRead = "/notification/mark-as-read";
 const String eLogin = "/auth/login";
 const String eRegister = "/auth/register";
+const String eForget = "/auth/forget-password";
+const String eVerify = "/auth/otp-verification";
+const String eResend = "/auth/otp-resend";
 const String eLogout = "/auth/logout";
 const String eDeleteAccount = "/account/delete";
 

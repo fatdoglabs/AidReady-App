@@ -5,10 +5,10 @@ import '../../../../core/domain/entity/field.dart';
 import '../../../../core/mixins/validation_mixin.dart';
 import '../../domain/entity/auth_form_entity.dart';
 
-part 'register_form_provider.g.dart';
+part 'email_otp_provider.g.dart';
 
 @riverpod
-class RegisterFormNotifier extends _$RegisterFormNotifier with ValidationMixin {
+class EmailOtp extends _$EmailOtp with ValidationMixin {
   @override
   AuthFormEntity build() => AuthFormEntity.empty();
 
@@ -32,4 +32,26 @@ class RegisterFormNotifier extends _$RegisterFormNotifier with ValidationMixin {
     }
     state = state.copyWith(email: idField);
   }
+
+  void setOtp(String pin) {
+    ValidatorField<String> pinField;
+    if (pin.trim().isNotNullNotEmpty) {
+      final form = state.copyWith(pin: ValidatorField(value: pin));
+      final bool isPinValid = validatePin(pin);
+
+      if (isPinValid) {
+        pinField = form.pin.copyWith(value: pin, isValid: true);
+      } else {
+        pinField = form.pin.copyWith(
+          value: pin,
+          isValid: false,
+        );
+      }
+    } else {
+      pinField =
+          state.pin.copyWith(value: '', isValid: false, errorMessage: null);
+    }
+    state = state.copyWith(pin: pinField);
+  }
+  
 }

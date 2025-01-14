@@ -22,7 +22,7 @@ AuthToken _$AuthTokenFromJson(Map<String, dynamic> json) {
 mixin _$AuthToken {
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
-  int get userId => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   bool get isOnboardingComplete => throw _privateConstructorUsedError;
   bool get isLocaleSet => throw _privateConstructorUsedError;
 
@@ -40,7 +40,7 @@ abstract class $AuthTokenCopyWith<$Res> {
   $Res call(
       {String accessToken,
       String refreshToken,
-      int userId,
+      String email,
       bool isOnboardingComplete,
       bool isLocaleSet});
 }
@@ -60,7 +60,7 @@ class _$AuthTokenCopyWithImpl<$Res, $Val extends AuthToken>
   $Res call({
     Object? accessToken = null,
     Object? refreshToken = null,
-    Object? userId = null,
+    Object? email = null,
     Object? isOnboardingComplete = null,
     Object? isLocaleSet = null,
   }) {
@@ -73,10 +73,10 @@ class _$AuthTokenCopyWithImpl<$Res, $Val extends AuthToken>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
       isOnboardingComplete: null == isOnboardingComplete
           ? _value.isOnboardingComplete
           : isOnboardingComplete // ignore: cast_nullable_to_non_nullable
@@ -100,7 +100,7 @@ abstract class _$$AuthTokenImplCopyWith<$Res>
   $Res call(
       {String accessToken,
       String refreshToken,
-      int userId,
+      String email,
       bool isOnboardingComplete,
       bool isLocaleSet});
 }
@@ -118,7 +118,7 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
   $Res call({
     Object? accessToken = null,
     Object? refreshToken = null,
-    Object? userId = null,
+    Object? email = null,
     Object? isOnboardingComplete = null,
     Object? isLocaleSet = null,
   }) {
@@ -131,10 +131,10 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
       isOnboardingComplete: null == isOnboardingComplete
           ? _value.isOnboardingComplete
           : isOnboardingComplete // ignore: cast_nullable_to_non_nullable
@@ -152,9 +152,9 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _$AuthTokenImpl implements _AuthToken {
   const _$AuthTokenImpl(
-      {required this.accessToken,
-      required this.refreshToken,
-      required this.userId,
+      {this.accessToken = "",
+      this.refreshToken = "",
+      required this.email,
       this.isOnboardingComplete = false,
       this.isLocaleSet = false});
 
@@ -162,11 +162,13 @@ class _$AuthTokenImpl implements _AuthToken {
       _$$AuthTokenImplFromJson(json);
 
   @override
+  @JsonKey()
   final String accessToken;
   @override
+  @JsonKey()
   final String refreshToken;
   @override
-  final int userId;
+  final String email;
   @override
   @JsonKey()
   final bool isOnboardingComplete;
@@ -176,7 +178,7 @@ class _$AuthTokenImpl implements _AuthToken {
 
   @override
   String toString() {
-    return 'AuthToken(accessToken: $accessToken, refreshToken: $refreshToken, userId: $userId, isOnboardingComplete: $isOnboardingComplete, isLocaleSet: $isLocaleSet)';
+    return 'AuthToken(accessToken: $accessToken, refreshToken: $refreshToken, email: $email, isOnboardingComplete: $isOnboardingComplete, isLocaleSet: $isLocaleSet)';
   }
 
   @override
@@ -188,7 +190,7 @@ class _$AuthTokenImpl implements _AuthToken {
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
                 other.refreshToken == refreshToken) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.isOnboardingComplete, isOnboardingComplete) ||
                 other.isOnboardingComplete == isOnboardingComplete) &&
             (identical(other.isLocaleSet, isLocaleSet) ||
@@ -197,8 +199,8 @@ class _$AuthTokenImpl implements _AuthToken {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, accessToken, refreshToken,
-      userId, isOnboardingComplete, isLocaleSet);
+  int get hashCode => Object.hash(runtimeType, accessToken, refreshToken, email,
+      isOnboardingComplete, isLocaleSet);
 
   @JsonKey(ignore: true)
   @override
@@ -216,9 +218,9 @@ class _$AuthTokenImpl implements _AuthToken {
 
 abstract class _AuthToken implements AuthToken {
   const factory _AuthToken(
-      {required final String accessToken,
-      required final String refreshToken,
-      required final int userId,
+      {final String accessToken,
+      final String refreshToken,
+      required final String email,
       final bool isOnboardingComplete,
       final bool isLocaleSet}) = _$AuthTokenImpl;
 
@@ -230,7 +232,7 @@ abstract class _AuthToken implements AuthToken {
   @override
   String get refreshToken;
   @override
-  int get userId;
+  String get email;
   @override
   bool get isOnboardingComplete;
   @override

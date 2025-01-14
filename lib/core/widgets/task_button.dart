@@ -4,45 +4,50 @@ import 'package:flutter_svg/svg.dart';
 
 import 'loading_button.dart';
 
-class TaskButton extends StatefulWidget {
+class TaskButton extends StatelessWidget {
   const TaskButton(
-      {super.key, required this.child, this.color, this.onPressed});
-  const TaskButton.secondary({super.key, required this.child, this.onPressed})
-      : color = null;
-  const TaskButton.icon(
-      {super.key, required this.child, this.onPressed, this.color});
+      {super.key,
+      required this.child,
+      this.color,
+      this.onPressed,
+      this.loading = false});
+  const TaskButton.secondary({
+    super.key,
+    required this.child,
+    this.onPressed,
+    this.loading = false,
+  }) : color = null;
+  const TaskButton.icon({
+    super.key,
+    required this.child,
+    this.onPressed,
+    this.color,
+    this.loading = false,
+  });
 
   final Widget child;
   final VoidCallback? onPressed;
   final Color? color;
+  final bool loading;
 
-  @override
-  State<TaskButton> createState() => _TaskButtonState();
-}
-
-class _TaskButtonState extends State<TaskButton> {
-  bool loading = false;
   @override
   Widget build(BuildContext context) {
-    if (widget.child is SvgPicture) {
+    if (child is SvgPicture) {
       if (loading) {
         return LoadingButton.icon(
-          color: widget.color,
+          color: color,
         );
       }
 
       return ActionButton.icon(
         onPressed: () async {
-          setState(() {
-            loading = !loading;
-          });
-          widget.onPressed?.call();
+          onPressed?.call();
         },
-        color: widget.color,
-        child: widget.child,
+        color: color,
+        child: child,
       );
     } else {
-      if (widget.color != null) {
+      if (color != null) {
         if (loading) {
           return const LoadingButton.primary(
             label: SizedBox.shrink(),
@@ -51,13 +56,10 @@ class _TaskButtonState extends State<TaskButton> {
 
         return ActionButton.primary(
           onPressed: () async {
-            setState(() {
-              loading = !loading;
-            });
-            widget.onPressed?.call();
+            onPressed?.call();
           },
-          color: widget.color,
-          child: widget.child,
+          color: color,
+          child: child,
         );
       } else {
         if (loading) {
@@ -66,12 +68,9 @@ class _TaskButtonState extends State<TaskButton> {
 
         return ActionButton.secondary(
           onPressed: () async {
-            setState(() {
-              loading = !loading;
-            });
-            widget.onPressed?.call();
+            onPressed?.call();
           },
-          child: widget.child,
+          child: child,
         );
       }
     }

@@ -23,6 +23,14 @@ mixin ValidationMixin {
     }
   }
 
+  bool validatePin(String value) {
+    if (value.length == 4) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   bool validateNotNull<T>(T value) {
     if (value != null) {
       return true;

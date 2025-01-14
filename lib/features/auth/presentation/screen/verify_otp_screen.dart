@@ -1,14 +1,12 @@
-import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/retryable_pin_field.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/verify_button.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/widgets/task_button.dart';
 
 @RoutePage()
 class VerifyOtpScreen extends StatelessWidget {
@@ -43,18 +41,7 @@ class VerifyOtpScreen extends StatelessWidget {
           30.verticalSpace,
           const RetryablePinField(),
           16.verticalSpace,
-          TaskButton(
-            color: primary500,
-            onPressed: () {
-              context.router.replace(const SetPasswordRoute());
-            },
-            child: Center(
-              child: Text(
-                context.l10n.verifyProceed,
-                style: medium.copyWith(color: Colors.white),
-              ),
-            ),
-          ),
+          const VerifyButton(),
           16.verticalSpace,
           RichText(
             textAlign: TextAlign.center,

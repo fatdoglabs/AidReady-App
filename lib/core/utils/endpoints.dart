@@ -12,6 +12,7 @@ const String eRegister = "/auth/register";
 const String eForget = "/auth/forget-password";
 const String eVerify = "/auth/otp-verification";
 const String eResend = "/auth/otp-resend";
+const String eSetPassword = "/auth/set-password";
 const String eLogout = "/auth/logout";
 const String eDeleteAccount = "/account/delete";
 

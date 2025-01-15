@@ -1,18 +1,15 @@
 import 'package:aid_ready/core/mixins/validation_mixin.dart';
-import 'package:aid_ready/core/routes/router.gr.dart';
-import 'package:aid_ready/core/theme/color.dart';
-import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/widgets/action_button.dart';
-import 'package:aid_ready/core/widgets/task_button.dart';
-import 'package:auto_route/auto_route.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/set_password_button.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/widgets/input_field.dart';
 
 class SetPasswordForm extends StatefulWidget {
-  const SetPasswordForm({super.key});
+  const SetPasswordForm({super.key, this.onSetPassword});
+
+  final Function(String)? onSetPassword;
 
   @override
   State<SetPasswordForm> createState() => _SetPasswordFormState();
@@ -33,38 +30,31 @@ class _SetPasswordFormState extends State<SetPasswordForm>
         InputField.password(
           label: context.l10n.createPassword.mandatory(),
           hint: context.l10n.enterNewPassword,
-          onChanged: (value) {},
+          onChanged: (value) {
+            setState(() {
+              password = value;
+            });
+          },
         ),
         16.verticalSpace,
         InputField.password(
           label: context.l10n.confirmPassword.mandatory(),
           hint: context.l10n.reEnterPassword,
-          onChanged: (value) {},
+          onChanged: (value) {
+            setState(() {
+              confimPassword = value;
+            });
+          },
         ),
         30.verticalSpace,
-        true
-            ? TaskButton(
-                color: primary500,
-                onPressed: () {
-                  context.router.replace(const CompleteProfileRoute());
-                  // context.router.replace(const ResetSuccessRoute());
-                },
-                child: Center(
-                  child: Text(
-                    context.l10n.confirm,
-                    style: medium.copyWith(color: Colors.white),
-                  ),
-                ),
-              )
-            : ActionButton.disabled(
-                color: primary400,
-                child: Center(
-                  child: Text(
-                    context.l10n.confirm,
-                    style: medium.copyWith(color: Colors.white),
-                  ),
-                ),
-              ),
+        SetPasswordButton(
+          isEnabled: password.isNotEmpty &&
+              confimPassword.isNotEmpty &&
+              password == confimPassword,
+          onPressed: () {
+            widget.onSetPassword?.call(password);
+          },
+        )
       ],
     );
   }

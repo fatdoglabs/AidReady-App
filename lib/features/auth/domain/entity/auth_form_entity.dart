@@ -9,6 +9,8 @@ class AuthFormEntity with _$AuthFormEntity {
     String? password,
     String? pin,
     String? fcmToken,
+    String? deviceId,
+    String? platform,
   }) = _AuthFormEntity;
 
   const AuthFormEntity._();
@@ -24,4 +26,11 @@ class AuthFormEntity with _$AuthFormEntity {
 
   Map<String, dynamic> toRegisterJson() => {'email': email};
   Map<String, dynamic> toVerifyJson() => {'email': email, 'otp': pin};
+  Map<String, dynamic> toSetPasswordJson() => {
+        'email': email,
+        'otp': pin,
+        'password': password,
+        'confirm_password': password,
+        'platform': platform
+      };
 }

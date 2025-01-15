@@ -37,20 +37,6 @@ class Auth extends _$Auth {
     });
   }
 
-  Future<void> signUp(AuthFormEntity authData) async {
-    state = const AsyncLoading();
-    final networkStatus = await ref
-        .read(networkStatusNotifierProvider.notifier)
-        .hasInternetAccess();
-    final repository = ref.read(authRepositoryProvider(networkStatus));
-    final result = await repository.signUp(authData);
-    result.fold((l) {
-      state = AsyncData(l);
-    }, (r) {
-      state = AsyncError(r, StackTrace.current);
-    });
-  }
-
   Future<void> reset(AuthFormEntity authData) async {
     state = const AsyncLoading();
     final networkStatus = await ref
@@ -58,6 +44,20 @@ class Auth extends _$Auth {
         .hasInternetAccess();
     final repository = ref.read(authRepositoryProvider(networkStatus));
     final result = await repository.reset(authData);
+    result.fold((l) {
+      state = AsyncData(l);
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
+  }
+
+  Future<void> setPassword(AuthFormEntity authData) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(authRepositoryProvider(networkStatus));
+    final result = await repository.setPassword(authData);
     result.fold((l) {
       state = AsyncData(l);
     }, (r) {

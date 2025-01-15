@@ -3,11 +3,14 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
+import 'package:aid_ready/features/auth/domain/entity/auth_form_entity.dart';
+import 'package:aid_ready/features/auth/presentation/providers/email_otp_provider.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/signup_form.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/social_login_options.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 @RoutePage()
 class SignUpScreen extends StatelessWidget {
@@ -48,7 +51,25 @@ class SignUpScreen extends StatelessWidget {
           15.verticalSpace,
           const SocalLoginOptions(),
           30.verticalSpace,
-          const SignUpForm(),
+          Consumer(builder: (_, ref, __) {
+            ref.listen(emailOtpProvider, (_, current) {
+              current.whenOrNull(
+                data: (data) {
+                  if (data.email.isNotEmpty) {
+                    context.router.push(VerifyOtpRoute(email: data.email));
+                  }
+                },
+              );
+            });
+
+            return SignUpForm(
+              onSignUp: (email) {
+                ref
+                    .read(emailOtpProvider.notifier)
+                    .signUp(AuthFormEntity(email: email));
+              },
+            );
+          }),
           Container(
             margin: const EdgeInsets.only(top: 30.0),
             child: Text(

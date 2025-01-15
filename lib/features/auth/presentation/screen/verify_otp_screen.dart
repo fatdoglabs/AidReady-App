@@ -44,7 +44,6 @@ class VerifyOtpScreen extends StatelessWidget {
             style: regular.copyWith(color: primaryDark400),
             textAlign: TextAlign.center,
           ),
-          30.verticalSpace,
           Consumer(builder: (_, ref, __) {
             ref.listen(emailOtpProvider, (_, current) {
               current.whenOrNull(
@@ -56,22 +55,25 @@ class VerifyOtpScreen extends StatelessWidget {
               );
             });
 
-            return RetryablePinField(
-              onRetry: () {
-                try {
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 20.0),
+              child: RetryablePinField(
+                onRetry: () {
+                  try {
+                    ref
+                        .read(emailOtpProvider.notifier)
+                        .resend(AuthFormEntity(email: email));
+                    context.snack('OTP sent successfully');
+                  } on AppException catch (e) {
+                    context.snack(e.message);
+                  }
+                },
+                onVerify: (pin) {
                   ref
                       .read(emailOtpProvider.notifier)
-                      .resend(AuthFormEntity(email: email));
-                  context.snack('OTP sent successfully');
-                } on AppException catch (e) {
-                  context.snack(e.message);
-                }
-              },
-              onVerify: (pin) {
-                ref
-                    .read(emailOtpProvider.notifier)
-                    .verify(AuthFormEntity(email: email, pin: pin));
-              },
+                      .verify(AuthFormEntity(email: email, pin: pin));
+                },
+              ),
             );
           }),
           RichText(

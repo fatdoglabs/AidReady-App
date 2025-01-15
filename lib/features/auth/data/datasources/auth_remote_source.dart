@@ -9,8 +9,9 @@ import 'package:dio/dio.dart';
 
 abstract class AuthRemoteSource {
   Future<Either<AuthToken, AppException>> login(AuthFormEntity authData);
-  Future<Either<AuthToken, AppException>> register(AuthFormEntity authData);
+  Future<Either<OtpToken, AppException>> register(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData);
+  Future<Either<AuthToken, AppException>> setPassword(AuthFormEntity authData);
   Future<Either<OtpToken, AppException>> verify(AuthFormEntity authData);
   Future<Either<OtpToken, AppException>> resend(AuthFormEntity authData);
   Future<Either<bool, AppException>> logout({CancelToken? token});
@@ -41,7 +42,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> register(
+  Future<Either<OtpToken, AppException>> register(
       AuthFormEntity authData) async {
     try {
       final response = await networkService.post(
@@ -50,7 +51,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
       );
       return response.fold((l) {
         final userData = l.data['data'] as Map<String, dynamic>;
-        return Left(AuthToken.fromJson(userData));
+        return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
           return Right(AppException.wrongCreds());
@@ -147,6 +148,28 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
       return response.fold((l) {
         return const Left(true);
       }, (r) {
+        return Right(r);
+      });
+    } on Error catch (_) {
+      return Right(AppException.badResponse());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> setPassword(
+      AuthFormEntity authData) async {
+    try {
+      final response = await networkService.post(
+        eSetPassword,
+        data: authData.toSetPasswordJson(),
+      );
+      return response.fold((l) {
+        final userData = l.data['data'] as Map<String, dynamic>;
+        return Left(AuthToken.fromJson(userData));
+      }, (r) {
+        if (r.statusCode == 422) {
+          return Right(AppException.wrongCreds());
+        }
         return Right(r);
       });
     } on Error catch (_) {

@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/resend_timer.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/verify_button.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +88,7 @@ class _RetryablePinFieldState extends State<RetryablePinField> {
             ),
           ],
         ),
+        10.verticalSpace,
         VerifyButton(
           isEnabled: pin.length == 4,
           onPressed: () {

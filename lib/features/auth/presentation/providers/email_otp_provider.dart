@@ -14,6 +14,20 @@ class EmailOtp extends _$EmailOtp {
     return OtpToken.unauthenticated();
   }
 
+  Future<void> signUp(AuthFormEntity authData) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(authRepositoryProvider(networkStatus));
+    final result = await repository.signUp(authData);
+    result.fold((l) {
+      state = AsyncData(l);
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
+  }
+
   Future<void> verify(AuthFormEntity authData) async {
     state = const AsyncLoading();
     final networkStatus = await ref

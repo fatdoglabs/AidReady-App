@@ -6,7 +6,7 @@ part of 'email_otp_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emailOtpHash() => r'a29baa81382a157faf57afc9b0a93b7871a34a07';
+String _$emailOtpHash() => r'4b4cfdcee5777f18780d02c6cb7425e06160c577';
 
 /// See also [EmailOtp].
 @ProviderFor(EmailOtp)

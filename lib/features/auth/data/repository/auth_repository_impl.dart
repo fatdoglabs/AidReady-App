@@ -43,10 +43,27 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> signUp(
-      AuthFormEntity authData) async {
+  Future<Either<OtpToken, AppException>> signUp(AuthFormEntity authData) async {
     if (status == NetworkStatus.isConnected) {
       final token = await remoteDataSource.register(authData);
+      return token.fold(
+        (l) {
+          //localSource.setAccessToken(l.accessToken);
+          //localSource.setRefreshToken(l.refreshToken);
+          //localSource.setUserId(l.userId);
+          return Left(l);
+        },
+        (r) => Right(r),
+      );
+    } else {
+      return Right(AppException.noInternet());
+    }
+  }
+
+  @override
+  Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData) async {
+    if (status == NetworkStatus.isConnected) {
+      final token = await remoteDataSource.reset(authData);
       return token.fold(
         (l) {
           localSource.setAccessToken(l.accessToken);
@@ -62,9 +79,9 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData) async {
+  Future<Either<AuthToken, AppException>> setPassword(AuthFormEntity authData) async {
     if (status == NetworkStatus.isConnected) {
-      final token = await remoteDataSource.reset(authData);
+      final token = await remoteDataSource.setPassword(authData);
       return token.fold(
         (l) {
           localSource.setAccessToken(l.accessToken);

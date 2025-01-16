@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/mixins/validation_mixin.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -16,7 +17,7 @@ class SignUpForm extends StatefulWidget {
   State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _SignUpFormState extends State<SignUpForm> {
+class _SignUpFormState extends State<SignUpForm> with ValidationMixin {
   String email = "";
 
   @override
@@ -52,7 +53,7 @@ class _SignUpFormState extends State<SignUpForm> {
         ),
         16.verticalSpace,
         RegisterButton(
-          isEnabled: email.isNotEmpty,
+          isEnabled: validateEmail(email),
           onPressed: () {
             widget.onSignUp?.call(email);
           },

@@ -4,16 +4,21 @@ import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
+import 'package:aid_ready/features/profile/domain/entity/profile_info.dart';
+import 'package:aid_ready/features/profile/domain/providers/profile_step_provider.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/blood_group_selector.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MedicalInfoView extends StatelessWidget {
+class MedicalInfoView extends ConsumerWidget {
   const MedicalInfoView({super.key, this.onNext});
 
   final VoidCallback? onNext;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final info =
+        ref.watch(profileStepProvider).whenOrNull() ?? ProfileInfo.empty();
     return Stack(
       children: [
         Column(
@@ -28,7 +33,7 @@ class MedicalInfoView extends StatelessWidget {
               children: [
                 SizedBox.square(
                     dimension: 24.0,
-                    child: Checkbox(value: false, onChanged: (_) {})),
+                    child: Checkbox(value: false, onChanged: (value) {})),
                 10.horizontalSpace,
                 Text(
                   context.l10n.dontKnowBloodType,

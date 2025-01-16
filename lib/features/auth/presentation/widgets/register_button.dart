@@ -19,6 +19,7 @@ class RegisterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!isEnabled) {
       return ActionButton.disabled(
+        color: primary400,
         child: Center(
           child: Text(
             context.l10n.signUp,

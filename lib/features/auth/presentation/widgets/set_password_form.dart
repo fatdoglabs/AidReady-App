@@ -48,8 +48,8 @@ class _SetPasswordFormState extends State<SetPasswordForm>
         ),
         30.verticalSpace,
         SetPasswordButton(
-          isEnabled: password.isNotEmpty &&
-              confimPassword.isNotEmpty &&
+          isEnabled: validatePassword(password) &&
+              validatePassword(confimPassword) &&
               password == confimPassword,
           onPressed: () {
             widget.onSetPassword?.call(password);

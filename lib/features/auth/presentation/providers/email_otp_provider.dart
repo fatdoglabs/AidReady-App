@@ -48,9 +48,19 @@ class EmailOtp extends _$EmailOtp {
         .hasInternetAccess();
     final repository = ref.read(authRepositoryProvider(networkStatus));
     final result = await repository.resend(authData);
-    result.fold((l) {
-      //state = AsyncData(l);
-    }, (r) {
+    result.fold((l) {}, (r) {
+      throw r;
+    });
+  }
+
+  Future<void> reset(AuthFormEntity authData) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(authRepositoryProvider(networkStatus));
+    final result = await repository.reset(authData);
+    result.fold((l) {}, (r) {
       throw r;
     });
   }

@@ -53,7 +53,6 @@ class LanguageSelectionScreen extends StatelessWidget {
         });
         return Stack(
           children: [
-          
             LanguageList(
               onEnglish: () {
                 ref
@@ -72,6 +71,10 @@ class LanguageSelectionScreen extends StatelessWidget {
               child: SizedBox(
                 height: context.h(48.0),
                 child: TaskButton(
+                  loading: ref.watch(onboardingProvider).whenOrNull(
+                            loading: () => true,
+                          ) ??
+                      false,
                   color: primary500,
                   onPressed: () {
                     ref.read(onboardingProvider.notifier).getOnBoardingItems();

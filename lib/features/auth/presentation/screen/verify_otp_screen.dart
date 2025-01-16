@@ -55,43 +55,54 @@ class VerifyOtpScreen extends StatelessWidget {
               );
             });
 
-            return Container(
-              margin: const EdgeInsets.symmetric(vertical: 20.0),
-              child: RetryablePinField(
-                onRetry: () {
-                  try {
+            return Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                RetryablePinField(
+                  onRetry: () {
+                    try {
+                      ref
+                          .read(emailOtpProvider.notifier)
+                          .resend(AuthFormEntity(email: email));
+                      context.snack('OTP sent successfully');
+                    } on AppException catch (e) {
+                      context.snack(e.message);
+                    }
+                  },
+                  onVerify: (pin) {
                     ref
                         .read(emailOtpProvider.notifier)
-                        .resend(AuthFormEntity(email: email));
-                    context.snack('OTP sent successfully');
-                  } on AppException catch (e) {
-                    context.snack(e.message);
-                  }
-                },
-                onVerify: (pin) {
-                  ref
-                      .read(emailOtpProvider.notifier)
-                      .verify(AuthFormEntity(email: email, pin: pin));
-                },
-              ),
+                        .verify(AuthFormEntity(email: email, pin: pin));
+                  },
+                ),
+                20.verticalSpace,
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style:
+                        regular.copyWith(fontSize: 12.0, color: primaryDark810),
+                    children: [
+                      TextSpan(text: context.l10n.didntRecieveOtp),
+                      TextSpan(
+                          text: context.l10n.resendOtp,
+                          style: semibold.copyWith(color: primary500),
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              try {
+                                ref
+                                    .read(emailOtpProvider.notifier)
+                                    .resend(AuthFormEntity(email: email));
+                                context.snack('OTP sent successfully');
+                              } on AppException catch (e) {
+                                context.snack(e.message);
+                              }
+                            }),
+                    ],
+                  ),
+                ),
+              ],
             );
           }),
-          RichText(
-            textAlign: TextAlign.center,
-            text: TextSpan(
-              style: regular.copyWith(fontSize: 12.0, color: primaryDark810),
-              children: [
-                TextSpan(text: context.l10n.didntRecieveOtp),
-                TextSpan(
-                    text: context.l10n.resendOtp,
-                    style: semibold.copyWith(color: primary500),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        context.router.maybePop();
-                      }),
-              ],
-            ),
-          ),
         ],
       ),
     );

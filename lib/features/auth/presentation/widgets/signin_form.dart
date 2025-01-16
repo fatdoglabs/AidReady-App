@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/mixins/validation_mixin.dart';
 import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
@@ -19,7 +20,7 @@ class SignInForm extends StatefulWidget {
   State<SignInForm> createState() => _SignInFormState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+class _SignInFormState extends State<SignInForm> with ValidationMixin {
   String email = "";
   String password = "";
 
@@ -63,7 +64,7 @@ class _SignInFormState extends State<SignInForm> {
         ),
         16.verticalSpace,
         LoginButton(
-          isEnabled: password.isNotEmpty && email.isNotEmpty,
+          isEnabled: validatePassword(password) && validateEmail(email),
           onPressed: () {
             widget.onLogin?.call(email, password);
           },

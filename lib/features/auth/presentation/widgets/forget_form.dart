@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/mixins/validation_mixin.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -16,7 +17,7 @@ class ForgetForm extends StatefulWidget {
   State<ForgetForm> createState() => _ForgetFormState();
 }
 
-class _ForgetFormState extends State<ForgetForm> {
+class _ForgetFormState extends State<ForgetForm> with ValidationMixin {
   String email = "";
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,7 @@ class _ForgetFormState extends State<ForgetForm> {
         ),
         16.verticalSpace,
         ResetButton(
-          isEnabled: email.isNotEmpty,
+          isEnabled: validateEmail(email),
           onPressed: () {
             widget.onReset?.call(email);
           },

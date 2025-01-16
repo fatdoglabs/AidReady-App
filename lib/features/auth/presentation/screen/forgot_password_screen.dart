@@ -3,10 +3,15 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
+import 'package:aid_ready/features/auth/presentation/providers/email_otp_provider.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/forget_form.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../../core/exceptions/app_exception.dart';
+import '../../domain/entity/auth_form_entity.dart';
 
 @RoutePage()
 class ForgotPasswordScreen extends StatelessWidget {
@@ -39,11 +44,20 @@ class ForgotPasswordScreen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           30.verticalSpace,
-          ForgetForm(
-            onReset: (email) {
-              context.router.push(VerifyOtpRoute(email: email));
-            },
-          ),
+          Consumer(builder: (_, ref, __) {
+            return ForgetForm(
+              onReset: (email) {
+                try {
+                  ref
+                      .read(emailOtpProvider.notifier)
+                      .reset(AuthFormEntity(email: email));
+                  context.router.push(VerifyOtpRoute(email: email));
+                } on AppException catch (e) {
+                  context.snack(e.message);
+                }
+              },
+            );
+          }),
           16.verticalSpace,
           RichText(
             textAlign: TextAlign.center,

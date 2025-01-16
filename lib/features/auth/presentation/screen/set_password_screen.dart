@@ -59,7 +59,8 @@ class SetPasswordScreen extends StatelessWidget {
                     ///Since Login Screen is one of the possible options, this check prevents the Dashboard screen from appearing unexpectedly
                     ///since we are listening to auth provider here again.
                     context.snack('You have logged in successfully.');
-                    context.router.replaceAll([const DashboardRoute()]);
+                    context.router.navigate(const AuthRoute());
+                    context.router.push(const CompleteProfileRoute());
                   }
                 },
               );

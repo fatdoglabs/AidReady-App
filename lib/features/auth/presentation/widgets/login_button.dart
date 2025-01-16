@@ -19,9 +19,10 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     if (!isEnabled) {
       return ActionButton.disabled(
+        color: primary400,
         child: Center(
           child: Text(
-            "disabled",
+            context.l10n.login,
             style: medium.copyWith(color: Colors.white),
           ).px(16.0),
         ),

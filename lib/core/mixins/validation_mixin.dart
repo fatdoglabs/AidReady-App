@@ -1,10 +1,8 @@
 mixin ValidationMixin {
   bool validateEmail(String email) {
-    if (email.isNotEmpty) {
-      return true;
-    } else {
-      return false;
-    }
+    final RegExp emailRegex =
+        RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+    return emailRegex.hasMatch(email);
   }
 
   bool validatePassword(String password) {

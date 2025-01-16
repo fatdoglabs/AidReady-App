@@ -1,4 +1,3 @@
-import 'package:aid_ready/core/domain/entity/field.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';

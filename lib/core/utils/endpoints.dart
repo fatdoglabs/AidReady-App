@@ -13,6 +13,9 @@ const String eForget = "/auth/forget-password";
 const String eVerify = "/auth/otp-verification";
 const String eResend = "/auth/otp-resend";
 const String eSetPassword = "/auth/set-password";
+const String ePersonalInfo = "/account/personal_info";
+const String ePhysicalInfo = "/account/physical_info";
+const String eMedicalInfo = "/account/medical_info";
 const String eLogout = "/auth/logout";
 const String eDeleteAccount = "/account/delete";
 

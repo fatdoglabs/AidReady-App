@@ -3,7 +3,7 @@ import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/core/widgets/task_button.dart';
-import 'package:aid_ready/features/profile/domain/providers/profile_step_provider.dart';
+import 'package:aid_ready/features/profile/domain/providers/profile_update_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -36,7 +36,7 @@ class NextStepButton extends StatelessWidget {
           ),
         ),
         builder: (_, ref, child) {
-          return ref.watch(profileStepProvider).maybeWhen(
+          return ref.watch(profileUpdateProvider).maybeWhen(
             orElse: () {
               return TaskButton(
                 color: primary500,

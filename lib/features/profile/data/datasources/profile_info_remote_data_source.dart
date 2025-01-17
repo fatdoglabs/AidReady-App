@@ -41,8 +41,10 @@ class ProfileInfoRemoteSourceImpl extends ProfileInfoRemoteSource {
   Future<Either<ProfileInfo, AppException>> updatePersonalInfo(
       ProfileInfo step1) async {
     try {
-      final response = await networkService.post(ePersonalInfo,
-          data: step1.toPersonalJson());
+      final response = await networkService.postForm(
+        ePersonalInfo,
+        data: await step1.toPersonalJson(),
+      );
       return response.fold((l) {
         final userData = l.data['data'] as Map<String, dynamic>;
         return Left(ProfileInfo.fromJson(userData));

@@ -5,7 +5,9 @@ import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:flutter/material.dart';
 
 class GenderGroup extends StatefulWidget {
-  const GenderGroup({super.key});
+  const GenderGroup({super.key, this.onChanged});
+
+  final Function(String)? onChanged;
 
   @override
   State<GenderGroup> createState() => _GenderGroupState();
@@ -24,6 +26,7 @@ class _GenderGroupState extends State<GenderGroup> {
             setState(() {
               _selected = 0;
             });
+            widget.onChanged?.call("male");
           },
           child: Container(
             decoration: BoxDecoration(
@@ -59,6 +62,7 @@ class _GenderGroupState extends State<GenderGroup> {
             setState(() {
               _selected = 1;
             });
+            widget.onChanged?.call("female");
           },
           child: Container(
             decoration: BoxDecoration(
@@ -94,6 +98,7 @@ class _GenderGroupState extends State<GenderGroup> {
             setState(() {
               _selected = 2;
             });
+            widget.onChanged?.call("others");
           },
           child: Container(
             decoration: BoxDecoration(

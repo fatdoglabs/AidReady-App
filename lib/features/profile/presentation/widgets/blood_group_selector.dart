@@ -4,7 +4,9 @@ import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:flutter/material.dart';
 
 class BloodGroupSelector extends StatefulWidget {
-  const BloodGroupSelector({super.key});
+  const BloodGroupSelector({super.key, this.onSelected});
+
+  final Function(String)? onSelected;
 
   @override
   State<BloodGroupSelector> createState() => _BloodGroupSelectorState();
@@ -34,6 +36,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = oPositive;
                   });
+                  widget.onSelected?.call(oPositive);
                 }
               },
               child: Container(
@@ -56,6 +59,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = oNegative;
                   });
+                  widget.onSelected?.call(oNegative);
                 }
               },
               child: Container(
@@ -78,6 +82,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = aNegative;
                   });
+                  widget.onSelected?.call(aNegative);
                 }
               },
               child: Container(
@@ -100,6 +105,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = aPositive;
                   });
+                  widget.onSelected?.call(aPositive);
                 }
               },
               child: Container(
@@ -121,6 +127,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = bNegative;
                   });
+                  widget.onSelected?.call(bNegative);
                 }
               },
               child: Container(
@@ -147,6 +154,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = bPositive;
                   });
+                  widget.onSelected?.call(bPositive);
                 }
               },
               child: Container(
@@ -169,6 +177,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = abPositive;
                   });
+                  widget.onSelected?.call(abPositive);
                 }
               },
               child: Container(
@@ -191,6 +200,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
                   setState(() {
                     bloodGroup = abNegative;
                   });
+                  widget.onSelected?.call(abNegative);
                 }
               },
               child: Container(

@@ -9,7 +9,6 @@ import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/option_modal.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/features/profile/domain/entity/image_source.dart';
-import 'package:aid_ready/features/profile/domain/entity/profile_info.dart';
 import 'package:aid_ready/features/profile/domain/providers/profile_step_provider.dart';
 import 'package:aid_ready/features/profile/domain/providers/profile_update_provider.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/profile_step_button.dart';
@@ -27,20 +26,21 @@ class PersonalInfoView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    bool isLoading = false;
-    ref.listen(
-        profileUpdateProvider,
-        (_, current) => current.maybeWhen(
-              orElse: () => isLoading = false,
-              loading: () => isLoading = true,
-              data: (data) {
-                onNext?.call();
-              },
-            ));
-    final step1 = ref.watch(profileStepProvider).whenOrNull(
-              data: (data) => data,
-            ) ??
-        ProfileInfo.empty();
+    final step1 = ref.watch(profileStepProvider);
+    ref.listen(profileUpdateProvider, (_, current) {
+      current.whenOrNull(
+        data: (data) {
+          if (data.pfpUrl.isNotNullNotEmpty &&
+              data.fullName.isNotNullNotEmpty) {
+            onNext?.call();
+          }
+        },
+      );
+    });
+    bool isLoading = ref.watch(profileUpdateProvider).maybeWhen(
+          orElse: () => false,
+          loading: () => true,
+        );
 
     return Stack(
       children: [
@@ -152,7 +152,9 @@ class PersonalInfoView extends ConsumerWidget {
             isLoading: isLoading,
             isEnabled: step1.pfpUrl.isNotEmpty && step1.fullName.isNotEmpty,
             onPressed: () {
-              ref.read(profileUpdateProvider.notifier).updatePersonalInfo();
+              ref
+                  .read(profileUpdateProvider.notifier)
+                  .updatePersonalInfo(ref.read(profileStepProvider));
             },
           ),
         ),

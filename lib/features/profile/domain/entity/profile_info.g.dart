@@ -14,7 +14,7 @@ _$ProfileInfoImpl _$$ProfileInfoImplFromJson(Map<String, dynamic> json) =>
       dob: json['dob'] as String?,
       weight: (json['weight'] as num?)?.toDouble(),
       bloodgroup: json['bloodgroup'] as String?,
-      dontKnowBloodType: json['dont_know_blood_type'] as bool? ?? false,
+      dontKnowBloodType: json['dont_know_blood_type'] as bool?,
     );
 
 Map<String, dynamic> _$$ProfileInfoImplToJson(_$ProfileInfoImpl instance) =>

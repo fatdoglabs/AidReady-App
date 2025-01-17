@@ -26,7 +26,7 @@ mixin _$ProfileInfo {
   String? get dob => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get bloodgroup => throw _privateConstructorUsedError;
-  bool get dontKnowBloodType => throw _privateConstructorUsedError;
+  bool? get dontKnowBloodType => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +47,7 @@ abstract class $ProfileInfoCopyWith<$Res> {
       String? dob,
       double? weight,
       String? bloodgroup,
-      bool dontKnowBloodType});
+      bool? dontKnowBloodType});
 }
 
 /// @nodoc
@@ -69,7 +69,7 @@ class _$ProfileInfoCopyWithImpl<$Res, $Val extends ProfileInfo>
     Object? dob = freezed,
     Object? weight = freezed,
     Object? bloodgroup = freezed,
-    Object? dontKnowBloodType = null,
+    Object? dontKnowBloodType = freezed,
   }) {
     return _then(_value.copyWith(
       pfpUrl: null == pfpUrl
@@ -96,10 +96,10 @@ class _$ProfileInfoCopyWithImpl<$Res, $Val extends ProfileInfo>
           ? _value.bloodgroup
           : bloodgroup // ignore: cast_nullable_to_non_nullable
               as String?,
-      dontKnowBloodType: null == dontKnowBloodType
+      dontKnowBloodType: freezed == dontKnowBloodType
           ? _value.dontKnowBloodType
           : dontKnowBloodType // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -119,7 +119,7 @@ abstract class _$$ProfileInfoImplCopyWith<$Res>
       String? dob,
       double? weight,
       String? bloodgroup,
-      bool dontKnowBloodType});
+      bool? dontKnowBloodType});
 }
 
 /// @nodoc
@@ -139,7 +139,7 @@ class __$$ProfileInfoImplCopyWithImpl<$Res>
     Object? dob = freezed,
     Object? weight = freezed,
     Object? bloodgroup = freezed,
-    Object? dontKnowBloodType = null,
+    Object? dontKnowBloodType = freezed,
   }) {
     return _then(_$ProfileInfoImpl(
       pfpUrl: null == pfpUrl
@@ -166,10 +166,10 @@ class __$$ProfileInfoImplCopyWithImpl<$Res>
           ? _value.bloodgroup
           : bloodgroup // ignore: cast_nullable_to_non_nullable
               as String?,
-      dontKnowBloodType: null == dontKnowBloodType
+      dontKnowBloodType: freezed == dontKnowBloodType
           ? _value.dontKnowBloodType
           : dontKnowBloodType // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
@@ -185,7 +185,7 @@ class _$ProfileInfoImpl extends _ProfileInfo {
       this.dob,
       this.weight,
       this.bloodgroup,
-      this.dontKnowBloodType = false})
+      this.dontKnowBloodType})
       : super._();
 
   factory _$ProfileInfoImpl.fromJson(Map<String, dynamic> json) =>
@@ -206,8 +206,7 @@ class _$ProfileInfoImpl extends _ProfileInfo {
   @override
   final String? bloodgroup;
   @override
-  @JsonKey()
-  final bool dontKnowBloodType;
+  final bool? dontKnowBloodType;
 
   @override
   String toString() {
@@ -258,7 +257,7 @@ abstract class _ProfileInfo extends ProfileInfo {
       final String? dob,
       final double? weight,
       final String? bloodgroup,
-      final bool dontKnowBloodType}) = _$ProfileInfoImpl;
+      final bool? dontKnowBloodType}) = _$ProfileInfoImpl;
   const _ProfileInfo._() : super._();
 
   factory _ProfileInfo.fromJson(Map<String, dynamic> json) =
@@ -277,7 +276,7 @@ abstract class _ProfileInfo extends ProfileInfo {
   @override
   String? get bloodgroup;
   @override
-  bool get dontKnowBloodType;
+  bool? get dontKnowBloodType;
   @override
   @JsonKey(ignore: true)
   _$$ProfileInfoImplCopyWith<_$ProfileInfoImpl> get copyWith =>

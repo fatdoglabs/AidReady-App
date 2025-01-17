@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'profile_info.freezed.dart';
@@ -13,7 +14,7 @@ class ProfileInfo with _$ProfileInfo {
       String? dob,
       double? weight,
       String? bloodgroup,
-      @Default(false) bool dontKnowBloodType}) = _ProfileInfo;
+      bool? dontKnowBloodType}) = _ProfileInfo;
 
   const ProfileInfo._();
 
@@ -21,10 +22,13 @@ class ProfileInfo with _$ProfileInfo {
       _$ProfileInfoFromJson(json);
 
   factory ProfileInfo.empty() => const ProfileInfo();
-  Map<String, dynamic> toPersonalJson() => {
-        'image': pfpUrl,
-        'name': fullName,
-      };
+  Future<FormData> toPersonalJson() async {
+    return FormData.fromMap({
+      "name": fullName,
+      "image": await MultipartFile.fromFile(pfpUrl, filename: "pfpimage.jpg")
+    });
+  }
+
   Map<String, dynamic> toPhysicalJson() => {
         'dob': dob,
         'weight': weight,

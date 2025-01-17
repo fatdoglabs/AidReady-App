@@ -13,11 +13,7 @@ class ProfileUpdate extends _$ProfileUpdate {
     return ProfileInfo.empty();
   }
 
-  Future<void> updatePersonalInfo() async {
-    final info = state.whenOrNull(
-          data: (data) => data,
-        ) ??
-        ProfileInfo.empty();
+  Future<void> updatePersonalInfo(ProfileInfo info) async {
     state = const AsyncLoading();
     final networkStatus = await ref
         .read(networkStatusNotifierProvider.notifier)
@@ -31,11 +27,7 @@ class ProfileUpdate extends _$ProfileUpdate {
     });
   }
 
-  Future<void> updatePhysicalInfo() async {
-    final info = state.whenOrNull(
-          data: (data) => data,
-        ) ??
-        ProfileInfo.empty();
+  Future<void> updatePhysicalInfo(ProfileInfo info) async {
     state = const AsyncLoading();
     final networkStatus = await ref
         .read(networkStatusNotifierProvider.notifier)
@@ -49,11 +41,7 @@ class ProfileUpdate extends _$ProfileUpdate {
     });
   }
 
-  Future<void> updateMedicalInfo(String imageUrl, String fullName) async {
-    final info = state.whenOrNull(
-          data: (data) => data,
-        ) ??
-        ProfileInfo.empty();
+  Future<void> updateMedicalInfo(ProfileInfo info) async {
     state = const AsyncLoading();
     final networkStatus = await ref
         .read(networkStatusNotifierProvider.notifier)

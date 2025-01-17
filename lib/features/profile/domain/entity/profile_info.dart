@@ -8,12 +8,12 @@ part 'profile_info.g.dart';
 class ProfileInfo with _$ProfileInfo {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory ProfileInfo(
-      {@Default("") String pfpUrl,
-      @Default("") String fullName,
+      {String? image,
+      String? name,
       String? gender,
       String? dob,
       double? weight,
-      String? bloodgroup,
+      String? bloodGroup,
       bool? dontKnowBloodType}) = _ProfileInfo;
 
   const ProfileInfo._();
@@ -24,8 +24,8 @@ class ProfileInfo with _$ProfileInfo {
   factory ProfileInfo.empty() => const ProfileInfo();
   Future<FormData> toPersonalJson() async {
     return FormData.fromMap({
-      "name": fullName,
-      "image": await MultipartFile.fromFile(pfpUrl, filename: "pfpimage.jpg")
+      "name": name,
+      "image": await MultipartFile.fromFile(image!, filename: "pfpimage.jpg")
     });
   }
 
@@ -35,6 +35,6 @@ class ProfileInfo with _$ProfileInfo {
         'gender': gender,
       };
   Map<String, dynamic> toMedicalJson() => {
-        'blood_group': bloodgroup,
+        'blood_group': bloodGroup,
       };
 }

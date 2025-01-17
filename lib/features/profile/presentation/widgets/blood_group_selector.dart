@@ -3,25 +3,21 @@ import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:flutter/material.dart';
 
-class BloodGroupSelector extends StatefulWidget {
-  const BloodGroupSelector({super.key, this.onSelected});
+const String oPositive = "O +";
+const String oNegative = "O -";
+const String aNegative = "A -";
+const String aPositive = "A +";
+const String bNegative = "B -";
+const String bPositive = "B +";
+const String abPositive = "AB +";
+const String abNegative = "AB -";
 
+class BloodGroupSelector extends StatelessWidget {
+  const BloodGroupSelector({super.key, this.bloodGroup, this.onSelected});
+
+  final String? bloodGroup;
   final Function(String)? onSelected;
 
-  @override
-  State<BloodGroupSelector> createState() => _BloodGroupSelectorState();
-}
-
-class _BloodGroupSelectorState extends State<BloodGroupSelector> {
-  String bloodGroup = "";
-  String oPositive = "O +";
-  String oNegative = "O -";
-  String aNegative = "A -";
-  String aPositive = "A +";
-  String bNegative = "B -";
-  String bPositive = "B +";
-  String abPositive = "AB +";
-  String abNegative = "AB -";
   @override
   Widget build(BuildContext context) {
     const chipPadding = EdgeInsets.symmetric(vertical: 6.0, horizontal: 18.0);
@@ -33,10 +29,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != oPositive) {
-                  setState(() {
-                    bloodGroup = oPositive;
-                  });
-                  widget.onSelected?.call(oPositive);
+                  onSelected?.call(oPositive);
                 }
               },
               child: Container(
@@ -56,10 +49,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != oNegative) {
-                  setState(() {
-                    bloodGroup = oNegative;
-                  });
-                  widget.onSelected?.call(oNegative);
+                  onSelected?.call(oNegative);
                 }
               },
               child: Container(
@@ -79,10 +69,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != aNegative) {
-                  setState(() {
-                    bloodGroup = aNegative;
-                  });
-                  widget.onSelected?.call(aNegative);
+                  onSelected?.call(aNegative);
                 }
               },
               child: Container(
@@ -102,10 +89,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != aPositive) {
-                  setState(() {
-                    bloodGroup = aPositive;
-                  });
-                  widget.onSelected?.call(aPositive);
+                  onSelected?.call(aPositive);
                 }
               },
               child: Container(
@@ -124,10 +108,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != bNegative) {
-                  setState(() {
-                    bloodGroup = bNegative;
-                  });
-                  widget.onSelected?.call(bNegative);
+                  onSelected?.call(bNegative);
                 }
               },
               child: Container(
@@ -151,10 +132,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != bPositive) {
-                  setState(() {
-                    bloodGroup = bPositive;
-                  });
-                  widget.onSelected?.call(bPositive);
+                  onSelected?.call(bPositive);
                 }
               },
               child: Container(
@@ -174,10 +152,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != abPositive) {
-                  setState(() {
-                    bloodGroup = abPositive;
-                  });
-                  widget.onSelected?.call(abPositive);
+                  onSelected?.call(abPositive);
                 }
               },
               child: Container(
@@ -197,10 +172,7 @@ class _BloodGroupSelectorState extends State<BloodGroupSelector> {
             GestureDetector(
               onTap: () {
                 if (bloodGroup != abNegative) {
-                  setState(() {
-                    bloodGroup = abNegative;
-                  });
-                  widget.onSelected?.call(abNegative);
+                  onSelected?.call(abNegative);
                 }
               },
               child: Container(

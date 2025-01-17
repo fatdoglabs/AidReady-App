@@ -4,6 +4,7 @@ import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/input_field.dart';
+import 'package:aid_ready/features/profile/domain/entity/gender.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/gender_group.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,6 +32,16 @@ class PhysicalInfoView extends ConsumerWidget {
           orElse: () => false,
           loading: () => true,
         );
+
+    Gender? gender;
+    switch (step2.gender) {
+      case "male":
+        gender = Gender.male;
+      case "female":
+        gender = Gender.female;
+      case "others":
+        gender = Gender.others;
+    }
     return Stack(
       children: [
         Column(
@@ -43,10 +54,11 @@ class PhysicalInfoView extends ConsumerWidget {
             ),
             10.verticalSpace,
             GenderGroup(
+              value: gender,
               onChanged: (gender) {
                 ref
                     .read(profileStepProvider.notifier)
-                    .updateProfile(gender: gender);
+                    .updateProfile(gender: gender.label.toLowerCase());
               },
             ),
             30.verticalSpace,
@@ -78,7 +90,8 @@ class PhysicalInfoView extends ConsumerWidget {
             isLoading: isLoading,
             isEnabled: step2.gender.isNotNullNotEmpty &&
                 step2.dob.isNotNullNotEmpty &&
-                step2.weight != null,
+                step2.weight != null &&
+                step2.weight != 0.0,
             onPressed: () {
               ref
                   .read(profileUpdateProvider.notifier)

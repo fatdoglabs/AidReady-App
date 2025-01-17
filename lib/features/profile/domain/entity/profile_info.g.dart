@@ -8,22 +8,22 @@ part of 'profile_info.dart';
 
 _$ProfileInfoImpl _$$ProfileInfoImplFromJson(Map<String, dynamic> json) =>
     _$ProfileInfoImpl(
-      pfpUrl: json['pfp_url'] as String? ?? "",
-      fullName: json['full_name'] as String? ?? "",
+      image: json['image'] as String?,
+      name: json['name'] as String?,
       gender: json['gender'] as String?,
       dob: json['dob'] as String?,
       weight: (json['weight'] as num?)?.toDouble(),
-      bloodgroup: json['bloodgroup'] as String?,
+      bloodGroup: json['blood_group'] as String?,
       dontKnowBloodType: json['dont_know_blood_type'] as bool?,
     );
 
 Map<String, dynamic> _$$ProfileInfoImplToJson(_$ProfileInfoImpl instance) =>
     <String, dynamic>{
-      'pfp_url': instance.pfpUrl,
-      'full_name': instance.fullName,
+      'image': instance.image,
+      'name': instance.name,
       'gender': instance.gender,
       'dob': instance.dob,
       'weight': instance.weight,
-      'bloodgroup': instance.bloodgroup,
+      'blood_group': instance.bloodGroup,
       'dont_know_blood_type': instance.dontKnowBloodType,
     };

@@ -30,8 +30,7 @@ class PersonalInfoView extends ConsumerWidget {
     ref.listen(profileUpdateProvider, (_, current) {
       current.whenOrNull(
         data: (data) {
-          if (data.pfpUrl.isNotNullNotEmpty &&
-              data.fullName.isNotNullNotEmpty) {
+          if (data.image.isNotNullNotEmpty && data.name.isNotNullNotEmpty) {
             onNext?.call();
           }
         },
@@ -115,13 +114,13 @@ class PersonalInfoView extends ConsumerWidget {
                     shape: BoxShape.circle,
                     color: primaryDark50,
                     border: Border.all(color: primaryDark100),
-                    image: step1.pfpUrl.isNotNullNotEmpty
+                    image: step1.image.isNotNullNotEmpty
                         ? DecorationImage(
                             fit: BoxFit.cover,
-                            image: FileImage(File(step1.pfpUrl)))
+                            image: FileImage(File(step1.image!)))
                         : null),
                 alignment: Alignment.center,
-                child: step1.pfpUrl.isNullOrEmpty
+                child: step1.image.isNullOrEmpty
                     ? const PictureView(
                         imageUri: addPictureIcon,
                       )
@@ -150,7 +149,8 @@ class PersonalInfoView extends ConsumerWidget {
           alignment: Alignment.bottomCenter,
           child: ProfileSetupButton(
             isLoading: isLoading,
-            isEnabled: step1.pfpUrl.isNotEmpty && step1.fullName.isNotEmpty,
+            isEnabled:
+                step1.image.isNotNullNotEmpty && step1.name.isNotNullNotEmpty,
             onPressed: () {
               ref
                   .read(profileUpdateProvider.notifier)

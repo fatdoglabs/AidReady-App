@@ -2,19 +2,14 @@ import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
+import 'package:aid_ready/features/profile/domain/entity/gender.dart';
 import 'package:flutter/material.dart';
 
-class GenderGroup extends StatefulWidget {
-  const GenderGroup({super.key, this.onChanged});
+class GenderGroup extends StatelessWidget {
+  const GenderGroup({super.key, this.value, this.onChanged});
 
-  final Function(String)? onChanged;
-
-  @override
-  State<GenderGroup> createState() => _GenderGroupState();
-}
-
-class _GenderGroupState extends State<GenderGroup> {
-  int _selected = -1;
+  final Gender? value;
+  final Function(Gender)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +18,7 @@ class _GenderGroupState extends State<GenderGroup> {
       children: [
         GestureDetector(
           onTap: () {
-            setState(() {
-              _selected = 0;
-            });
-            widget.onChanged?.call("male");
+            onChanged?.call(Gender.male);
           },
           child: Container(
             decoration: BoxDecoration(
@@ -39,11 +31,9 @@ class _GenderGroupState extends State<GenderGroup> {
                   dimension: 24.0,
                   child: Radio(
                     activeColor: primary500,
-                    value: _selected == 0,
+                    value: value == Gender.male,
                     onChanged: (value) {
-                      setState(() {
-                        _selected = 0;
-                      });
+                      onChanged?.call(Gender.male);
                     },
                     groupValue: true,
                   ),
@@ -59,10 +49,7 @@ class _GenderGroupState extends State<GenderGroup> {
         ),
         GestureDetector(
           onTap: () {
-            setState(() {
-              _selected = 1;
-            });
-            widget.onChanged?.call("female");
+            onChanged?.call(Gender.female);
           },
           child: Container(
             decoration: BoxDecoration(
@@ -75,12 +62,8 @@ class _GenderGroupState extends State<GenderGroup> {
                   dimension: 24.0,
                   child: Radio(
                     activeColor: primary500,
-                    value: _selected == 1,
-                    onChanged: (value) {
-                      setState(() {
-                        _selected = 1;
-                      });
-                    },
+                    value: value == Gender.female,
+                    onChanged: (value) {},
                     groupValue: true,
                   ),
                 ),
@@ -95,10 +78,7 @@ class _GenderGroupState extends State<GenderGroup> {
         ),
         GestureDetector(
           onTap: () {
-            setState(() {
-              _selected = 2;
-            });
-            widget.onChanged?.call("others");
+            onChanged?.call(Gender.others);
           },
           child: Container(
             decoration: BoxDecoration(
@@ -110,12 +90,8 @@ class _GenderGroupState extends State<GenderGroup> {
                   dimension: 24.0,
                   child: Radio(
                     activeColor: primary500,
-                    value: _selected == 2,
-                    onChanged: (value) {
-                      setState(() {
-                        _selected = 2;
-                      });
-                    },
+                    value: value == Gender.others,
+                    onChanged: (value) {},
                     groupValue: true,
                   ),
                 ),

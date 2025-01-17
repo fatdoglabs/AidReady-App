@@ -3,7 +3,6 @@ import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
-import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/features/profile/domain/providers/profile_step_provider.dart';
 import 'package:aid_ready/features/profile/presentation/widgets/blood_group_selector.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class MedicalInfoView extends ConsumerWidget {
     ref.listen(profileUpdateProvider, (_, current) {
       current.whenOrNull(
         data: (data) {
-          //onNext?.call();
+          onNext?.call();
         },
       );
     });
@@ -40,30 +39,38 @@ class MedicalInfoView extends ConsumerWidget {
             context.l10n.bloodGroup.mandatory(),
             16.verticalSpace,
             BloodGroupSelector(
+              bloodGroup: step3.bloodGroup,
               onSelected: (group) {
-                ref
-                    .read(profileStepProvider.notifier)
-                    .updateProfile(bloodgroup: group);
+                ref.read(profileStepProvider.notifier).selectBloodGroup(group);
               },
             ),
             16.verticalSpace,
-            Row(
-              children: [
-                SizedBox.square(
-                    dimension: 24.0,
-                    child: Checkbox(
-                        value: step3.dontKnowBloodType,
-                        onChanged: (value) {
-                          ref
+            GestureDetector(
+              onTap: () {
+                ref.read(profileStepProvider.notifier).dontKnowType();
+              },
+              child: Row(
+                children: [
+                  SizedBox.square(
+                      dimension: 24.0,
+                      child: Checkbox(
+                          activeColor: primary500,
+                          value: step3.bloodGroup == null,
+                          tristate: ref
                               .read(profileStepProvider.notifier)
-                              .updateProfile(bloodgroup: null);
-                        })),
-                10.horizontalSpace,
-                Text(
-                  context.l10n.dontKnowBloodType,
-                  style: regular.copyWith(color: secondary950),
-                )
-              ],
+                              .hasUserProvidedMedicalInfo(),
+                          onChanged: (value) {
+                            ref
+                                .read(profileStepProvider.notifier)
+                                .dontKnowType();
+                          })),
+                  10.horizontalSpace,
+                  Text(
+                    context.l10n.dontKnowBloodType,
+                    style: regular.copyWith(color: secondary950),
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -72,12 +79,12 @@ class MedicalInfoView extends ConsumerWidget {
           alignment: Alignment.bottomCenter,
           child: ProfileSetupButton(
             isLoading: isLoading,
-            isEnabled: step3.bloodgroup.isNotNullNotEmpty ||
+            isEnabled: step3.bloodGroup.isNotNullNotEmpty ||
                 step3.dontKnowBloodType != null,
             onPressed: () {
               ref
                   .read(profileUpdateProvider.notifier)
-                  .updatePhysicalInfo(ref.read(profileStepProvider));
+                  .updateMedicalInfo(ref.read(profileStepProvider));
             },
           ),
         ),

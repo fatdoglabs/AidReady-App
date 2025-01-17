@@ -15,17 +15,29 @@ class ProfileStep extends _$ProfileStep {
       String? name,
       String? gender,
       String? dob,
-      double? weight,
-      String? bloodgroup,
-      bool? dontKnow}) {
+      double? weight}) {
     ProfileInfo info = state;
     state = info.copyWith(
-        pfpUrl: imageUri ?? info.pfpUrl,
-        fullName: name ?? info.fullName,
-        gender: gender ?? info.gender,
-        dob: dob ?? info.dob,
-        weight: weight ?? info.weight,
-        bloodgroup: bloodgroup ?? info.bloodgroup,
-        dontKnowBloodType: dontKnow ?? info.dontKnowBloodType);
+      image: imageUri ?? info.image,
+      name: name ?? info.name,
+      gender: gender ?? info.gender,
+      dob: dob ?? info.dob,
+      weight: weight ?? info.weight,
+    );
+  }
+
+  void selectBloodGroup(String bloodGroup) {
+    state = state.copyWith(bloodGroup: bloodGroup, dontKnowBloodType: false);
+  }
+
+  void dontKnowType() {
+    if (state.dontKnowBloodType != null && state.dontKnowBloodType == true) {
+      return;
+    }
+    state = state.copyWith(bloodGroup: null, dontKnowBloodType: true);
+  }
+
+  bool hasUserProvidedMedicalInfo() {
+    return state.dontKnowBloodType == null && state.bloodGroup == null;
   }
 }

@@ -24,7 +24,7 @@ class AuthInterceptor extends InterceptorsWrapper {
 
         final dio = Dio(
           BaseOptions(
-            baseUrl: "eBaseUrl",
+            baseUrl: eBaseUrl,
             headers: {
               'Authorization': 'Bearer $refreshToken',
             },

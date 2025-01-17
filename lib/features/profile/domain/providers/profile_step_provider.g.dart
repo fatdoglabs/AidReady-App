@@ -6,7 +6,7 @@ part of 'profile_step_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$profileStepHash() => r'421c074c787dc3db8dc76430a88b8d8d7815af4b';
+String _$profileStepHash() => r'c2b143bc5e44335b97e3674bd0959d864fd3b8eb';
 
 /// See also [ProfileStep].
 @ProviderFor(ProfileStep)

@@ -7,6 +7,7 @@ class AidRouter extends $AidRouter {
   List<AutoRoute> get routes => [
         AutoRoute(
           page: LanguageSelectionRoute.page,
+          initial: true,
         ),
         AutoRoute(page: DashboardRoute.page, children: [
           AutoRoute(
@@ -50,7 +51,6 @@ class AidRouter extends $AidRouter {
         ),
         AutoRoute(
           page: CompleteProfileRoute.page,
-          initial: true,
         ),
         AutoRoute(
           page: AuthRoute.page,

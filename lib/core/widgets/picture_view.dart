@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -60,9 +62,10 @@ class PictureView extends StatelessWidget {
             placeholder: (context, url) => const _PlaceHolder(),
           );
         }
+      } else {
+        return Image.file(File(imageUri!));
       }
     }
-    return const _PlaceHolder();
   }
 }
 
@@ -72,7 +75,7 @@ class _PlaceHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      placeholder,
+      addPictureIcon,
     );
   }
 }

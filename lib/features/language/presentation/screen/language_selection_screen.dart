@@ -89,7 +89,7 @@ class LanguageSelectionScreen extends StatelessWidget {
               ),
             ),
           ],
-        ).px(16.0);
+        ).px(24.0);
       }),
     );
   }

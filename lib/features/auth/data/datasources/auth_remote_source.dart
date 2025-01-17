@@ -92,7 +92,8 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         data: authData.toVerifyJson(),
       );
       return response.fold((l) {
-        final userData = l.data['data'] as Map<String, dynamic>;
+        Map<String, dynamic> userData = l.data['data'] as Map<String, dynamic>;
+        userData["otp"] = authData.pin;
         return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {

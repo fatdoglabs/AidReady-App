@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
@@ -7,20 +9,26 @@ import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/option_modal.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/features/profile/domain/entity/image_source.dart';
+import 'package:aid_ready/features/profile/domain/providers/profile_step_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/widgets/action_button.dart';
 import '../../../../core/widgets/input_field.dart';
 
-class PersonalInfoView extends StatelessWidget {
+class PersonalInfoView extends ConsumerWidget {
   const PersonalInfoView({super.key, this.onNext});
 
   final VoidCallback? onNext;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(profileStepProvider);
+    final pfpImage = ref.read(profileStepProvider).whenOrNull(
+          data: (data) => data.pfpUrl,
+        );
     return Stack(
       children: [
         Column(
@@ -34,7 +42,7 @@ class PersonalInfoView extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0)),
                   builder: (_) => OptionModal<ImageSrc>(
-                    title: "Choose image from",
+                    title: context.l10n.chooseImageFrom,
                     items: const [ImageSrc.camera, ImageSrc.gallery],
                     itemBuilder: (src) {
                       return GestureDetector(
@@ -83,6 +91,9 @@ class PersonalInfoView extends StatelessWidget {
                       ),
                     ],
                   );
+                  ref
+                      .read(profileStepProvider.notifier)
+                      .updateProfile(imageUri: croppedFile!.path);
                 }
               },
               child: Container(
@@ -91,11 +102,18 @@ class PersonalInfoView extends StatelessWidget {
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: primaryDark50,
-                    border: Border.all(color: primaryDark100)),
+                    border: Border.all(color: primaryDark100),
+                    image: pfpImage.isNotNullNotEmpty
+                        ? DecorationImage(
+                            fit: BoxFit.cover,
+                            image: FileImage(File(pfpImage!)))
+                        : null),
                 alignment: Alignment.center,
-                child: const PictureView(
-                  imageUri: addPictureIcon,
-                ),
+                child: pfpImage.isNullOrEmpty
+                    ? const PictureView(
+                        imageUri: addPictureIcon,
+                      )
+                    : null,
               ),
             ),
             5.verticalSpace,

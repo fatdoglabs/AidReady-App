@@ -8,6 +8,7 @@ import 'package:aid_ready/core/widgets/option_modal.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/features/profile/domain/entity/image_source.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/widgets/action_button.dart';
@@ -50,16 +51,38 @@ class PersonalInfoView extends StatelessWidget {
                 );
 
                 if (src != null) {
+                  XFile? file;
                   switch (src) {
                     case ImageSrc.camera:
-                      final file =
-                          _picker.pickImage(source: ImageSource.camera);
+                      file =
+                          await _picker.pickImage(source: ImageSource.camera);
                       break;
                     case ImageSrc.gallery:
-                      final file =
-                          _picker.pickImage(source: ImageSource.gallery);
+                      file =
+                          await _picker.pickImage(source: ImageSource.gallery);
                       break;
                   }
+                  final croppedFile = await ImageCropper().cropImage(
+                    sourcePath: file!.path,
+                    uiSettings: [
+                      AndroidUiSettings(
+                        toolbarTitle: 'Cropper',
+                        toolbarColor: primary500,
+                        toolbarWidgetColor: Colors.white,
+                        aspectRatioPresets: [
+                          CropAspectRatioPreset.original,
+                          CropAspectRatioPreset.square,
+                        ],
+                      ),
+                      IOSUiSettings(
+                        title: 'Cropper',
+                        aspectRatioPresets: [
+                          CropAspectRatioPreset.original,
+                          CropAspectRatioPreset.square,
+                        ],
+                      ),
+                    ],
+                  );
                 }
               },
               child: Container(

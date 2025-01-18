@@ -7,7 +7,7 @@ import 'package:aid_ready/core/widgets/label.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/widgets/user_avatar.dart';
+import '../../../../../core/widgets/user_avatar.dart';
 
 class FamilyListItem extends StatelessWidget {
   const FamilyListItem({super.key});

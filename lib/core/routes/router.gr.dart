@@ -22,9 +22,8 @@ import 'package:aid_ready/features/auth/presentation/screen/signup_screen.dart'
     as _i12;
 import 'package:aid_ready/features/auth/presentation/screen/verify_otp_screen.dart'
     as _i13;
-import 'package:aid_ready/features/dashboard/presentation/screen/dashboard_screen.dart'
-    as _i3;
-import 'package:aid_ready/features/dashboard/presentation/screen/family_screen.dart'
+import 'package:aid_ready/features/dashboard/dashboard_screen.dart' as _i3;
+import 'package:aid_ready/features/dashboard/family/presentation/screen/family_screen.dart'
     as _i4;
 import 'package:aid_ready/features/dashboard/presentation/screen/home_screen.dart'
     as _i6;

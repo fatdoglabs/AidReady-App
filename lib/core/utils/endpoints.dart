@@ -19,22 +19,8 @@ const String eMedicalInfo = "/account/medical_info";
 const String eLogout = "/auth/logout";
 const String eDeleteAccount = "/account/delete";
 
-const String eCredits = "/wallet/listcredit";
+const String eFamilyList = "/familymember/list";
 const String eWithdrawls = "/wallet/listwithdrawl";
 const String eUpcomingAppointments = "/appointment/upcoming";
 const String eCompletedAppointments = "/appointment/completed";
 const String eTimeline = "/timeline/list";
-
-const String eChatHistory = "/question/list";
-const String eSendChat = "/question/store";
-const String eFaq = "/faq/list";
-const String eTermsConditions = "/page/terms-and-conditions";
-const String ePrivacyPolicy = "/page/privacy-policy";
-const String eArticleDetail = "/trial_article/detail";
-
-const String eLogbook = "/logbook/list";
-const String eVitalStore = "/vital_form/store";
-const String eVisitStore = "/clinic_visit/store";
-const String eCheckValidity = "/logbook/check-data";
-const String eDeleteVisit = "/clinic_visit/delete";
-const String eDeleteVital = "/vital_form/delete";

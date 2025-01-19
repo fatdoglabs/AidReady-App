@@ -6,6 +6,11 @@ class AidRouter extends $AidRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(
+          page: SplashRoute.page,
+          keepHistory: false,
+          initial: true,
+        ),
+        AutoRoute(
           page: LanguageSelectionRoute.page,
         ),
         AutoRoute(page: DashboardRoute.page, children: [
@@ -38,7 +43,6 @@ class AidRouter extends $AidRouter {
         ),
         AutoRoute(
           page: SetPasswordRoute.page,
-          initial: true,
         ),
         AutoRoute(
           page: ResetSuccessRoute.page,

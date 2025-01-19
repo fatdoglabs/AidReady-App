@@ -79,6 +79,7 @@ flutter:
     - assets/icons/
     - assets/images/page_reset.jpg
     - assets/images/page_auth.png
+    - assets/images/splash_logo.png
   fonts:
     - family: RalewayBold
       fonts:

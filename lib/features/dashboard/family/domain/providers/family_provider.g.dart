@@ -6,7 +6,7 @@ part of 'family_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$familyHash() => r'1ac6c234ff23cddea148140a1b982261951a46bb';
+String _$familyHash() => r'617ad315d1bae1a793005ccf109f1bd7637fe4e4';
 
 /// See also [Family].
 @ProviderFor(Family)

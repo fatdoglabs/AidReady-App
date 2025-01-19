@@ -1,3 +1,4 @@
+const String appLogo = "assets/images/splash_logo.png";
 const String placeholder = "assets/icons/placeholder.svg";
 const String facebookIcon = 'assets/icons/facebook.svg';
 const String googleIcon = 'assets/icons/google.svg';

@@ -41,7 +41,11 @@ class PictureView extends StatelessWidget {
             },
           );
         } else {
-          return Image(image: AssetImage(imageUri!));
+          return Image(
+            image: AssetImage(imageUri!),
+            width: width,
+            height: height,
+          );
         }
       } else if (imageUri!.startsWith("http")) {
         if (imageUri!.endsWith("svg")) {

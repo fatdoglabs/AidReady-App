@@ -7,6 +7,7 @@
   "login": "Login",
   "loginNow": "Login Now",
   "skip": "Skip",
+  "save": "Save",
   "resend": "Resend",
   "confirm": "Confirm",
   "note": "Note",
@@ -77,5 +78,11 @@
   "newsUpdates":"News and Updates",
   "chooseImageFrom":"Choose image from",
   "postBloodRequestMessage": "Need blood urgently? Post a request and connect with donors nearby.",
+  "addfamilyMember": "Add New Family Member",
+  "addProfilePicture": "Add a profile picture",
+  "relation": "Relation",
+  "selectRelation": "Select Relation",
+  "selectOneRelation": "Select any one relation",
+  "defineRelation": "Define your relation",
   "genericerr": "Something went wrong. Please try again later."
 }

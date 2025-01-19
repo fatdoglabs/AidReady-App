@@ -20,7 +20,7 @@ const String eLogout = "/auth/logout";
 const String eDeleteAccount = "/account/delete";
 
 const String eFamilyList = "/familymember/list";
-const String eWithdrawls = "/wallet/listwithdrawl";
+const String eAddMember = "/familymember/store";
 const String eUpcomingAppointments = "/appointment/upcoming";
 const String eCompletedAppointments = "/appointment/completed";
 const String eTimeline = "/timeline/list";

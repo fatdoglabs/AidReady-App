@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -12,16 +13,32 @@ class FamilyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
+      child: Stack(
         children: [
-          SizedBox(
-            height: kToolbarHeight,
-            child: Text(
-              context.l10n.myFamily,
-              style: bold.copyWith(color: primaryDark950),
-            ),
+          Column(
+            children: [
+              SizedBox(
+                height: kToolbarHeight,
+                child: Text(
+                  context.l10n.myFamily,
+                  style: bold.copyWith(color: primaryDark950),
+                ),
+              ),
+              const Expanded(child: FamilyList())
+            ],
           ),
-          const Expanded(child: FamilyList())
+          Container(
+              padding: const EdgeInsets.only(
+                  bottom: kToolbarHeight + 24.0, right: 20.0),
+              alignment: Alignment.bottomRight,
+              child: FloatingActionButton(
+                backgroundColor: primary500,
+                shape: const CircleBorder(),
+                elevation: 0.0,
+                onPressed: () {
+                  context.router.push(const AddMemberRoute());
+                },
+              ))
         ],
       ),
     );

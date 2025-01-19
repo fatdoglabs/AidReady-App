@@ -105,7 +105,7 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
         TextFormField(
           maxLines: widget.maxLines,
           readOnly: widget.readOnly ?? false,
-          //cursorColor: primaryGreen,
+          style: semibold.copyWith(color: primaryDark700),
           controller: _inputController,
           obscureText: obscureText,
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -131,27 +131,10 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
               borderRadius: BorderRadius.circular(8.0),
             ),
             prefixIconConstraints: BoxConstraints.tight(const Size(42.0, 42.0)),
-            suffixIconConstraints: BoxConstraints.tight(const Size(32.0, 32.0)),
-            suffixIcon: GestureDetector(
-              onTap: () {
-                if (obscureText) {
-                  if (_inputController!.text.isNotEmpty) {
-                    setState(() {
-                      suffixIcon = SvgPicture.asset(passwordToggleOnIcon);
-                      obscureText = false;
-                    });
-                  }
-                } else {
-                  if (_inputController!.text.isNotEmpty) {
-                    setState(() {
-                      suffixIcon = SvgPicture.asset(passwordToggleOffIcon);
-                      obscureText = true;
-                    });
-                  }
-                }
-              },
-              child: suffixIcon,
-            ).pOnly(right: 10),
+            suffixIconConstraints: suffixIcon is SvgPicture
+                ? BoxConstraints.tight(const Size(32.0, 32.0))
+                : null,
+            suffixIcon: getSuffixWidget(),
           ),
           inputFormatters: widget.formatters,
           onTap: widget.onTap,
@@ -175,6 +158,38 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
         //     : const SizedBox.shrink(),
       ],
     );
+  }
+
+  @override
+  void didUpdateWidget(InputField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _inputController?.text = widget.initialValue ?? "";
+  }
+
+  Widget? getSuffixWidget() {
+    if (suffixIcon is SvgPicture) {
+      return GestureDetector(
+        onTap: () {
+          if (obscureText) {
+            if (_inputController!.text.isNotEmpty) {
+              setState(() {
+                suffixIcon = SvgPicture.asset(passwordToggleOnIcon);
+                obscureText = false;
+              });
+            }
+          } else {
+            if (_inputController!.text.isNotEmpty) {
+              setState(() {
+                suffixIcon = SvgPicture.asset(passwordToggleOffIcon);
+                obscureText = true;
+              });
+            }
+          }
+        },
+        child: suffixIcon,
+      ).pOnly(right: 10);
+    }
+    return suffixIcon;
   }
 
   @override

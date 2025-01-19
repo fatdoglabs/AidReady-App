@@ -2,7 +2,6 @@ import 'package:aid_ready/core/exceptions/app_exception.dart';
 import 'package:aid_ready/core/services/network_service.dart';
 import 'package:aid_ready/core/utils/either.dart';
 import 'package:aid_ready/core/utils/endpoints.dart';
-import 'package:aid_ready/features/dashboard/family/domain/entity/family.dart';
 
 import '../../domain/entity/family_member.dart';
 
@@ -24,7 +23,7 @@ class FamilyRemoteSourceImpl extends FamilyRemoteSource {
         return Left(list.map((e) => FamilyMember.fromJson(e)).toList());
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });
@@ -42,7 +41,7 @@ class FamilyRemoteSourceImpl extends FamilyRemoteSource {
         return Left(true);
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });

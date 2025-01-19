@@ -163,7 +163,9 @@ class _InputFieldState extends State<InputField> with ValidationMixin {
   @override
   void didUpdateWidget(InputField oldWidget) {
     super.didUpdateWidget(oldWidget);
-    _inputController?.text = widget.initialValue ?? "";
+    if (oldWidget.initialValue != widget.initialValue) {
+      _inputController?.text = widget.initialValue ?? "";
+    }
   }
 
   Widget? getSuffixWidget() {

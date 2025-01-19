@@ -38,6 +38,7 @@ class AidRouter extends $AidRouter {
         ),
         AutoRoute(
           page: SetPasswordRoute.page,
+          initial: true,
         ),
         AutoRoute(
           page: ResetSuccessRoute.page,
@@ -50,7 +51,6 @@ class AidRouter extends $AidRouter {
         ),
         AutoRoute(
           page: CompleteProfileRoute.page,
-          initial: true,
         ),
         AutoRoute(
           page: AuthRoute.page,

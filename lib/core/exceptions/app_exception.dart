@@ -49,8 +49,9 @@ class AppException implements Exception {
         identifier: usererr,
       );
 
-  factory AppException.wrongCreds() => AppException(
-        message: 'Invalid enrollement Id or password.',
+  factory AppException.emailExists() => AppException(
+        message:
+            'This email is already taken. Please enter a new email address.',
         statusCode: form_invalid_code,
         identifier: usererr,
       );

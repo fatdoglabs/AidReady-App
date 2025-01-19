@@ -28,7 +28,7 @@ class ProfileInfoRemoteSourceImpl extends ProfileInfoRemoteSource {
         return Left(ProfileInfo.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });
@@ -50,7 +50,7 @@ class ProfileInfoRemoteSourceImpl extends ProfileInfoRemoteSource {
         return Left(ProfileInfo.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });
@@ -70,7 +70,7 @@ class ProfileInfoRemoteSourceImpl extends ProfileInfoRemoteSource {
         return Left(ProfileInfo.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });

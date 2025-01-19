@@ -84,5 +84,6 @@
   "selectRelation": "Select Relation",
   "selectOneRelation": "Select any one relation",
   "defineRelation": "Define your relation",
+  "passwwordRequirement": "Must be 8-16 characters, include letters, numbers, and symbols.",
   "genericerr": "Something went wrong. Please try again later."
 }

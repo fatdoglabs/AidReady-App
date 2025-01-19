@@ -32,7 +32,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         return Left(AuthToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });
@@ -54,7 +54,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.emailExists());
         }
         return Right(r);
       });
@@ -75,7 +75,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         return Left(AuthToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });
@@ -97,7 +97,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });
@@ -118,7 +118,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });
@@ -169,7 +169,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         return Left(AuthToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.wrongCreds());
+          return Right(AppException.badResponse());
         }
         return Right(r);
       });

@@ -1,4 +1,5 @@
 import 'package:aid_ready/core/mixins/validation_mixin.dart';
+import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/features/auth/presentation/widgets/set_password_button.dart';
@@ -26,6 +27,7 @@ class _SetPasswordFormState extends State<SetPasswordForm>
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         InputField.password(
           label: context.l10n.createPassword.mandatory(),
@@ -36,7 +38,13 @@ class _SetPasswordFormState extends State<SetPasswordForm>
             });
           },
         ),
-        16.verticalSpace,
+        Container(
+          margin: const EdgeInsets.only(top: 4.0, bottom: 12.0),
+          child: Text(
+            context.l10n.passwordRequirement,
+            style: regular.copyWith(fontSize: 10.0),
+          ),
+        ),
         InputField.password(
           label: context.l10n.confirmPassword.mandatory(),
           hint: context.l10n.reEnterPassword,

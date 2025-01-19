@@ -12,6 +12,8 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/exceptions/app_exception.dart';
+
 @RoutePage()
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -54,6 +56,9 @@ class SignUpScreen extends StatelessWidget {
           Consumer(builder: (_, ref, __) {
             ref.listen(emailOtpProvider, (_, current) {
               current.whenOrNull(
+                error: (err, __) {
+                  context.snack((err as AppException).message);
+                },
                 data: (data) {
                   if (data.email.isNotEmpty) {
                     context.router.push(VerifyOtpRoute(email: data.email));

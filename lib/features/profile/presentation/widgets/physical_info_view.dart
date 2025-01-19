@@ -64,7 +64,7 @@ class PhysicalInfoView extends ConsumerWidget {
             30.verticalSpace,
             InputField(
               label: context.l10n.dateOfBirth.mandatory(),
-              hint: context.l10n.enterEmail,
+              hint: context.l10n.enterDateBirth,
               onChanged: (value) {
                 ref
                     .read(profileStepProvider.notifier)
@@ -74,7 +74,7 @@ class PhysicalInfoView extends ConsumerWidget {
             30.verticalSpace,
             InputField(
               labelText: context.l10n.weight,
-              hint: context.l10n.enterEmail,
+              hint: context.l10n.enterWeight,
               onChanged: (value) {
                 ref
                     .read(profileStepProvider.notifier)

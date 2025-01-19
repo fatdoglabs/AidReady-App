@@ -135,7 +135,7 @@ class PersonalInfoView extends ConsumerWidget {
             30.verticalSpace,
             InputField(
               label: context.l10n.fullName.mandatory(),
-              hint: context.l10n.enterEmail,
+              hint: context.l10n.enterFullName,
               onChanged: (value) {
                 ref
                     .read(profileStepProvider.notifier)

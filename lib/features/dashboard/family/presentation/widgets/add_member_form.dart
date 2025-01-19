@@ -144,7 +144,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         20.verticalSpace,
         InputField(
           labelText: context.l10n.fullName,
-          hint: context.l10n.enterEmail,
+          hint: context.l10n.enterFullName,
           onChanged: (value) {
             setState(() {
               fullName = value;
@@ -165,7 +165,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
           readOnly: true,
           initialValue: familyRelation,
           labelText: context.l10n.relation,
-          hint: context.l10n.enterNewPassword,
+          hint: context.l10n.enterRelation,
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -201,7 +201,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         30.verticalSpace,
         InputField(
           labelText: context.l10n.weight,
-          hint: context.l10n.enterEmail,
+          hint: context.l10n.enterWeight,
           onChanged: (value) {
             setState(() {
               weight = double.tryParse(value) ?? 0.0;
@@ -211,7 +211,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         30.verticalSpace,
         InputField(
           label: context.l10n.dateOfBirth.mandatory(),
-          hint: context.l10n.enterEmail,
+          hint: context.l10n.enterDateBirth,
           onChanged: (value) {
             setState(() {
               dob = value;

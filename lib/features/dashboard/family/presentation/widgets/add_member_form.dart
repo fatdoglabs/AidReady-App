@@ -151,7 +151,13 @@ class _AddMemberFormState extends State<AddMemberForm> {
             });
           },
         ),
-        20.verticalSpace,
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 10.0),
+          child: Text(
+            context.l10n.gender,
+            style: bold.copyWith(fontSize: 12.0, color: primaryDark700),
+          ),
+        ),
         GenderGroup(
           value: gender,
           onChanged: (value) {
@@ -210,7 +216,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         ),
         30.verticalSpace,
         InputField(
-          label: context.l10n.dateOfBirth.mandatory(),
+          labelText: "${context.l10n.dateOfBirth} (Dob)",
           hint: context.l10n.enterDateBirth,
           onChanged: (value) {
             setState(() {

@@ -63,7 +63,9 @@ class GenderGroup extends StatelessWidget {
                   child: Radio(
                     activeColor: primary500,
                     value: value == Gender.female,
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      onChanged?.call(Gender.female);
+                    },
                     groupValue: true,
                   ),
                 ),
@@ -91,7 +93,9 @@ class GenderGroup extends StatelessWidget {
                   child: Radio(
                     activeColor: primary500,
                     value: value == Gender.others,
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      onChanged?.call(Gender.others);
+                    },
                     groupValue: true,
                   ),
                 ),

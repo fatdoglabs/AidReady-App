@@ -14,25 +14,11 @@ import '../../domain/providers/profile_update_provider.dart';
 import 'profile_step_button.dart';
 
 class PhysicalInfoView extends ConsumerWidget {
-  const PhysicalInfoView({super.key, this.onNext});
-
-  final VoidCallback? onNext;
+  const PhysicalInfoView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final step2 = ref.watch(profileStepProvider);
-    ref.listen(profileUpdateProvider, (_, current) {
-      current.whenOrNull(
-        data: (data) {
-          if (data.gender.isNotNullNotEmpty &&
-              data.dob.isNotNullNotEmpty &&
-              data.weight != null &&
-              data.weight != 0.0) {
-            onNext?.call();
-          }
-        },
-      );
-    });
     bool isLoading = ref.watch(profileUpdateProvider).maybeWhen(
           orElse: () => false,
           loading: () => true,

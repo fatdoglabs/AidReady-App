@@ -20,22 +20,11 @@ import 'package:image_picker/image_picker.dart';
 import '../../../../core/widgets/input_field.dart';
 
 class PersonalInfoView extends ConsumerWidget {
-  const PersonalInfoView({super.key, this.onNext});
-
-  final VoidCallback? onNext;
+  const PersonalInfoView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final step1 = ref.watch(profileStepProvider);
-    ref.listen(profileUpdateProvider, (_, current) {
-      current.whenOrNull(
-        data: (data) {
-          if (data.image.isNotNullNotEmpty && data.name.isNotNullNotEmpty) {
-            onNext?.call();
-          }
-        },
-      );
-    });
     bool isLoading = ref.watch(profileUpdateProvider).maybeWhen(
           orElse: () => false,
           loading: () => true,
@@ -117,7 +106,8 @@ class PersonalInfoView extends ConsumerWidget {
                     image: step1.image.isNotNullNotEmpty
                         ? DecorationImage(
                             fit: BoxFit.cover,
-                            image: FileImage(File(step1.image!)))
+                            image: step1.image!.toImage(),
+                          )
                         : null),
                 alignment: Alignment.center,
                 child: step1.image.isNullOrEmpty
@@ -134,6 +124,7 @@ class PersonalInfoView extends ConsumerWidget {
             ),
             30.verticalSpace,
             InputField(
+              initialValue: step1.name,
               label: context.l10n.fullName.mandatory(),
               hint: context.l10n.enterFullName,
               onChanged: (value) {

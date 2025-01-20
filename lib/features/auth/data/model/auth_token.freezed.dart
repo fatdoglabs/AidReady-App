@@ -20,6 +20,12 @@ AuthToken _$AuthTokenFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AuthToken {
+  String get name => throw _privateConstructorUsedError;
+  String get dob => throw _privateConstructorUsedError;
+  String get gender => throw _privateConstructorUsedError;
+  String get bloodGroup => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
+  double get weight => throw _privateConstructorUsedError;
   String get accessToken => throw _privateConstructorUsedError;
   String get refreshToken => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
@@ -41,7 +47,13 @@ abstract class $AuthTokenCopyWith<$Res> {
       _$AuthTokenCopyWithImpl<$Res, AuthToken>;
   @useResult
   $Res call(
-      {String accessToken,
+      {String name,
+      String dob,
+      String gender,
+      String bloodGroup,
+      String image,
+      double weight,
+      String accessToken,
       String refreshToken,
       String email,
       bool isOnboardingComplete,
@@ -64,6 +76,12 @@ class _$AuthTokenCopyWithImpl<$Res, $Val extends AuthToken>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
+    Object? dob = null,
+    Object? gender = null,
+    Object? bloodGroup = null,
+    Object? image = null,
+    Object? weight = null,
     Object? accessToken = null,
     Object? refreshToken = null,
     Object? email = null,
@@ -74,6 +92,30 @@ class _$AuthTokenCopyWithImpl<$Res, $Val extends AuthToken>
     Object? isMedicalInfoCompleted = null,
   }) {
     return _then(_value.copyWith(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      dob: null == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String,
+      bloodGroup: null == bloodGroup
+          ? _value.bloodGroup
+          : bloodGroup // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -119,7 +161,13 @@ abstract class _$$AuthTokenImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String accessToken,
+      {String name,
+      String dob,
+      String gender,
+      String bloodGroup,
+      String image,
+      double weight,
+      String accessToken,
       String refreshToken,
       String email,
       bool isOnboardingComplete,
@@ -140,6 +188,12 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? name = null,
+    Object? dob = null,
+    Object? gender = null,
+    Object? bloodGroup = null,
+    Object? image = null,
+    Object? weight = null,
     Object? accessToken = null,
     Object? refreshToken = null,
     Object? email = null,
@@ -150,6 +204,30 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
     Object? isMedicalInfoCompleted = null,
   }) {
     return _then(_$AuthTokenImpl(
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      dob: null == dob
+          ? _value.dob
+          : dob // ignore: cast_nullable_to_non_nullable
+              as String,
+      gender: null == gender
+          ? _value.gender
+          : gender // ignore: cast_nullable_to_non_nullable
+              as String,
+      bloodGroup: null == bloodGroup
+          ? _value.bloodGroup
+          : bloodGroup // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double,
       accessToken: null == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
@@ -191,7 +269,13 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _$AuthTokenImpl implements _AuthToken {
   const _$AuthTokenImpl(
-      {this.accessToken = "",
+      {this.name = "",
+      this.dob = "",
+      this.gender = "",
+      this.bloodGroup = "",
+      this.image = "",
+      this.weight = 0.0,
+      this.accessToken = "",
       this.refreshToken = "",
       required this.email,
       this.isOnboardingComplete = false,
@@ -203,6 +287,24 @@ class _$AuthTokenImpl implements _AuthToken {
   factory _$AuthTokenImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthTokenImplFromJson(json);
 
+  @override
+  @JsonKey()
+  final String name;
+  @override
+  @JsonKey()
+  final String dob;
+  @override
+  @JsonKey()
+  final String gender;
+  @override
+  @JsonKey()
+  final String bloodGroup;
+  @override
+  @JsonKey()
+  final String image;
+  @override
+  @JsonKey()
+  final double weight;
   @override
   @JsonKey()
   final String accessToken;
@@ -229,7 +331,7 @@ class _$AuthTokenImpl implements _AuthToken {
 
   @override
   String toString() {
-    return 'AuthToken(accessToken: $accessToken, refreshToken: $refreshToken, email: $email, isOnboardingComplete: $isOnboardingComplete, isLocaleSet: $isLocaleSet, isPersonalInfoCompleted: $isPersonalInfoCompleted, isPhysicalInfoCompleted: $isPhysicalInfoCompleted, isMedicalInfoCompleted: $isMedicalInfoCompleted)';
+    return 'AuthToken(name: $name, dob: $dob, gender: $gender, bloodGroup: $bloodGroup, image: $image, weight: $weight, accessToken: $accessToken, refreshToken: $refreshToken, email: $email, isOnboardingComplete: $isOnboardingComplete, isLocaleSet: $isLocaleSet, isPersonalInfoCompleted: $isPersonalInfoCompleted, isPhysicalInfoCompleted: $isPhysicalInfoCompleted, isMedicalInfoCompleted: $isMedicalInfoCompleted)';
   }
 
   @override
@@ -237,6 +339,13 @@ class _$AuthTokenImpl implements _AuthToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthTokenImpl &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.dob, dob) || other.dob == dob) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.bloodGroup, bloodGroup) ||
+                other.bloodGroup == bloodGroup) &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.accessToken, accessToken) ||
                 other.accessToken == accessToken) &&
             (identical(other.refreshToken, refreshToken) ||
@@ -260,6 +369,12 @@ class _$AuthTokenImpl implements _AuthToken {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      name,
+      dob,
+      gender,
+      bloodGroup,
+      image,
+      weight,
       accessToken,
       refreshToken,
       email,
@@ -285,7 +400,13 @@ class _$AuthTokenImpl implements _AuthToken {
 
 abstract class _AuthToken implements AuthToken {
   const factory _AuthToken(
-      {final String accessToken,
+      {final String name,
+      final String dob,
+      final String gender,
+      final String bloodGroup,
+      final String image,
+      final double weight,
+      final String accessToken,
       final String refreshToken,
       required final String email,
       final bool isOnboardingComplete,
@@ -297,6 +418,18 @@ abstract class _AuthToken implements AuthToken {
   factory _AuthToken.fromJson(Map<String, dynamic> json) =
       _$AuthTokenImpl.fromJson;
 
+  @override
+  String get name;
+  @override
+  String get dob;
+  @override
+  String get gender;
+  @override
+  String get bloodGroup;
+  @override
+  String get image;
+  @override
+  double get weight;
   @override
   String get accessToken;
   @override

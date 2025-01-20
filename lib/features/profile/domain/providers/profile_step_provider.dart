@@ -1,5 +1,8 @@
+import 'package:aid_ready/features/auth/data/model/auth_token.dart';
 import 'package:aid_ready/features/profile/domain/entity/profile_info.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+import '../../../auth/presentation/providers/auth_provider.dart';
 
 part 'profile_step_provider.g.dart';
 
@@ -7,7 +10,17 @@ part 'profile_step_provider.g.dart';
 class ProfileStep extends _$ProfileStep {
   @override
   ProfileInfo build() {
-    return ProfileInfo.empty();
+    final authToken = ref.read(authProvider).whenOrNull(data: (data) => data) ??
+        AuthToken.unauthenticated();
+    final info = ProfileInfo(
+      image: authToken.image,
+      name: authToken.name,
+      bloodGroup: authToken.bloodGroup,
+      weight: authToken.weight,
+      dob: authToken.dob,
+      gender: authToken.gender,
+    );
+    return info;
   }
 
   void updateProfile(

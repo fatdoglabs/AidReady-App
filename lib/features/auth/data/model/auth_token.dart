@@ -7,6 +7,12 @@ part 'auth_token.g.dart';
 class AuthToken with _$AuthToken {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory AuthToken({
+    @Default("") String name,
+    @Default("") String dob,
+    @Default("") String gender,
+    @Default("") String bloodGroup,
+    @Default("") String image,
+    @Default(0.0) double weight,
     @Default("") String accessToken,
     @Default("") String refreshToken,
     required String email,

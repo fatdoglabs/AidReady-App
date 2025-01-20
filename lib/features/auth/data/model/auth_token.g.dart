@@ -8,6 +8,12 @@ part of 'auth_token.dart';
 
 _$AuthTokenImpl _$$AuthTokenImplFromJson(Map<String, dynamic> json) =>
     _$AuthTokenImpl(
+      name: json['name'] as String? ?? "",
+      dob: json['dob'] as String? ?? "",
+      gender: json['gender'] as String? ?? "",
+      bloodGroup: json['blood_group'] as String? ?? "",
+      image: json['image'] as String? ?? "",
+      weight: (json['weight'] as num?)?.toDouble() ?? 0.0,
       accessToken: json['access_token'] as String? ?? "",
       refreshToken: json['refresh_token'] as String? ?? "",
       email: json['email'] as String,
@@ -23,6 +29,12 @@ _$AuthTokenImpl _$$AuthTokenImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$AuthTokenImplToJson(_$AuthTokenImpl instance) =>
     <String, dynamic>{
+      'name': instance.name,
+      'dob': instance.dob,
+      'gender': instance.gender,
+      'blood_group': instance.bloodGroup,
+      'image': instance.image,
+      'weight': instance.weight,
       'access_token': instance.accessToken,
       'refresh_token': instance.refreshToken,
       'email': instance.email,

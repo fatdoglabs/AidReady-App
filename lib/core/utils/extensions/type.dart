@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
@@ -112,5 +113,13 @@ extension StringNullX on String? {
         ],
       ),
     );
+  }
+
+  ImageProvider<Object> toImage() {
+    if (this!.startsWith("http")) {
+      return NetworkImage(this!);
+    } else {
+      return FileImage(File(this!));
+    }
   }
 }

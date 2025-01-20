@@ -20,7 +20,7 @@ class CompleteProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const ProgressTitleText(),
+        title: ProgressTitleText(stepsCompleted: stepsCompleted),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,11 +30,13 @@ class CompleteProfileScreen extends StatelessWidget {
             style: bold.copyWith(fontSize: 20.0, color: primaryDark950),
           ).px(16.0),
           16.verticalSpace,
-          const ProfileStepRow(),
+          ProfileStepRow(
+            stepsCompleted: stepsCompleted,
+          ),
           Expanded(
             child: DefaultTabController(
               length: 3,
-              child: ProfileStepsPageView(initialPage: stepsCompleted - 1),
+              child: ProfileStepsPageView(initialPage: stepsCompleted),
             ),
           ),
         ],

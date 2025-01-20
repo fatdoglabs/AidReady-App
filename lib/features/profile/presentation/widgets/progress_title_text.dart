@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProgressTitleText extends ConsumerWidget {
-  const ProgressTitleText({super.key});
+  const ProgressTitleText({super.key, required this.stepsCompleted});
+
+  final int stepsCompleted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentPage = ref.watch(nextPageProvider);
+    final currentPage = ref.watch(nextPageProvider(stepsCompleted));
     String suffixText = "";
     suffixText = "(Step ${currentPage + 1} of 3)";
     return Text(

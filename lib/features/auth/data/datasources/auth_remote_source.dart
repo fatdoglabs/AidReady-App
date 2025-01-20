@@ -2,6 +2,7 @@ import 'package:aid_ready/core/exceptions/app_exception.dart';
 import 'package:aid_ready/core/services/network_service.dart';
 import 'package:aid_ready/core/utils/either.dart';
 import 'package:aid_ready/core/utils/endpoints.dart';
+import 'package:aid_ready/core/utils/identifier.dart';
 import 'package:aid_ready/features/auth/data/model/auth_token.dart';
 import 'package:aid_ready/features/auth/data/model/otp_token.dart';
 import 'package:aid_ready/features/auth/domain/entity/auth_form_entity.dart';
@@ -97,7 +98,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
         return Left(OtpToken.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
-          return Right(AppException.badResponse());
+          return Right(AppException(
+              message: r.message,
+              statusCode: r.statusCode,
+              identifier: usererr));
         }
         return Right(r);
       });

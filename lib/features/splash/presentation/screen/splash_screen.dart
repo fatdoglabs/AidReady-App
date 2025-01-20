@@ -1,11 +1,8 @@
-import 'package:aid_ready/core/utils/extensions/context.dart';
-import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/routes/router.gr.dart';
-import '../../../../core/theme/assets.dart';
 import '../../../auth/presentation/providers/auth_provider.dart';
 
 @RoutePage()
@@ -16,14 +13,14 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(
       child: Scaffold(
-        body: Center(
-          child: PictureView(
-            imageUri: appLogo,
-            width: context.w(640.0),
-            height: context.h(640.0),
+          // body: Center(
+          //   child: PictureView(
+          //     imageUri: appLogo,
+          //     width: context.w(640.0),
+          //     height: context.h(640.0),
+          //   ),
+          // ),
           ),
-        ),
-      ),
       builder: (_, ref, child) {
         ref.listen(authProvider, (_, tokenResult) async {
           tokenResult.whenOrNull(data: (token) {

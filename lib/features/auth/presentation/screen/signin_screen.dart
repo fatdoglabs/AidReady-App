@@ -57,17 +57,16 @@ class SignInScreen extends StatelessWidget {
                     ///Since Login Screen is one of the possible options, this check prevents the Dashboard screen from appearing unexpectedly
                     ///since we are listening to auth provider here again.
                     context.snack('You have logged in successfully.');
-                    //if (data.isMedicalInfoCompleted) {
-                    if (true) {
+                    if (data.isMedicalInfoCompleted) {
                       //user has provided all necessary information to build a profile
                       context.router.replaceAll([const DashboardRoute()]);
                     } else {
+                      //user has yet to provide their medical, physical and personal information
                       int step = 0;
-                      //user has yet to provide their medical information
-                      if (data.isPhysicalInfoCompleted) step = 2;
                       //user has yet to provide their medical and physical information
                       if (data.isPersonalInfoCompleted) step = 1;
-                      //user has yet to provide their medical, physical and personal information
+                      //user has yet to provide their medical information
+                      if (data.isPhysicalInfoCompleted) step = 2;
                       context.router.replaceAll(
                           [CompleteProfileRoute(stepsCompleted: step)]);
                     }

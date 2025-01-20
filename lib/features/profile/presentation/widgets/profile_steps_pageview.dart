@@ -51,8 +51,8 @@ class _ProfileStepsPageViewState extends ConsumerState<ProfileStepsPageView> {
               data.weight != null &&
               data.weight != 0.0) {
             ref.read(nextPageProvider.notifier).update(2);
-          }
-          if (data.image.isNotNullNotEmpty && data.name.isNotNullNotEmpty) {
+          } else if (data.image.isNotNullNotEmpty &&
+              data.name.isNotNullNotEmpty) {
             ref.read(nextPageProvider.notifier).update(1);
           }
         },

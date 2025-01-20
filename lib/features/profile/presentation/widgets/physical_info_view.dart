@@ -54,6 +54,7 @@ class PhysicalInfoView extends ConsumerWidget {
             ),
             30.verticalSpace,
             InputField(
+              initialValue: step2.dob,
               label: context.l10n.dateOfBirth.mandatory(),
               hint: context.l10n.enterDateBirth,
               onChanged: (value) {
@@ -64,6 +65,7 @@ class PhysicalInfoView extends ConsumerWidget {
             ),
             30.verticalSpace,
             InputField(
+              initialValue: step2.weight.toString(),
               labelText: context.l10n.weight,
               hint: context.l10n.enterWeight,
               onChanged: (value) {

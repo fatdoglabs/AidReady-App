@@ -9,8 +9,6 @@ import 'package:aid_ready/features/onboarding/presentation/widgets/onboarding_pa
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../domain/providers/next_page_provider.dart';
-
 class OnboardingPageView extends StatefulWidget {
   const OnboardingPageView({super.key, required this.data, this.gotoDashboard});
 
@@ -23,6 +21,7 @@ class OnboardingPageView extends StatefulWidget {
 
 class _OnboardingPageViewState extends State<OnboardingPageView> {
   PageController? _pageViewController;
+  int index = 0;
 
   @override
   void initState() {
@@ -33,15 +32,6 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (_, ref, __) {
-      ref.watch(nextPageProvider);
-      ref.listen(nextPageProvider, (_, index) {
-        _pageViewController?.animateToPage(
-          index,
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.linear,
-        );
-      });
-
       return Stack(
         fit: StackFit.expand,
         children: [
@@ -53,8 +43,10 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
               description: widget.data[index].description,
             ),
             itemCount: widget.data.length,
-            onPageChanged: (index) {
-              ref.read(nextPageProvider.notifier).update(index);
+            onPageChanged: (value) {
+              setState(() {
+                index = value;
+              });
             },
           ),
           Align(
@@ -83,11 +75,12 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
                       shape: const CircleBorder(),
                       elevation: 0.0,
                       onPressed: () {
-                        final current = ref.read(nextPageProvider);
-                        if (current < widget.data.length - 1) {
-                          ref
-                              .read(nextPageProvider.notifier)
-                              .update(current + 1);
+                        if (index < widget.data.length - 1) {
+                          _pageViewController?.animateToPage(
+                            index + 1,
+                            duration: const Duration(milliseconds: 200),
+                            curve: Curves.linear,
+                          );
                         } else {
                           widget.gotoDashboard?.call();
                         }
@@ -102,7 +95,7 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
                 16.verticalSpace,
                 OnboardingIndicator(
                   length: widget.data.length,
-                  index: ref.read(nextPageProvider),
+                  index: index,
                 ),
               ],
             ),

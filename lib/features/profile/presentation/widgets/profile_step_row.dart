@@ -40,9 +40,7 @@ class ProfileStepRow extends ConsumerWidget {
       children: [
         GestureDetector(
           onTap: () {
-            if (currentPage != 0) {
-              ref.read(nextPageProvider.notifier).update(0);
-            }
+            ref.read(nextPageProvider.notifier).update(0);
           },
           child: Container(
             padding: const EdgeInsets.all(8.0),
@@ -62,9 +60,7 @@ class ProfileStepRow extends ConsumerWidget {
         ),
         GestureDetector(
           onTap: () {
-            if (currentPage > 0) {
-              ref.read(nextPageProvider.notifier).update(1);
-            }
+            ref.read(nextPageProvider.notifier).update(1);
           },
           child: Container(
             padding: const EdgeInsets.all(8.0),

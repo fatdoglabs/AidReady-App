@@ -10,7 +10,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ProfileStepsPageView extends ConsumerStatefulWidget {
   const ProfileStepsPageView({
     super.key,
+    required this.initialPage,
   });
+
+  final int initialPage;
 
   @override
   ConsumerState<ProfileStepsPageView> createState() =>

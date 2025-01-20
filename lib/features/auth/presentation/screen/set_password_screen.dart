@@ -60,7 +60,7 @@ class SetPasswordScreen extends StatelessWidget {
                     ///since we are listening to auth provider here again.
                     context.snack('You have logged in successfully.');
                     context.router.navigate(const AuthRoute());
-                    context.router.push(const CompleteProfileRoute());
+                    context.router.push(CompleteProfileRoute());
                   }
                 },
               );

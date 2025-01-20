@@ -28,17 +28,23 @@ class FamilyScreen extends StatelessWidget {
             ],
           ),
           Container(
-              padding: const EdgeInsets.only(
-                  bottom: kToolbarHeight + 24.0, right: 20.0),
-              alignment: Alignment.bottomRight,
-              child: FloatingActionButton(
-                backgroundColor: primary500,
-                shape: const CircleBorder(),
-                elevation: 0.0,
-                onPressed: () {
-                  context.router.push(const AddMemberRoute());
-                },
-              ))
+            padding: const EdgeInsets.only(
+                bottom: kToolbarHeight + 24.0, right: 20.0),
+            alignment: Alignment.bottomRight,
+            child: FloatingActionButton(
+              backgroundColor: primary500,
+              shape: const CircleBorder(),
+              elevation: 0.0,
+              onPressed: () {
+                context.router.push(const AddMemberRoute());
+              },
+              child: const Icon(
+                Icons.add,
+                size: 40.0,
+                color: Colors.white,
+              ),
+            ),
+          )
         ],
       ),
     );

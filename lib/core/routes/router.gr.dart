@@ -60,9 +60,14 @@ abstract class $AidRouter extends _i16.RootStackRouter {
       );
     },
     CompleteProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<CompleteProfileRouteArgs>(
+          orElse: () => const CompleteProfileRouteArgs());
       return _i16.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.CompleteProfileScreen(),
+        child: _i3.CompleteProfileScreen(
+          key: args.key,
+          stepsCompleted: args.stepsCompleted,
+        ),
       );
     },
     DashboardRoute.name: (routeData) {
@@ -178,16 +183,41 @@ class AuthRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.CompleteProfileScreen]
-class CompleteProfileRoute extends _i16.PageRouteInfo<void> {
-  const CompleteProfileRoute({List<_i16.PageRouteInfo>? children})
-      : super(
+class CompleteProfileRoute
+    extends _i16.PageRouteInfo<CompleteProfileRouteArgs> {
+  CompleteProfileRoute({
+    _i17.Key? key,
+    int stepsCompleted = 0,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
           CompleteProfileRoute.name,
+          args: CompleteProfileRouteArgs(
+            key: key,
+            stepsCompleted: stepsCompleted,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CompleteProfileRoute';
 
-  static const _i16.PageInfo<void> page = _i16.PageInfo<void>(name);
+  static const _i16.PageInfo<CompleteProfileRouteArgs> page =
+      _i16.PageInfo<CompleteProfileRouteArgs>(name);
+}
+
+class CompleteProfileRouteArgs {
+  const CompleteProfileRouteArgs({
+    this.key,
+    this.stepsCompleted = 0,
+  });
+
+  final _i17.Key? key;
+
+  final int stepsCompleted;
+
+  @override
+  String toString() {
+    return 'CompleteProfileRouteArgs{key: $key, stepsCompleted: $stepsCompleted}';
+  }
 }
 
 /// generated route for

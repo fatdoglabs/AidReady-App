@@ -12,7 +12,9 @@ import '../widgets/profile_steps_pageview.dart';
 
 @RoutePage()
 class CompleteProfileScreen extends StatelessWidget {
-  const CompleteProfileScreen({super.key});
+  const CompleteProfileScreen({super.key, this.stepsCompleted = 0});
+
+  final int stepsCompleted;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,10 @@ class CompleteProfileScreen extends StatelessWidget {
           ).px(16.0),
           16.verticalSpace,
           const ProfileStepRow(),
-          const Expanded(
+          Expanded(
             child: DefaultTabController(
               length: 3,
-              child: ProfileStepsPageView(),
+              child: ProfileStepsPageView(initialPage: stepsCompleted - 1),
             ),
           ),
         ],

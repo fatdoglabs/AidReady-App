@@ -12,6 +12,9 @@ class AuthToken with _$AuthToken {
     required String email,
     @Default(false) bool isOnboardingComplete,
     @Default(false) bool isLocaleSet,
+    @Default(false) bool isPersonalInfoCompleted,
+    @Default(false) bool isPhysicalInfoCompleted,
+    @Default(false) bool isMedicalInfoCompleted,
   }) = _AuthToken;
 
   factory AuthToken.fromJson(Map<String, Object?> json) =>

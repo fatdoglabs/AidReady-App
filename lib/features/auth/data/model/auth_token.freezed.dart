@@ -25,6 +25,9 @@ mixin _$AuthToken {
   String get email => throw _privateConstructorUsedError;
   bool get isOnboardingComplete => throw _privateConstructorUsedError;
   bool get isLocaleSet => throw _privateConstructorUsedError;
+  bool get isPersonalInfoCompleted => throw _privateConstructorUsedError;
+  bool get isPhysicalInfoCompleted => throw _privateConstructorUsedError;
+  bool get isMedicalInfoCompleted => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +45,10 @@ abstract class $AuthTokenCopyWith<$Res> {
       String refreshToken,
       String email,
       bool isOnboardingComplete,
-      bool isLocaleSet});
+      bool isLocaleSet,
+      bool isPersonalInfoCompleted,
+      bool isPhysicalInfoCompleted,
+      bool isMedicalInfoCompleted});
 }
 
 /// @nodoc
@@ -63,6 +69,9 @@ class _$AuthTokenCopyWithImpl<$Res, $Val extends AuthToken>
     Object? email = null,
     Object? isOnboardingComplete = null,
     Object? isLocaleSet = null,
+    Object? isPersonalInfoCompleted = null,
+    Object? isPhysicalInfoCompleted = null,
+    Object? isMedicalInfoCompleted = null,
   }) {
     return _then(_value.copyWith(
       accessToken: null == accessToken
@@ -85,6 +94,18 @@ class _$AuthTokenCopyWithImpl<$Res, $Val extends AuthToken>
           ? _value.isLocaleSet
           : isLocaleSet // ignore: cast_nullable_to_non_nullable
               as bool,
+      isPersonalInfoCompleted: null == isPersonalInfoCompleted
+          ? _value.isPersonalInfoCompleted
+          : isPersonalInfoCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPhysicalInfoCompleted: null == isPhysicalInfoCompleted
+          ? _value.isPhysicalInfoCompleted
+          : isPhysicalInfoCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMedicalInfoCompleted: null == isMedicalInfoCompleted
+          ? _value.isMedicalInfoCompleted
+          : isMedicalInfoCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -102,7 +123,10 @@ abstract class _$$AuthTokenImplCopyWith<$Res>
       String refreshToken,
       String email,
       bool isOnboardingComplete,
-      bool isLocaleSet});
+      bool isLocaleSet,
+      bool isPersonalInfoCompleted,
+      bool isPhysicalInfoCompleted,
+      bool isMedicalInfoCompleted});
 }
 
 /// @nodoc
@@ -121,6 +145,9 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
     Object? email = null,
     Object? isOnboardingComplete = null,
     Object? isLocaleSet = null,
+    Object? isPersonalInfoCompleted = null,
+    Object? isPhysicalInfoCompleted = null,
+    Object? isMedicalInfoCompleted = null,
   }) {
     return _then(_$AuthTokenImpl(
       accessToken: null == accessToken
@@ -143,6 +170,18 @@ class __$$AuthTokenImplCopyWithImpl<$Res>
           ? _value.isLocaleSet
           : isLocaleSet // ignore: cast_nullable_to_non_nullable
               as bool,
+      isPersonalInfoCompleted: null == isPersonalInfoCompleted
+          ? _value.isPersonalInfoCompleted
+          : isPersonalInfoCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isPhysicalInfoCompleted: null == isPhysicalInfoCompleted
+          ? _value.isPhysicalInfoCompleted
+          : isPhysicalInfoCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMedicalInfoCompleted: null == isMedicalInfoCompleted
+          ? _value.isMedicalInfoCompleted
+          : isMedicalInfoCompleted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -156,7 +195,10 @@ class _$AuthTokenImpl implements _AuthToken {
       this.refreshToken = "",
       required this.email,
       this.isOnboardingComplete = false,
-      this.isLocaleSet = false});
+      this.isLocaleSet = false,
+      this.isPersonalInfoCompleted = false,
+      this.isPhysicalInfoCompleted = false,
+      this.isMedicalInfoCompleted = false});
 
   factory _$AuthTokenImpl.fromJson(Map<String, dynamic> json) =>
       _$$AuthTokenImplFromJson(json);
@@ -175,10 +217,19 @@ class _$AuthTokenImpl implements _AuthToken {
   @override
   @JsonKey()
   final bool isLocaleSet;
+  @override
+  @JsonKey()
+  final bool isPersonalInfoCompleted;
+  @override
+  @JsonKey()
+  final bool isPhysicalInfoCompleted;
+  @override
+  @JsonKey()
+  final bool isMedicalInfoCompleted;
 
   @override
   String toString() {
-    return 'AuthToken(accessToken: $accessToken, refreshToken: $refreshToken, email: $email, isOnboardingComplete: $isOnboardingComplete, isLocaleSet: $isLocaleSet)';
+    return 'AuthToken(accessToken: $accessToken, refreshToken: $refreshToken, email: $email, isOnboardingComplete: $isOnboardingComplete, isLocaleSet: $isLocaleSet, isPersonalInfoCompleted: $isPersonalInfoCompleted, isPhysicalInfoCompleted: $isPhysicalInfoCompleted, isMedicalInfoCompleted: $isMedicalInfoCompleted)';
   }
 
   @override
@@ -194,13 +245,29 @@ class _$AuthTokenImpl implements _AuthToken {
             (identical(other.isOnboardingComplete, isOnboardingComplete) ||
                 other.isOnboardingComplete == isOnboardingComplete) &&
             (identical(other.isLocaleSet, isLocaleSet) ||
-                other.isLocaleSet == isLocaleSet));
+                other.isLocaleSet == isLocaleSet) &&
+            (identical(
+                    other.isPersonalInfoCompleted, isPersonalInfoCompleted) ||
+                other.isPersonalInfoCompleted == isPersonalInfoCompleted) &&
+            (identical(
+                    other.isPhysicalInfoCompleted, isPhysicalInfoCompleted) ||
+                other.isPhysicalInfoCompleted == isPhysicalInfoCompleted) &&
+            (identical(other.isMedicalInfoCompleted, isMedicalInfoCompleted) ||
+                other.isMedicalInfoCompleted == isMedicalInfoCompleted));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, accessToken, refreshToken, email,
-      isOnboardingComplete, isLocaleSet);
+  int get hashCode => Object.hash(
+      runtimeType,
+      accessToken,
+      refreshToken,
+      email,
+      isOnboardingComplete,
+      isLocaleSet,
+      isPersonalInfoCompleted,
+      isPhysicalInfoCompleted,
+      isMedicalInfoCompleted);
 
   @JsonKey(ignore: true)
   @override
@@ -222,7 +289,10 @@ abstract class _AuthToken implements AuthToken {
       final String refreshToken,
       required final String email,
       final bool isOnboardingComplete,
-      final bool isLocaleSet}) = _$AuthTokenImpl;
+      final bool isLocaleSet,
+      final bool isPersonalInfoCompleted,
+      final bool isPhysicalInfoCompleted,
+      final bool isMedicalInfoCompleted}) = _$AuthTokenImpl;
 
   factory _AuthToken.fromJson(Map<String, dynamic> json) =
       _$AuthTokenImpl.fromJson;
@@ -237,6 +307,12 @@ abstract class _AuthToken implements AuthToken {
   bool get isOnboardingComplete;
   @override
   bool get isLocaleSet;
+  @override
+  bool get isPersonalInfoCompleted;
+  @override
+  bool get isPhysicalInfoCompleted;
+  @override
+  bool get isMedicalInfoCompleted;
   @override
   @JsonKey(ignore: true)
   _$$AuthTokenImplCopyWith<_$AuthTokenImpl> get copyWith =>

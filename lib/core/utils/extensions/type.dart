@@ -101,17 +101,21 @@ extension StringNullX on String? {
     return fi.image;
   }
 
-  RichText mandatory() {
-    return RichText(
-      text: TextSpan(
-        style: semibold.copyWith(color: primaryDark700, fontSize: 12.0),
-        children: [
-          TextSpan(text: this ?? ""),
-          TextSpan(
-              text: "*",
-              style: semibold.copyWith(fontSize: 20.0, color: danger500)),
-        ],
-      ),
+  Widget mandatory() {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          this ?? "",
+          style: semibold.copyWith(color: primaryDark700, fontSize: 12.0),
+        ),
+        2.horizontalSpace,
+        const Icon(
+          Icons.emergency,
+          size: 8.0,
+          color: danger500,
+        )
+      ],
     );
   }
 

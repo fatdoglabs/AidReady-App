@@ -64,7 +64,7 @@ class _SignInFormState extends State<SignInForm> with ValidationMixin {
         ),
         16.verticalSpace,
         LoginButton(
-          isEnabled: validateEmail(email),
+          isEnabled: validateEmail(email) && validateNotEmpty(password),
           onPressed: () {
             widget.onLogin?.call(email, password);
           },

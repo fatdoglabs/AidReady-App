@@ -6,13 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileStepRow extends ConsumerWidget {
-  const ProfileStepRow({super.key, required this.stepsCompleted});
-
-  final int stepsCompleted;
+  const ProfileStepRow({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentPage = ref.watch(nextPageProvider(stepsCompleted));
+    final currentPage = ref.watch(nextPageProvider);
     Color firstTabColor;
     Color secondTabColor;
     Color thirdTabColor;
@@ -43,7 +41,7 @@ class ProfileStepRow extends ConsumerWidget {
         GestureDetector(
           onTap: () {
             if (currentPage != 0) {
-              ref.read(nextPageProvider(stepsCompleted).notifier).update(0);
+              ref.read(nextPageProvider.notifier).update(0);
             }
           },
           child: Container(
@@ -65,7 +63,7 @@ class ProfileStepRow extends ConsumerWidget {
         GestureDetector(
           onTap: () {
             if (currentPage > 0) {
-              ref.read(nextPageProvider(stepsCompleted).notifier).update(1);
+              ref.read(nextPageProvider.notifier).update(1);
             }
           },
           child: Container(

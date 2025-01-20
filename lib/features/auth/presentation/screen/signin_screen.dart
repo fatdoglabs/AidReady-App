@@ -60,17 +60,15 @@ class SignInScreen extends StatelessWidget {
                     if (data.isMedicalInfoCompleted) {
                       //user has provided all necessary information to build a profile
                       context.router.replaceAll([const DashboardRoute()]);
-                    } else if (data.isPhysicalInfoCompleted) {
-                      //user has yet to provide their medical information
-                      context.router.replaceAll(
-                          [CompleteProfileRoute(stepsCompleted: 2)]);
-                    } else if (data.isPersonalInfoCompleted) {
-                      //user has yet to provide their medical and physical information
-                      context.router.replaceAll(
-                          [CompleteProfileRoute(stepsCompleted: 1)]);
                     } else {
+                      int step = 0;
+                      //user has yet to provide their medical information
+                      if (data.isPhysicalInfoCompleted) step = 2;
+                      //user has yet to provide their medical and physical information
+                      if (data.isPersonalInfoCompleted) step = 1;
                       //user has yet to provide their medical, physical and personal information
-                      context.router.replaceAll([CompleteProfileRoute()]);
+                      context.router.replaceAll(
+                          [CompleteProfileRoute(stepsCompleted: step)]);
                     }
                   }
                 },

@@ -31,7 +31,7 @@ class _ProfileStepsPageViewState extends ConsumerState<ProfileStepsPageView> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen(nextPageProvider(widget.initialPage), (_, current) {
+    ref.listen(nextPageProvider, (_, current) {
       _controller?.animateToPage(current,
           duration: const Duration(milliseconds: 200), curve: Curves.linear);
     });
@@ -43,21 +43,21 @@ class _ProfileStepsPageViewState extends ConsumerState<ProfileStepsPageView> {
         if (index == 0) {
           return PersonalInfoView(
             onNext: () {
-              ref.read(nextPageProvider(widget.initialPage).notifier).update(1);
+              ref.read(nextPageProvider.notifier).update(1);
             },
           );
         }
         if (index == 1) {
           return PhysicalInfoView(
             onNext: () {
-              ref.read(nextPageProvider(widget.initialPage).notifier).update(2);
+              ref.read(nextPageProvider.notifier).update(2);
             },
           );
         }
         if (index == 2) {
           return MedicalInfoView(
             onNext: () {
-              context.router.push(DashboardRoute());
+              context.router.push(const DashboardRoute());
             },
           );
         }

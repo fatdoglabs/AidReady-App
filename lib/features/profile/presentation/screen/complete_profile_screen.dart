@@ -12,7 +12,7 @@ import '../widgets/profile_steps_pageview.dart';
 
 @RoutePage()
 class CompleteProfileScreen extends StatelessWidget {
-  const CompleteProfileScreen({super.key, this.stepsCompleted = 0});
+  const CompleteProfileScreen({super.key, required this.stepsCompleted});
 
   final int stepsCompleted;
 
@@ -20,7 +20,7 @@ class CompleteProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: ProgressTitleText(stepsCompleted: stepsCompleted),
+        title: const ProgressTitleText(),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,9 +30,7 @@ class CompleteProfileScreen extends StatelessWidget {
             style: bold.copyWith(fontSize: 20.0, color: primaryDark950),
           ).px(16.0),
           16.verticalSpace,
-          ProfileStepRow(
-            stepsCompleted: stepsCompleted,
-          ),
+          const ProfileStepRow(),
           Expanded(
             child: DefaultTabController(
               length: 3,

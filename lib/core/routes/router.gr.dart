@@ -60,8 +60,7 @@ abstract class $AidRouter extends _i16.RootStackRouter {
       );
     },
     CompleteProfileRoute.name: (routeData) {
-      final args = routeData.argsAs<CompleteProfileRouteArgs>(
-          orElse: () => const CompleteProfileRouteArgs());
+      final args = routeData.argsAs<CompleteProfileRouteArgs>();
       return _i16.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i3.CompleteProfileScreen(
@@ -187,7 +186,7 @@ class CompleteProfileRoute
     extends _i16.PageRouteInfo<CompleteProfileRouteArgs> {
   CompleteProfileRoute({
     _i17.Key? key,
-    int stepsCompleted = 0,
+    required int stepsCompleted,
     List<_i16.PageRouteInfo>? children,
   }) : super(
           CompleteProfileRoute.name,
@@ -207,7 +206,7 @@ class CompleteProfileRoute
 class CompleteProfileRouteArgs {
   const CompleteProfileRouteArgs({
     this.key,
-    this.stepsCompleted = 0,
+    required this.stepsCompleted,
   });
 
   final _i17.Key? key;

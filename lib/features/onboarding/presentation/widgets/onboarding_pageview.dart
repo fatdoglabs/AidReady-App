@@ -33,8 +33,8 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (_, ref, __) {
-      ref.watch(nextPageProvider(0));
-      ref.listen(nextPageProvider(0), (_, index) {
+      ref.watch(nextPageProvider);
+      ref.listen(nextPageProvider, (_, index) {
         _pageViewController?.animateToPage(
           index,
           duration: const Duration(milliseconds: 200),
@@ -54,7 +54,7 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
             ),
             itemCount: widget.data.length,
             onPageChanged: (index) {
-              ref.read(nextPageProvider(0).notifier).update(index);
+              ref.read(nextPageProvider.notifier).update(index);
             },
           ),
           Align(
@@ -83,10 +83,10 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
                       shape: const CircleBorder(),
                       elevation: 0.0,
                       onPressed: () {
-                        final current = ref.read(nextPageProvider(0));
+                        final current = ref.read(nextPageProvider);
                         if (current < widget.data.length - 1) {
                           ref
-                              .read(nextPageProvider(0).notifier)
+                              .read(nextPageProvider.notifier)
                               .update(current + 1);
                         } else {
                           widget.gotoDashboard?.call();
@@ -102,7 +102,7 @@ class _OnboardingPageViewState extends State<OnboardingPageView> {
                 16.verticalSpace,
                 OnboardingIndicator(
                   length: widget.data.length,
-                  index: ref.read(nextPageProvider(0)),
+                  index: ref.read(nextPageProvider),
                 ),
               ],
             ),

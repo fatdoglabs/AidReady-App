@@ -19,16 +19,6 @@ class MedicalInfoView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final step3 = ref.watch(profileStepProvider);
-    ref.listen(profileUpdateProvider, (_, current) {
-      current.whenOrNull(
-        data: (data) {
-          if (data.bloodGroup.isNotNullNotEmpty ||
-              data.dontKnowBloodType == true) {
-            onNext?.call();
-          }
-        },
-      );
-    });
     bool isLoading = ref.watch(profileUpdateProvider).maybeWhen(
           orElse: () => false,
           loading: () => true,

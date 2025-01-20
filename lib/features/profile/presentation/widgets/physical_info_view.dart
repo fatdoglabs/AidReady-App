@@ -65,9 +65,12 @@ class PhysicalInfoView extends ConsumerWidget {
             ),
             30.verticalSpace,
             InputField(
-              initialValue: step2.weight.toString(),
+              initialValue: step2.weight != 0.0
+                  ? step2.weight!.removeTrailingZeros()
+                  : null,
               labelText: context.l10n.weight,
               hint: context.l10n.enterWeight,
+              inputType: TextInputType.number,
               onChanged: (value) {
                 ref
                     .read(profileStepProvider.notifier)

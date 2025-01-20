@@ -35,5 +35,8 @@ class NextPage extends _$NextPage {
         state = 1;
       }
     }
+    if (index == 2) {
+      state = 2;
+    }
   }
 }

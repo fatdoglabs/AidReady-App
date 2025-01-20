@@ -21,6 +21,7 @@ const String notificationIcon = 'assets/icons/notification.svg';
 const String attentionIcon = 'assets/icons/attention.svg';
 const String defaultAvatarIcon = 'assets/icons/default_avatar.svg';
 const String locationIcon = 'assets/icons/location.svg';
+const String locationWhiteIcon = 'assets/icons/location_white.svg';
 const String activeHomeIcon = 'assets/icons/active_home.svg';
 const String inActiveHomeIcon = 'assets/icons/inactive_home.svg';
 const String inActiveFamilyIcon = 'assets/icons/inactive_family.svg';

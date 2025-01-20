@@ -22,7 +22,10 @@ class MedicalInfoView extends ConsumerWidget {
     ref.listen(profileUpdateProvider, (_, current) {
       current.whenOrNull(
         data: (data) {
-          onNext?.call();
+          if (data.bloodGroup.isNotNullNotEmpty ||
+              data.dontKnowBloodType == true) {
+            onNext?.call();
+          }
         },
       );
     });

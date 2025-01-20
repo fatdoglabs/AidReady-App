@@ -42,23 +42,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: kToolbarHeight,
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  margin: const EdgeInsets.only(
-                      left: 20, right: 20.0, bottom: 10.0),
-                  decoration: BoxDecoration(
-                    color: primaryDark40,
-                    borderRadius: BorderRadius.circular(58.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        offset: Offset(0, 5),
-                        blurRadius: 24.0,
-                        spreadRadius: 0.0,
-                        color: containerShadow2,
-                      )
-                    ],
-                  ),
+                child: SizedBox(
+                  height: kToolbarHeight * 2,
                   child: BottomTabBar(
                     onTabClick: (index) {
                       tabsRouter.setActiveIndex(index);

@@ -24,7 +24,12 @@ class PhysicalInfoView extends ConsumerWidget {
     ref.listen(profileUpdateProvider, (_, current) {
       current.whenOrNull(
         data: (data) {
-          onNext?.call();
+          if (data.gender.isNotNullNotEmpty &&
+              data.dob.isNotNullNotEmpty &&
+              data.weight != null &&
+              data.weight != 0.0) {
+            onNext?.call();
+          }
         },
       );
     });

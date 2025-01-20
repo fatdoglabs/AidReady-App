@@ -6,8 +6,10 @@ mixin ValidationMixin {
   }
 
   bool validatePassword(String password) {
-    if (password.length > 7) {
-      return true;
+    if (password.length > 7 && password.length < 17) {
+      final RegExp passwordRegex =
+          RegExp(r'^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z\d]).*$');
+      return passwordRegex.hasMatch(password);
     } else {
       return false;
     }

@@ -4,6 +4,7 @@ const Color primary400 = Color(0xFF58D68D);
 const Color primary4001 = Color(0xFF5DADE2);
 const Color primary500 = Color(0xFF2CBB69);
 const Color primary600 = Color(0xFF1F9A53);
+const Color primary700 = Color(0x262CBB69);
 const Color primary200 = Color(0xFFBFF3D4);
 const Color primary50 = Color(0xFFF1FCF5);
 const Color primary100 = Color(0xFFDEFAEA);

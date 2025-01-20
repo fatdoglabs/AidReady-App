@@ -26,7 +26,7 @@ class _ProfileStepsPageViewState extends ConsumerState<ProfileStepsPageView> {
   @override
   void initState() {
     super.initState();
-    _controller = PageController(initialPage: 2);
+    _controller = PageController();
   }
 
   @override

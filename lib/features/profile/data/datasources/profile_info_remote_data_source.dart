@@ -41,6 +41,11 @@ class ProfileInfoRemoteSourceImpl extends ProfileInfoRemoteSource {
   Future<Either<ProfileInfo, AppException>> updatePersonalInfo(
       ProfileInfo step1) async {
     try {
+      if (step1.image!.startsWith("http")) {
+        //this block can be triggered when the user tries to redit the personal info page. since the image has already
+        //been uploaded, no need to call api again.
+        return Left(step1);
+      }
       final response = await networkService.postForm(
         ePersonalInfo,
         data: await step1.toPersonalJson(),

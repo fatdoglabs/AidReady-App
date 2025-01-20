@@ -62,16 +62,12 @@ class AuthInterceptor extends InterceptorsWrapper {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    // final token = await localSource.getAccessToken();
-    // if (token != null) {
-    //   options.headers.addAll(<String, dynamic>{
-    //     'Authorization': 'Bearer $token',
-    //   });
-    // }
-    options.headers.addAll(<String, dynamic>{
-      'Authorization':
-          'Bearer 36|Jmu3YifDGu645IRo6DTMA9p2EKwZnQ1IXxzV3O1O4e977787',
-    });
+    final token = await localSource.getAccessToken();
+    if (token != null) {
+      options.headers.addAll(<String, dynamic>{
+        'Authorization': 'Bearer $token',
+      });
+    }
     handler.next(options);
   }
 }

@@ -73,8 +73,8 @@ extension ContextX on BuildContext {
   }
 
   Future<DateTime?> showDatePickerOverLay(
-      {DateTime? initialDateTime, bool isIOS = false}) async {
-    var initialDate = initialDateTime;
+      {DateTime? firstDate, bool isIOS = false}) async {
+    var initialDate = firstDate;
     initialDate ??= DateTime.now();
     if (isIOS) {
       initialDate = await showCupertinoModalPopup<DateTime?>(
@@ -118,14 +118,12 @@ extension ContextX on BuildContext {
       );
       return initialDate;
     } else {
-      final firstDate = initialDateTime ?? DateTime.now();
-      final lastDate = DateTime(2040, 1, 1);
       final dateTime = await showDatePicker(
           context: this,
           initialEntryMode: DatePickerEntryMode.calendarOnly,
-          initialDate: initialDate,
-          firstDate: firstDate,
-          lastDate: lastDate,
+          initialDate: DateTime.now(),
+          firstDate: initialDate,
+          lastDate: DateTime.now(),
           cancelText: "",
           builder: (_, child) {
             return Theme(

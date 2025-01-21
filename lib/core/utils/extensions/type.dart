@@ -137,9 +137,7 @@ extension StringNullX on String? {
         shape: BoxShape.circle,
         color: primaryDark50,
         border: Border.all(color: primaryDark100),
-        image: !isNullOrEmpty
-            ? DecorationImage(fit: BoxFit.cover, image: toImage())
-            : null,
+        image: !isNullOrEmpty ? DecorationImage(image: toImage()) : null,
       ),
       alignment: Alignment.center,
       child: isNullOrEmpty

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -222,7 +224,10 @@ class _AddMemberFormState extends State<AddMemberForm> {
           labelText: "${context.l10n.dateOfBirth} (Dob)",
           hint: context.l10n.enterDateBirth,
           onTap: () async {
-            final dateTime = await context.showDatePickerOverLay();
+            final dateTime = await context.showDatePickerOverLay(
+              firstDate: DateTime(1940, 1, 1),
+              isIOS: Platform.isIOS,
+            );
             if (dateTime != null) {
               setState(() {
                 dob = dateTime.pad();

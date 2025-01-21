@@ -21,22 +21,26 @@ class NextPage extends _$NextPage {
     return 0;
   }
 
-  void update(int index) {
+  void update(int index, {bool isSequentialSwitch = true}) {
     final step = ref.read(profileStepProvider);
-    if (index == 0) {
-      if (step.name.isNotNullNotEmpty && step.image.isNotNullNotEmpty) {
-        state = 0;
+    if (isSequentialSwitch) {
+      state = index;
+    } else {
+      if (index == 0) {
+        if (step.name.isNotNullNotEmpty && step.image.isNotNullNotEmpty) {
+          state = 0;
+        }
       }
-    }
-    if (index == 1) {
-      if (step.gender.isNotNullNotEmpty &&
-          step.dob.isNotNullNotEmpty &&
-          step.weight != 0.0) {
-        state = 1;
+      if (index == 1) {
+        if (step.gender.isNotNullNotEmpty &&
+            step.dob.isNotNullNotEmpty &&
+            step.weight != 0.0) {
+          state = 1;
+        }
       }
-    }
-    if (index == 2) {
-      state = 2;
+      if (index == 2) {
+        state = 2;
+      }
     }
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -54,13 +56,20 @@ class PhysicalInfoView extends ConsumerWidget {
             ),
             30.verticalSpace,
             InputField(
+              readOnly: true,
               initialValue: step2.dob,
               label: context.l10n.dateOfBirth.mandatory(),
               hint: context.l10n.enterDateBirth,
-              onChanged: (value) {
-                ref
-                    .read(profileStepProvider.notifier)
-                    .updateProfile(dob: value);
+              onTap: () async {
+                final dateTime = await context.showDatePickerOverLay(
+                  firstDate: DateTime(1940, 1, 1),
+                  isIOS: Platform.isIOS,
+                );
+                if (dateTime != null) {
+                  ref
+                      .read(profileStepProvider.notifier)
+                      .updateProfile(dob: dateTime.pad());
+                }
               },
             ),
             30.verticalSpace,

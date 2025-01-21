@@ -30,7 +30,9 @@ class CompleteProfileScreen extends StatelessWidget {
             style: bold.copyWith(fontSize: 20.0, color: primaryDark950),
           ).px(16.0),
           16.verticalSpace,
-          const ProfileStepRow(),
+          ProfileStepRow(
+            stepsCompleted: stepsCompleted,
+          ),
           Expanded(
             child: DefaultTabController(
               length: 3,

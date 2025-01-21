@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ProfileStepRow extends ConsumerWidget {
-  const ProfileStepRow({super.key});
+  const ProfileStepRow({super.key, this.stepsCompleted = 0});
+
+  final int stepsCompleted;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,7 +42,9 @@ class ProfileStepRow extends ConsumerWidget {
       children: [
         GestureDetector(
           onTap: () {
-            ref.read(nextPageProvider.notifier).update(0);
+            ref
+                .read(nextPageProvider.notifier)
+                .update(0, isSequentialSwitch: false);
           },
           child: Container(
             padding: const EdgeInsets.all(8.0),
@@ -60,7 +64,9 @@ class ProfileStepRow extends ConsumerWidget {
         ),
         GestureDetector(
           onTap: () {
-            ref.read(nextPageProvider.notifier).update(1);
+            ref
+                .read(nextPageProvider.notifier)
+                .update(1, isSequentialSwitch: false);
           },
           child: Container(
             padding: const EdgeInsets.all(8.0),

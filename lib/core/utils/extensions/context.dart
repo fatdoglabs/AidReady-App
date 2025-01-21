@@ -121,13 +121,25 @@ extension ContextX on BuildContext {
       final firstDate = initialDateTime ?? DateTime.now();
       final lastDate = DateTime(2040, 1, 1);
       final dateTime = await showDatePicker(
-        context: this,
-        initialEntryMode: DatePickerEntryMode.calendarOnly,
-        initialDate: initialDate,
-        firstDate: firstDate,
-        lastDate: lastDate,
-        cancelText: "",
-      );
+          context: this,
+          initialEntryMode: DatePickerEntryMode.calendarOnly,
+          initialDate: initialDate,
+          firstDate: firstDate,
+          lastDate: lastDate,
+          cancelText: "",
+          builder: (_, child) {
+            return Theme(
+              data: Theme.of(this).copyWith(
+                colorScheme: const ColorScheme.light(primary: primary500),
+                textButtonTheme: TextButtonThemeData(
+                  style: TextButton.styleFrom(
+                    foregroundColor: primary500,
+                  ),
+                ),
+              ),
+              child: child!,
+            );
+          });
       return dateTime;
     }
   }

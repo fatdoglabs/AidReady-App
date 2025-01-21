@@ -133,3 +133,11 @@ extension DoubleX on double {
     return toString().replaceAll(RegExp(r"([.]*0+)$"), "");
   }
 }
+
+extension DateTimeX on DateTime {
+  String pad() {
+    final day = this.day < 10 ? '0${this.day}' : '${this.day}';
+    final month = this.month < 10 ? '0${this.month}' : '${this.month}';
+    return "$year-$month-$day";
+  }
+}

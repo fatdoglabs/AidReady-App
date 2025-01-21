@@ -214,22 +214,24 @@ class _AddMemberFormState extends State<AddMemberForm> {
         ),
         30.verticalSpace,
         InputField(
+          initialValue: dob,
+          readOnly: true,
           labelText: "${context.l10n.dateOfBirth} (Dob)",
           hint: context.l10n.enterDateBirth,
-          onChanged: (value) {
-            setState(() {
-              dob = value;
-            });
+          onTap: () async {
+            final dateTime = await context.showDatePickerOverLay();
+            if (dateTime != null) {
+              setState(() {
+                dob = dateTime.pad();
+              });
+            }
           },
         ),
         16.verticalSpace,
         AddMemberButton(
-          isEnabled: imageUrl.isNotEmpty &&
-              fullName.isNotEmpty &&
+          isEnabled: fullName.isNotEmpty &&
               familyRelation.isNotEmpty &&
-              gender != null &&
-              weight != 0.0 &&
-              dob.isNotEmpty,
+              gender != null,
           onPressed: () {
             widget.onAddMember?.call(FamilyMember(
               image: imageUrl,

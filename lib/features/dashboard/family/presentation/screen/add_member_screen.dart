@@ -23,6 +23,12 @@ class AddMemberScreen extends StatelessWidget {
         ),
       ),
       body: Consumer(builder: (_, ref, __) {
+        ref.listen(familyProvider, (_, current) {
+          current.whenOrNull(
+            data: (data) {},
+          );
+        });
+
         return AddMemberForm(
           onAddMember: (member) {
             ref.read(familyProvider.notifier).addMember(member);

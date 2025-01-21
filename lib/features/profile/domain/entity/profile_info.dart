@@ -35,6 +35,6 @@ class ProfileInfo with _$ProfileInfo {
         'gender': gender,
       };
   Map<String, dynamic> toMedicalJson() => {
-        'blood_group': bloodGroup,
+        'blood_group': bloodGroup ?? "dontknow",
       };
 }

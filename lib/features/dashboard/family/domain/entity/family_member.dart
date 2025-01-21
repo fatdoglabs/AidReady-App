@@ -21,4 +21,16 @@ class FamilyMember with _$FamilyMember {
       _$FamilyMemberFromJson(json);
 
   factory FamilyMember.empty() => const FamilyMember();
+
+  Future<FormData> toForm() async {
+    return FormData.fromMap({
+      "id": "",
+      "name": name,
+      "gender": gender,
+      "dob": dob,
+      "weight": weight,
+      "relation": relation,
+      "image": await MultipartFile.fromFile(image!, filename: "pfpimage.jpg")
+    });
+  }
 }

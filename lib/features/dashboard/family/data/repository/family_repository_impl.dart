@@ -2,7 +2,6 @@ import 'package:aid_ready/core/data/datasources/local_source.dart';
 import 'package:aid_ready/core/exceptions/app_exception.dart';
 import 'package:aid_ready/core/utils/either.dart';
 import 'package:aid_ready/features/dashboard/family/data/datasource/family_remote_source.dart';
-import 'package:aid_ready/features/dashboard/family/domain/entity/family.dart';
 import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
 import 'package:aid_ready/features/dashboard/family/domain/repository/family_repository.dart';
 
@@ -28,7 +27,7 @@ class FamilyRepositoryImpl extends FamilyRepository {
           // localSource.setAccessToken(l.accessToken);
           // localSource.setRefreshToken(l.refreshToken);
           //localSource.setUserId(l.userId);
-          return Left([]);
+          return Left(l);
         },
         (r) => Right(r),
       );

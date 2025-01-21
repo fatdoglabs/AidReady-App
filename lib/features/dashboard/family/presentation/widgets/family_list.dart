@@ -19,14 +19,16 @@ class FamilyList extends ConsumerWidget {
           },
           child: data.isNotEmpty
               ? ListView.separated(
-                  itemBuilder: (_, index) => const FamilyListItem(),
+                  itemBuilder: (_, index) => FamilyListItem(
+                        member: data[index],
+                      ),
                   separatorBuilder: (_, index) => const Divider(
                         thickness: 1.0,
                         color: secondary50,
                         indent: 20.0,
                         endIndent: 20.0,
                       ),
-                  itemCount: 4)
+                  itemCount: data.length)
               : Text('No data').scrollable(),
         );
       },

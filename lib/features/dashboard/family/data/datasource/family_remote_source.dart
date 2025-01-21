@@ -35,10 +35,11 @@ class FamilyRemoteSourceImpl extends FamilyRemoteSource {
   @override
   Future<Either<bool, AppException>> addMember(FamilyMember member) async {
     try {
-      final response = await networkService.get(eAddMember);
+      final response = await networkService.postForm(eAddMember,
+          data: await member.toForm());
       return response.fold((l) {
         final list = l.data['data'] as List<dynamic>? ?? [];
-        return Left(true);
+        return const Left(true);
       }, (r) {
         if (r.statusCode == 422) {
           return Right(AppException.badResponse());

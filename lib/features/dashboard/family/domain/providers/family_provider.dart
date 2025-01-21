@@ -17,7 +17,7 @@ class Family extends _$Family {
     try {
       final result = await repository.famiyMembers();
       return result.fold((data) {
-        return [];
+        return data;
       }, (e) {
         throw e;
       });

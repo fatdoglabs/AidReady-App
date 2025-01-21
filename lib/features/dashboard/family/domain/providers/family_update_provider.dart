@@ -10,7 +10,7 @@ part 'family_update_provider.g.dart';
 class FamilyUpdate extends _$FamilyUpdate {
   @override
   FutureOr<bool> build() async {
-    return true;
+    return false;
   }
 
   Future<void> addMember(FamilyMember member) async {

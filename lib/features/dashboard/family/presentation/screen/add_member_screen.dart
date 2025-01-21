@@ -1,6 +1,5 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
-import 'package:aid_ready/features/dashboard/family/domain/providers/family_provider.dart';
 import 'package:aid_ready/features/dashboard/family/domain/providers/family_update_provider.dart';
 import 'package:aid_ready/features/dashboard/family/presentation/widgets/add_member_form.dart';
 import 'package:auto_route/auto_route.dart';
@@ -27,7 +26,9 @@ class AddMemberScreen extends StatelessWidget {
         ref.listen(familyUpdateProvider, (_, current) {
           current.whenOrNull(
             data: (status) {
-              Navigator.of(context).maybePop();
+              if (status) {
+                Navigator.of(context).maybePop();
+              }
             },
           );
         });

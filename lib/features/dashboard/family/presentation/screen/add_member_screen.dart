@@ -1,5 +1,6 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
 import 'package:aid_ready/features/dashboard/family/domain/providers/family_update_provider.dart';
 import 'package:aid_ready/features/dashboard/family/presentation/widgets/add_member_form.dart';
 import 'package:auto_route/auto_route.dart';
@@ -10,7 +11,9 @@ import '../../../../../core/theme/styles.dart';
 
 @RoutePage()
 class AddMemberScreen extends StatelessWidget {
-  const AddMemberScreen({super.key});
+  const AddMemberScreen({super.key, this.member});
+
+  final FamilyMember? member;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,7 @@ class AddMemberScreen extends StatelessWidget {
         });
 
         return AddMemberForm(
+          member: member,
           onAddMember: (member) {
             ref.read(familyUpdateProvider.notifier).addMember(member);
           },

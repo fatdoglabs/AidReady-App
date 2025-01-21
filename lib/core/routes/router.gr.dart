@@ -23,6 +23,8 @@ import 'package:aid_ready/features/auth/presentation/screen/signup_screen.dart'
 import 'package:aid_ready/features/auth/presentation/screen/verify_otp_screen.dart'
     as _i15;
 import 'package:aid_ready/features/dashboard/dashboard_screen.dart' as _i4;
+import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart'
+    as _i18;
 import 'package:aid_ready/features/dashboard/family/presentation/screen/add_member_screen.dart'
     as _i1;
 import 'package:aid_ready/features/dashboard/family/presentation/screen/family_screen.dart'
@@ -30,7 +32,7 @@ import 'package:aid_ready/features/dashboard/family/presentation/screen/family_s
 import 'package:aid_ready/features/dashboard/presentation/screen/home_screen.dart'
     as _i7;
 import 'package:aid_ready/features/language/data/model/onboarding_item.dart'
-    as _i18;
+    as _i19;
 import 'package:aid_ready/features/language/presentation/screen/language_selection_screen.dart'
     as _i8;
 import 'package:aid_ready/features/onboarding/presentation/screen/onboarding_screen.dart'
@@ -48,9 +50,14 @@ abstract class $AidRouter extends _i16.RootStackRouter {
   @override
   final Map<String, _i16.PageFactory> pagesMap = {
     AddMemberRoute.name: (routeData) {
+      final args = routeData.argsAs<AddMemberRouteArgs>(
+          orElse: () => const AddMemberRouteArgs());
       return _i16.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.AddMemberScreen(),
+        child: _i1.AddMemberScreen(
+          key: args.key,
+          member: args.member,
+        ),
       );
     },
     AuthRoute.name: (routeData) {
@@ -154,16 +161,40 @@ abstract class $AidRouter extends _i16.RootStackRouter {
 
 /// generated route for
 /// [_i1.AddMemberScreen]
-class AddMemberRoute extends _i16.PageRouteInfo<void> {
-  const AddMemberRoute({List<_i16.PageRouteInfo>? children})
-      : super(
+class AddMemberRoute extends _i16.PageRouteInfo<AddMemberRouteArgs> {
+  AddMemberRoute({
+    _i17.Key? key,
+    _i18.FamilyMember? member,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
           AddMemberRoute.name,
+          args: AddMemberRouteArgs(
+            key: key,
+            member: member,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'AddMemberRoute';
 
-  static const _i16.PageInfo<void> page = _i16.PageInfo<void>(name);
+  static const _i16.PageInfo<AddMemberRouteArgs> page =
+      _i16.PageInfo<AddMemberRouteArgs>(name);
+}
+
+class AddMemberRouteArgs {
+  const AddMemberRouteArgs({
+    this.key,
+    this.member,
+  });
+
+  final _i17.Key? key;
+
+  final _i18.FamilyMember? member;
+
+  @override
+  String toString() {
+    return 'AddMemberRouteArgs{key: $key, member: $member}';
+  }
 }
 
 /// generated route for
@@ -294,7 +325,7 @@ class LanguageSelectionRoute extends _i16.PageRouteInfo<void> {
 class OnboardingRoute extends _i16.PageRouteInfo<OnboardingRouteArgs> {
   OnboardingRoute({
     _i17.Key? key,
-    required List<_i18.OnboardingItem> items,
+    required List<_i19.OnboardingItem> items,
     List<_i16.PageRouteInfo>? children,
   }) : super(
           OnboardingRoute.name,
@@ -319,7 +350,7 @@ class OnboardingRouteArgs {
 
   final _i17.Key? key;
 
-  final List<_i18.OnboardingItem> items;
+  final List<_i19.OnboardingItem> items;
 
   @override
   String toString() {

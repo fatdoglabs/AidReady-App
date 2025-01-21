@@ -1,4 +1,5 @@
 import 'package:aid_ready/core/utils/extensions/ui.dart';
+import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
 import 'package:aid_ready/features/dashboard/family/domain/providers/family_provider.dart';
 import 'package:aid_ready/features/dashboard/family/presentation/widgets/family_list_item.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../core/theme/color.dart';
 
 class FamilyList extends ConsumerWidget {
-  const FamilyList({super.key});
+  const FamilyList({super.key, this.onClick});
+
+  final Function(FamilyMember)? onClick;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,6 +24,7 @@ class FamilyList extends ConsumerWidget {
               ? ListView.separated(
                   itemBuilder: (_, index) => FamilyListItem(
                         member: data[index],
+                        onClick: onClick,
                       ),
                   separatorBuilder: (_, index) => const Divider(
                         thickness: 1.0,

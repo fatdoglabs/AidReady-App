@@ -24,7 +24,11 @@ class FamilyScreen extends StatelessWidget {
                   style: bold.copyWith(color: primaryDark950),
                 ),
               ),
-              const Expanded(child: FamilyList())
+              Expanded(child: FamilyList(
+                onClick: (member) {
+                  context.router.push(AddMemberRoute(member: member));
+                },
+              ))
             ],
           ),
           Container(
@@ -36,7 +40,7 @@ class FamilyScreen extends StatelessWidget {
               shape: const CircleBorder(),
               elevation: 0.0,
               onPressed: () {
-                context.router.push(const AddMemberRoute());
+                context.router.push(AddMemberRoute());
               },
               child: const Icon(
                 Icons.add,

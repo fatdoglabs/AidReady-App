@@ -15,7 +15,9 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddMemberForm extends StatefulWidget {
-  const AddMemberForm({super.key, this.onAddMember});
+  const AddMemberForm({super.key, this.onAddMember, this.member});
+
+  final FamilyMember? member;
 
   final List<String> relations = const [
     "Grand Father",
@@ -45,6 +47,26 @@ class _AddMemberFormState extends State<AddMemberForm> {
   String familyRelation = "";
   int weight = 0;
   String dob = "";
+
+  @override
+  void initState() {
+    super.initState();
+    imageUrl = widget.member?.image ?? "";
+    fullName = widget.member?.name ?? "";
+    familyRelation = widget.member?.relation ?? "";
+    switch (widget.member?.gender) {
+      case "Male":
+        gender = Gender.male;
+      case "Female":
+        gender = Gender.female;
+      case "Others":
+        gender = Gender.others;
+      default:
+        gender = null;
+    }
+    weight = widget.member?.weight ?? 0;
+    dob = widget.member?.dob ?? "";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +144,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         ),
         20.verticalSpace,
         InputField(
+          initialValue: fullName,
           label: context.l10n.fullName.mandatory(),
           hint: context.l10n.enterFullName,
           onChanged: (value) {
@@ -182,6 +205,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         ),
         30.verticalSpace,
         InputField(
+          initialValue: weight != 0 ? weight.toString() : null,
           label: context.l10n.weight.mandatory(),
           hint: context.l10n.enterWeight,
           inputType: TextInputType.number,
@@ -211,7 +235,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
           isEnabled: fullName.isNotEmpty &&
               familyRelation.isNotEmpty &&
               gender != null &&
-              weight != 0.0,
+              weight != 0,
           onPressed: () {
             widget.onAddMember?.call(FamilyMember(
               image: imageUrl,

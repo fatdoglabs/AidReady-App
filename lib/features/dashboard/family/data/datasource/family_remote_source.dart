@@ -7,7 +7,7 @@ import '../../domain/entity/family_member.dart';
 
 abstract class FamilyRemoteSource {
   Future<Either<List<FamilyMember>, AppException>> familyMembers();
-  Future<Either<bool, AppException>> addMember(FamilyMember member);
+  Future<Either<FamilyMember, AppException>> addMember(FamilyMember member);
 }
 
 class FamilyRemoteSourceImpl extends FamilyRemoteSource {
@@ -33,13 +33,14 @@ class FamilyRemoteSourceImpl extends FamilyRemoteSource {
   }
 
   @override
-  Future<Either<bool, AppException>> addMember(FamilyMember member) async {
+  Future<Either<FamilyMember, AppException>> addMember(
+      FamilyMember member) async {
     try {
       final response = await networkService.postForm(eAddMember,
           data: await member.toForm());
       return response.fold((l) {
-        final list = l.data['data'] as List<dynamic>? ?? [];
-        return const Left(true);
+        final data = l.data['data'] as Map<String, dynamic>? ?? {};
+        return Left(FamilyMember.fromJson(data));
       }, (r) {
         if (r.statusCode == 422) {
           return Right(AppException.badResponse());

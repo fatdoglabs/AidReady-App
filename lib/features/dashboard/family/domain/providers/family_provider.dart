@@ -26,23 +26,12 @@ class Family extends _$Family {
     }
   }
 
-  Future<void> addMember(FamilyMember member) async {
+  void updateList(FamilyMember member) {
     final current = state.whenOrNull(
-          data: (data) => data,
+          data: (list) => list,
         ) ??
         [];
-    state = const AsyncLoading();
-    final networkStatus = await ref
-        .read(networkStatusNotifierProvider.notifier)
-        .hasInternetAccess();
-    final repository = ref.read(familyRepositoryProvider(networkStatus));
-    final result = await repository.addMember(member);
-    result.fold((l) {
-      if (l) {
-        state = AsyncData([member, ...current]);
-      }
-    }, (r) {
-      state = AsyncError(r, StackTrace.current);
-    });
+    final newList = [member, ...current];
+    state = AsyncData(newList);
   }
 }

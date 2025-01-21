@@ -4,10 +4,9 @@ import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/core/widgets/task_button.dart';
+import 'package:aid_ready/features/dashboard/family/domain/providers/family_update_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../../domain/providers/family_provider.dart';
 
 class AddMemberButton extends StatelessWidget {
   const AddMemberButton({super.key, this.isEnabled = false, this.onPressed});
@@ -36,7 +35,7 @@ class AddMemberButton extends StatelessWidget {
           ),
         ),
         builder: (_, ref, child) {
-          return ref.watch(familyProvider).maybeWhen(
+          return ref.watch(familyUpdateProvider).maybeWhen(
             orElse: () {
               return TaskButton(
                 color: primary500,

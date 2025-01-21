@@ -12,7 +12,7 @@ _$FamilyMemberImpl _$$FamilyMemberImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       gender: json['gender'] as String?,
       dob: json['dob'] as String?,
-      weight: (json['weight'] as num?)?.toDouble(),
+      weight: (json['weight'] as num?)?.toInt(),
       relation: json['relation'] as String?,
     );
 

@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/features/dashboard/family/domain/providers/family_provider.dart';
+import 'package:aid_ready/features/dashboard/family/domain/providers/family_update_provider.dart';
 import 'package:aid_ready/features/dashboard/family/presentation/widgets/add_member_form.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -23,15 +24,17 @@ class AddMemberScreen extends StatelessWidget {
         ),
       ),
       body: Consumer(builder: (_, ref, __) {
-        ref.listen(familyProvider, (_, current) {
+        ref.listen(familyUpdateProvider, (_, current) {
           current.whenOrNull(
-            data: (data) {},
+            data: (status) {
+              Navigator.of(context).maybePop();
+            },
           );
         });
 
         return AddMemberForm(
           onAddMember: (member) {
-            ref.read(familyProvider.notifier).addMember(member);
+            ref.read(familyUpdateProvider.notifier).addMember(member);
           },
         );
       }),

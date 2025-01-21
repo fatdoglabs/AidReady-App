@@ -25,9 +25,7 @@ class FamilyListItem extends StatelessWidget {
           SizedBox.square(
             dimension: 60.0,
             child: member.image.isNotNullNotEmpty
-                ? PictureView(
-                    imageUri: member.image,
-                  )
+                ? member.image.circle()
                 : UserAvatar(
                     initials: member.name![0],
                   ),

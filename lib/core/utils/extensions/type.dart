@@ -3,8 +3,10 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -125,6 +127,27 @@ extension StringNullX on String? {
     } else {
       return FileImage(File(this!));
     }
+  }
+
+  Container circle({double dimension = 60}) {
+    return Container(
+      width: dimension,
+      height: dimension,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: primaryDark50,
+        border: Border.all(color: primaryDark100),
+        image: !isNullOrEmpty
+            ? DecorationImage(fit: BoxFit.cover, image: toImage())
+            : null,
+      ),
+      alignment: Alignment.center,
+      child: isNullOrEmpty
+          ? const PictureView(
+              imageUri: addPictureIcon,
+            )
+          : null,
+    );
   }
 }
 

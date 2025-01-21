@@ -37,15 +37,16 @@ class FamilyRepositoryImpl extends FamilyRepository {
   }
 
   @override
-  Future<Either<bool, AppException>> addMember(FamilyMember member) async {
+  Future<Either<FamilyMember, AppException>> addMember(
+      FamilyMember member) async {
     if (status == NetworkStatus.isConnected) {
-      final token = await remoteDataSource.familyMembers();
+      final token = await remoteDataSource.addMember(member);
       return token.fold(
         (l) {
           // localSource.setAccessToken(l.accessToken);
           // localSource.setRefreshToken(l.refreshToken);
           //localSource.setUserId(l.userId);
-          return Left(true);
+          return Left(l);
         },
         (r) => Right(r),
       );

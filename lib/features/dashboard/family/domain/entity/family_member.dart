@@ -12,7 +12,7 @@ class FamilyMember with _$FamilyMember {
       String? name,
       String? gender,
       String? dob,
-      double? weight,
+      int? weight,
       String? relation}) = _FamilyMember;
 
   const FamilyMember._();
@@ -30,7 +30,9 @@ class FamilyMember with _$FamilyMember {
       "dob": dob,
       "weight": weight,
       "relation": relation,
-      "image": await MultipartFile.fromFile(image!, filename: "pfpimage.jpg")
+      "image": image != null
+          ? await MultipartFile.fromFile(image!, filename: "pfpimage.jpg")
+          : null
     });
   }
 }

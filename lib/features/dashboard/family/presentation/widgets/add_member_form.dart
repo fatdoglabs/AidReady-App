@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
@@ -8,7 +5,6 @@ import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/chip_select_modal.dart';
 import 'package:aid_ready/core/widgets/input_field.dart';
 import 'package:aid_ready/core/widgets/option_modal.dart';
-import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
 import 'package:aid_ready/features/dashboard/family/presentation/widgets/add_member_button.dart';
 import 'package:aid_ready/features/profile/domain/entity/gender.dart';
@@ -47,7 +43,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
   String fullName = "";
   Gender? gender;
   String familyRelation = "";
-  double weight = 0.0;
+  int weight = 0;
   String dob = "";
 
   @override
@@ -116,25 +112,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
               });
             }
           },
-          child: Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: primaryDark50,
-              border: Border.all(color: primaryDark100),
-              image: !imageUrl.isNullOrEmpty
-                  ? DecorationImage(
-                      fit: BoxFit.cover, image: FileImage(File(imageUrl)))
-                  : null,
-            ),
-            alignment: Alignment.center,
-            child: imageUrl.isNullOrEmpty
-                ? const PictureView(
-                    imageUri: addPictureIcon,
-                  )
-                : null,
-          ),
+          child: imageUrl.circle(dimension: 120),
         ),
         10.verticalSpace,
         Text(
@@ -204,11 +182,12 @@ class _AddMemberFormState extends State<AddMemberForm> {
         ),
         30.verticalSpace,
         InputField(
-          labelText: context.l10n.weight,
+          label: context.l10n.weight.mandatory(),
           hint: context.l10n.enterWeight,
+          inputType: TextInputType.number,
           onChanged: (value) {
             setState(() {
-              weight = double.tryParse(value) ?? 0.0;
+              weight = int.tryParse(value) ?? 0;
             });
           },
         ),
@@ -231,7 +210,8 @@ class _AddMemberFormState extends State<AddMemberForm> {
         AddMemberButton(
           isEnabled: fullName.isNotEmpty &&
               familyRelation.isNotEmpty &&
-              gender != null,
+              gender != null &&
+              weight != 0.0,
           onPressed: () {
             widget.onAddMember?.call(FamilyMember(
               image: imageUrl,

@@ -54,7 +54,7 @@ class PictureView extends StatelessWidget {
             width: width,
             height: height,
             placeholderBuilder: (_) {
-              return const _PlaceHolder();
+              return const Center(child: _PlaceHolder());
             },
           );
         } else {
@@ -62,8 +62,8 @@ class PictureView extends StatelessWidget {
             imageUrl: imageUri!,
             width: width,
             height: height,
-            errorWidget: (_, __, ___) => const _PlaceHolder(),
-            placeholder: (context, url) => const _PlaceHolder(),
+            errorWidget: (_, __, ___) => const Center(child: _PlaceHolder()),
+            placeholder: (context, url) => const Center(child: _PlaceHolder()),
           );
         }
       } else {

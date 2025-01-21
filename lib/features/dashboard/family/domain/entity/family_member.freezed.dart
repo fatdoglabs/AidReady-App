@@ -24,7 +24,7 @@ mixin _$FamilyMember {
   String? get name => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get dob => throw _privateConstructorUsedError;
-  double? get weight => throw _privateConstructorUsedError;
+  int? get weight => throw _privateConstructorUsedError;
   String? get relation => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,7 +44,7 @@ abstract class $FamilyMemberCopyWith<$Res> {
       String? name,
       String? gender,
       String? dob,
-      double? weight,
+      int? weight,
       String? relation});
 }
 
@@ -88,7 +88,7 @@ class _$FamilyMemberCopyWithImpl<$Res, $Val extends FamilyMember>
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       relation: freezed == relation
           ? _value.relation
           : relation // ignore: cast_nullable_to_non_nullable
@@ -110,7 +110,7 @@ abstract class _$$FamilyMemberImplCopyWith<$Res>
       String? name,
       String? gender,
       String? dob,
-      double? weight,
+      int? weight,
       String? relation});
 }
 
@@ -152,7 +152,7 @@ class __$$FamilyMemberImplCopyWithImpl<$Res>
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as int?,
       relation: freezed == relation
           ? _value.relation
           : relation // ignore: cast_nullable_to_non_nullable
@@ -186,7 +186,7 @@ class _$FamilyMemberImpl extends _FamilyMember {
   @override
   final String? dob;
   @override
-  final double? weight;
+  final int? weight;
   @override
   final String? relation;
 
@@ -234,7 +234,7 @@ abstract class _FamilyMember extends FamilyMember {
       final String? name,
       final String? gender,
       final String? dob,
-      final double? weight,
+      final int? weight,
       final String? relation}) = _$FamilyMemberImpl;
   const _FamilyMember._() : super._();
 
@@ -250,7 +250,7 @@ abstract class _FamilyMember extends FamilyMember {
   @override
   String? get dob;
   @override
-  double? get weight;
+  int? get weight;
   @override
   String? get relation;
   @override

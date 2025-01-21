@@ -9,6 +9,7 @@ import 'package:aid_ready/core/widgets/chip_select_modal.dart';
 import 'package:aid_ready/core/widgets/input_field.dart';
 import 'package:aid_ready/core/widgets/option_modal.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
+import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
 import 'package:aid_ready/features/dashboard/family/presentation/widgets/add_member_button.dart';
 import 'package:aid_ready/features/profile/domain/entity/gender.dart';
 import 'package:aid_ready/features/profile/domain/entity/image_source.dart';
@@ -18,9 +19,7 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AddMemberForm extends StatefulWidget {
-  const AddMemberForm({
-    super.key,
-  });
+  const AddMemberForm({super.key, this.onAddMember});
 
   final List<String> relations = const [
     "Grand Father",
@@ -36,6 +35,8 @@ class AddMemberForm extends StatefulWidget {
     "Son",
     "Daughter",
   ];
+
+  final Function(FamilyMember)? onAddMember;
 
   @override
   State<AddMemberForm> createState() => _AddMemberFormState();
@@ -143,7 +144,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         ),
         20.verticalSpace,
         InputField(
-          labelText: context.l10n.fullName,
+          label: context.l10n.fullName.mandatory(),
           hint: context.l10n.enterFullName,
           onChanged: (value) {
             setState(() {
@@ -153,10 +154,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0),
-          child: Text(
-            context.l10n.gender,
-            style: bold.copyWith(fontSize: 12.0, color: primaryDark700),
-          ),
+          child: context.l10n.gender.mandatory(),
         ),
         GenderGroup(
           value: gender,
@@ -170,7 +168,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         InputField(
           readOnly: true,
           initialValue: familyRelation,
-          labelText: context.l10n.relation,
+          label: context.l10n.relation.mandatory(),
           hint: context.l10n.enterRelation,
           suffixIcon: Row(
             mainAxisSize: MainAxisSize.min,
@@ -233,7 +231,14 @@ class _AddMemberFormState extends State<AddMemberForm> {
               weight != 0.0 &&
               dob.isNotEmpty,
           onPressed: () {
-            //widget.onLogin?.call(email, password);
+            widget.onAddMember?.call(FamilyMember(
+              image: imageUrl,
+              name: fullName,
+              dob: dob,
+              gender: gender!.label,
+              weight: weight,
+              relation: familyRelation,
+            ));
           },
         ),
       ],

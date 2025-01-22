@@ -8,6 +8,7 @@
   "loginNow": "Login Now",
   "skip": "Skip",
   "save": "Save",
+  "close": "Close",
   "resend": "Resend",
   "confirm": "Confirm",
   "note": "Note",
@@ -89,5 +90,7 @@
   "selectOneRelation": "Select any one relation",
   "defineRelation": "Define your relation",
   "passwwordRequirement": "Must be 8-16 characters, include letters, numbers, and symbols.",
+  "profileIncompleteWarning": "Your profile is incomplete! Complete it now to start saving lives and become a proud blood donor.",
+  "completeProfile":"Complete Donation Profile",
   "genericerr": "Something went wrong. Please try again later."
 }

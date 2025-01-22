@@ -28,3 +28,4 @@ const String inActiveFamilyIcon = 'assets/icons/inactive_family.svg';
 const String activeFamilyIcon = 'assets/icons/active_family.svg';
 const String inActiveProfileIcon = 'assets/icons/inactive_profile.svg';
 const String activeProfileIcon = 'assets/icons/active_profile.svg';
+const String warningIcon = 'assets/icons/warning.svg';

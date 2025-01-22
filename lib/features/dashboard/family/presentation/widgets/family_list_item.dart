@@ -2,10 +2,12 @@ import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
+import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/info_chip.dart';
 import 'package:aid_ready/core/widgets/label.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
+import 'package:aid_ready/features/dashboard/family/presentation/widgets/profile_warning_modal.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/user_avatar.dart';
@@ -79,8 +81,17 @@ class FamilyListItem extends StatelessWidget {
                 ],
               ),
             ),
-            const PictureView(
-              imageUri: attentionIcon,
+            GestureDetector(
+              onTap: () {
+                showModalBottomSheet(
+                    context: context,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0)),
+                    builder: (_) => const ProfileWarningModal());
+              },
+              child: const PictureView(
+                imageUri: attentionIcon,
+              ).pad(8.0),
             ),
           ],
         ),

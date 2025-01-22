@@ -33,15 +33,19 @@ class FamilyList extends ConsumerWidget {
                         endIndent: 20.0,
                       ),
                   itemCount: data.length)
-              : Text('No data').scrollable(),
+              : const Text('No data').scrollable(),
         );
       },
       error: (error, _) {
-        return Text("data");
+        return const Text("data");
       },
       loading: () {
         {
-          return Text("loading");
+          return const Center(
+            child: CircularProgressIndicator.adaptive(
+              backgroundColor: primary500,
+            ),
+          );
         }
       },
     );

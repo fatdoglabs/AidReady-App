@@ -66,14 +66,14 @@ class FamilyListItem extends StatelessWidget {
                       Label(
                         value: member.gender!,
                         prefix: const PictureView(
-                          imageUri: locationIcon,
+                          imageUri: genderIcon,
                         ),
                       ),
                       20.horizontalSpace,
                       Label(
                         value: "${member.weight} kg",
                         prefix: const PictureView(
-                          imageUri: locationIcon,
+                          imageUri: weightIcon,
                         ),
                       ),
                     ],

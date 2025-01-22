@@ -221,7 +221,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         InputField(
           initialValue: dob,
           readOnly: true,
-          labelText: "${context.l10n.dateOfBirth} (Dob)",
+          label: "${context.l10n.dateOfBirth} (DOB)".mandatory(),
           hint: context.l10n.enterDateBirth,
           onTap: () async {
             final dateTime = await context.showDatePickerOverLay(
@@ -239,6 +239,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         AddMemberButton(
           isEnabled: fullName.isNotEmpty &&
               familyRelation.isNotEmpty &&
+              dob.isNotEmpty &&
               gender != null &&
               weight != 0,
           onPressed: () {

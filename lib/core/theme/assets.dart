@@ -29,3 +29,5 @@ const String activeFamilyIcon = 'assets/icons/active_family.svg';
 const String inActiveProfileIcon = 'assets/icons/inactive_profile.svg';
 const String activeProfileIcon = 'assets/icons/active_profile.svg';
 const String warningIcon = 'assets/icons/warning.svg';
+const String weightIcon = 'assets/icons/weight.svg';
+const String genderIcon = 'assets/icons/gender.svg';

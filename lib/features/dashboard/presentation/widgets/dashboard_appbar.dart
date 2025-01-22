@@ -16,6 +16,7 @@ class DashboardAppbar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          MediaQuery.of(context).padding.top.verticalSpace,
           Row(
             children: [
               const Expanded(

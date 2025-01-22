@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:dio/dio.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,7 +31,7 @@ class FamilyMember with _$FamilyMember {
       "dob": dob,
       "weight": weight,
       "relation": relation,
-      "image": image != null
+      "image": image.isNotNullNotEmpty
           ? await MultipartFile.fromFile(image!, filename: "pfpimage.jpg")
           : null
     });

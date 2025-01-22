@@ -208,7 +208,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         30.verticalSpace,
         InputField(
           initialValue: weight != 0 ? weight.toString() : null,
-          label: context.l10n.weight.mandatory(),
+          labelText: context.l10n.weight,
           hint: context.l10n.enterWeight,
           inputType: TextInputType.number,
           onChanged: (value) {
@@ -221,7 +221,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         InputField(
           initialValue: dob,
           readOnly: true,
-          label: "${context.l10n.dateOfBirth} (DOB)".mandatory(),
+          labelText: "${context.l10n.dateOfBirth} (DOB)",
           hint: context.l10n.enterDateBirth,
           onTap: () async {
             final dateTime = await context.showDatePickerOverLay(
@@ -239,9 +239,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
         AddMemberButton(
           isEnabled: fullName.isNotEmpty &&
               familyRelation.isNotEmpty &&
-              dob.isNotEmpty &&
-              gender != null &&
-              weight != 0,
+              gender != null,
           onPressed: () {
             widget.onAddMember?.call(FamilyMember(
               image: imageUrl,

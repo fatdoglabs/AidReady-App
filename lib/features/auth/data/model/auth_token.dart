@@ -15,7 +15,7 @@ class AuthToken with _$AuthToken {
     @Default(0.0) double weight,
     @Default("") String accessToken,
     @Default("") String refreshToken,
-    required String email,
+    @Default("") String email,
     @Default(false) bool isOnboardingComplete,
     @Default(false) bool isLocaleSet,
     @Default(false) bool isPersonalInfoCompleted,

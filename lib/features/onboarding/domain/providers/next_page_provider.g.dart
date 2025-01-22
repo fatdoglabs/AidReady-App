@@ -6,7 +6,7 @@ part of 'next_page_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$nextPageHash() => r'807df7bdb5b36d83776836f70c3972c2783958d7';
+String _$nextPageHash() => r'505d8cc4f9d53b675801c4630c354c8be9543ec2';
 
 /// See also [NextPage].
 @ProviderFor(NextPage)

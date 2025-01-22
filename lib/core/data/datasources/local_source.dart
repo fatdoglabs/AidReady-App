@@ -6,15 +6,15 @@ import 'package:hive/hive.dart';
 abstract class LocalSource {
   String? getRefreshToken();
   String? getAccessToken();
-  int? getUserId();
 
   Future<void> setRefreshToken(String token);
   Future<void> setAccessToken(String token);
-  Future<void> setUserId(int id);
+
+  Future<void> setUserData(Map<String, dynamic> data);
+  Map<String, dynamic> get user;
 
   Future<void> deleteAccessToken();
   Future<void> deleteRefreshToken();
-  Future<void> deleteUserId();
 
   bool isOnboardingShown();
   Future<void> setOnboarding();
@@ -27,11 +27,6 @@ class LocalDataSource extends LocalSource {
   final Box dataBox;
 
   LocalDataSource(this.dataBox);
-
-  @override
-  int? getUserId() {
-    return dataBox.get("user_id");
-  }
 
   @override
   String? getAccessToken() {
@@ -86,12 +81,14 @@ class LocalDataSource extends LocalSource {
   }
 
   @override
-  Future<void> deleteUserId() async {
-    await dataBox.delete("enrollment_id");
+  Map<String, dynamic> get user {
+    Map<dynamic, dynamic> value = dataBox.get("user_data") ?? {};
+    final result = value.map((k, v) => MapEntry(k.toString(), v));
+    return result;
   }
 
   @override
-  Future<void> setUserId(int id) async {
-    await dataBox.put("user_id", id);
+  Future<void> setUserData(Map<String, dynamic> data) async {
+    await dataBox.put("user_data", data);
   }
 }

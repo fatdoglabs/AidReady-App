@@ -16,7 +16,7 @@ _$AuthTokenImpl _$$AuthTokenImplFromJson(Map<String, dynamic> json) =>
       weight: (json['weight'] as num?)?.toDouble() ?? 0.0,
       accessToken: json['access_token'] as String? ?? "",
       refreshToken: json['refresh_token'] as String? ?? "",
-      email: json['email'] as String,
+      email: json['email'] as String? ?? "",
       isOnboardingComplete: json['is_onboarding_complete'] as bool? ?? false,
       isLocaleSet: json['is_locale_set'] as bool? ?? false,
       isPersonalInfoCompleted:

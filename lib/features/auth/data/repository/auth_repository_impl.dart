@@ -32,7 +32,7 @@ class AuthRepositoryImpl extends AuthRepository {
         (l) {
           localSource.setAccessToken(l.accessToken);
           localSource.setRefreshToken(l.refreshToken);
-          //localSource.setUserId(l.userId);
+          localSource.setUserData(l.toJson());
           return Left(l);
         },
         (r) => Right(r),
@@ -79,7 +79,8 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<Either<AuthToken, AppException>> setPassword(AuthFormEntity authData) async {
+  Future<Either<AuthToken, AppException>> setPassword(
+      AuthFormEntity authData) async {
     if (status == NetworkStatus.isConnected) {
       final token = await remoteDataSource.setPassword(authData);
       return token.fold(
@@ -154,10 +155,8 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   AuthToken isUserLoggedIn() {
-    return AuthToken(
-        email: "",
-        accessToken: localSource.getAccessToken() ?? "",
-        refreshToken: localSource.getRefreshToken() ?? "");
+    print(localSource.user);
+    return AuthToken.fromJson(localSource.user);
   }
 
   @override
@@ -166,7 +165,6 @@ class AuthRepositoryImpl extends AuthRepository {
     return result.fold((status) async {
       await localSource.deleteAccessToken();
       await localSource.deleteRefreshToken();
-      await localSource.deleteUserId();
       return status;
     }, (err) {
       throw err;
@@ -179,7 +177,6 @@ class AuthRepositoryImpl extends AuthRepository {
     return result.fold((status) async {
       await localSource.deleteAccessToken();
       await localSource.deleteRefreshToken();
-      await localSource.deleteUserId();
       return status;
     }, (err) {
       throw err;

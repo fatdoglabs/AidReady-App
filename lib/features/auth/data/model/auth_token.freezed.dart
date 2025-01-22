@@ -277,7 +277,7 @@ class _$AuthTokenImpl implements _AuthToken {
       this.weight = 0.0,
       this.accessToken = "",
       this.refreshToken = "",
-      required this.email,
+      this.email = "",
       this.isOnboardingComplete = false,
       this.isLocaleSet = false,
       this.isPersonalInfoCompleted = false,
@@ -312,6 +312,7 @@ class _$AuthTokenImpl implements _AuthToken {
   @JsonKey()
   final String refreshToken;
   @override
+  @JsonKey()
   final String email;
   @override
   @JsonKey()
@@ -408,7 +409,7 @@ abstract class _AuthToken implements AuthToken {
       final double weight,
       final String accessToken,
       final String refreshToken,
-      required final String email,
+      final String email,
       final bool isOnboardingComplete,
       final bool isLocaleSet,
       final bool isPersonalInfoCompleted,

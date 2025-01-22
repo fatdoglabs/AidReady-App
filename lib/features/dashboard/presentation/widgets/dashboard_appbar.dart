@@ -20,10 +20,10 @@ class DashboardAppbar extends ConsumerWidget {
             ) ??
         AuthToken.unauthenticated();
     return SafeArea(
+      minimum: const EdgeInsets.only(top: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          (MediaQuery.of(context).padding.top / 2).verticalSpace,
           Row(
             children: [
               const Expanded(

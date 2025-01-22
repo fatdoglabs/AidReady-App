@@ -92,5 +92,6 @@
   "passwwordRequirement": "Must be 8-16 characters, include letters, numbers, and symbols.",
   "profileIncompleteWarning": "Your profile is incomplete! Complete it now to start saving lives and become a proud blood donor.",
   "completeProfile":"Complete Donation Profile",
+  "memberAddedSuccessfully":"New Family Member added successfully.",
   "genericerr": "Something went wrong. Please try again later."
 }

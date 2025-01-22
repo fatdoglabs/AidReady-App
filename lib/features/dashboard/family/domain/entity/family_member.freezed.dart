@@ -20,6 +20,7 @@ FamilyMember _$FamilyMemberFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FamilyMember {
+  int? get id => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
@@ -40,7 +41,8 @@ abstract class $FamilyMemberCopyWith<$Res> {
       _$FamilyMemberCopyWithImpl<$Res, FamilyMember>;
   @useResult
   $Res call(
-      {String? image,
+      {int? id,
+      String? image,
       String? name,
       String? gender,
       String? dob,
@@ -61,6 +63,7 @@ class _$FamilyMemberCopyWithImpl<$Res, $Val extends FamilyMember>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? image = freezed,
     Object? name = freezed,
     Object? gender = freezed,
@@ -69,6 +72,10 @@ class _$FamilyMemberCopyWithImpl<$Res, $Val extends FamilyMember>
     Object? relation = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -106,7 +113,8 @@ abstract class _$$FamilyMemberImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? image,
+      {int? id,
+      String? image,
       String? name,
       String? gender,
       String? dob,
@@ -125,6 +133,7 @@ class __$$FamilyMemberImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? image = freezed,
     Object? name = freezed,
     Object? gender = freezed,
@@ -133,6 +142,10 @@ class __$$FamilyMemberImplCopyWithImpl<$Res>
     Object? relation = freezed,
   }) {
     return _then(_$FamilyMemberImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -166,7 +179,8 @@ class __$$FamilyMemberImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _$FamilyMemberImpl extends _FamilyMember {
   const _$FamilyMemberImpl(
-      {this.image,
+      {this.id,
+      this.image,
       this.name,
       this.gender,
       this.dob,
@@ -177,6 +191,8 @@ class _$FamilyMemberImpl extends _FamilyMember {
   factory _$FamilyMemberImpl.fromJson(Map<String, dynamic> json) =>
       _$$FamilyMemberImplFromJson(json);
 
+  @override
+  final int? id;
   @override
   final String? image;
   @override
@@ -192,7 +208,7 @@ class _$FamilyMemberImpl extends _FamilyMember {
 
   @override
   String toString() {
-    return 'FamilyMember(image: $image, name: $name, gender: $gender, dob: $dob, weight: $weight, relation: $relation)';
+    return 'FamilyMember(id: $id, image: $image, name: $name, gender: $gender, dob: $dob, weight: $weight, relation: $relation)';
   }
 
   @override
@@ -200,6 +216,7 @@ class _$FamilyMemberImpl extends _FamilyMember {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FamilyMemberImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
@@ -212,7 +229,7 @@ class _$FamilyMemberImpl extends _FamilyMember {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, image, name, gender, dob, weight, relation);
+      Object.hash(runtimeType, id, image, name, gender, dob, weight, relation);
 
   @JsonKey(ignore: true)
   @override
@@ -230,7 +247,8 @@ class _$FamilyMemberImpl extends _FamilyMember {
 
 abstract class _FamilyMember extends FamilyMember {
   const factory _FamilyMember(
-      {final String? image,
+      {final int? id,
+      final String? image,
       final String? name,
       final String? gender,
       final String? dob,
@@ -241,6 +259,8 @@ abstract class _FamilyMember extends FamilyMember {
   factory _FamilyMember.fromJson(Map<String, dynamic> json) =
       _$FamilyMemberImpl.fromJson;
 
+  @override
+  int? get id;
   @override
   String? get image;
   @override

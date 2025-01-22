@@ -8,6 +8,7 @@ part of 'family_member.dart';
 
 _$FamilyMemberImpl _$$FamilyMemberImplFromJson(Map<String, dynamic> json) =>
     _$FamilyMemberImpl(
+      id: (json['id'] as num?)?.toInt(),
       image: json['image'] as String?,
       name: json['name'] as String?,
       gender: json['gender'] as String?,
@@ -18,6 +19,7 @@ _$FamilyMemberImpl _$$FamilyMemberImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$FamilyMemberImplToJson(_$FamilyMemberImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'image': instance.image,
       'name': instance.name,
       'gender': instance.gender,

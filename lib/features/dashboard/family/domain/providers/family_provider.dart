@@ -27,11 +27,18 @@ class Family extends _$Family {
   }
 
   void updateList(FamilyMember member) {
-    final current = state.whenOrNull(
+    List<FamilyMember> current = state.whenOrNull(
           data: (list) => list,
         ) ??
         [];
-    final newList = [member, ...current];
-    state = AsyncData(newList);
+    final existingMemberIndex =
+        current.indexWhere((item) => item.id == member.id);
+    if (existingMemberIndex == -1) {
+      state = AsyncData([member, ...current]);
+    } else {
+      current.removeAt(existingMemberIndex);
+      current.insert(existingMemberIndex, member);
+      state = AsyncData([...current]);
+    }
   }
 }

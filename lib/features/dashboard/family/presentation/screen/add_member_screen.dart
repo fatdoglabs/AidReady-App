@@ -30,6 +30,7 @@ class AddMemberScreen extends StatelessWidget {
           current.whenOrNull(
             data: (status) {
               if (status) {
+                context.snack(context.l10n.memberAddedSuccessfully);
                 Navigator.of(context).maybePop();
               }
             },

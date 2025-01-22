@@ -13,6 +13,7 @@ class FamilyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      minimum: const EdgeInsets.only(top: 16.0),
       child: Stack(
         children: [
           Column(

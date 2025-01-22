@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/domain/entity/locale_option.dart';
 import 'package:aid_ready/core/domain/providers/language_provider.dart';
 import 'package:aid_ready/core/routes/router.dart';
+import 'package:aid_ready/core/services/provider_observer.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,10 @@ import 'core/services/injector.dart';
 
 void main() async {
   await injectDependencies();
-  runApp(const ProviderScope(child: AidApp()));
+  runApp(ProviderScope(
+    child: AidApp(),
+    observers: [AidObserver()],
+  ));
 }
 
 class AidApp extends ConsumerWidget {

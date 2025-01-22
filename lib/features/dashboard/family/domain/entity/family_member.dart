@@ -9,7 +9,8 @@ part 'family_member.g.dart';
 class FamilyMember with _$FamilyMember {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory FamilyMember(
-      {String? image,
+      {int? id,
+      String? image,
       String? name,
       String? gender,
       String? dob,
@@ -25,14 +26,16 @@ class FamilyMember with _$FamilyMember {
 
   Future<FormData> toForm() async {
     return FormData.fromMap({
-      "id": "",
+      "id": id,
       "name": name,
       "gender": gender,
       "dob": dob,
       "weight": weight,
       "relation": relation,
       "image": image.isNotNullNotEmpty
-          ? await MultipartFile.fromFile(image!, filename: "pfpimage.jpg")
+          ? image!.startsWith("http")
+              ? image
+              : await MultipartFile.fromFile(image!, filename: "pfpimage.jpg")
           : null
     });
   }

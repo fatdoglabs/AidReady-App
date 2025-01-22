@@ -70,12 +70,14 @@ class FamilyListItem extends StatelessWidget {
                         ),
                       ),
                       20.horizontalSpace,
-                      Label(
-                        value: "${member.weight} kg",
-                        prefix: const PictureView(
-                          imageUri: weightIcon,
-                        ),
-                      ),
+                      member.weight != 0
+                          ? Label(
+                              value: "${member.weight} kg",
+                              prefix: const PictureView(
+                                imageUri: weightIcon,
+                              ),
+                            )
+                          : const SizedBox.shrink(),
                     ],
                   ),
                 ],

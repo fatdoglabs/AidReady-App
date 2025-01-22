@@ -242,6 +242,7 @@ class _AddMemberFormState extends State<AddMemberForm> {
               gender != null,
           onPressed: () {
             widget.onAddMember?.call(FamilyMember(
+              id: widget.member?.id,
               image: imageUrl,
               name: fullName,
               dob: dob,

@@ -12,9 +12,9 @@ import 'core/services/injector.dart';
 
 void main() async {
   await injectDependencies();
-  runApp(const ProviderScope(
+  runApp(ProviderScope(
     child: AidApp(),
-    // observers: [AidObserver()],
+    observers: [AidObserver()],
   ));
 }
 

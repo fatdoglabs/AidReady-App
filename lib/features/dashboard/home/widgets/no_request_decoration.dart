@@ -23,7 +23,6 @@ class _ContainerDecorationPainter extends BoxPainter {
   void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
     final bounds = configuration.size;
     final width = bounds!.width;
-    final height = bounds.height;
     Paint paint = Paint()
       ..color = danger100
       ..style = PaintingStyle.fill;

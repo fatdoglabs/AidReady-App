@@ -91,7 +91,6 @@ class AuthRepositoryImpl extends AuthRepository {
         (l) {
           localSource.setAccessToken(l.accessToken);
           localSource.setRefreshToken(l.refreshToken);
-          //localSource.setUserId(l.userId);
           return Left(l);
         },
         (r) => Right(r),
@@ -159,8 +158,10 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   AuthToken isUserLoggedIn() {
-    print(localSource.user);
-    return AuthToken.fromJson(localSource.user);
+    return AuthToken.fromJson(localSource.user).copyWith(
+      accessToken: localSource.getAccessToken() ?? "",
+      refreshToken: localSource.getRefreshToken() ?? "",
+    );
   }
 
   @override

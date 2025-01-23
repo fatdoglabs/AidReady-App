@@ -25,9 +25,7 @@ class ProfileInfoRepositoryImpl extends ProfileInfoRepository {
       final token = await remoteDataSource.updateMedicalInfo(step3);
       return token.fold(
         (l) {
-          //localSource.setAccessToken(l.accessToken);
-          //localSource.setRefreshToken(l.refreshToken);
-          //localSource.setUserId(l.userId);
+          localSource.setUserData(l.toJson());
           return Left(l);
         },
         (r) => Right(r),

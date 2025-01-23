@@ -4,7 +4,7 @@ import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/features/profile/domain/providers/profile_step_provider.dart';
-import 'package:aid_ready/features/profile/presentation/widgets/blood_group_selector.dart';
+import 'package:aid_ready/core/widgets/blood_group_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -28,9 +28,6 @@ class MedicalInfoView extends ConsumerWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            16.verticalSpace,
-            context.l10n.bloodGroup.mandatory(),
-            16.verticalSpace,
             BloodGroupSelector(
               bloodGroup: step3.bloodGroup,
               onSelected: (group) {

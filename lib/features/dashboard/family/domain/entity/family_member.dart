@@ -39,4 +39,12 @@ class FamilyMember with _$FamilyMember {
           : null
     });
   }
+
+  bool isProfileComplete() {
+    return name.isNotNullNotEmpty &&
+        weight != 0 &&
+        dob.isNotNullNotEmpty &&
+        relation.isNotNullNotEmpty &&
+        gender.isNotNullNotEmpty;
+  }
 }

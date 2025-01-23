@@ -205,19 +205,20 @@ class _AddMemberFormState extends State<AddMemberForm> {
             }
           },
         ),
-        30.verticalSpace,
-        InputField(
-          initialValue: weight != 0 ? weight.toString() : null,
-          labelText: context.l10n.weight,
-          hint: context.l10n.enterWeight,
-          inputType: TextInputType.number,
-          onChanged: (value) {
-            setState(() {
-              weight = int.tryParse(value) ?? 0;
-            });
-          },
+        Container(
+          margin: const EdgeInsets.symmetric(vertical: 30.0),
+          child: InputField(
+            initialValue: weight != 0 ? weight.toString() : null,
+            labelText: context.l10n.weight,
+            hint: context.l10n.enterWeight,
+            inputType: TextInputType.number,
+            onChanged: (value) {
+              setState(() {
+                weight = int.tryParse(value) ?? 0;
+              });
+            },
+          ),
         ),
-        30.verticalSpace,
         InputField(
           initialValue: dob,
           readOnly: true,

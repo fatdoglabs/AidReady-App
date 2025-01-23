@@ -1,5 +1,6 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +22,14 @@ class BloodGroupSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const chipPadding = EdgeInsets.symmetric(vertical: 6.0, horizontal: 18.0);
+    const chipMargin = EdgeInsets.only(right: 16.0, bottom: 16.0);
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
+        context.l10n.bloodGroup.mandatory(),
+        16.verticalSpace,
+        Wrap(
           children: [
             GestureDetector(
               onTap: () {
@@ -34,6 +39,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                 padding: chipPadding,
+                margin: chipMargin,
                 decoration: BoxDecoration(
                   color: bloodGroup == oPositive ? primary500 : primary100,
                   borderRadius: BorderRadius.circular(16.0),
@@ -45,7 +51,6 @@ class BloodGroupSelector extends StatelessWidget {
                             : primaryDark950)),
               ),
             ),
-            16.horizontalSpace,
             GestureDetector(
               onTap: () {
                 if (bloodGroup != oNegative) {
@@ -54,6 +59,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                 padding: chipPadding,
+                margin: chipMargin,
                 decoration: BoxDecoration(
                   color: bloodGroup == oNegative ? primary500 : primary100,
                   borderRadius: BorderRadius.circular(16.0),
@@ -65,7 +71,6 @@ class BloodGroupSelector extends StatelessWidget {
                             : primaryDark950)),
               ),
             ),
-            16.horizontalSpace,
             GestureDetector(
               onTap: () {
                 if (bloodGroup != aNegative) {
@@ -74,6 +79,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                 padding: chipPadding,
+                margin: chipMargin,
                 decoration: BoxDecoration(
                   color: bloodGroup == aNegative ? primary500 : primary100,
                   borderRadius: BorderRadius.circular(16.0),
@@ -85,7 +91,6 @@ class BloodGroupSelector extends StatelessWidget {
                             : primaryDark950)),
               ),
             ),
-            16.horizontalSpace,
             GestureDetector(
               onTap: () {
                 if (bloodGroup != aPositive) {
@@ -94,6 +99,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                   padding: chipPadding,
+                  margin: chipMargin,
                   decoration: BoxDecoration(
                     color: bloodGroup == aPositive ? primary500 : primary100,
                     borderRadius: BorderRadius.circular(16.0),
@@ -104,7 +110,6 @@ class BloodGroupSelector extends StatelessWidget {
                               ? Colors.white
                               : primaryDark950))),
             ),
-            16.horizontalSpace,
             GestureDetector(
               onTap: () {
                 if (bloodGroup != bNegative) {
@@ -113,6 +118,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                 padding: chipPadding,
+                margin: chipMargin,
                 decoration: BoxDecoration(
                   color: bloodGroup == bNegative ? primary500 : primary100,
                   borderRadius: BorderRadius.circular(16.0),
@@ -124,11 +130,6 @@ class BloodGroupSelector extends StatelessWidget {
                             : primaryDark950)),
               ),
             ),
-          ],
-        ),
-        16.verticalSpace,
-        Row(
-          children: [
             GestureDetector(
               onTap: () {
                 if (bloodGroup != bPositive) {
@@ -137,6 +138,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                 padding: chipPadding,
+                margin: chipMargin,
                 decoration: BoxDecoration(
                   color: bloodGroup == bPositive ? primary500 : primary100,
                   borderRadius: BorderRadius.circular(16.0),
@@ -148,7 +150,6 @@ class BloodGroupSelector extends StatelessWidget {
                             : primaryDark950)),
               ),
             ),
-            16.horizontalSpace,
             GestureDetector(
               onTap: () {
                 if (bloodGroup != abPositive) {
@@ -157,6 +158,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                 padding: chipPadding,
+                margin: chipMargin,
                 decoration: BoxDecoration(
                   color: bloodGroup == abPositive ? primary500 : primary100,
                   borderRadius: BorderRadius.circular(16.0),
@@ -168,7 +170,6 @@ class BloodGroupSelector extends StatelessWidget {
                             : primaryDark950)),
               ),
             ),
-            16.horizontalSpace,
             GestureDetector(
               onTap: () {
                 if (bloodGroup != abNegative) {
@@ -177,6 +178,7 @@ class BloodGroupSelector extends StatelessWidget {
               },
               child: Container(
                 padding: chipPadding,
+                margin: chipMargin,
                 decoration: BoxDecoration(
                   color: bloodGroup == abNegative ? primary500 : primary100,
                   borderRadius: BorderRadius.circular(16.0),

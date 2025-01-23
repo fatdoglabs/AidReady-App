@@ -25,6 +25,11 @@ class FamilyList extends ConsumerWidget {
                   itemBuilder: (_, index) => FamilyListItem(
                         member: data[index],
                         onClick: onClick,
+                        onMarkAsComplete: () {
+                          ref
+                              .read(familyProvider.notifier)
+                              .markProfileComplete(data[index]);
+                        },
                       ),
                   separatorBuilder: (_, index) => const Divider(
                         thickness: 1.0,

@@ -1,3 +1,4 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
@@ -8,15 +9,18 @@ import 'package:aid_ready/core/widgets/label.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
 import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
 import 'package:aid_ready/features/dashboard/family/presentation/widgets/profile_warning_modal.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widgets/user_avatar.dart';
 
 class FamilyListItem extends StatelessWidget {
-  const FamilyListItem({super.key, required this.member, this.onClick});
+  const FamilyListItem(
+      {super.key, required this.member, this.onClick, this.onMarkAsComplete});
 
   final FamilyMember member;
   final Function(FamilyMember)? onClick;
+  final VoidCallback? onMarkAsComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -83,18 +87,27 @@ class FamilyListItem extends StatelessWidget {
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                showModalBottomSheet(
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0)),
-                    builder: (_) => const ProfileWarningModal());
-              },
-              child: const PictureView(
-                imageUri: attentionIcon,
-              ).pad(8.0),
-            ),
+            true
+                ? GestureDetector(
+                    onTap: () async {
+                      final shouldNavigate = await showModalBottomSheet<bool>(
+                          context: context,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0)),
+                          builder: (_) => const ProfileWarningModal());
+                      if (shouldNavigate ?? false) {
+                        final shouldUpdate = await context.router.push<bool>(
+                            CompleteFamilyProfileRoute(member: member));
+                        if (shouldUpdate ?? false) {
+                          onMarkAsComplete?.call();
+                        }
+                      }
+                    },
+                    child: const PictureView(
+                      imageUri: attentionIcon,
+                    ).pad(8.0),
+                  )
+                : const SizedBox.shrink(),
           ],
         ),
       ),

@@ -25,7 +25,9 @@ class ProfileWarningModal extends StatelessWidget {
         ),
       ),
       callToActionBottom: ActionButton.primary(
-          onPressed: () {},
+          onPressed: () {
+            context.router.maybePop(true);
+          },
           child: Center(
               child: Text(
             context.l10n.completeProfile,

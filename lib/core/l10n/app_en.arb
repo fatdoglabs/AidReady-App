@@ -39,6 +39,7 @@
   "enterPassword": "Enter Password",
   "enterFullName": "Enter Your Full Name",
   "enterDateBirth": "Enter Your Date of birth",
+  "enterLastDonationDate": "Enter your last donation date",
   "enterWeight": "Enter Your Weight",
   "enterRelation": "Enter Your Relation",
   "forgotPassword": "Forgot Password",
@@ -92,6 +93,7 @@
   "passwwordRequirement": "Must be 8-16 characters, include letters, numbers, and symbols.",
   "profileIncompleteWarning": "Your profile is incomplete! Complete it now to start saving lives and become a proud blood donor.",
   "completeProfile":"Complete Donation Profile",
+  "lastDonationDate":"Last Donation Date",
   "memberAddedSuccessfully":"New Family Member added successfully.",
   "genericerr": "Something went wrong. Please try again later."
 }

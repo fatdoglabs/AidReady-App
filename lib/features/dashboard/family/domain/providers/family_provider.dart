@@ -41,4 +41,21 @@ class Family extends _$Family {
       state = AsyncData([...current]);
     }
   }
+
+  void markProfileComplete(FamilyMember member) {
+    List<FamilyMember> current = state.whenOrNull(
+          data: (list) => list,
+        ) ??
+        [];
+    final existingMemberIndex =
+        current.indexWhere((item) => item.id == member.id);
+    if (existingMemberIndex == -1) {
+      state = AsyncData([member, ...current]);
+    } else {
+      current.removeAt(existingMemberIndex);
+      current.insert(
+          existingMemberIndex, member.copyWith(weight: 44, dob: "asa"));
+      state = AsyncData([...current]);
+    }
+  }
 }

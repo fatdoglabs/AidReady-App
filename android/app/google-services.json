@@ -1,26 +1,51 @@
 {
   "project_info": {
-    "project_number": "692551643106",
-    "project_id": "aidready",
-    "storage_bucket": "aidready.firebasestorage.app"
+    "project_number": "581671896526",
+    "project_id": "aidready-becb2",
+    "storage_bucket": "aidready-becb2.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:692551643106:android:3351dd2f1af84845cc93bb",
+        "mobilesdk_app_id": "1:581671896526:android:14767b939a194cc711979f",
         "android_client_info": {
           "package_name": "com.fatdog.aidready"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "581671896526-0hj5e8e7c4cbdfuv6h18aopqileu2o6d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fatdog.aidready",
+            "certificate_hash": "bf81a01d8c95cc6173dc1238c440ad5d85113f6e"
+          }
+        },
+        {
+          "client_id": "581671896526-b133e4cu2ocamk3jat2osmam7dou6hf6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDS9BIi0T45IXFVMYMd33SINHkVV2p7V5c"
+          "current_key": "AIzaSyDXwpudDJN8nk7N_NePoN7L1YuxsVyYAsU"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "581671896526-b133e4cu2ocamk3jat2osmam7dou6hf6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "581671896526-oi08laq1jnt4j80rnl1snlkv1c24vc1j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fatdog.aidready.aidReady"
+              }
+            }
+          ]
         }
       }
     }

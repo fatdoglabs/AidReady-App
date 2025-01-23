@@ -50,19 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDS9BIi0T45IXFVMYMd33SINHkVV2p7V5c',
-    appId: '1:692551643106:android:3351dd2f1af84845cc93bb',
-    messagingSenderId: '692551643106',
-    projectId: 'aidready',
-    storageBucket: 'aidready.firebasestorage.app',
+    apiKey: 'AIzaSyDXwpudDJN8nk7N_NePoN7L1YuxsVyYAsU',
+    appId: '1:581671896526:android:14767b939a194cc711979f',
+    messagingSenderId: '581671896526',
+    projectId: 'aidready-becb2',
+    storageBucket: 'aidready-becb2.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB5SXp-Q3ZKkLi8T8nI8Xz230k0THqP868',
-    appId: '1:692551643106:ios:e4396ef8a2b4baa6cc93bb',
-    messagingSenderId: '692551643106',
-    projectId: 'aidready',
-    storageBucket: 'aidready.firebasestorage.app',
+    apiKey: 'AIzaSyDxnfwd5QveyxXEk810iiJZCpI5mTa8jhA',
+    appId: '1:581671896526:ios:17142cffe834530d11979f',
+    messagingSenderId: '581671896526',
+    projectId: 'aidready-becb2',
+    storageBucket: 'aidready-becb2.firebasestorage.app',
     iosBundleId: 'com.fatdog.aidready.aidReady',
   );
+
 }

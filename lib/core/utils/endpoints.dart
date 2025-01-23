@@ -21,6 +21,6 @@ const String eDeleteAccount = "/account/delete";
 
 const String eFamilyList = "/familymember/list";
 const String eAddMember = "/familymember/store";
-const String eUpcomingAppointments = "/appointment/upcoming";
+const String eDeleteMember = "/familymember/delete";
 const String eCompletedAppointments = "/appointment/completed";
 const String eTimeline = "/timeline/list";

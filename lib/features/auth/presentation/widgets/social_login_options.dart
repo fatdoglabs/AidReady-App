@@ -57,7 +57,8 @@ class SocalLoginOptions extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: TaskButton.icon(
               onPressed: () {
-                ref.read(authProvider.notifier).googleLogin();
+                ref.read(authProvider.notifier).
+                googleLogin();
               },
               child: SvgPicture.asset(googleIcon),
             ),

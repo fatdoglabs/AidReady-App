@@ -58,7 +58,7 @@ class FamilyRemoteSourceImpl extends FamilyRemoteSource {
       FamilyMember member) async {
     try {
       final response =
-          await networkService.post(eAddMember, data: member.toIdJson());
+          await networkService.post(eDeleteMember, data: member.toIdJson());
       return response.fold((l) {
         final data = l.data['data'] as Map<String, dynamic>? ?? {};
         return Left(FamilyMember.fromJson(data));

@@ -211,9 +211,13 @@ class AuthRepositoryImpl extends AuthRepository {
         if (token != null) {
           final auth = await token.authentication;
           localSource.setAccessToken(auth.accessToken ?? "");
-
-          // localSource.setUserId(l.userId);
-          // return Left(l);
+          final authToken = AuthToken(
+              name: token.displayName ?? "",
+              email: token.email,
+              image: token.photoUrl ?? "",
+              accessToken: auth.accessToken ?? "");
+          localSource.setUserData(authToken.toJson());
+          return Left(authToken);
         }
       } catch (except) {
         return Right(AppException.noInternet());

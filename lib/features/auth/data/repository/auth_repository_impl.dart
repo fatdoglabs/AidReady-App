@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:aid_ready/core/data/datasources/local_source.dart';
 import 'package:aid_ready/core/domain/entity/locale_option.dart';
 import 'package:aid_ready/core/services/injector.dart';
@@ -48,6 +50,24 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<Either<OtpToken, AppException>> signUp(AuthFormEntity authData) async {
+    if (status == NetworkStatus.isConnected) {
+      final token = await remoteDataSource.register(authData);
+      return token.fold(
+        (l) {
+          //localSource.setAccessToken(l.accessToken);
+          //localSource.setRefreshToken(l.refreshToken);
+          //localSource.setUserId(l.userId);
+          return Left(l);
+        },
+        (r) => Right(r),
+      );
+    } else {
+      return Right(AppException.noInternet());
+    }
+  }
+
+  @override
+  Future<Either<OtpToken, AppException>> social(AuthFormEntity authData) async {
     if (status == NetworkStatus.isConnected) {
       final token = await remoteDataSource.register(authData);
       return token.fold(
@@ -221,11 +241,20 @@ class AuthRepositoryImpl extends AuthRepository {
               email: token.email,
               image: token.photoUrl ?? "",
               accessToken: auth.accessToken ?? "");
-          final profileInfo = ProfileInfo(
-            name: authToken.name,
-            image: token.photoUrl,
+          await remoteDataSource.social(
+            AuthFormEntity(
+              email: token.email,
+              authType: "google",
+              providerId: auth.idToken ?? "",
+              platform: Platform.isAndroid ? "android" : "ios",
+              fcmToken: "",
+              deviceId: "",
+            ),
+            ProfileInfo(
+              name: authToken.name,
+              image: token.photoUrl,
+            ),
           );
-          await profileRemoteDataSource.updatePersonalInfo(profileInfo);
           localSource.setUserData(authToken.toJson());
           return Left(authToken);
         }

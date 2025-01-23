@@ -6,11 +6,14 @@ import 'package:aid_ready/core/utils/identifier.dart';
 import 'package:aid_ready/features/auth/data/model/auth_token.dart';
 import 'package:aid_ready/features/auth/data/model/otp_token.dart';
 import 'package:aid_ready/features/auth/domain/entity/auth_form_entity.dart';
+import 'package:aid_ready/features/profile/domain/entity/profile_info.dart';
 import 'package:dio/dio.dart';
 
 abstract class AuthRemoteSource {
   Future<Either<AuthToken, AppException>> login(AuthFormEntity authData);
   Future<Either<OtpToken, AppException>> register(AuthFormEntity authData);
+  Future<Either<OtpToken, AppException>> social(
+      AuthFormEntity authData, ProfileInfo info);
   Future<Either<AuthToken, AppException>> reset(AuthFormEntity authData);
   Future<Either<AuthToken, AppException>> setPassword(AuthFormEntity authData);
   Future<Either<OtpToken, AppException>> verify(AuthFormEntity authData);
@@ -49,6 +52,30 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
       final response = await networkService.post(
         eRegister,
         data: authData.toRegisterJson(),
+      );
+      return response.fold((l) {
+        final userData = l.data['data'] as Map<String, dynamic>;
+        return Left(OtpToken.fromJson(userData));
+      }, (r) {
+        if (r.statusCode == 422) {
+          return Right(AppException.emailExists());
+        }
+        return Right(r);
+      });
+    } on Error catch (_) {
+      return Right(AppException.badResponse());
+    }
+  }
+
+  @override
+  Future<Either<OtpToken, AppException>> social(
+      AuthFormEntity authData, ProfileInfo info) async {
+    try {
+      Map<String, dynamic> data = authData.toSocialJson();
+      data.addAll(info.toJson());
+      final response = await networkService.post(
+        eSocial,
+        data: data,
       );
       return response.fold((l) {
         final userData = l.data['data'] as Map<String, dynamic>;

@@ -11,6 +11,8 @@ class AuthFormEntity with _$AuthFormEntity {
     String? fcmToken,
     String? deviceId,
     String? platform,
+    @Default("email") String authType,
+    @Default("") String providerId,
   }) = _AuthFormEntity;
 
   const AuthFormEntity._();
@@ -21,11 +23,31 @@ class AuthFormEntity with _$AuthFormEntity {
         pin: "",
       );
 
-  Map<String, dynamic> toLoginJson() =>
-      {'email': email, 'password': password, 'fcm_token': fcmToken};
+  Map<String, dynamic> toLoginJson() => {
+        'email': email,
+        'password': password,
+        'fcm_token': fcmToken,
+      };
 
-  Map<String, dynamic> toRegisterJson() => {'email': email};
-  Map<String, dynamic> toVerifyJson() => {'email': email, 'otp': pin};
+  Map<String, dynamic> toSocialJson() => {
+        'email': email,
+        'password': password,
+        'fcm_token': fcmToken,
+        'device_id': deviceId,
+        'auth_type': authType,
+        'provider_id': providerId,
+        'platform': platform
+      };
+
+  Map<String, dynamic> toRegisterJson() => {
+        'email': email,
+      };
+
+  Map<String, dynamic> toVerifyJson() => {
+        'email': email,
+        'otp': pin,
+      };
+
   Map<String, dynamic> toSetPasswordJson() => {
         'email': email,
         'otp': pin,

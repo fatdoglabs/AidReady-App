@@ -22,6 +22,8 @@ mixin _$AuthFormEntity {
   String? get fcmToken => throw _privateConstructorUsedError;
   String? get deviceId => throw _privateConstructorUsedError;
   String? get platform => throw _privateConstructorUsedError;
+  String get authType => throw _privateConstructorUsedError;
+  String get providerId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthFormEntityCopyWith<AuthFormEntity> get copyWith =>
@@ -40,7 +42,9 @@ abstract class $AuthFormEntityCopyWith<$Res> {
       String? pin,
       String? fcmToken,
       String? deviceId,
-      String? platform});
+      String? platform,
+      String authType,
+      String providerId});
 }
 
 /// @nodoc
@@ -62,6 +66,8 @@ class _$AuthFormEntityCopyWithImpl<$Res, $Val extends AuthFormEntity>
     Object? fcmToken = freezed,
     Object? deviceId = freezed,
     Object? platform = freezed,
+    Object? authType = null,
+    Object? providerId = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
@@ -88,6 +94,14 @@ class _$AuthFormEntityCopyWithImpl<$Res, $Val extends AuthFormEntity>
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
               as String?,
+      authType: null == authType
+          ? _value.authType
+          : authType // ignore: cast_nullable_to_non_nullable
+              as String,
+      providerId: null == providerId
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -106,7 +120,9 @@ abstract class _$$AuthFormEntityImplCopyWith<$Res>
       String? pin,
       String? fcmToken,
       String? deviceId,
-      String? platform});
+      String? platform,
+      String authType,
+      String providerId});
 }
 
 /// @nodoc
@@ -126,6 +142,8 @@ class __$$AuthFormEntityImplCopyWithImpl<$Res>
     Object? fcmToken = freezed,
     Object? deviceId = freezed,
     Object? platform = freezed,
+    Object? authType = null,
+    Object? providerId = null,
   }) {
     return _then(_$AuthFormEntityImpl(
       email: null == email
@@ -152,6 +170,14 @@ class __$$AuthFormEntityImplCopyWithImpl<$Res>
           ? _value.platform
           : platform // ignore: cast_nullable_to_non_nullable
               as String?,
+      authType: null == authType
+          ? _value.authType
+          : authType // ignore: cast_nullable_to_non_nullable
+              as String,
+      providerId: null == providerId
+          ? _value.providerId
+          : providerId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -165,7 +191,9 @@ class _$AuthFormEntityImpl extends _AuthFormEntity {
       this.pin,
       this.fcmToken,
       this.deviceId,
-      this.platform})
+      this.platform,
+      this.authType = "email",
+      this.providerId = ""})
       : super._();
 
   @override
@@ -180,10 +208,16 @@ class _$AuthFormEntityImpl extends _AuthFormEntity {
   final String? deviceId;
   @override
   final String? platform;
+  @override
+  @JsonKey()
+  final String authType;
+  @override
+  @JsonKey()
+  final String providerId;
 
   @override
   String toString() {
-    return 'AuthFormEntity(email: $email, password: $password, pin: $pin, fcmToken: $fcmToken, deviceId: $deviceId, platform: $platform)';
+    return 'AuthFormEntity(email: $email, password: $password, pin: $pin, fcmToken: $fcmToken, deviceId: $deviceId, platform: $platform, authType: $authType, providerId: $providerId)';
   }
 
   @override
@@ -200,12 +234,16 @@ class _$AuthFormEntityImpl extends _AuthFormEntity {
             (identical(other.deviceId, deviceId) ||
                 other.deviceId == deviceId) &&
             (identical(other.platform, platform) ||
-                other.platform == platform));
+                other.platform == platform) &&
+            (identical(other.authType, authType) ||
+                other.authType == authType) &&
+            (identical(other.providerId, providerId) ||
+                other.providerId == providerId));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, password, pin, fcmToken, deviceId, platform);
+  int get hashCode => Object.hash(runtimeType, email, password, pin, fcmToken,
+      deviceId, platform, authType, providerId);
 
   @JsonKey(ignore: true)
   @override
@@ -222,7 +260,9 @@ abstract class _AuthFormEntity extends AuthFormEntity {
       final String? pin,
       final String? fcmToken,
       final String? deviceId,
-      final String? platform}) = _$AuthFormEntityImpl;
+      final String? platform,
+      final String authType,
+      final String providerId}) = _$AuthFormEntityImpl;
   const _AuthFormEntity._() : super._();
 
   @override
@@ -237,6 +277,10 @@ abstract class _AuthFormEntity extends AuthFormEntity {
   String? get deviceId;
   @override
   String? get platform;
+  @override
+  String get authType;
+  @override
+  String get providerId;
   @override
   @JsonKey(ignore: true)
   _$$AuthFormEntityImplCopyWith<_$AuthFormEntityImpl> get copyWith =>

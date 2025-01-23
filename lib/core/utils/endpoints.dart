@@ -9,6 +9,7 @@ const String eNotifications = "/notification/list";
 const String eMarkAsRead = "/notification/mark-as-read";
 const String eLogin = "/auth/login";
 const String eRegister = "/auth/register";
+const String eSocial = "/auth/social";
 const String eForget = "/auth/forgot-password";
 const String eVerify = "/auth/otp-verification";
 const String eResend = "/auth/otp-resend";

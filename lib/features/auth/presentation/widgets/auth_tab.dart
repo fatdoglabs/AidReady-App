@@ -1,9 +1,4 @@
-import 'package:aid_ready/core/theme/color.dart';
-import 'package:aid_ready/core/utils/extensions/type.dart';
-import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../core/theme/styles.dart';
 
 class AuthTab extends StatelessWidget {
   const AuthTab({

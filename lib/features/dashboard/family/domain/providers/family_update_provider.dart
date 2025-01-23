@@ -27,4 +27,19 @@ class FamilyUpdate extends _$FamilyUpdate {
       state = AsyncError(r, StackTrace.current);
     });
   }
+
+  Future<void> deleteMember(FamilyMember member) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(familyRepositoryProvider(networkStatus));
+    final result = await repository.deleteMember(member);
+    result.fold((l) {
+      ref.read(familyProvider.notifier).updateList(l);
+      state = const AsyncData(true);
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
+  }
 }

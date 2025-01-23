@@ -40,6 +40,10 @@ class FamilyMember with _$FamilyMember {
     });
   }
 
+  Map<String, dynamic> toIdJson() => {
+        'id': id,
+      };
+
   bool isProfileComplete() {
     return name.isNotNullNotEmpty &&
         weight != 0 &&

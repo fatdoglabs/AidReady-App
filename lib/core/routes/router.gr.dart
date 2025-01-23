@@ -29,7 +29,7 @@ import 'package:aid_ready/features/dashboard/family/presentation/screen/add_memb
     as _i1;
 import 'package:aid_ready/features/dashboard/family/presentation/screen/family_screen.dart'
     as _i6;
-import 'package:aid_ready/features/dashboard/presentation/screen/home_screen.dart'
+import 'package:aid_ready/features/dashboard/home/presentation/screen/home_screen.dart'
     as _i8;
 import 'package:aid_ready/features/language/data/model/onboarding_item.dart'
     as _i20;

@@ -1,7 +1,7 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
-import 'package:aid_ready/features/dashboard/presentation/widgets/news_item.dart';
+import 'package:aid_ready/features/dashboard/home/widgets/news_item.dart';
 import 'package:flutter/material.dart';
 
 class NewsUpdatesList extends StatelessWidget {

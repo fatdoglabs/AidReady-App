@@ -66,4 +66,18 @@ class ProfileUpdate extends _$ProfileUpdate {
       state = AsyncError(r, StackTrace.current);
     });
   }
+
+  Future<void> updateFamilyProfile(ProfileInfo info) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(profileInfoRepositoryProvider(networkStatus));
+    final result = await repository.updateMedicalInfo(info);
+    result.fold((l) {
+      state = AsyncData(l);
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
+  }
 }

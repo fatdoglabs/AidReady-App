@@ -20,10 +20,12 @@ ProfileInfo _$ProfileInfoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProfileInfo {
+  int? get id => throw _privateConstructorUsedError;
   String? get image => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get dob => throw _privateConstructorUsedError;
+  String? get lastDonatedDate => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get bloodGroup => throw _privateConstructorUsedError;
   bool? get dontKnowBloodType => throw _privateConstructorUsedError;
@@ -41,10 +43,12 @@ abstract class $ProfileInfoCopyWith<$Res> {
       _$ProfileInfoCopyWithImpl<$Res, ProfileInfo>;
   @useResult
   $Res call(
-      {String? image,
+      {int? id,
+      String? image,
       String? name,
       String? gender,
       String? dob,
+      String? lastDonatedDate,
       double? weight,
       String? bloodGroup,
       bool? dontKnowBloodType});
@@ -63,15 +67,21 @@ class _$ProfileInfoCopyWithImpl<$Res, $Val extends ProfileInfo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? image = freezed,
     Object? name = freezed,
     Object? gender = freezed,
     Object? dob = freezed,
+    Object? lastDonatedDate = freezed,
     Object? weight = freezed,
     Object? bloodGroup = freezed,
     Object? dontKnowBloodType = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -87,6 +97,10 @@ class _$ProfileInfoCopyWithImpl<$Res, $Val extends ProfileInfo>
       dob: freezed == dob
           ? _value.dob
           : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastDonatedDate: freezed == lastDonatedDate
+          ? _value.lastDonatedDate
+          : lastDonatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
       weight: freezed == weight
           ? _value.weight
@@ -113,10 +127,12 @@ abstract class _$$ProfileInfoImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? image,
+      {int? id,
+      String? image,
       String? name,
       String? gender,
       String? dob,
+      String? lastDonatedDate,
       double? weight,
       String? bloodGroup,
       bool? dontKnowBloodType});
@@ -133,15 +149,21 @@ class __$$ProfileInfoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? image = freezed,
     Object? name = freezed,
     Object? gender = freezed,
     Object? dob = freezed,
+    Object? lastDonatedDate = freezed,
     Object? weight = freezed,
     Object? bloodGroup = freezed,
     Object? dontKnowBloodType = freezed,
   }) {
     return _then(_$ProfileInfoImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -157,6 +179,10 @@ class __$$ProfileInfoImplCopyWithImpl<$Res>
       dob: freezed == dob
           ? _value.dob
           : dob // ignore: cast_nullable_to_non_nullable
+              as String?,
+      lastDonatedDate: freezed == lastDonatedDate
+          ? _value.lastDonatedDate
+          : lastDonatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
       weight: freezed == weight
           ? _value.weight
@@ -179,10 +205,12 @@ class __$$ProfileInfoImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class _$ProfileInfoImpl extends _ProfileInfo {
   const _$ProfileInfoImpl(
-      {this.image,
+      {this.id,
+      this.image,
       this.name,
       this.gender,
       this.dob,
+      this.lastDonatedDate,
       this.weight,
       this.bloodGroup,
       this.dontKnowBloodType})
@@ -192,6 +220,8 @@ class _$ProfileInfoImpl extends _ProfileInfo {
       _$$ProfileInfoImplFromJson(json);
 
   @override
+  final int? id;
+  @override
   final String? image;
   @override
   final String? name;
@@ -199,6 +229,8 @@ class _$ProfileInfoImpl extends _ProfileInfo {
   final String? gender;
   @override
   final String? dob;
+  @override
+  final String? lastDonatedDate;
   @override
   final double? weight;
   @override
@@ -208,7 +240,7 @@ class _$ProfileInfoImpl extends _ProfileInfo {
 
   @override
   String toString() {
-    return 'ProfileInfo(image: $image, name: $name, gender: $gender, dob: $dob, weight: $weight, bloodGroup: $bloodGroup, dontKnowBloodType: $dontKnowBloodType)';
+    return 'ProfileInfo(id: $id, image: $image, name: $name, gender: $gender, dob: $dob, lastDonatedDate: $lastDonatedDate, weight: $weight, bloodGroup: $bloodGroup, dontKnowBloodType: $dontKnowBloodType)';
   }
 
   @override
@@ -216,10 +248,13 @@ class _$ProfileInfoImpl extends _ProfileInfo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProfileInfoImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.dob, dob) || other.dob == dob) &&
+            (identical(other.lastDonatedDate, lastDonatedDate) ||
+                other.lastDonatedDate == lastDonatedDate) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.bloodGroup, bloodGroup) ||
                 other.bloodGroup == bloodGroup) &&
@@ -229,8 +264,8 @@ class _$ProfileInfoImpl extends _ProfileInfo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, image, name, gender, dob, weight,
-      bloodGroup, dontKnowBloodType);
+  int get hashCode => Object.hash(runtimeType, id, image, name, gender, dob,
+      lastDonatedDate, weight, bloodGroup, dontKnowBloodType);
 
   @JsonKey(ignore: true)
   @override
@@ -248,10 +283,12 @@ class _$ProfileInfoImpl extends _ProfileInfo {
 
 abstract class _ProfileInfo extends ProfileInfo {
   const factory _ProfileInfo(
-      {final String? image,
+      {final int? id,
+      final String? image,
       final String? name,
       final String? gender,
       final String? dob,
+      final String? lastDonatedDate,
       final double? weight,
       final String? bloodGroup,
       final bool? dontKnowBloodType}) = _$ProfileInfoImpl;
@@ -261,6 +298,8 @@ abstract class _ProfileInfo extends ProfileInfo {
       _$ProfileInfoImpl.fromJson;
 
   @override
+  int? get id;
+  @override
   String? get image;
   @override
   String? get name;
@@ -268,6 +307,8 @@ abstract class _ProfileInfo extends ProfileInfo {
   String? get gender;
   @override
   String? get dob;
+  @override
+  String? get lastDonatedDate;
   @override
   double? get weight;
   @override

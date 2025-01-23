@@ -43,7 +43,6 @@ class CompleteDonationProfileForm extends StatelessWidget {
                     child: InputField(
                       labelText: context.l10n.dateOfBirth,
                       hint: context.l10n.enterDateBirth,
-                      
                       onChanged: (value) {},
                     ),
                   )

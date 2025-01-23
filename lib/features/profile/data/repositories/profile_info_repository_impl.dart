@@ -72,4 +72,23 @@ class ProfileInfoRepositoryImpl extends ProfileInfoRepository {
       return Right(AppException.noInternet());
     }
   }
+
+  @override
+  Future<Either<ProfileInfo, AppException>> updateFamilyProfile(
+      ProfileInfo step2) async {
+    if (status == NetworkStatus.isConnected) {
+      final token = await remoteDataSource.updateFamilyProfile(step2);
+      return token.fold(
+        (l) {
+          //localSource.setAccessToken(l.accessToken);
+          //localSource.setRefreshToken(l.refreshToken);
+          //localSource.setUserId(l.userId);
+          return Left(l);
+        },
+        (r) => Right(r),
+      );
+    } else {
+      return Right(AppException.noInternet());
+    }
+  }
 }

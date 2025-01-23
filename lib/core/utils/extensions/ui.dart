@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/color.dart';
-
 extension WidgetX on Widget {
   // decorated circular
   BorderRadiusGeometry rounded(double radius) => BorderRadius.circular(radius);

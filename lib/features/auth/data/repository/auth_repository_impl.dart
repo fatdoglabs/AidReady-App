@@ -4,6 +4,8 @@ import 'package:aid_ready/core/services/injector.dart';
 import 'package:aid_ready/features/auth/data/datasources/auth_remote_source.dart';
 import 'package:aid_ready/features/auth/data/model/otp_token.dart';
 import 'package:aid_ready/features/auth/domain/entity/auth_form_entity.dart';
+import 'package:aid_ready/features/profile/data/datasources/profile_info_remote_data_source.dart';
+import 'package:aid_ready/features/profile/domain/entity/profile_info.dart';
 import 'package:dio/dio.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -16,11 +18,13 @@ import '../model/auth_token.dart';
 class AuthRepositoryImpl extends AuthRepository {
   final NetworkStatus status;
   final AuthRemoteSource remoteDataSource;
+  final ProfileInfoRemoteSource profileRemoteDataSource;
   final LocalSource localSource;
 
   AuthRepositoryImpl({
     required this.status,
     required this.remoteDataSource,
+    required this.profileRemoteDataSource,
     required this.localSource,
   });
   @override
@@ -216,10 +220,15 @@ class AuthRepositoryImpl extends AuthRepository {
               email: token.email,
               image: token.photoUrl ?? "",
               accessToken: auth.accessToken ?? "");
+          final profileInfo = ProfileInfo(
+            name: authToken.name,
+            image: token.photoUrl,
+          );
+          await profileRemoteDataSource.updatePersonalInfo(profileInfo);
           localSource.setUserData(authToken.toJson());
           return Left(authToken);
         }
-      } catch (except) {
+      } catch (e) {
         return Right(AppException.noInternet());
       }
       return Left(AuthToken.unauthenticated());

@@ -20,6 +20,8 @@ abstract class AuthRemoteSource {
   Future<Either<OtpToken, AppException>> resend(AuthFormEntity authData);
   Future<Either<bool, AppException>> logout({CancelToken? token});
   Future<Either<bool, AppException>> deleteAccount({CancelToken? token});
+  Future<Either<bool, AppException>> getGoogleProfileInformation(
+      String authHeader);
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteSource {
@@ -198,6 +200,32 @@ class AuthRemoteDataSourceImpl extends AuthRemoteSource {
       return response.fold((l) {
         final userData = l.data['data'] as Map<String, dynamic>;
         return Left(AuthToken.fromJson(userData));
+      }, (r) {
+        if (r.statusCode == 422) {
+          return Right(AppException.badResponse());
+        }
+        return Right(r);
+      });
+    } on Error catch (_) {
+      return Right(AppException.badResponse());
+    }
+  }
+
+  @override
+  Future<Either<bool, AppException>> getGoogleProfileInformation(
+      String authHeader) async {
+    try {
+      final response = await networkService.getUri(
+        eGoogleProfile,
+        options: Options(
+          headers: {
+            "Authorization": authHeader,
+          },
+        ),
+      );
+      return response.fold((l) {
+        final userData = l.data['data'] as Map<String, dynamic>;
+        return Left(true);
       }, (r) {
         if (r.statusCode == 422) {
           return Right(AppException.badResponse());

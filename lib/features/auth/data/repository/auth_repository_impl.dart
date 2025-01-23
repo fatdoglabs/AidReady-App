@@ -235,6 +235,8 @@ class AuthRepositoryImpl extends AuthRepository {
         final token = await googleSignIn.signIn();
         if (token != null) {
           final auth = await token.authentication;
+          final headers = await googleSignIn.currentUser?.authHeaders ?? {};
+          await _getProfileInformation(headers);
           localSource.setAccessToken(auth.accessToken ?? "");
           final authToken = AuthToken(
               name: token.displayName ?? "",
@@ -265,5 +267,11 @@ class AuthRepositoryImpl extends AuthRepository {
     } else {
       return Right(AppException.noInternet());
     }
+  }
+
+  Future<void> _getProfileInformation(Map<String, String> headers) async {
+    final r = await remoteDataSource
+        .getGoogleProfileInformation(headers["Authorization"]!);
+    print(r);
   }
 }

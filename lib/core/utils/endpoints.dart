@@ -1,6 +1,9 @@
 const eBaseUrl = "https://phpstack-1147612-5149213.cloudwaysapps.com/api/v1";
 const eBaseUrlv1 = "https://hayat.ourdemo.online/api/v1";
 
+const eGoogleProfile =
+    "https://people.googleapis.com/v1/people/me?personFields=genders&key=";
+
 const String eRefresh = "/refresh";
 
 const String eOnboarding = "/onboarding/list";

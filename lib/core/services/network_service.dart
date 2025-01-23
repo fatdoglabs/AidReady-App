@@ -20,6 +20,7 @@ abstract class NetworkService {
   Future<Either<Response, AppException>> getUri(
     String uri, {
     Map<String, dynamic>? queryParameters,
+    Options? options,
   });
 
   Future<Either<Response, AppException>> post(String endpoint,
@@ -98,10 +99,11 @@ class DioNetworkService extends NetworkService with ExceptionHandlerMixin {
 
   @override
   Future<Either<Response, AppException>> getUri(String uri,
-      {Map<String, dynamic>? queryParameters}) {
+      {Map<String, dynamic>? queryParameters, Options? options}) {
     final res = handleException(
       () => dio.getUri(
         Uri.parse(uri),
+        options: options,
       ),
     );
     return res;

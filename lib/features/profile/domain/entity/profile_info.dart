@@ -13,7 +13,6 @@ class ProfileInfo with _$ProfileInfo {
     String? name,
     String? gender,
     String? dob,
-    String? lastDonatedDate,
     double? weight,
     String? bloodGroup,
     bool? dontKnowBloodType,
@@ -40,11 +39,5 @@ class ProfileInfo with _$ProfileInfo {
 
   Map<String, dynamic> toMedicalJson() => {
         'blood_group': bloodGroup ?? "dontknow",
-      };
-
-  Map<String, dynamic> toUpdateProfileJson() => {
-        'family_member_id': id,
-        'blood_group': bloodGroup,
-        'last_donated_date': lastDonatedDate,
       };
 }

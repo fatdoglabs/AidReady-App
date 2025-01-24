@@ -8,14 +8,18 @@ part 'family_member.g.dart';
 @freezed
 class FamilyMember with _$FamilyMember {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  const factory FamilyMember(
-      {int? id,
-      String? image,
-      String? name,
-      String? gender,
-      String? dob,
-      int? weight,
-      String? relation}) = _FamilyMember;
+  const factory FamilyMember({
+    int? id,
+    String? image,
+    String? name,
+    String? gender,
+    String? dob,
+    String? lastDonationDate,
+    String? bloodGroup,
+    int? weight,
+    String? relation,
+    @Default(false) bool isRegisteredAsDonor,
+  }) = _FamilyMember;
 
   const FamilyMember._();
 
@@ -44,11 +48,11 @@ class FamilyMember with _$FamilyMember {
         'id': id,
       };
 
-  bool isProfileComplete() {
-    return name.isNotNullNotEmpty &&
-        weight != 0 &&
-        dob.isNotNullNotEmpty &&
-        relation.isNotNullNotEmpty &&
-        gender.isNotNullNotEmpty;
-  }
+  Map<String, dynamic> toUpdateProfileJson() => {
+        'family_member_id': id,
+        'blood_group': bloodGroup,
+        'last_donated_date': lastDonationDate,
+        'dob': dob,
+        'weight': weight,
+      };
 }

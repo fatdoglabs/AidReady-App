@@ -11,8 +11,6 @@ abstract class ProfileInfoRemoteSource {
       ProfileInfo step2);
   Future<Either<ProfileInfo, AppException>> updateMedicalInfo(
       ProfileInfo step3);
-  Future<Either<ProfileInfo, AppException>> updateFamilyProfile(
-      ProfileInfo familyProfile);
 }
 
 class ProfileInfoRemoteSourceImpl extends ProfileInfoRemoteSource {
@@ -72,26 +70,6 @@ class ProfileInfoRemoteSourceImpl extends ProfileInfoRemoteSource {
     try {
       final response = await networkService.post(ePhysicalInfo,
           data: step2.toPhysicalJson());
-      return response.fold((l) {
-        final userData = l.data['data'] as Map<String, dynamic>;
-        return Left(ProfileInfo.fromJson(userData));
-      }, (r) {
-        if (r.statusCode == 422) {
-          return Right(AppException.badResponse());
-        }
-        return Right(r);
-      });
-    } on Error catch (_) {
-      return Right(AppException.badResponse());
-    }
-  }
-
-  @override
-  Future<Either<ProfileInfo, AppException>> updateFamilyProfile(
-      ProfileInfo familyProfile) async {
-    try {
-      final response = await networkService.post(eFamilyProfileInfo,
-          data: familyProfile.toUpdateProfileJson());
       return response.fold((l) {
         final userData = l.data['data'] as Map<String, dynamic>;
         return Left(ProfileInfo.fromJson(userData));

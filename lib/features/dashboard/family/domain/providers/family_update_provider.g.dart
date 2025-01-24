@@ -6,12 +6,12 @@ part of 'family_update_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$familyUpdateHash() => r'4cd6aa219c772eea9d5a95b1c7f58f0acf9109b2';
+String _$familyUpdateHash() => r'ad64986041460459fa52de3f0546f797a9f5d996';
 
 /// See also [FamilyUpdate].
 @ProviderFor(FamilyUpdate)
 final familyUpdateProvider =
-    AutoDisposeAsyncNotifierProvider<FamilyUpdate, bool>.internal(
+    AutoDisposeAsyncNotifierProvider<FamilyUpdate, FamilyMember>.internal(
   FamilyUpdate.new,
   name: r'familyUpdateProvider',
   debugGetCreateSourceHash:
@@ -20,6 +20,6 @@ final familyUpdateProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$FamilyUpdate = AutoDisposeAsyncNotifier<bool>;
+typedef _$FamilyUpdate = AutoDisposeAsyncNotifier<FamilyMember>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

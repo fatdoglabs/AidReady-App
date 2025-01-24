@@ -73,4 +73,23 @@ class FamilyRepositoryImpl extends FamilyRepository {
       return Right(AppException.noInternet());
     }
   }
+
+  @override
+  Future<Either<FamilyMember, AppException>> updateFamilyProfile(
+      FamilyMember member) async {
+    if (status == NetworkStatus.isConnected) {
+      final token = await remoteDataSource.updateFamilyProfile(member);
+      return token.fold(
+        (l) {
+          //localSource.setAccessToken(l.accessToken);
+          //localSource.setRefreshToken(l.refreshToken);
+          //localSource.setUserId(l.userId);
+          return Left(l);
+        },
+        (r) => Right(r),
+      );
+    } else {
+      return Right(AppException.noInternet());
+    }
+  }
 }

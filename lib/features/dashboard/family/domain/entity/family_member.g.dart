@@ -13,8 +13,11 @@ _$FamilyMemberImpl _$$FamilyMemberImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       gender: json['gender'] as String?,
       dob: json['dob'] as String?,
+      lastDonationDate: json['last_donation_date'] as String?,
+      bloodGroup: json['blood_group'] as String?,
       weight: (json['weight'] as num?)?.toInt(),
       relation: json['relation'] as String?,
+      isRegisteredAsDonor: json['is_registered_as_donor'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$FamilyMemberImplToJson(_$FamilyMemberImpl instance) =>
@@ -24,6 +27,9 @@ Map<String, dynamic> _$$FamilyMemberImplToJson(_$FamilyMemberImpl instance) =>
       'name': instance.name,
       'gender': instance.gender,
       'dob': instance.dob,
+      'last_donation_date': instance.lastDonationDate,
+      'blood_group': instance.bloodGroup,
       'weight': instance.weight,
       'relation': instance.relation,
+      'is_registered_as_donor': instance.isRegisteredAsDonor,
     };

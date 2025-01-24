@@ -54,7 +54,7 @@ abstract class $AidRouter extends _i17.RootStackRouter {
     AddMemberRoute.name: (routeData) {
       final args = routeData.argsAs<AddMemberRouteArgs>(
           orElse: () => const AddMemberRouteArgs());
-      return _i17.AutoRoutePage<dynamic>(
+      return _i17.AutoRoutePage<bool>(
         routeData: routeData,
         child: _i1.AddMemberScreen(
           key: args.key,
@@ -69,8 +69,7 @@ abstract class $AidRouter extends _i17.RootStackRouter {
       );
     },
     CompleteFamilyProfileRoute.name: (routeData) {
-      final args = routeData.argsAs<CompleteFamilyProfileRouteArgs>(
-          orElse: () => const CompleteFamilyProfileRouteArgs());
+      final args = routeData.argsAs<CompleteFamilyProfileRouteArgs>();
       return _i17.AutoRoutePage<bool>(
         routeData: routeData,
         child: _i3.CompleteFamilyProfileScreen(
@@ -230,7 +229,7 @@ class CompleteFamilyProfileRoute
     extends _i17.PageRouteInfo<CompleteFamilyProfileRouteArgs> {
   CompleteFamilyProfileRoute({
     _i18.Key? key,
-    _i19.FamilyMember? member,
+    required _i19.FamilyMember member,
     List<_i17.PageRouteInfo>? children,
   }) : super(
           CompleteFamilyProfileRoute.name,
@@ -250,12 +249,12 @@ class CompleteFamilyProfileRoute
 class CompleteFamilyProfileRouteArgs {
   const CompleteFamilyProfileRouteArgs({
     this.key,
-    this.member,
+    required this.member,
   });
 
   final _i18.Key? key;
 
-  final _i19.FamilyMember? member;
+  final _i19.FamilyMember member;
 
   @override
   String toString() {

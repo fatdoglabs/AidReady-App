@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../../core/theme/styles.dart';
-import '../widgets/profile_warning_modal.dart';
 
 @RoutePage()
 class AddMemberScreen extends StatelessWidget {
@@ -30,18 +29,9 @@ class AddMemberScreen extends StatelessWidget {
       body: Consumer(builder: (_, ref, __) {
         ref.listen(familyUpdateProvider, (_, current) {
           current.whenOrNull(
-            data: (status) async {
-              if (status) {
-                final shouldNavigate = await showModalBottomSheet<bool>(
-                    context: context,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0)),
-                    builder: (_) => const ProfileWarningModal());
-                if (shouldNavigate ?? false) {
-                } else {
-                  context.snack(context.l10n.memberAddedSuccessfully);
-                  Navigator.of(context).maybePop();
-                }
+            data: (member) async {
+              if (member.id != null) {
+                Navigator.of(context).maybePop();
               }
             },
           );

@@ -25,7 +25,6 @@ mixin _$ProfileInfo {
   String? get name => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get dob => throw _privateConstructorUsedError;
-  String? get lastDonatedDate => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
   String? get bloodGroup => throw _privateConstructorUsedError;
   bool? get dontKnowBloodType => throw _privateConstructorUsedError;
@@ -48,7 +47,6 @@ abstract class $ProfileInfoCopyWith<$Res> {
       String? name,
       String? gender,
       String? dob,
-      String? lastDonatedDate,
       double? weight,
       String? bloodGroup,
       bool? dontKnowBloodType});
@@ -72,7 +70,6 @@ class _$ProfileInfoCopyWithImpl<$Res, $Val extends ProfileInfo>
     Object? name = freezed,
     Object? gender = freezed,
     Object? dob = freezed,
-    Object? lastDonatedDate = freezed,
     Object? weight = freezed,
     Object? bloodGroup = freezed,
     Object? dontKnowBloodType = freezed,
@@ -97,10 +94,6 @@ class _$ProfileInfoCopyWithImpl<$Res, $Val extends ProfileInfo>
       dob: freezed == dob
           ? _value.dob
           : dob // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastDonatedDate: freezed == lastDonatedDate
-          ? _value.lastDonatedDate
-          : lastDonatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
       weight: freezed == weight
           ? _value.weight
@@ -132,7 +125,6 @@ abstract class _$$ProfileInfoImplCopyWith<$Res>
       String? name,
       String? gender,
       String? dob,
-      String? lastDonatedDate,
       double? weight,
       String? bloodGroup,
       bool? dontKnowBloodType});
@@ -154,7 +146,6 @@ class __$$ProfileInfoImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? gender = freezed,
     Object? dob = freezed,
-    Object? lastDonatedDate = freezed,
     Object? weight = freezed,
     Object? bloodGroup = freezed,
     Object? dontKnowBloodType = freezed,
@@ -179,10 +170,6 @@ class __$$ProfileInfoImplCopyWithImpl<$Res>
       dob: freezed == dob
           ? _value.dob
           : dob // ignore: cast_nullable_to_non_nullable
-              as String?,
-      lastDonatedDate: freezed == lastDonatedDate
-          ? _value.lastDonatedDate
-          : lastDonatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
       weight: freezed == weight
           ? _value.weight
@@ -210,7 +197,6 @@ class _$ProfileInfoImpl extends _ProfileInfo {
       this.name,
       this.gender,
       this.dob,
-      this.lastDonatedDate,
       this.weight,
       this.bloodGroup,
       this.dontKnowBloodType})
@@ -230,8 +216,6 @@ class _$ProfileInfoImpl extends _ProfileInfo {
   @override
   final String? dob;
   @override
-  final String? lastDonatedDate;
-  @override
   final double? weight;
   @override
   final String? bloodGroup;
@@ -240,7 +224,7 @@ class _$ProfileInfoImpl extends _ProfileInfo {
 
   @override
   String toString() {
-    return 'ProfileInfo(id: $id, image: $image, name: $name, gender: $gender, dob: $dob, lastDonatedDate: $lastDonatedDate, weight: $weight, bloodGroup: $bloodGroup, dontKnowBloodType: $dontKnowBloodType)';
+    return 'ProfileInfo(id: $id, image: $image, name: $name, gender: $gender, dob: $dob, weight: $weight, bloodGroup: $bloodGroup, dontKnowBloodType: $dontKnowBloodType)';
   }
 
   @override
@@ -253,8 +237,6 @@ class _$ProfileInfoImpl extends _ProfileInfo {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.dob, dob) || other.dob == dob) &&
-            (identical(other.lastDonatedDate, lastDonatedDate) ||
-                other.lastDonatedDate == lastDonatedDate) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.bloodGroup, bloodGroup) ||
                 other.bloodGroup == bloodGroup) &&
@@ -265,7 +247,7 @@ class _$ProfileInfoImpl extends _ProfileInfo {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, image, name, gender, dob,
-      lastDonatedDate, weight, bloodGroup, dontKnowBloodType);
+      weight, bloodGroup, dontKnowBloodType);
 
   @JsonKey(ignore: true)
   @override
@@ -288,7 +270,6 @@ abstract class _ProfileInfo extends ProfileInfo {
       final String? name,
       final String? gender,
       final String? dob,
-      final String? lastDonatedDate,
       final double? weight,
       final String? bloodGroup,
       final bool? dontKnowBloodType}) = _$ProfileInfoImpl;
@@ -307,8 +288,6 @@ abstract class _ProfileInfo extends ProfileInfo {
   String? get gender;
   @override
   String? get dob;
-  @override
-  String? get lastDonatedDate;
   @override
   double? get weight;
   @override

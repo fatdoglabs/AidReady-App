@@ -10,13 +10,27 @@ import 'package:flutter/material.dart';
 import '../../../dashboard/family/domain/entity/family_member.dart';
 import 'complete_profile_button.dart';
 
-class CompleteDonationProfileForm extends StatelessWidget {
+class CompleteDonationProfileForm extends StatefulWidget {
   const CompleteDonationProfileForm({
     super.key,
     required this.member,
+    this.onCompleteProfile,
   });
 
-  final FamilyMember? member;
+  final FamilyMember member;
+  final Function(FamilyMember)? onCompleteProfile;
+
+  @override
+  State<CompleteDonationProfileForm> createState() =>
+      _CompleteDonationProfileFormState();
+}
+
+class _CompleteDonationProfileFormState
+    extends State<CompleteDonationProfileForm> {
+  String bloodGroup = "";
+  String? dob;
+  int? weight;
+  String lastDonatedDate = "";
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +39,54 @@ class CompleteDonationProfileForm extends StatelessWidget {
         ListView(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           children: [
-            const BloodGroupSelector(),
-            member?.weight == 0
+            BloodGroupSelector(
+              bloodGroup: bloodGroup,
+              onSelected: (group) {
+                setState(() {
+                  bloodGroup = group;
+                });
+              },
+            ),
+            widget.member.weight == 0
                 ? Container(
-                    margin: const EdgeInsets.only(top: 30.0),
+                    margin: const EdgeInsets.only(bottom: 30.0),
                     child: InputField(
                       labelText: context.l10n.weight,
                       hint: context.l10n.enterWeight,
                       inputType: TextInputType.number,
-                      onChanged: (value) {},
+                      onChanged: (value) {
+                        setState(() {
+                          weight = int.tryParse(value) ?? 0;
+                        });
+                      },
                     ),
                   )
                 : const SizedBox.shrink(),
-            member?.dob.isNullOrEmpty ?? true
+            widget.member.dob.isNullOrEmpty
                 ? Container(
-                    margin: const EdgeInsets.only(top: 30.0),
+                    margin: const EdgeInsets.only(bottom: 16.0),
                     child: InputField(
+                      initialValue: dob,
+                      readOnly: true,
                       labelText: context.l10n.dateOfBirth,
                       hint: context.l10n.enterDateBirth,
-                      onChanged: (value) {},
+                      onTap: () async {
+                        final dateTime = await context.showDatePickerOverLay(
+                          firstDate: DateTime(1940, 1, 1),
+                          isIOS: Platform.isIOS,
+                        );
+                        if (dateTime != null) {
+                          setState(() {
+                            dob = dateTime.pad();
+                          });
+                        }
+                      },
                     ),
                   )
                 : const SizedBox.shrink(),
             InputField(
               readOnly: true,
+              initialValue: lastDonatedDate,
               labelText: context.l10n.lastDonationDate,
               hint: context.l10n.enterLastDonationDate,
               onTap: () async {
@@ -56,6 +94,11 @@ class CompleteDonationProfileForm extends StatelessWidget {
                   firstDate: DateTime(1940, 1, 1),
                   isIOS: Platform.isIOS,
                 );
+                if (dateTime != null) {
+                  setState(() {
+                    lastDonatedDate = dateTime.pad();
+                  });
+                }
               },
             ),
           ],
@@ -65,7 +108,22 @@ class CompleteDonationProfileForm extends StatelessWidget {
               bottom:
                   MediaQuery.of(context).viewPadding.bottom + kToolbarHeight),
           alignment: Alignment.bottomCenter,
-          child: const CompleteProfileButton(),
+          child: CompleteProfileButton(
+            isEnabled: (widget.member.dob.isNotNullNotEmpty
+                    ? true
+                    : dob.isNotNullNotEmpty) &&
+                bloodGroup.isNotEmpty &&
+                (widget.member.weight != 0 ? true : weight != 0) &&
+                lastDonatedDate.isNotEmpty,
+            onPressed: () {
+              widget.onCompleteProfile?.call(widget.member.copyWith(
+                dob: dob,
+                bloodGroup: bloodGroup,
+                lastDonationDate: lastDonatedDate,
+                weight: weight,
+              ));
+            },
+          ),
         )
       ],
     ).px(16.0);

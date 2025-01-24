@@ -17,7 +17,6 @@ class ProfileUpdate extends _$ProfileUpdate {
     final info = ProfileInfo(
       image: authToken.image,
       name: authToken.name,
-      bloodGroup: authToken.bloodGroup,
       weight: authToken.weight,
       dob: authToken.dob,
       gender: authToken.gender,
@@ -54,20 +53,6 @@ class ProfileUpdate extends _$ProfileUpdate {
   }
 
   Future<void> updateMedicalInfo(ProfileInfo info) async {
-    state = const AsyncLoading();
-    final networkStatus = await ref
-        .read(networkStatusNotifierProvider.notifier)
-        .hasInternetAccess();
-    final repository = ref.read(profileInfoRepositoryProvider(networkStatus));
-    final result = await repository.updateMedicalInfo(info);
-    result.fold((l) {
-      state = AsyncData(l);
-    }, (r) {
-      state = AsyncError(r, StackTrace.current);
-    });
-  }
-
-  Future<void> updateFamilyProfile(ProfileInfo info) async {
     state = const AsyncLoading();
     final networkStatus = await ref
         .read(networkStatusNotifierProvider.notifier)

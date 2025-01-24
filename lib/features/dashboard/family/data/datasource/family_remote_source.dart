@@ -9,6 +9,8 @@ abstract class FamilyRemoteSource {
   Future<Either<List<FamilyMember>, AppException>> familyMembers();
   Future<Either<FamilyMember, AppException>> addMember(FamilyMember member);
   Future<Either<FamilyMember, AppException>> deleteMember(FamilyMember member);
+  Future<Either<FamilyMember, AppException>> updateFamilyProfile(
+      FamilyMember member);
 }
 
 class FamilyRemoteSourceImpl extends FamilyRemoteSource {
@@ -62,6 +64,26 @@ class FamilyRemoteSourceImpl extends FamilyRemoteSource {
       return response.fold((l) {
         final data = l.data['data'] as Map<String, dynamic>? ?? {};
         return Left(FamilyMember.fromJson(data));
+      }, (r) {
+        if (r.statusCode == 422) {
+          return Right(AppException.badResponse());
+        }
+        return Right(r);
+      });
+    } on Error catch (_) {
+      return Right(AppException.badResponse());
+    }
+  }
+
+  @override
+  Future<Either<FamilyMember, AppException>> updateFamilyProfile(
+      FamilyMember member) async {
+    try {
+      final response = await networkService.post(eFamilyProfileInfo,
+          data: member.toUpdateProfileJson());
+      return response.fold((l) {
+        final userData = l.data['data'] as Map<String, dynamic>;
+        return Left(FamilyMember.fromJson(userData));
       }, (r) {
         if (r.statusCode == 422) {
           return Right(AppException.badResponse());

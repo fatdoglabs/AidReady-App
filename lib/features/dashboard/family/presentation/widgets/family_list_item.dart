@@ -15,12 +15,10 @@ import 'package:flutter/material.dart';
 import '../../../../../core/widgets/user_avatar.dart';
 
 class FamilyListItem extends StatelessWidget {
-  const FamilyListItem(
-      {super.key, required this.member, this.onClick, this.onMarkAsComplete});
+  const FamilyListItem({super.key, required this.member, this.onClick});
 
   final FamilyMember member;
   final Function(FamilyMember)? onClick;
-  final VoidCallback? onMarkAsComplete;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +85,7 @@ class FamilyListItem extends StatelessWidget {
                 ],
               ),
             ),
-            true
+            !member.isRegisteredAsDonor
                 ? GestureDetector(
                     onTap: () async {
                       final shouldNavigate = await showModalBottomSheet<bool>(
@@ -98,9 +96,7 @@ class FamilyListItem extends StatelessWidget {
                       if (shouldNavigate ?? false) {
                         final shouldUpdate = await context.router.push<bool>(
                             CompleteFamilyProfileRoute(member: member));
-                        if (shouldUpdate ?? false) {
-                          onMarkAsComplete?.call();
-                        }
+                        if (shouldUpdate ?? false) {}
                       }
                     },
                     child: const PictureView(

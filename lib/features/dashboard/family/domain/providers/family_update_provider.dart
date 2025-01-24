@@ -9,8 +9,8 @@ part 'family_update_provider.g.dart';
 @riverpod
 class FamilyUpdate extends _$FamilyUpdate {
   @override
-  FutureOr<bool> build() async {
-    return false;
+  FutureOr<FamilyMember> build() async {
+    return FamilyMember.empty();
   }
 
   Future<void> addMember(FamilyMember member) async {
@@ -21,8 +21,8 @@ class FamilyUpdate extends _$FamilyUpdate {
     final repository = ref.read(familyRepositoryProvider(networkStatus));
     final result = await repository.addMember(member);
     result.fold((l) {
-      ref.read(familyProvider.notifier).updateList(l);
-      state = const AsyncData(true);
+      ref.read(familyProvider.notifier).addFamilyMember(l);
+      state = AsyncData(l);
     }, (r) {
       state = AsyncError(r, StackTrace.current);
     });
@@ -37,7 +37,22 @@ class FamilyUpdate extends _$FamilyUpdate {
     final result = await repository.deleteMember(member);
     result.fold((l) {
       ref.read(familyProvider.notifier).updateList(l);
-      state = const AsyncData(true);
+      state = AsyncData(FamilyMember.empty());
+    }, (r) {
+      state = AsyncError(r, StackTrace.current);
+    });
+  }
+
+  Future<void> updateFamilyProfile(FamilyMember member) async {
+    state = const AsyncLoading();
+    final networkStatus = await ref
+        .read(networkStatusNotifierProvider.notifier)
+        .hasInternetAccess();
+    final repository = ref.read(familyRepositoryProvider(networkStatus));
+    final result = await repository.updateFamilyProfile(member);
+    result.fold((l) {
+      ref.read(familyProvider.notifier).updateList(l);
+      state = AsyncData(l);
     }, (r) {
       state = AsyncError(r, StackTrace.current);
     });

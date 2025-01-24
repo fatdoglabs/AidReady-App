@@ -98,5 +98,6 @@
   "memberAddedSuccessfully":"New Family Member added successfully.",
   "noRequests":"No Requests Right Now",
   "noRequestsMessage":"Everything looks good! There are no current blood requests in your area.",
+  "donationProfileUpdated":"Donation profile updated successfully.",
   "genericerr": "Something went wrong. Please try again later."
 }

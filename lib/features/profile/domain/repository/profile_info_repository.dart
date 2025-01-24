@@ -10,6 +10,4 @@ abstract class ProfileInfoRepository {
       ProfileInfo step2);
   Future<Either<ProfileInfo, AppException>> updateMedicalInfo(
       ProfileInfo step3);
-  Future<Either<ProfileInfo, AppException>> updateFamilyProfile(
-      ProfileInfo step3);
 }

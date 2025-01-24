@@ -25,8 +25,11 @@ mixin _$FamilyMember {
   String? get name => throw _privateConstructorUsedError;
   String? get gender => throw _privateConstructorUsedError;
   String? get dob => throw _privateConstructorUsedError;
+  String? get lastDonationDate => throw _privateConstructorUsedError;
+  String? get bloodGroup => throw _privateConstructorUsedError;
   int? get weight => throw _privateConstructorUsedError;
   String? get relation => throw _privateConstructorUsedError;
+  bool get isRegisteredAsDonor => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,8 +49,11 @@ abstract class $FamilyMemberCopyWith<$Res> {
       String? name,
       String? gender,
       String? dob,
+      String? lastDonationDate,
+      String? bloodGroup,
       int? weight,
-      String? relation});
+      String? relation,
+      bool isRegisteredAsDonor});
 }
 
 /// @nodoc
@@ -68,8 +74,11 @@ class _$FamilyMemberCopyWithImpl<$Res, $Val extends FamilyMember>
     Object? name = freezed,
     Object? gender = freezed,
     Object? dob = freezed,
+    Object? lastDonationDate = freezed,
+    Object? bloodGroup = freezed,
     Object? weight = freezed,
     Object? relation = freezed,
+    Object? isRegisteredAsDonor = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -92,6 +101,14 @@ class _$FamilyMemberCopyWithImpl<$Res, $Val extends FamilyMember>
           ? _value.dob
           : dob // ignore: cast_nullable_to_non_nullable
               as String?,
+      lastDonationDate: freezed == lastDonationDate
+          ? _value.lastDonationDate
+          : lastDonationDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bloodGroup: freezed == bloodGroup
+          ? _value.bloodGroup
+          : bloodGroup // ignore: cast_nullable_to_non_nullable
+              as String?,
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
@@ -100,6 +117,10 @@ class _$FamilyMemberCopyWithImpl<$Res, $Val extends FamilyMember>
           ? _value.relation
           : relation // ignore: cast_nullable_to_non_nullable
               as String?,
+      isRegisteredAsDonor: null == isRegisteredAsDonor
+          ? _value.isRegisteredAsDonor
+          : isRegisteredAsDonor // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -118,8 +139,11 @@ abstract class _$$FamilyMemberImplCopyWith<$Res>
       String? name,
       String? gender,
       String? dob,
+      String? lastDonationDate,
+      String? bloodGroup,
       int? weight,
-      String? relation});
+      String? relation,
+      bool isRegisteredAsDonor});
 }
 
 /// @nodoc
@@ -138,8 +162,11 @@ class __$$FamilyMemberImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? gender = freezed,
     Object? dob = freezed,
+    Object? lastDonationDate = freezed,
+    Object? bloodGroup = freezed,
     Object? weight = freezed,
     Object? relation = freezed,
+    Object? isRegisteredAsDonor = null,
   }) {
     return _then(_$FamilyMemberImpl(
       id: freezed == id
@@ -162,6 +189,14 @@ class __$$FamilyMemberImplCopyWithImpl<$Res>
           ? _value.dob
           : dob // ignore: cast_nullable_to_non_nullable
               as String?,
+      lastDonationDate: freezed == lastDonationDate
+          ? _value.lastDonationDate
+          : lastDonationDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bloodGroup: freezed == bloodGroup
+          ? _value.bloodGroup
+          : bloodGroup // ignore: cast_nullable_to_non_nullable
+              as String?,
       weight: freezed == weight
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
@@ -170,6 +205,10 @@ class __$$FamilyMemberImplCopyWithImpl<$Res>
           ? _value.relation
           : relation // ignore: cast_nullable_to_non_nullable
               as String?,
+      isRegisteredAsDonor: null == isRegisteredAsDonor
+          ? _value.isRegisteredAsDonor
+          : isRegisteredAsDonor // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -184,8 +223,11 @@ class _$FamilyMemberImpl extends _FamilyMember {
       this.name,
       this.gender,
       this.dob,
+      this.lastDonationDate,
+      this.bloodGroup,
       this.weight,
-      this.relation})
+      this.relation,
+      this.isRegisteredAsDonor = false})
       : super._();
 
   factory _$FamilyMemberImpl.fromJson(Map<String, dynamic> json) =>
@@ -202,13 +244,20 @@ class _$FamilyMemberImpl extends _FamilyMember {
   @override
   final String? dob;
   @override
+  final String? lastDonationDate;
+  @override
+  final String? bloodGroup;
+  @override
   final int? weight;
   @override
   final String? relation;
+  @override
+  @JsonKey()
+  final bool isRegisteredAsDonor;
 
   @override
   String toString() {
-    return 'FamilyMember(id: $id, image: $image, name: $name, gender: $gender, dob: $dob, weight: $weight, relation: $relation)';
+    return 'FamilyMember(id: $id, image: $image, name: $name, gender: $gender, dob: $dob, lastDonationDate: $lastDonationDate, bloodGroup: $bloodGroup, weight: $weight, relation: $relation, isRegisteredAsDonor: $isRegisteredAsDonor)';
   }
 
   @override
@@ -221,15 +270,21 @@ class _$FamilyMemberImpl extends _FamilyMember {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.gender, gender) || other.gender == gender) &&
             (identical(other.dob, dob) || other.dob == dob) &&
+            (identical(other.lastDonationDate, lastDonationDate) ||
+                other.lastDonationDate == lastDonationDate) &&
+            (identical(other.bloodGroup, bloodGroup) ||
+                other.bloodGroup == bloodGroup) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.relation, relation) ||
-                other.relation == relation));
+                other.relation == relation) &&
+            (identical(other.isRegisteredAsDonor, isRegisteredAsDonor) ||
+                other.isRegisteredAsDonor == isRegisteredAsDonor));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, image, name, gender, dob, weight, relation);
+  int get hashCode => Object.hash(runtimeType, id, image, name, gender, dob,
+      lastDonationDate, bloodGroup, weight, relation, isRegisteredAsDonor);
 
   @JsonKey(ignore: true)
   @override
@@ -252,8 +307,11 @@ abstract class _FamilyMember extends FamilyMember {
       final String? name,
       final String? gender,
       final String? dob,
+      final String? lastDonationDate,
+      final String? bloodGroup,
       final int? weight,
-      final String? relation}) = _$FamilyMemberImpl;
+      final String? relation,
+      final bool isRegisteredAsDonor}) = _$FamilyMemberImpl;
   const _FamilyMember._() : super._();
 
   factory _FamilyMember.fromJson(Map<String, dynamic> json) =
@@ -270,9 +328,15 @@ abstract class _FamilyMember extends FamilyMember {
   @override
   String? get dob;
   @override
+  String? get lastDonationDate;
+  @override
+  String? get bloodGroup;
+  @override
   int? get weight;
   @override
   String? get relation;
+  @override
+  bool get isRegisteredAsDonor;
   @override
   @JsonKey(ignore: true)
   _$$FamilyMemberImplCopyWith<_$FamilyMemberImpl> get copyWith =>

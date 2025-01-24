@@ -26,6 +26,23 @@ class Family extends _$Family {
     }
   }
 
+  void addFamilyMember(FamilyMember member) {
+    List<FamilyMember> current = state.whenOrNull(
+          data: (list) => list,
+        ) ??
+        [];
+    state = AsyncData([member, ...current]);
+  }
+
+  FamilyMember? getRecentFamilyMember() {
+    List<FamilyMember> current = state.whenOrNull(
+          data: (list) => list,
+        ) ??
+        [];
+    if (current.isNotEmpty) return current.first;
+    return null;
+  }
+
   void updateList(FamilyMember member) {
     List<FamilyMember> current = state.whenOrNull(
           data: (list) => list,
@@ -53,8 +70,7 @@ class Family extends _$Family {
       state = AsyncData([member, ...current]);
     } else {
       current.removeAt(existingMemberIndex);
-      current.insert(
-          existingMemberIndex, member.copyWith(weight: 44, dob: "asa"));
+      current.insert(existingMemberIndex, member);
       state = AsyncData([...current]);
     }
   }

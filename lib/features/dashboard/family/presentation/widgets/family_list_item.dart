@@ -50,7 +50,7 @@ class FamilyListItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        member.name!,
+                        member.name!.capitalize(),
                         style: bold.copyWith(color: primaryDark950),
                       ),
                       20.horizontalSpace,
@@ -92,7 +92,9 @@ class FamilyListItem extends StatelessWidget {
                           context: context,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0)),
-                          builder: (_) => const ProfileWarningModal());
+                          builder: (_) => ProfileWarningModal(
+                                memberName: member.name!,
+                              ));
                       if (shouldNavigate ?? false) {
                         final shouldUpdate = await context.router.push<bool>(
                             CompleteFamilyProfileRoute(member: member));

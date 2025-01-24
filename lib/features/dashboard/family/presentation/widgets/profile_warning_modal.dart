@@ -10,7 +10,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class ProfileWarningModal extends StatelessWidget {
-  const ProfileWarningModal({super.key});
+  const ProfileWarningModal({super.key, required this.memberName});
+
+  final String memberName;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class ProfileWarningModal extends StatelessWidget {
         ),
         16.verticalSpace,
         Text(
-          context.l10n.profileIncompleteWarning,
+          "${memberName.capitalize()}${context.l10n.profileIncompleteWarning}",
           textAlign: TextAlign.center,
           style: regular.copyWith(fontSize: 18.0, color: primaryDark700),
         ),

@@ -63,7 +63,9 @@ class FamilyScreen extends StatelessWidget {
                             context: context,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0)),
-                            builder: (_) => const ProfileWarningModal());
+                            builder: (_) => ProfileWarningModal(
+                                  memberName: newMember.name!,
+                                ));
                         if (shouldNavigate ?? false) {
                           context.router.push(
                               CompleteFamilyProfileRoute(member: newMember));

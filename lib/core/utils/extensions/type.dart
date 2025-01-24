@@ -55,8 +55,14 @@ extension StringNullX on String? {
 
   bool get isNotNullNotEmpty => this != null && this!.isNotEmpty;
 
-  String capitalize() =>
-      this![0].toUpperCase() + this!.substring(1, this!.length);
+  String capitalize() {
+    final names = this!.split(" ");
+    String name = "";
+    for (var text in names) {
+      name += "${text[0].toUpperCase()}${text.substring(1, text.length)} ";
+    }
+    return name.trim();
+  }
 
   String formatPhone() {
     String input = this!;

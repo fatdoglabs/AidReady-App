@@ -21,7 +21,7 @@ class FamilyUpdate extends _$FamilyUpdate {
     final repository = ref.read(familyRepositoryProvider(networkStatus));
     final result = await repository.addMember(member);
     result.fold((l) {
-      ref.read(familyProvider.notifier).addFamilyMember(l);
+      ref.read(familyProvider.notifier).updateList(l);
       state = AsyncData(l);
     }, (r) {
       state = AsyncError(r, StackTrace.current);

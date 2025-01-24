@@ -29,32 +29,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return Consumer(builder: (_, ref, __) {
-          ref.listen(authProvider, (_, __) {});
-          return Scaffold(
-            body: Stack(
-              children: [
-                Container(
-                  decoration: tabsRouter.activeIndex == 0
-                      ? const DashboardDecoration()
-                      : null,
-                  child: child,
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: SizedBox(
-                    height: kToolbarHeight * 2,
-                    child: BottomTabBar(
-                      onTabClick: (index) {
-                        tabsRouter.setActiveIndex(index);
-                      },
-                    ),
+        return Scaffold(
+          body: Stack(
+            children: [
+              Container(
+                decoration: tabsRouter.activeIndex == 0
+                    ? const DashboardDecoration()
+                    : null,
+                child: child,
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SizedBox(
+                  height: kToolbarHeight * 2,
+                  child: BottomTabBar(
+                    onTabClick: (index) {
+                      tabsRouter.setActiveIndex(index);
+                    },
                   ),
-                )
-              ],
-            ),
-          );
-        });
+                ),
+              )
+            ],
+          ),
+        );
       },
     );
   }

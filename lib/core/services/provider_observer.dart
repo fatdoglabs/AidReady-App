@@ -27,7 +27,9 @@ class AidObserver extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
-    log('aaa: Provider $provider updated from $previousValue to $newValue');
+    if (provider.name == "authProvider") {
+      log('aaa: Provider $provider updated from $previousValue to $newValue');
+    }
   }
 
   @override

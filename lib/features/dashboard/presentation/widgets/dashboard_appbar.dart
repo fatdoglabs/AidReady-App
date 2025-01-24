@@ -15,7 +15,7 @@ class DashboardAppbar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final authToken = ref.read(authProvider).whenOrNull(
+    final authToken = ref.watch(authProvider).whenOrNull(
               data: (data) => data,
             ) ??
         AuthToken.unauthenticated();
@@ -47,7 +47,9 @@ class DashboardAppbar extends ConsumerWidget {
                 child: authToken.image.isNotNullNotEmpty
                     ? authToken.image.circle(dimension: 32.0)
                     : UserAvatar(
-                        initials: authToken.name[0].toUpperCase(),
+                        initials: authToken.name.isNotEmpty
+                            ? authToken.name[0].toUpperCase()
+                            : "",
                       ),
               ),
             ],

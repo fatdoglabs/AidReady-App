@@ -97,6 +97,9 @@
   "lastDonationDate":"Last Donation Date",
   "memberAddedSuccessfully":"New Family Member added successfully.",
   "noRequests":"No Requests Right Now",
+  "strengthenImpact":"Strengthen Your Impact",
+  "addFamilyMembersToSaveLives":"Add family members to save more lives together.",
+  "addFamilyMembers":"Add Family Members",
   "noRequestsMessage":"Everything looks good! There are no current blood requests in your area.",
   "donationProfileUpdated":"Donation profile updated successfully.",
   "genericerr": "Something went wrong. Please try again later."

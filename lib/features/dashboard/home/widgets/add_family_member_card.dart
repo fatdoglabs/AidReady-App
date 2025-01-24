@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
+import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
 import 'package:aid_ready/core/widgets/picture_view.dart';
@@ -8,7 +9,9 @@ import 'package:aid_ready/features/dashboard/home/widgets/add_family_decoration.
 import 'package:flutter/material.dart';
 
 class AddFamilyMemberCard extends StatelessWidget {
-  const AddFamilyMemberCard({super.key});
+  const AddFamilyMemberCard({super.key, this.onAddMember});
+
+  final VoidCallback? onAddMember;
 
   @override
   Widget build(BuildContext context) {
@@ -28,22 +31,23 @@ class AddFamilyMemberCard extends StatelessWidget {
               ),
               10.verticalSpace,
               Text(
-                'Strengthen Your Impact',
+                context.l10n.strengthenImpact,
                 style: bold.copyWith(color: secondary950),
               ),
               Text(
-                'Add family members to save more lives together.',
+                context.l10n.addFamilyMembersToSaveLives,
                 style: regular.copyWith(fontSize: 12.0, color: primaryDark600),
               ),
               10.verticalSpace,
               ActionButton.primary(
                 width: 200.0,
                 height: 36.0,
+                onPressed: onAddMember,
                 child: Container(
                   alignment: Alignment.center,
                   child: Text(
                     textAlign: TextAlign.center,
-                    'Add Family Members',
+                    context.l10n.addFamilyMembers,
                     style:
                         semibold.copyWith(fontSize: 16.0, color: Colors.white),
                   ),

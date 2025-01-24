@@ -54,7 +54,7 @@ abstract class $AidRouter extends _i17.RootStackRouter {
     AddMemberRoute.name: (routeData) {
       final args = routeData.argsAs<AddMemberRouteArgs>(
           orElse: () => const AddMemberRouteArgs());
-      return _i17.AutoRoutePage<bool>(
+      return _i17.AutoRoutePage<dynamic>(
         routeData: routeData,
         child: _i1.AddMemberScreen(
           key: args.key,

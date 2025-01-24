@@ -1,5 +1,5 @@
 import 'package:aid_ready/features/auth/presentation/providers/auth_provider.dart';
-import 'package:aid_ready/features/dashboard/presentation/widgets/bottom_tab_icon.dart';
+import 'package:aid_ready/features/dashboard/presentation/widgets/bottom_tab_bar.dart';
 import 'package:aid_ready/features/dashboard/presentation/widgets/dashboard_decoration.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';

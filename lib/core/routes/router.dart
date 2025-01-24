@@ -65,5 +65,8 @@ class AidRouter extends $AidRouter {
         AutoRoute(
           page: AddMemberRoute.page,
         ),
+        AutoRoute(
+          page: RequestBloodRoute.page,
+        ),
       ];
 }

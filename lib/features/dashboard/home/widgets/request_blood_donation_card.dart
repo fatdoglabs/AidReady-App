@@ -1,9 +1,11 @@
+import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/assets.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
 import 'package:aid_ready/core/utils/extensions/type.dart';
 import 'package:aid_ready/core/widgets/action_button.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -53,6 +55,9 @@ class RequestBloodDonationCard extends StatelessWidget {
                   child: ActionButton.primary(
                     width: 180.0,
                     height: 30.0,
+                    onPressed: () {
+                      context.router.push(const RequestBloodRoute());
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),

@@ -18,6 +18,7 @@ const String authImage = 'assets/images/page_auth.png';
 const String bloodDropImage = 'assets/images/blood_drop.png';
 const String resetSuccessImage = 'assets/images/page_reset.jpg';
 const String noRequestHeaderImage = 'assets/images/no_request_header.png';
+const String familyPlaceholderImage = 'assets/images/family_placeholder.png';
 const String textLogoIcon = 'assets/icons/text_logo.svg';
 const String notificationIcon = 'assets/icons/notification.svg';
 const String attentionIcon = 'assets/icons/attention.svg';

@@ -1,6 +1,7 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/features/dashboard/home/widgets/add_family_member_card.dart';
 import 'package:aid_ready/features/dashboard/home/widgets/member.dart';
 import 'package:flutter/material.dart';
 
@@ -22,27 +23,28 @@ class FamilyList extends StatelessWidget {
             style: regular.copyWith(fontSize: 12.0, color: primary600),
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(8.0),
-          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(8.0),
-            boxShadow: const [
-              BoxShadow(
-                offset: Offset(0, 4),
-                blurRadius: 12.0,
-                spreadRadius: 4.0,
-                color: containerShadow,
-              )
-            ],
-          ),
-          child: Row(
-            children: [
-              Member.placeholder(),
-            ],
-          ),
-        )
+        const AddFamilyMemberCard(),
+        // Container(
+        //   padding: const EdgeInsets.all(8.0),
+        //   margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+        //   decoration: BoxDecoration(
+        //     color: Colors.white,
+        //     borderRadius: BorderRadius.circular(8.0),
+        //     boxShadow: const [
+        //       BoxShadow(
+        //         offset: Offset(0, 4),
+        //         blurRadius: 12.0,
+        //         spreadRadius: 4.0,
+        //         color: containerShadow,
+        //       )
+        //     ],
+        //   ),
+        //   child: Row(
+        //     children: [
+        //       Member.placeholder(),
+        //     ],
+        //   ),
+        // )
       ],
     );
   }

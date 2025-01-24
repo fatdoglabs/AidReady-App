@@ -2,6 +2,7 @@ import 'package:aid_ready/core/routes/router.gr.dart';
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/features/dashboard/family/domain/entity/family_member.dart';
 import 'package:aid_ready/features/dashboard/family/domain/providers/family_provider.dart';
 import 'package:aid_ready/features/dashboard/home/widgets/add_family_member_card.dart';
 import 'package:aid_ready/features/dashboard/presentation/providers/bottom_bar_provider.dart';
@@ -75,9 +76,17 @@ class FamilyList extends ConsumerWidget {
                               padding: EdgeInsets.zero,
                               scrollDirection: Axis.horizontal,
                               itemCount: list.length,
-                              itemBuilder: (_, index) => Member(
-                                  imageUri: list[index].image ?? "",
-                                  name: list[index].name ?? ""),
+                              itemBuilder: (_, index) => GestureDetector(
+                                onTap: () {
+                                  _gotoToAddMember(context, ref,
+                                      member: list[index]);
+                                },
+                                child: Center(
+                                  child: Member(
+                                      imageUri: list[index].image ?? "",
+                                      name: list[index].name ?? ""),
+                                ),
+                              ),
                             ),
                           )
                         ],
@@ -96,8 +105,9 @@ class FamilyList extends ConsumerWidget {
     );
   }
 
-  void _gotoToAddMember(BuildContext context, WidgetRef ref) {
+  void _gotoToAddMember(BuildContext context, WidgetRef ref,
+      {FamilyMember? member}) {
     ref.read(bottomBarProvider.notifier).update(1);
-    context.router.push(AddMemberRoute());
+    context.router.push(AddMemberRoute(member: member));
   }
 }

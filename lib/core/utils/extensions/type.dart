@@ -73,7 +73,7 @@ extension StringNullX on String? {
     }
   }
 
-  DateTime decodeDateString(BuildContext context) {
+  DateTime decodeDateString() {
     if (this != null && this!.isNotEmpty) {
       //if (this == context.l10n.dateOfBirth) return DateTime.now();
 
@@ -91,14 +91,19 @@ extension StringNullX on String? {
         'Nov',
         'Dec'
       ];
-      List<String> elements = this!.split(' ');
-      int day = int.tryParse(elements[0]) ?? 0;
+      List<String> elements = this!.split('-');
+      int day = int.tryParse(elements[2]) ?? 0;
       String month = elements[1];
       int monthIndex = names.indexWhere((element) => element == month);
-      int year = int.tryParse(elements[2]) ?? 0;
+      int year = int.tryParse(elements[0]) ?? 0;
       return DateTime(year, monthIndex + 1, day);
     }
     return DateTime.now();
+  }
+
+  int age() {
+    final now = DateTime.now();
+    return now.year - decodeDateString().year;
   }
 
   Future<ui.Image> getImageDataFromAsset(int width) async {

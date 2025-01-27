@@ -32,7 +32,7 @@ class ProfileWarningModal extends StatelessWidget {
           },
           child: Center(
               child: Text(
-            context.l10n.completeProfile,
+            context.l10n.becomeDonor,
             style: medium.copyWith(color: Colors.white),
           ))),
       children: [

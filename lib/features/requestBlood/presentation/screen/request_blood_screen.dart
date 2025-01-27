@@ -1,7 +1,11 @@
 import 'package:aid_ready/core/theme/color.dart';
 import 'package:aid_ready/core/theme/styles.dart';
 import 'package:aid_ready/core/utils/extensions/context.dart';
+import 'package:aid_ready/core/utils/extensions/type.dart';
+import 'package:aid_ready/core/utils/extensions/ui.dart';
 import 'package:aid_ready/core/widgets/bubble_decoration.dart';
+import 'package:aid_ready/features/auth/presentation/widgets/login_button.dart';
+import 'package:aid_ready/features/requestBlood/presentation/widgets/donation_detail_profile.dart';
 import 'package:aid_ready/features/requestBlood/presentation/widgets/request_family_list.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +27,13 @@ class RequestBloodScreen extends StatelessWidget {
       ),
       body: Container(
         decoration: const BubbleDecoration(),
-        child: const Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [RequestFamilyList(), Expanded(child: SizedBox.shrink())],
+        child: ListView(
+          children: [
+            RequestFamilyList(),
+            DonationDetailProfile(),
+            30.verticalSpace,
+            LoginButton().px(16.0),
+          ],
         ),
       ),
     );
